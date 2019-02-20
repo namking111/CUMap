@@ -5,11 +5,20 @@
     content="width=device-width, initial-scale=1.0 width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
 
 <head>
-
+    <title>CU Map</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
     <h1>Welcome to CU Map!!</h1>
+    <div id="map"></div>
+    <script>
+        initMap();
+    </script>
+    
+    <script src="/js/index.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&callback=initMap"
+        async defer></script>
 </body>
 
 </html>
