@@ -1,8 +1,9 @@
+<!--added from original-->
+
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
-<meta name="viewport"
-    content="width=device-width, initial-scale=1.0 width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
 
 <head>
     <title>CU Map</title>
@@ -10,14 +11,74 @@
 </head>
 
 <body>
-    <h1>Welcome to CU Map!!</h1>
-    <div id="map"></div>
+    <div class="home-header">
+        <center>
+            <input id="search-box" type="text" placeholder=" SEARCH">
+            <button type="search-go-btn" onclick="seachPlace()" id="gobtn">GO</button>
+            <br>
+            <button class="btn1" onclick="openFloorPlan()" id="floorPlanbtn">FLOOR PLAN</button>
+        </center>
+    </div>
+
+    <div class="search-area">
+
+        <div class="tab">
+            <p>SEARCH BY</p>
+            <button class="btn1" onclick="searchType(1)" id="crs">Course ID</button>
+            <button class="btn1" onclick="searchType(2)" id="dest">Building Name</button>
+
+        </div>
+        <p>LANDMARK</p>
+        <form>
+            <input type="checkbox">ATM
+            <input type="checkbox">Canteen
+            <input type="checkbox">Museum
+            <input type="checkbox">Coffee Shop
+            <input type="checkbox">Copy&Print
+            <input type="checkbox">Vending Machine
+            <input type="checkbox" id="libr" onclick="funcLib()">Library
+            <br>
+            <br>
+        </form>
+
+    </div>
+
+    <div id="map">
+    </div>
+    <div id="flPlan">
+        <center>
+            <p>FLOOR PLAN</p>
+        </center>
+        <div id="flMap">
+            <div class="buildDropdown">
+                <button onclick="selBuild()" class="dropbtn">Select Building&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspv</button>
+                <div id="myDropdown" class="buildDropdown-content">
+                    <a href="#b1">Engineering Building 1</a>
+                    <a href="#b2">Engineering Building 2</a>
+                    <a href="#b3">Engineering Building 3</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script>
+
+
+
+
+
         initMap();
+
+        //var input = new google.map.places.SearchBox(document.getElementById("search-box"));
+
+
     </script>
-    
+
+
+
     <script src="/js/index.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initMap"
         async defer></script>
 </body>
 
