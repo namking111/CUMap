@@ -24,5 +24,5 @@ app.get('/', function(req, res){
 
 //Start Server
 app.listen(3000, function(){
-    console.log('Server strated on port 3000..');
+    console.log('Server started on port 3000..');
 })
