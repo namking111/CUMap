@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
-<meta name="viewport"
-    content="width=device-width, initial-scale=1.0 width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
 
 <head>
     <title>CU Map</title>
@@ -13,81 +12,70 @@
 
 <body>
     <div class="home-header">
-            <center>
+        <center>
             <input id="search-box" type="text" placeholder=" SEARCH">
-            <button type="search-go-btn" onclick = "seachPlace()" id="gobtn">GO</button><br>
+            <button type="search-go-btn" onclick="seachPlace()" id="gobtn">GO</button>
+            <br>
             <button class="btn1" onclick="openFloorPlan()" id="floorPlanbtn">FLOOR PLAN</button>
         </center>
     </div>
-    
+
     <div class="search-area">
-    
-    <div class="tab">
+
+        <div class="tab">
             <p>SEARCH BY</p>
-        <button class="btn1" onclick="searchType(1)" id="crs">Course ID</button>
-        <button class="btn1" onclick="searchType(2)" id="dest">Building Name</button>
-            
-    </div>
-    <p>LANDMARK</p>
-    <form>
+            <button class="btn1" onclick="searchType(1)" id="crs">Course ID</button>
+            <button class="btn1" onclick="searchType(2)" id="dest">Building Name</button>
+
+        </div>
+        <p>LANDMARK</p>
+        <form>
             <input type="checkbox">ATM
             <input type="checkbox">Canteen
             <input type="checkbox">Museum
             <input type="checkbox">Coffee Shop
             <input type="checkbox">Copy&Print
             <input type="checkbox">Vending Machine
-            <input type="checkbox" id="libr" onclick="funcLib()">Library<br>
+            <input type="checkbox" id="libr" onclick="funcLib()">Library
             <br>
-    </form>
-    
+            <br>
+        </form>
+
     </div>
-          
+
     <div id="map">
-</div>
-<div id="flPlan">
-    <center><p>FLOOR PLAN</p></center>
-    <div id="flMap">
-            <div class="buildDropdown">
-                    <button onclick="selBuild()" class="dropbtn">Select Building&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspv</button>
-                    <div id="myDropdown" class="buildDropdown-content">
-                      <a href="#b1">Engineering Building 1</a>
-                      <a href="#b2">Engineering Building 2</a>
-                      <a href="#b3">Engineering Building 3</a>
-                    </div>
-                  </div>
     </div>
-</div>
+    <div id="flPlan">
+        <center>
+            <p>FLOOR PLAN</p>
+        </center>
+        <div id="flMap">
+            <div class="buildDropdown">
+                <button onclick="selBuild()" class="dropbtn">Select Building&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspv</button>
+                <div id="myDropdown" class="buildDropdown-content">
+                    <a href="#b1">Engineering Building 1</a>
+                    <a href="#b2">Engineering Building 2</a>
+                    <a href="#b3">Engineering Building 3</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <script>
-        
-function selBuild() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }
-  
-  // Close the dropdown if the user clicks outside of it
-  window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName("buildDropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-        }
-      }
-    }
-  }
+
+
+
 
 
         initMap();
-        
+
         //var input = new google.map.places.SearchBox(document.getElementById("search-box"));
-        
+
 
     </script>
 
-   
+
 
     <script src="/js/index.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initMap"
@@ -95,185 +83,3 @@ function selBuild() {
 </body>
 
 </html>
-<!--Me, : AIzaSyCaxRKAL_Rfgj_y6IRPCpt0AsUOyqg5FUQ(deleted)-->
-<!--NK : AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc-->
-
-<!--try search box-->
-<!--
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Places Search Box</title>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #description {
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-      }
-
-      #infowindow-content .title {
-        font-weight: bold;
-      }
-
-      #infowindow-content {
-        display: none;
-      }
-
-      #map #infowindow-content {
-        display: inline;
-      }
-
-      .pac-card {
-        margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        font-family: Roboto;
-      }
-
-      #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
-      }
-
-      .pac-controls {
-        display: inline-block;
-        padding: 5px 11px;
-      }
-
-      .pac-controls label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
-
-      #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
-      }
-
-      #pac-input:focus {
-        border-color: #4d90fe;
-      }
-
-      #title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 25px;
-        font-weight: 500;
-        padding: 6px 12px;
-      }
-      #target {
-        width: 345px;
-      }
-    </style>
-  </head>
-  <body>
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map"></div>
-    <script>
-      // This example adds a search box to a map, using the Google Place Autocomplete
-      // feature. People can enter geographical searches. The search box will return a
-      // pick list containing a mix of places and predicted search terms.
-
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
-      function initAutocomplete() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -33.8688, lng: 151.2195},
-          zoom: 13,
-          mapTypeId: 'roadmap'
-        });
-
-        // Create the search box and link it to the UI element.
-        var input = document.getElementById('pac-input');
-        var searchBox = new google.maps.places.SearchBox(input);
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-        // Bias the SearchBox results towards current map's viewport.
-        map.addListener('bounds_changed', function() {
-          searchBox.setBounds(map.getBounds());
-        });
-
-        var markers = [];
-        // Listen for the event fired when the user selects a prediction and retrieve
-        // more details for that place.
-        searchBox.addListener('places_changed', function() {
-          var places = searchBox.getPlaces();
-
-          if (places.length == 0) {
-            return;
-          }
-
-          // Clear out the old markers.
-          markers.forEach(function(marker) {
-            marker.setMap(null);
-          });
-          markers = [];
-
-          // For each place, get the icon, name and location.
-          var bounds = new google.maps.LatLngBounds();
-          places.forEach(function(place) {
-            if (!place.geometry) {
-              console.log("Returned place contains no geometry");
-              return;
-            }
-            var icon = {
-              url: place.icon,
-              size: new google.maps.Size(71, 71),
-              origin: new google.maps.Point(0, 0),
-              anchor: new google.maps.Point(17, 34),
-              scaledSize: new google.maps.Size(25, 25)
-            };
-
-            // Create a marker for each place.
-            markers.push(new google.maps.Marker({
-              map: map,
-              icon: icon,
-              title: place.name,
-              position: place.geometry.location,
-              draggable:true
-            }));
-
-            if (place.geometry.viewport) {
-              // Only geocodes have viewport.
-              bounds.union(place.geometry.viewport);
-            } else {
-              bounds.extend(place.geometry.location);
-            }
-          });
-          map.fitBounds(bounds);
-        });
-      }
-
-    </script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initAutocomplete"
-         async defer></script>
-  </body>
-</html>
--->
