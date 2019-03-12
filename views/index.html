@@ -1,5 +1,5 @@
 <!--added from original-->
-<!--
+
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
@@ -36,7 +36,7 @@
             <input type="checkbox">Coffee Shop
             <input type="checkbox">Copy&Print
             <input type="checkbox">Vending Machine
-            <input type="checkbox">Library<br>
+            <input type="checkbox" id="libr" onclick="funcLib()">Library<br>
             <br>
     </form>
     
@@ -60,53 +60,31 @@
 
 
     <script>
-        function selBuild() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("buildDropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
+        
+function selBuild() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+  
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("buildDropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
       }
     }
   }
-}
 
 
-        //initMap();
-        var typeChosen;
-        function seachPlace(){
-            if(typeChosen!=true){
-                alert("Please select type of search.");
-            }
-            else{
-                alert("<show search result jaa>");
-            }
-        }
-        function searchType(type){
-    if(type==1){
-        document.getElementById("crs").style.background = "rgb(212, 161, 212)";
-        document.getElementById("dest").style.background = "";
-    }
-    else if(type==2){
-        document.getElementById("dest").style.background = "rgb(212, 161, 212)";
-        document.getElementById("crs").style.background = "";
-    }
-    typeChosen = true;
-}
-       
-        //var input = new google.map.places.SearchBox(document.getElementById("search-box"));
-        function openFloorPlan(){
-            document.getElementById("flPlan").style.display = "block";
-            document.getElementById("flPlan").scrollIntoView({behavior: "smooth"});
-        }
+        initMap();
         
+        //var input = new google.map.places.SearchBox(document.getElementById("search-box"));
+        
+
     </script>
 
    
@@ -116,11 +94,12 @@ window.onclick = function(event) {
         async defer></script>
 </body>
 
-</html>-->
+</html>
 <!--Me, : AIzaSyCaxRKAL_Rfgj_y6IRPCpt0AsUOyqg5FUQ(deleted)-->
 <!--NK : AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc-->
 
 <!--try search box-->
+<!--
 <!DOCTYPE html>
 <html>
   <head>
@@ -292,7 +271,9 @@ window.onclick = function(event) {
       }
 
     </script>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initAutocomplete"
          async defer></script>
   </body>
 </html>
+-->
