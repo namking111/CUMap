@@ -93,3 +93,11 @@
   #floorPlanbtn:hover {
     background-color: white;
   }
+
+
+  #gauge_div {
+    
+    width: 120px; margin: 0 auto;
+  
+  
+  }
