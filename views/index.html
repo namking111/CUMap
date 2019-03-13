@@ -3,29 +3,47 @@
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0 width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0 width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
 
 <head>
     <title>CU Map</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
     <div class="home-header">
-        <center>
-            <input id="search-box" type="text" placeholder=" SEARCH">
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="img/cumap_logo.png" class="col-6" width="50" height="50">
+            </div>
+            <div class="pull-right">
+                <form class="form-inline active-pink-4 col-6 text-lg-right">
+                    <input id="search-box" class="form-control form-control-sm mr-3 w-75" type="text"
+                        placeholder="Search" aria-label="Search">
+                    <button type="search-go-btn" onclick="seachPlace()" id="gobtn">GO</button>
+                    <!-- <i class="fa fa-search" aria-hidden="true" onclick="seachPlace()" id="gobtn"></i> -->
+                </form>
+            </div>
+        </div>
+
+        <!-- <div class="active-pink-4 mb-4">
+            <input id="search-box" class="form-control" type="text" placeholder="Search" aria-label="Search">
             <button type="search-go-btn" onclick="seachPlace()" id="gobtn">GO</button>
-            <br>
-            <button class="btn1" onclick="openFloorPlan()" id="floorPlanbtn">FLOOR PLAN</button>
-        </center>
+        </div> -->
+        <!-- <button class="btn1" onclick="openFloorPlan()" id="floorPlanbtn">FLOOR PLAN</button> -->
+
     </div>
 
-    <div class="search-area">
-
+    <div class="container">
         <div class="tab">
-            <p>SEARCH BY</p>
-            <button class="btn1" onclick="searchType(1)" id="crs">Course ID</button>
-            <button class="btn1" onclick="searchType(2)" id="dest">Building Name</button>
+            <h3>SEARCH BY</h3>
+            <button class="btn btn-danger" onclick="searchType(1)" id="crs">Course ID</button>
+            <button class="btn btn-danger" onclick="searchType(2)" id="dest">Building Name</button>
 
         </div>
         <p>LANDMARK</p>
@@ -51,7 +69,8 @@
         </center>
         <div id="flMap">
             <div class="buildDropdown">
-                <button onclick="selBuild()" class="dropbtn">Select Building&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspv</button>
+                <button onclick="selBuild()" class="dropbtn">Select
+                    Building&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspv</button>
                 <div id="myDropdown" class="buildDropdown-content">
                     <a href="#b1">Engineering Building 1</a>
                     <a href="#b2">Engineering Building 2</a>
@@ -150,23 +169,16 @@
      </div>
 
     <script>
-
-
-
-
-
         initMap();
-
         //var input = new google.map.places.SearchBox(document.getElementById("search-box"));
-
-
     </script>
 
 
 <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
 <script type='text/javascript' src='https://www.google.com/jsapi'></script>
     <script src="/js/index.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initMap"
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initMap"
         async defer></script>
 </body>
 

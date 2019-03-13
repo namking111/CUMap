@@ -2,13 +2,13 @@
     height: 500px;
     width: 100%;
 }
-#search-box{
+/* #search-box{
     height: 15px;
     width: 400px;
     border-radius: 40px;
     border: none;
     margin-left: 10px;
-}
+} */
 .tab{
     overflow: hidden;
 }
@@ -47,10 +47,6 @@
      background-color: rgb(182, 182, 182);
     -webkit-text-fill-color: rgb(209, 37, 209);
   }
-
-
-
-
 
   .dropbtn {
     background-color: white;

@@ -7,7 +7,6 @@ function initMap() {
     //Create Map
     var map = new google.maps.Map(document.getElementById('map'), options);
 
-
     // Listen for click on map
     google.maps.event.addListener(map, 'click', function (event) {
     });
@@ -93,12 +92,6 @@ function initMap() {
         map.fitBounds(bounds);
     });
 
-
-
-
-
-
-
     /*
         // Loop through markers
         for (var i = 0; i < markers.length; i++) {
@@ -123,11 +116,7 @@ function initMap() {
             //query place
             
             var tempPlace
-            service = new google.maps.places.PlacesService(map);
-            
-           
-            
-          
+            service = new google.maps.places.PlacesService(map);   
     
             // Check for content
             if (props.content) {
@@ -143,10 +132,7 @@ function initMap() {
             }
         }
         */
-
-
 }
-
 
 var typeChosen;
 function seachPlace() {
