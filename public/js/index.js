@@ -28,16 +28,9 @@ function initMap() {
     ];*/
 
     //tick box ja
-    /*
-    var librTick = document.getElementById("libr")
-   function funcLib(){
-    if (librTick.checked) {
-        alert ("The check box is checked.");
-    }
-    else {
-        alert ("The check box is not checked.");
-    }
-   }*/
+    
+    //var librTick = document.getElementById("libr")
+   
 
     //search box ja
     var searchBox = new google.maps.places.SearchBox(document.getElementById("search-box"));
@@ -143,7 +136,7 @@ function initMap() {
             }
         }
         */
-
+        
 
 }
 
@@ -178,11 +171,14 @@ function openFloorPlan() {
 function selBuild() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
+function selFloor() {
+    document.getElementById("myDropdown2").classList.toggle("show");
+}
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("buildDropdown-content");
+        var dropdowns = document.getElementsByClassName("mapDropdown-content");
         var i;
         for (i = 0; i < dropdowns.length; i++) {
             var openDropdown = dropdowns[i];
@@ -192,3 +188,127 @@ window.onclick = function (event) {
         }
     }
 }
+
+var currentBuild;
+function mapFunc(building){
+    //if change building, default floor is 1
+    document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0"+building+"-FR1.jpg\"></center>"
+    document.getElementById("theDrop").innerText = "Engineering Building "+building;
+    currentBuild = building;
+    document.getElementById("theDrop2").innerText = "Floor 1";
+}
+function mapFunc2(floor){
+    document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0"+currentBuild+"-FR"+floor+".jpg\"></center>"
+    document.getElementById("theDrop2").innerText = "Floor "+floor;
+}
+
+//func use : 'use'
+/*
+function funcLib(boxx){
+    
+    if (boxx.checked) {
+        var options = {
+            zoom: 17,
+            center: { lat: 13.7384, lng: 100.5321 }
+        }
+        var map = new google.maps.Map(document.getElementById('map'), options);
+
+
+
+
+
+
+
+        var request = {
+            query: 'Museum of Contemporary Art Australia',
+            //keyword: 'Museum',
+            fields: ['name', 'geometry'],
+          };
+        
+          var service = new google.maps.places.PlacesService(map);
+*/
+
+
+
+        //  service.nearbySearch(
+        //    {location: pyrmont, radius: 500, type: ['store']},
+        //    function(results, status, pagination) {
+        //      if (status !== 'OK') return;
+      
+        //     createMarkers(results);
+        //    });
+
+
+
+
+
+        //func use : 'use'
+        /*
+          service.findPlaceFromQuery(request, function(results, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+              for (var i = 0; i < results.length; i++) {
+                createMarkers(results[i]);
+                alert("done")
+              }
+              map.setCenter(results[0].geometry.location);
+            }
+          });
+          
+          function createMarkers(places) {
+            alert("dunn")
+              var marker2 = new google.maps.Marker({
+                map: map,
+                iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+                position: places.geometry.location
+              });
+              alert("donee")
+            }*/
+
+
+
+
+
+
+
+
+
+/*
+        
+        //alert ("The check box is checked.");
+        var requestlib = {
+            location: map.center,
+            keyword: 'library'
+        };
+       
+        service = new google.maps.places.PlacesService(map);
+      
+       
+
+
+        alert("done")
+          service.nearbySearch(requestlib, function(results, status) {
+            
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+              for (var i = 0; i < results.length; i++) {
+                  
+                var place = results[i];
+                //createMarker(results[i]);
+              }
+  
+              //map.setCenter(results[0].geometry.location);
+            }
+          });
+
+*/
+
+     //func use : 'use'
+     /*     
+    }
+    else {
+        //alert ("The check box is unchecked.");
+    }
+   }*/
+
+
+
+   

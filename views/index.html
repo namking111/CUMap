@@ -7,11 +7,15 @@
 
 <head>
     <title>CU Map</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
     <div class="home-header">
+            <img src="img/CUMaplogo.png" width="100px" height="100px">
         <center>
             <input id="search-box" type="text" placeholder=" SEARCH">
             <button type="search-go-btn" onclick="seachPlace()" id="gobtn">GO</button>
@@ -30,13 +34,13 @@
         </div>
         <p>LANDMARK</p>
         <form>
-            <input type="checkbox">ATM
-            <input type="checkbox">Canteen
-            <input type="checkbox">Museum
-            <input type="checkbox">Coffee Shop
-            <input type="checkbox">Copy&Print
-            <input type="checkbox">Vending Machine
-            <input type="checkbox" id="libr" onclick="funcLib()">Library
+            <input type="checkbox">&nbsp;ATM</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox">&nbsp;Canteen</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox">&nbsp;Museum</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox">&nbsp;Coffee Shop</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox">&nbsp;Copy&Print</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox">&nbsp;Vending Machine</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="libr" onclick="funcLib(this)">&nbsp;Library</input>
             <br>
             <br>
         </form>
@@ -47,17 +51,33 @@
     </div>
     <div id="flPlan">
         <center>
+            <br>
             <p>FLOOR PLAN</p>
         </center>
         <div id="flMap">
-            <div class="buildDropdown">
-                <button onclick="selBuild()" class="dropbtn">Select Building&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspv</button>
-                <div id="myDropdown" class="buildDropdown-content">
-                    <a href="#b1">Engineering Building 1</a>
-                    <a href="#b2">Engineering Building 2</a>
-                    <a href="#b3">Engineering Building 3</a>
+            
+            <div class="mapDropdown">
+                <button onclick="selBuild()" class="dropbtn" id="theDrop">Select Building&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspv</button>
+                <div id="myDropdown" class="mapDropdown-content">
+                    <a href="#b1" onclick="mapFunc(1)">Engineering Building 1</a>
+                    <a href="#b2" onclick="mapFunc(2)">Engineering Building 2</a>
+                    <a href="#b3" onclick="mapFunc(3)">Engineering Building 3</a>
                 </div>
             </div>
+           
+
+            <div class="mapDropdown">
+                    <button onclick="selFloor()" class="dropbtn" id="theDrop2">Select Floor&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspv</button>
+                    <div id="myDropdown2" class="mapDropdown-content">
+                        <a href="#b1" onclick="mapFunc2(1)">Floor 1</a>
+                        <a href="#b2" onclick="mapFunc2(2)">Floor 2</a>
+                        <a href="#b3" onclick="mapFunc2(3)">Floor 3</a>
+                    </div>
+                </div>
+            
+            <br>
+            <br>
+            <div id="show-map"></div>
         </div>
     </div>
 
