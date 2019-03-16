@@ -8,7 +8,7 @@
     border-radius: 40px;
     border: none;
     margin-left: 10px;
-}
+} */
 .tab{
     overflow: hidden;
 }
@@ -37,7 +37,7 @@
   }
   #flMap{
     background-color: rgb(219, 218, 218);
-    height: 720px;
+    height: 1000px;
   }
   .btn1{
     border: none;
@@ -47,10 +47,6 @@
      background-color: rgb(182, 182, 182);
     -webkit-text-fill-color: rgb(209, 37, 209);
   }
-
-
-
-
 
   .dropbtn {
     background-color: white;
@@ -92,4 +88,12 @@
   .show {display: block;}
   #floorPlanbtn:hover {
     background-color: white;
+  }
+
+
+  #gauge_div {
+    
+    width: 120px; margin: 0 auto;
+  
+  
   }
