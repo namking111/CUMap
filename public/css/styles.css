@@ -8,7 +8,7 @@
     border-radius: 40px;
     border: none;
     margin-left: 10px;
-} */
+} 
 .tab{
     overflow: hidden;
 }
@@ -90,10 +90,8 @@
     background-color: white;
   }
 
-
   #gauge_div {
-    
     width: 120px; margin: 0 auto;
-  
-  
   }
+
+  .hide{display: none; visibility: hidden}

@@ -62,9 +62,11 @@
             <div class="mapDropdown">
                 <button onclick="selBuild()" class="dropbtn" id="theDrop">Select Building&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspv</button>
                 <div id="myDropdown" class="mapDropdown-content">
-                    <a href="#b1" onclick="mapFunc(1)">Engineering Building 1</a>
-                    <a href="#b2" onclick="mapFunc(2)">Engineering Building 2</a>
-                    <a href="#b3" onclick="mapFunc(3)">Engineering Building 3</a>
+                    <a href="#b1" onclick="mapFunc(0,1)">Engineering Building 1</a>
+                    <a href="#b2" onclick="mapFunc(0,2)">Engineering Building 2</a>
+                    <a href="#b3" onclick="mapFunc(0,3)">Engineering Building 3</a>
+                    <a href="#b4" onclick="mapFunc(0,100)">Engineering Building 100</a>
+                    <a href="#b5" onclick="mapFunc(1,1)">Maha Chakri Sirindhorn Building</a>
                 </div>
             </div>
            
@@ -72,9 +74,21 @@
             <div class="mapDropdown">
                     <button onclick="selFloor()" class="dropbtn" id="theDrop2">Select Floor&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspv</button>
                     <div id="myDropdown2" class="mapDropdown-content">
-                        <a href="#b1" onclick="mapFunc2(1)">Floor 1</a>
-                        <a href="#b2" onclick="mapFunc2(2)">Floor 2</a>
-                        <a href="#b3" onclick="mapFunc2(3)">Floor 3</a>
+                        <a href="#fM" onclick="mapFunc2(90)" id="fl-90">Floor M</a>
+                        <a href="#fM1" onclick="mapFunc2(91)" id="fl-91">Floor M1</a>
+                        <a href="#fM3" onclick="mapFunc2(93)" id="fl-93">Floor M3</a>
+                        <a href="#f1" onclick="mapFunc2(1)" id="fl-1">Floor 1</a>
+                        <a href="#f2" onclick="mapFunc2(2)" id="fl-2">Floor 2</a>
+                        <a href="#f3" onclick="mapFunc2(3)" id="fl-3">Floor 3</a>
+                        <a href="#f4" onclick="mapFunc2(4)" id="fl-4">Floor 4</a>
+                        <a href="#f5" onclick="mapFunc2(5)" id="fl-5">Floor 5</a>
+                        <a href="#f6" onclick="mapFunc2(6)" id="fl-6">Floor 6</a>
+                        <a href="#f7" onclick="mapFunc2(7)" id="fl-7">Floor 7</a>
+                        <a href="#f8" onclick="mapFunc2(8)" id="fl-8">Floor 8</a>
+                        <a href="#f9" onclick="mapFunc2(9)" id="fl-9">Floor 9</a>
+                        <a href="#f10" onclick="mapFunc2(10)" id="fl-10">Floor 10</a>
+                        <a href="#f11" onclick="mapFunc2(11)" id="fl-11">Floor 11</a>
+                        <a href="#f12" onclick="mapFunc2(12)" id="fl-12">Floor 12</a>
                     </div>
                 </div>
             
@@ -173,7 +187,7 @@
      </div>
 
     <script>
-        initMap();
+       // initMap();
         //var input = new google.map.places.SearchBox(document.getElementById("search-box"));
     </script>
 
