@@ -209,6 +209,7 @@ function selBuild() {
 }
 function selFloor() {
     document.getElementById("myDropdown2").classList.toggle("show");
+    /*
     alert("clicked"+currentBuild)
     
     if(currentBuild==1){
@@ -226,7 +227,7 @@ function selFloor() {
         if(document.getElementById("fl-93").classList.style.display != "none"){
             document.getElementById("fl-93").classList.style.display = "none"
         }
-    }
+    }*/
     //document.getElementById("myDropdown2").classList.toggle("show");
     //document.getElementById("fl-4").classList.toggle("hide");
 }
