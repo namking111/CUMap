@@ -209,6 +209,64 @@ function selBuild() {
 }
 function selFloor() {
     document.getElementById("myDropdown2").classList.toggle("show");
+
+    //show floor list according to each building
+    if((currentBuild==1&&currentFac==0)||(currentBuild==2&&currentFac==0)){//engineering building 1 and 2
+        for(i=4;i<13;i++){
+            document.getElementById("fl-"+i).classList.toggle("hide");
+        }
+        for(j=90;j<94;j++){
+            document.getElementById("fl-"+j).classList.toggle("hide");
+        }
+    }
+    else if(currentBuild==3&&currentFac==0){//engineering building 3
+        for(i=5;i<13;i++){
+            document.getElementById("fl-"+i).classList.toggle("hide");
+        }
+        for(j=90;j<94;j++){
+            document.getElementById("fl-"+j).classList.toggle("hide");
+        }
+    }
+    else if(currentBuild==100&&currentFac==0){//engineering building 100
+        for(j=91;j<94;j++){
+            document.getElementById("fl-"+j).classList.toggle("hide");
+        }
+        document.getElementById("fl-1").classList.toggle("hide");
+        document.getElementById("fl-2").classList.toggle("hide");
+        document.getElementById("fl-8").classList.toggle("hide");
+        document.getElementById("fl-11").classList.toggle("hide");
+    }
+    else if(currentBuild==1&&currentFac==1){//arts MCS
+        for(i=10;i<13;i++){
+            document.getElementById("fl-"+i).classList.toggle("hide");
+        }
+        document.getElementById("fl-90").classList.toggle("hide");
+        document.getElementById("fl-92").classList.toggle("hide");
+    }
+    /*
+    if(currentBuild==100&&currentFac==0){//engineering building 100
+        for(i=5;i<13;i++){
+            document.getElementById("fl-"+i).classList.toggle("hide");
+        }
+        for(j=90;j<94;j++){
+            document.getElementById("fl-"+j).classList.toggle("hide");
+        }
+    }*/
+    /*
+    //use here
+    else if (currentBuild==3&&currentFac==0){//engineering building 3
+        for(i=5;i<13;i++){
+            document.getElementById("fl-"+i).classList.toggle("hide");
+        }
+    }
+    else if(currentBuild==100&&currentFac==0){//engineering building 100
+
+    }
+    else if(currentBuild==1&&currentFac==1){//arts MCS building
+
+    }
+    */
+
     /*
     alert("clicked"+currentBuild)
     
@@ -280,11 +338,47 @@ function mapFunc2(floor){
     if(floor==90){
         document.getElementById("theDrop2").innerText = "Floor M";
     }
-    if(floor==91){
+    else if(floor==91){
         document.getElementById("theDrop2").innerText = "Floor M1";
     }
-    if(floor==93){
+    else if(floor==92){
+        document.getElementById("theDrop2").innerText = "Floor M2";
+    }
+    else if(floor==93){
         document.getElementById("theDrop2").innerText = "Floor M3";
+    }
+    
+    if((currentBuild==1&&currentFac==0)||(currentBuild==2&&currentFac==0)){//engineering building 1 and 2
+        for(i=4;i<13;i++){
+            document.getElementById("fl-"+i).classList.toggle("hide");
+        }
+        for(j=90;j<94;j++){
+            document.getElementById("fl-"+j).classList.toggle("hide");
+        }
+    }
+    else if(currentBuild==3&&currentFac==0){//engineering building 3
+        for(i=5;i<13;i++){
+            document.getElementById("fl-"+i).classList.toggle("hide");
+        }
+        for(j=90;j<94;j++){
+            document.getElementById("fl-"+j).classList.toggle("hide");
+        }
+    }
+    else if(currentBuild==100&&currentFac==0){//engineering building 100
+        for(j=91;j<94;j++){
+            document.getElementById("fl-"+j).classList.toggle("hide");
+        }
+        document.getElementById("fl-1").classList.toggle("hide");
+        document.getElementById("fl-2").classList.toggle("hide");
+        document.getElementById("fl-8").classList.toggle("hide");
+        document.getElementById("fl-11").classList.toggle("hide");
+    }
+    else if(currentBuild==1&&currentFac==1){//arts MCS
+        for(i=10;i<13;i++){
+            document.getElementById("fl-"+i).classList.toggle("hide");
+        }
+        document.getElementById("fl-90").classList.toggle("hide");
+        document.getElementById("fl-92").classList.toggle("hide");
     }
 }
 
