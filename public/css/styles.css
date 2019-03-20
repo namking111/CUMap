@@ -2,7 +2,7 @@
     height: 500px;
     width: 100%;
 }
-#search-box{
+.search-box{
     height: 30px;
     width: 400px;
     border-radius: 40px;
@@ -21,7 +21,7 @@
   .search-area{
       background-color: rgb(219, 218, 218);
   }
-  #gobtn{
+  .btn-go{
       background-color: rgb(253, 214, 107);
       border-radius: 40px;
       border: none;

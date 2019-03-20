@@ -33,7 +33,7 @@ function initMap() {
    
 
     //search box ja
-    var searchBox = new google.maps.places.SearchBox(document.getElementById("search-box"));
+    var searchBox = new google.maps.places.SearchBox(document.getElementById("building-search-box"));
     map.addListener('bounds_changed', function () {
         searchBox.setBounds(map.getBounds());
     });
@@ -173,13 +173,17 @@ function initMap() {
 
 
 var typeChosen;
-function seachPlace() {
+function searchPlace() {
     if (typeChosen != true) {
         alert("Please select type of search.");
     }
     else {
         alert("<show search result jaa>");
     }
+}
+function searchCourse(){
+    alert("pressed search course go button");
+
 }
 
 function searchType(type) {
