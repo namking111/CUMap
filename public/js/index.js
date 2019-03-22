@@ -1,5 +1,6 @@
 function initMap() {
     //Map options
+    console.log("FILE 1 map executed")
     var options = {
         zoom: 17,
         center: { lat: 13.7384, lng: 100.5321 }
