@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Orbitron');
-
 #map {
-    height: 500px;
-    width: 100%;
+  height: 500px;
+  width: 100%;
 }
 
-body{
+body {
   background: url("./pattern.jpg");
-  background-color:rgb(238, 147, 200); 
+  background-color: rgb(238, 147, 200);
 }
+
 /* #search-box{
     height: 15px;
     width: 400px;
@@ -16,171 +16,172 @@ body{
     border: none;
     margin-left: 10px;
 } */
-.tab{
-    overflow: hidden;
+
+.tab {
+  overflow: hidden;
 }
+
 .tab button:hover {
-    background-color: rgb(212, 161, 212);
-  }
-  .tab p{
-      display: inline;
-  }
-  .search-area{
-      background-color: rgb(219, 218, 218);
-  }
-  #gobtn{
-      background-color: rgb(253, 214, 107);
-      border-radius: 40px;
-      border: none;
-  }
-  .home-header{
-      background-color:  rgb(238, 147, 200);
-      height: 100px;
-      background: url("./pattern.jpg");
-      
-  }
-  #flPlan{
-      display: none;
-      background-color: rgb(238, 147, 200); 
-  }
-  #flMap{
-    background-color: rgb(219, 218, 218);
-    height: 300px;
-  }
-  .btn1{
-    border: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
-     background-color: rgb(182, 182, 182);
-    -webkit-text-fill-color: rgb(209, 37, 209);
-  }
+  background-color: rgb(212, 161, 212);
+}
 
-  .dropbtn {
-    background-color: white;
-    color: black;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .dropbtn:hover, .dropbtn:focus {
-    background-color: rgb(182, 182, 182);
-  }
-  
-  .BuildDropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .buildDropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .buildDropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .buildDropdown a:hover {background-color: #ddd;}
-  
-  .show {display: block;}
-  #floorPlanbtn:hover {
-    background-color: white;
-  }
-   
-   .main{
+.tab p {
+  display: inline;
+}
 
-    background: #ccc;
-    width:200px;
-    height: 100px;
-    margin: 0px auto;
-    position: relative;
-    padding:18px;
-   }
-   .badge{
-     
-     width:96 px;
-     background: #e66357;
-     color:white;
-     padding:5px 10px;
-     font-family: sans-serif;
-     font-weight: bold;
-    
-     position:absolute;
-     top:-15px;
-     left:35%;
-   }
-  #gauge_div {
-    
-    width: 120px; margin: 0 auto;
-  
-  
-  }
-  #gauge_div{
-    
-     text-align: center;
-     position: absolute;
-     top:200px;
-     right:450px;
-     
+.search-area {
+  background-color: rgb(219, 218, 218);
+}
 
-  }
-  .clock{
-   
-    background: #EBEBEB;
-    text-align: center;
-    
-    font-size: 23px;
-    height: 100%;
-    padding-top: 16px;
-    font-family: Orbitron;
-    border-radius: 4px;
-   
-   
-    
-  }
- .Date-main{
-  background: #ccc;
-  width:350px;
-  height: 105px;
-  
+#gobtn {
+  background-color: rgb(253, 214, 107);
+  border-radius: 40px;
+  border: none;
+}
+
+.home-header {
+  background-color: rgb(238, 147, 200);
+  height: 100px;
+  background: url("./pattern.jpg");
+}
+
+#flPlan {
+  display: none;
+  background-color: rgb(238, 147, 200);
+}
+
+#flMap {
+  background-color: rgb(219, 218, 218);
+  height: 300px;
+}
+
+.btn1 {
+  border: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  background-color: rgb(182, 182, 182);
+  -webkit-text-fill-color: rgb(209, 37, 209);
+}
+
+.dropbtn {
+  background-color: white;
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: rgb(182, 182, 182);
+}
+
+.BuildDropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.buildDropdown-content {
+  display: none;
   position: absolute;
-  top:260px;
-  padding:10px;
-   
- }
-.TitleOfDate{
-  width:96 px;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.buildDropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.buildDropdown a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+
+#floorPlanbtn:hover {
+  background-color: white;
+}
+
+.main {
+  background: #ccc;
+  width: 200px;
+  height: 100px;
+  margin: 0px auto;
+  position: relative;
+  padding: 18px;
+}
+
+.badge {
+  width: 96 px;
   background: #e66357;
-  color:white;
-  padding:5px 10px;
+  color: white;
+  padding: 5px 10px;
   font-family: sans-serif;
   font-weight: bold;
- 
-  position:absolute;
-  top:-15px;
-  left:42%;
+  position: absolute;
+  top: -15px;
+  left: 35%;
+}
+
+#gauge_div {
+  width: 120px;
+  margin: 0 auto;
+}
+
+#gauge_div {
+  text-align: center;
+  position: absolute;
+  top: 200px;
+  right: 450px;
+}
+
+.clock {
+  background: #EBEBEB;
+  text-align: center;
+  font-size: 23px;
+  height: 100%;
+  padding-top: 16px;
+  font-family: Orbitron;
   border-radius: 4px;
 }
 
-.Date{
+.Date-main {
+  background: #ccc;
+  width: 350px;
+  height: 105px;
+  position: absolute;
+  top: 260px;
+  padding: 10px;
+}
+
+.TitleOfDate {
+  width: 96 px;
+  background: #e66357;
+  color: white;
+  padding: 5px 10px;
+  font-family: sans-serif;
+  font-weight: bold;
+  position: absolute;
+  top: -15px;
+  left: 42%;
+  border-radius: 4px;
+}
+
+.Date {
   text-align: center;
   background: #EBEBEB;
-  font-size: 25px;
+  font-size:23px;
   height: 100%;
   font-family: Orbitron;
   border-radius: 4px;
-  padding-top:23px
+  padding-top: 23px
 }
-
-  
