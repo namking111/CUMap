@@ -28,9 +28,9 @@ function initMap() {
     ];*/
 
     //tick box ja
-    
+
     //var librTick = document.getElementById("libr")
-   
+
 
     //search box ja
     var searchBox = new google.maps.places.SearchBox(document.getElementById("building-search-box"));
@@ -75,36 +75,36 @@ function initMap() {
                 title: place.name,
                 position: place.geometry.location,
             }));
-            
+
             //engineering building 1
-            if(place.geometry.location=="(13.7365812, 100.53260790000002)" || place.geometry.location=="(13.7365812, 100.53257869999993)"){
+            if (place.geometry.location == "(13.7365812, 100.53260790000002)" || place.geometry.location == "(13.7365812, 100.53257869999993)") {
                 openFloorPlan()
-                mapFunc(0,1)
-            }
-            
-            //engineering building 2
-            if(place.geometry.location=="(13.7364773, 100.53339249999999)"){
-                openFloorPlan()
-                mapFunc(0,2)
-            }
-            //engineering building 3
-            if(place.geometry.location=="(13.7368903, 100.53315620000001)"){
-                openFloorPlan()
-                mapFunc(0,3)
+                mapFunc(0, 1)
             }
 
-             //engineering building 100
-             if(place.geometry.location=="(13.736365, 100.53394780000008)"){
+            //engineering building 2
+            if (place.geometry.location == "(13.7364773, 100.53339249999999)") {
                 openFloorPlan()
-                mapFunc(0,100)
+                mapFunc(0, 2)
+            }
+            //engineering building 3
+            if (place.geometry.location == "(13.7368903, 100.53315620000001)") {
+                openFloorPlan()
+                mapFunc(0, 3)
+            }
+
+            //engineering building 100
+            if (place.geometry.location == "(13.736365, 100.53394780000008)") {
+                openFloorPlan()
+                mapFunc(0, 100)
             }
 
             //Maha Chakri Sirindhorn Building
-            if(place.geometry.location=="(13.7392952, 100.5340708)"){
+            if (place.geometry.location == "(13.7392952, 100.5340708)") {
                 openFloorPlan()
-                mapFunc(1,1)
+                mapFunc(1, 1)
             }
-           
+
 
 
             if (place.geometry.viewport) {
@@ -167,7 +167,7 @@ function initMap() {
             }
         }
         */
-        
+
 
 }
 
@@ -181,7 +181,7 @@ function searchPlace() {
         alert("<show search result jaa>");
     }
 }
-function searchCourse(){
+function searchCourse() {
     alert("pressed search course go button");
 
 }
@@ -198,8 +198,8 @@ function searchType(type) {
     typeChosen = true;
 }
 
-var currentBuild =99;
-var currentFac =99;
+var currentBuild = 99;
+var currentFac = 99;
 
 function openFloorPlan() {
     document.getElementById("flPlan").style.display = "block";
@@ -207,7 +207,7 @@ function openFloorPlan() {
 }
 
 function selBuild() {
-   // document.getElementById("fl-4").classList.toggle("hide");
+    // document.getElementById("fl-4").classList.toggle("hide");
     document.getElementById("myDropdown").classList.toggle("show");
     //document.getElementById("fl-4").classList.toggle("hide");
 }
@@ -215,34 +215,34 @@ function selFloor() {
     document.getElementById("myDropdown2").classList.toggle("show");
 
     //show floor list according to each building
-    if((currentBuild==1&&currentFac==0)||(currentBuild==2&&currentFac==0)){//engineering building 1 and 2
-        for(i=4;i<13;i++){
-            document.getElementById("fl-"+i).classList.toggle("hide");
+    if ((currentBuild == 1 && currentFac == 0) || (currentBuild == 2 && currentFac == 0)) {//engineering building 1 and 2
+        for (i = 4; i < 13; i++) {
+            document.getElementById("fl-" + i).classList.toggle("hide");
         }
-        for(j=90;j<94;j++){
-            document.getElementById("fl-"+j).classList.toggle("hide");
-        }
-    }
-    else if(currentBuild==3&&currentFac==0){//engineering building 3
-        for(i=5;i<13;i++){
-            document.getElementById("fl-"+i).classList.toggle("hide");
-        }
-        for(j=90;j<94;j++){
-            document.getElementById("fl-"+j).classList.toggle("hide");
+        for (j = 90; j < 94; j++) {
+            document.getElementById("fl-" + j).classList.toggle("hide");
         }
     }
-    else if(currentBuild==100&&currentFac==0){//engineering building 100
-        for(j=91;j<94;j++){
-            document.getElementById("fl-"+j).classList.toggle("hide");
+    else if (currentBuild == 3 && currentFac == 0) {//engineering building 3
+        for (i = 5; i < 13; i++) {
+            document.getElementById("fl-" + i).classList.toggle("hide");
+        }
+        for (j = 90; j < 94; j++) {
+            document.getElementById("fl-" + j).classList.toggle("hide");
+        }
+    }
+    else if (currentBuild == 100 && currentFac == 0) {//engineering building 100
+        for (j = 91; j < 94; j++) {
+            document.getElementById("fl-" + j).classList.toggle("hide");
         }
         document.getElementById("fl-1").classList.toggle("hide");
         document.getElementById("fl-2").classList.toggle("hide");
         document.getElementById("fl-8").classList.toggle("hide");
         document.getElementById("fl-11").classList.toggle("hide");
     }
-    else if(currentBuild==1&&currentFac==1){//arts MCS
-        for(i=10;i<13;i++){
-            document.getElementById("fl-"+i).classList.toggle("hide");
+    else if (currentBuild == 1 && currentFac == 1) {//arts MCS
+        for (i = 10; i < 13; i++) {
+            document.getElementById("fl-" + i).classList.toggle("hide");
         }
         document.getElementById("fl-90").classList.toggle("hide");
         document.getElementById("fl-92").classList.toggle("hide");
@@ -310,76 +310,76 @@ window.onclick = function (event) {
 }
 
 
-function mapFunc(fac,building){
+function mapFunc(fac, building) {
     currentBuild = building;
     currentFac = fac;
     document.getElementById("theDrop2").innerText = "Floor 1";
-    if(fac==0){ //if it is a building in faculty of engineering
-         //if change building, default floor is 1 or M
-        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0"+building+"-FR1.jpg\"></center>"
-        document.getElementById("theDrop").innerText = "Engineering Building "+building;
-        if(building==100){
+    if (fac == 0) { //if it is a building in faculty of engineering
+        //if change building, default floor is 1 or M
+        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + building + "-FR1.jpg\"></center>"
+        document.getElementById("theDrop").innerText = "Engineering Building " + building;
+        if (building == 100) {
             document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0100-FR90.jpg\"></center>"
             document.getElementById("theDrop2").innerText = "Floor M";
-         }
+        }
     }
-    if(fac==1){ //if it is a building in faculty of arts
+    if (fac == 1) { //if it is a building in faculty of arts
         document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR1.jpg\"></center>"
         document.getElementById("theDrop").innerText = "Maha Chakri Sirindhorn Building";
     }
     //document.getElementById("fl-4").classList.toggle("hide");
 }
 
-function mapFunc2(floor){
-    if(currentFac==0){ //if it is a building in faculty of engineering
-        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0"+currentBuild+"-FR"+floor+".jpg\"></center>"
+function mapFunc2(floor) {
+    if (currentFac == 0) { //if it is a building in faculty of engineering
+        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + currentBuild + "-FR" + floor + ".jpg\"></center>"
     }
-    if(currentFac==1){ //if it is a building in faculty of arts
-        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR"+floor+".jpg\"></center>"
+    if (currentFac == 1) { //if it is a building in faculty of arts
+        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR" + floor + ".jpg\"></center>"
     }
-    
-    document.getElementById("theDrop2").innerText = "Floor "+floor;
-    if(floor==90){
+
+    document.getElementById("theDrop2").innerText = "Floor " + floor;
+    if (floor == 90) {
         document.getElementById("theDrop2").innerText = "Floor M";
     }
-    else if(floor==91){
+    else if (floor == 91) {
         document.getElementById("theDrop2").innerText = "Floor M1";
     }
-    else if(floor==92){
+    else if (floor == 92) {
         document.getElementById("theDrop2").innerText = "Floor M2";
     }
-    else if(floor==93){
+    else if (floor == 93) {
         document.getElementById("theDrop2").innerText = "Floor M3";
     }
-    
-    if((currentBuild==1&&currentFac==0)||(currentBuild==2&&currentFac==0)){//engineering building 1 and 2
-        for(i=4;i<13;i++){
-            document.getElementById("fl-"+i).classList.toggle("hide");
+
+    if ((currentBuild == 1 && currentFac == 0) || (currentBuild == 2 && currentFac == 0)) {//engineering building 1 and 2
+        for (i = 4; i < 13; i++) {
+            document.getElementById("fl-" + i).classList.toggle("hide");
         }
-        for(j=90;j<94;j++){
-            document.getElementById("fl-"+j).classList.toggle("hide");
-        }
-    }
-    else if(currentBuild==3&&currentFac==0){//engineering building 3
-        for(i=5;i<13;i++){
-            document.getElementById("fl-"+i).classList.toggle("hide");
-        }
-        for(j=90;j<94;j++){
-            document.getElementById("fl-"+j).classList.toggle("hide");
+        for (j = 90; j < 94; j++) {
+            document.getElementById("fl-" + j).classList.toggle("hide");
         }
     }
-    else if(currentBuild==100&&currentFac==0){//engineering building 100
-        for(j=91;j<94;j++){
-            document.getElementById("fl-"+j).classList.toggle("hide");
+    else if (currentBuild == 3 && currentFac == 0) {//engineering building 3
+        for (i = 5; i < 13; i++) {
+            document.getElementById("fl-" + i).classList.toggle("hide");
+        }
+        for (j = 90; j < 94; j++) {
+            document.getElementById("fl-" + j).classList.toggle("hide");
+        }
+    }
+    else if (currentBuild == 100 && currentFac == 0) {//engineering building 100
+        for (j = 91; j < 94; j++) {
+            document.getElementById("fl-" + j).classList.toggle("hide");
         }
         document.getElementById("fl-1").classList.toggle("hide");
         document.getElementById("fl-2").classList.toggle("hide");
         document.getElementById("fl-8").classList.toggle("hide");
         document.getElementById("fl-11").classList.toggle("hide");
     }
-    else if(currentBuild==1&&currentFac==1){//arts MCS
-        for(i=10;i<13;i++){
-            document.getElementById("fl-"+i).classList.toggle("hide");
+    else if (currentBuild == 1 && currentFac == 1) {//arts MCS
+        for (i = 10; i < 13; i++) {
+            document.getElementById("fl-" + i).classList.toggle("hide");
         }
         document.getElementById("fl-90").classList.toggle("hide");
         document.getElementById("fl-92").classList.toggle("hide");
@@ -418,7 +418,7 @@ function funcLib(boxx){
         //    {location: pyrmont, radius: 500, type: ['store']},
         //    function(results, status, pagination) {
         //      if (status !== 'OK') return;
-      
+
         //     createMarkers(results);
         //    });
 
@@ -495,4 +495,3 @@ function funcLib(boxx){
 
 
 
-   
