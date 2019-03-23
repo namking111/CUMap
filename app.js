@@ -18,11 +18,11 @@ app.use(bodyParser.json())
 //Set Public Folder (Store pic, etc.)
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function(req, res){
+app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/views/index.html'));
 })
 
 //Start Server
-app.listen(3000, function(){
+app.listen(3000, function () {
     console.log('Server started on port 3000..');
 })
