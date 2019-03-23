@@ -1,3 +1,5 @@
+<!--added from original-->
+
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
@@ -6,18 +8,180 @@
 
 <head>
     <title>CU Map</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-    <h1>Welcome to CU Map!!</h1>
-    <div id="map"></div>
+    <div class="home-header">
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="img/cumap_logo.png" class="col-6" width="50" height="50">
+            </div>
+            <div class="pull-right">
+                <form class="form-inline active-pink-4 col-6 text-lg-right">
+                    <input id="search-box" class="form-control form-control-sm mr-3 w-75" type="text"
+                        placeholder="Search" aria-label="Search">
+                    <button type="search-go-btn" onclick="seachPlace()" id="gobtn">GO</button>
+                    <!-- <i class="fa fa-search" aria-hidden="true" onclick="seachPlace()" id="gobtn"></i> -->
+                </form>
+            </div>
+        </div>
+
+        <!-- <div class="active-pink-4 mb-4">
+            <input id="search-box" class="form-control" type="text" placeholder="Search" aria-label="Search">
+            <button type="search-go-btn" onclick="seachPlace()" id="gobtn">GO</button>
+        </div> -->
+        <!-- <button class="btn1" onclick="openFloorPlan()" id="floorPlanbtn">FLOOR PLAN</button> -->
+
+    </div>
+
+    <div class="container">
+        <div class="tab">
+            <h3>SEARCH BY</h3>
+            <button class="btn btn-danger" onclick="searchType(1)" id="crs">Course ID</button>
+            <button class="btn btn-danger" onclick="searchType(2)" id="dest">Building Name</button>
+
+        </div>
+        <p>LANDMARK</p>
+        <form>
+            <input type="checkbox" id="atm" onclick="funClick()"> ATM 
+            <input type="checkbox" id="canteen" onclick="funClick()"> Canteen 
+            <input type="checkbox" id="museum" onclick="funClick()"> Museum 
+            <input type="checkbox" id="coffeeshop" onclick="funClick()"> Coffee Shop 
+            <input type="checkbox" id="copyprint" onclick="funClick()"> Copy&Print 
+            <input type="checkbox" id="vendm" onclick="funClick()"> Vending Machine 
+            <input type="checkbox" id="libr" onclick="funClick()"> Library 
+            <br>
+            <br>
+        </form>
+
+    </div>
+
+    <div id="map">
+    </div>
+    <div id="flPlan">
+        <center>
+            <p>FLOOR PLAN</p>
+        </center>
+        <div id="flMap">
+            <div class="buildDropdown">
+                <button onclick="selBuild()" class="dropbtn">Select
+                    Building&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspv</button>
+                <div id="myDropdown" class="buildDropdown-content">
+                    <a href="#b1">Engineering Building 1</a>
+                    <a href="#b2">Engineering Building 2</a>
+                    <a href="#b3">Engineering Building 3</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="IoT" style="background-color: rgb(238, 147, 200)">
+            <style type="text/css">
+                body { background-color: #ddd; }
+                #container { height: 100%; width: 100%; display: table; }
+                #inner { vertical-align: middle; display: table-cell; }
+               
+              </style>
+
+        <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/724962/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=pm2.5+%28ug%2Fm3%29&type=line"></iframe>
+        <body>
+                <div id="container">
+                  <div id="inner">
+                    <div id="gauge_div"></div>
+                  </div>
+                </div>
+              </body>
+    </div>
+     <div id="gauge_div" >
+         
+         <head>
+                <title>Google Gauge - ThingSpeak Example</title>
+              
+                <style type="text/css">
+                body { background-color: #ddd; }
+                #container { height: 100%; width: 100%; display: table; }
+                #inner { vertical-align: middle; display: table-cell; }
+                #gauge_div { width: 120px; margin: 0 auto; }
+              </style>
+              <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+              <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+              <script type='text/javascript'>
+                // set your channel id here
+                var channel_id = 724962;
+                // set your channel's read api key here if necessary
+                var api_key = 'LJ7HPUWR713W037K';
+                // maximum value for the gauge
+                var max_gauge_value = 70;
+                // name of the gauge
+                var gauge_name = 'PM2.5';
+                // global variables
+                var chart, charts, data;
+                // load the google gauge visualization
+                google.load('visualization', '1', {packages:['gauge']});
+                google.setOnLoadCallback(initChart);
+                // display the data
+                function displayData(point) {
+                  data.setValue(0, 0, gauge_name);
+                  data.setValue(0, 1, point);
+                  chart.draw(data, options);
+                }
+                // load the data
+                function loadData() {
+                  // variable for the data point
+                  var p;
+                  // get the data from thingspeak
+                  $.getJSON('https://api.thingspeak.com/channels/' + channel_id + '/feed/last.json?api_key=' + api_key, function(data) {
+                    // get the data point
+                    p = data.field1;
+                    // if there is a data point display it
+                    if (p) {
+                      // p = Math.round((p / max_gauge_value) * 100);
+                      displayData(p);
+                    }
+                  });
+                }
+                // initialize the chart
+                function initChart() {
+                  data = new google.visualization.DataTable();
+                  data.addColumn('string', 'Label');
+                  data.addColumn('number', 'Value');
+                  data.addRows(1);
+                  chart = new google.visualization.Gauge(document.getElementById('gauge_div'));
+                  options = {width: 120, height: 120, greenFrom: 10, greenTo: 29, redFrom: 41, redTo: 70, yellowFrom:30, yellowTo: 40, minorTicks: 5};
+                  loadData();
+                  // load new data every 15 seconds
+                  setInterval('loadData()', 1000);
+                }
+                
+                
+              </script>
+                </head>
+                <body>
+                  <div id="container">
+                    <div id="inner">
+                      <div id="gauge_div"></div>
+                    </div>
+                  </div>
+                </body>
+        
+     </div>
+
     <script>
-        initMap();
+        
+        //initMap();
+        //var input = new google.map.places.SearchBox(document.getElementById("search-box"));
     </script>
-    
+
+
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+<script type='text/javascript' src='https://www.google.com/jsapi'></script>
     <script src="/js/index.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&callback=initMap"
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initMap"
         async defer></script>
 </body>
 

@@ -1,4 +1,99 @@
 #map {
-    height: 600px;
+    height: 500px;
     width: 100%;
 }
+/* #search-box{
+    height: 15px;
+    width: 400px;
+    border-radius: 40px;
+    border: none;
+    margin-left: 10px;
+} */
+.tab{
+    overflow: hidden;
+}
+.tab button:hover {
+    background-color: rgb(212, 161, 212);
+  }
+  .tab p{
+      display: inline;
+  }
+  .search-area{
+      background-color: rgb(219, 218, 218);
+  }
+  #gobtn{
+      background-color: rgb(253, 214, 107);
+      border-radius: 40px;
+      border: none;
+  }
+  .home-header{
+      background-color:  rgb(238, 147, 200);
+      height: 100px;
+      
+  }
+  #flPlan{
+      display: none;
+      background-color: rgb(238, 147, 200); 
+  }
+  #flMap{
+    background-color: rgb(219, 218, 218);
+    height: 300px;
+  }
+  .btn1{
+    border: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+     background-color: rgb(182, 182, 182);
+    -webkit-text-fill-color: rgb(209, 37, 209);
+  }
+
+  .dropbtn {
+    background-color: white;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: rgb(182, 182, 182);
+  }
+  
+  .BuildDropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .buildDropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .buildDropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .buildDropdown a:hover {background-color: #ddd;}
+  
+  .show {display: block;}
+  #floorPlanbtn:hover {
+    background-color: white;
+  }
+
+
+  #gauge_div {
+    
+    width: 120px; margin: 0 auto;
+  
+  
+  }
