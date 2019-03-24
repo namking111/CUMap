@@ -1,4 +1,4 @@
-function initMap(librfeed, vendmfeed, copyfeed, coffeefeed, museumfeed, canteenfeed, atmfeed) {
+function initMap() {
     //Map options
     var options = {
         zoom: 17,
@@ -12,74 +12,9 @@ function initMap(librfeed, vendmfeed, copyfeed, coffeefeed, museumfeed, canteenf
     google.maps.event.addListener(map, 'click', function (event) {
     });
 
-    var markerDefault = new google.maps.Marker({
-        position:{lat: 13.7403, lng: 100.5309},
-        map: map,
-        draggable:true
-    });
+    
 
-    for(var i=0; i<librfeed.length; i++){
-        var marker = new google.maps.Marker({
-            position: librfeed[i].coords,
-            map: map,
-            icon: librfeed[i].iconImage,
-            //draggable:true
-        });
-    }
-
-    for(var i=0; i<vendmfeed.length; i++){
-        var marker = new google.maps.Marker({
-            position: vendmfeed[i].coords,
-            map: map,
-            icon: vendmfeed[i].iconImage,
-            //draggable:true
-        });
-    }
-
-    for(var i=0; i<copyfeed.length; i++){
-        var marker = new google.maps.Marker({
-            position: copyfeed[i].coords,
-            map: map,
-            icon: copyfeed[i].iconImage,
-            //draggable:true
-        });
-    }
-
-    for(var i=0; i<coffeefeed.length; i++){
-        var marker = new google.maps.Marker({
-            position: coffeefeed[i].coords,
-            map: map,
-            icon: coffeefeed[i].iconImage,
-            //draggable:true
-        });
-    }
-
-    for(var i=0; i<museumfeed.length; i++){
-        var marker = new google.maps.Marker({
-            position: museumfeed[i].coords,
-            map: map,
-            icon: museumfeed[i].iconImage,
-            //draggable:true
-        });
-    }
-    for(var i=0; i<canteenfeed.length; i++){
-        var marker = new google.maps.Marker({
-            position: canteenfeed[i].coords,
-            map: map,
-            icon: canteenfeed[i].iconImage,
-            //draggable:true
-        });
-    }
-    for(var i=0; i<atmfeed.length; i++){
-        var marker = new google.maps.Marker({
-            position: atmfeed[i].coords,
-            map: map,
-            icon: atmfeed[i].iconImage,
-            //draggable:true
-        });
-    }
-
-    //var markers = [];
+    var markers = [];
     /*
     // Array of markers
     var markers = [
@@ -104,6 +39,8 @@ function initMap(librfeed, vendmfeed, copyfeed, coffeefeed, museumfeed, canteenf
     map.addListener('bounds_changed', function () {
         searchBox.setBounds(map.getBounds());
     });
+    
+
 
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
@@ -119,6 +56,7 @@ function initMap(librfeed, vendmfeed, copyfeed, coffeefeed, museumfeed, canteenf
             marker.setMap(null);
         });
         markers = [];
+
 
         // For each place, get the icon, name and location.
         var bounds = new google.maps.LatLngBounds();
@@ -182,6 +120,10 @@ function initMap(librfeed, vendmfeed, copyfeed, coffeefeed, museumfeed, canteenf
             }
         });
         map.fitBounds(bounds);
+
+        
+
+
     });
 
 
@@ -238,6 +180,84 @@ function initMap(librfeed, vendmfeed, copyfeed, coffeefeed, museumfeed, canteenf
 
 }
 
+function initMap2(librfeed, vendmfeed, copyfeed, coffeefeed, museumfeed, canteenfeed, atmfeed) {
+    //Map options
+    var options = {
+        zoom: 17,
+        center: { lat: 13.7384, lng: 100.5321 }
+    }
+    //Create Map
+    var map = new google.maps.Map(document.getElementById('map'), options);
+    
+    if(librfeed != [] || vendmfeed != [] || copyfeed != [] || coffeefeed != [] ||  museumfeed != [] || canteenfeed != [] || atmfesed != []) {
+        var markerDefault = new google.maps.Marker({
+            position:{lat: 13.7403, lng: 100.5309},
+            map: map,
+            draggable:true
+        });
+
+        for(var i=0; i<librfeed.length; i++){
+            var marker = new google.maps.Marker({
+                position: librfeed[i].coords,
+                map: map,
+                icon: librfeed[i].iconImage,
+                //draggable:true
+            });
+        }
+
+        for(var i=0; i<vendmfeed.length; i++){
+            var marker = new google.maps.Marker({
+                position: vendmfeed[i].coords,
+                map: map,
+                icon: vendmfeed[i].iconImage,
+                //draggable:true
+            });
+        }
+
+        for(var i=0; i<copyfeed.length; i++){
+            var marker = new google.maps.Marker({
+                position: copyfeed[i].coords,
+                map: map,
+                icon: copyfeed[i].iconImage,
+                //draggable:true
+            });
+        }
+
+        for(var i=0; i<coffeefeed.length; i++){
+            var marker = new google.maps.Marker({
+                position: coffeefeed[i].coords,
+                map: map,
+                icon: coffeefeed[i].iconImage,
+                //draggable:true
+            });
+        }
+
+        for(var i=0; i<museumfeed.length; i++){
+            var marker = new google.maps.Marker({
+                position: museumfeed[i].coords,
+                map: map,
+                icon: museumfeed[i].iconImage,
+                //draggable:true
+            });
+        }
+        for(var i=0; i<canteenfeed.length; i++){
+            var marker = new google.maps.Marker({
+                position: canteenfeed[i].coords,
+                map: map,
+                icon: canteenfeed[i].iconImage,
+                //draggable:true
+            });
+        }
+        for(var i=0; i<atmfeed.length; i++){
+            var marker = new google.maps.Marker({
+                position: atmfeed[i].coords,
+                map: map,
+                icon: atmfeed[i].iconImage,
+                //draggable:true
+            });
+        }
+    }
+}
 
 var typeChosen;
 function searchPlace() {
@@ -560,8 +580,6 @@ function funcLib(boxx){
     }
    }*/
 
-
-
    var librMarkers=[];
    var vendmMarkers=[];
    var copyMarkers=[];
@@ -687,7 +705,10 @@ function funcLib(boxx){
                atmMarkers = [];
    
        }
-   
-       initMap(librMarkers, vendmMarkers, copyMarkers, coffeeMarkers, museumMarkers, canteenMarkers, atmMarkers);
-   
+       if(librTick.checked == false && vendmTick.checked == false && copyTick.checked == false && coffeeTick.checked == false && museumTick.checked == false && canteenTick.checked == false && atmTick.checked == false){
+            initMap();
+       } else {
+            initMap2(librMarkers, vendmMarkers, copyMarkers, coffeeMarkers, museumMarkers, canteenMarkers, atmMarkers);
+       }
    }
+
