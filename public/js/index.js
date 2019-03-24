@@ -78,7 +78,7 @@ function initMap(librfeed, vendmfeed, copyfeed, coffeefeed, museumfeed, canteenf
             //draggable:true
         });
     }
-    
+
     //var markers = [];
     /*
     // Array of markers
@@ -94,8 +94,13 @@ function initMap(librfeed, vendmfeed, copyfeed, coffeefeed, museumfeed, canteenf
         }
     ];*/
 
+    //tick box ja
+
+    //var librTick = document.getElementById("libr")
+
+
     //search box ja
-    var searchBox = new google.maps.places.SearchBox(document.getElementById("search-box"));
+    var searchBox = new google.maps.places.SearchBox(document.getElementById("building-search-box"));
     map.addListener('bounds_changed', function () {
         searchBox.setBounds(map.getBounds());
     });
@@ -110,10 +115,10 @@ function initMap(librfeed, vendmfeed, copyfeed, coffeefeed, museumfeed, canteenf
         }
 
         // Clear out the old markers.
-        /*markers.forEach(function (marker) {
+        markers.forEach(function (marker) {
             marker.setMap(null);
         });
-        markers = [];*/
+        markers = [];
 
         // For each place, get the icon, name and location.
         var bounds = new google.maps.LatLngBounds();
@@ -131,12 +136,12 @@ function initMap(librfeed, vendmfeed, copyfeed, coffeefeed, museumfeed, canteenf
             };
 
             // Create a marker for each place.
-           /* markers.push(new google.maps.Marker({
+            markers.push(new google.maps.Marker({
                 map: map,
                 iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
                 title: place.name,
                 position: place.geometry.location,
-            })); */
+            }));
 
             //engineering building 1
             if (place.geometry.location == "(13.7365812, 100.53260790000002)" || place.geometry.location == "(13.7365812, 100.53257869999993)") {
@@ -209,7 +214,11 @@ function initMap(librfeed, vendmfeed, copyfeed, coffeefeed, museumfeed, canteenf
             //query place
             
             var tempPlace
-            service = new google.maps.places.PlacesService(map);   
+            service = new google.maps.places.PlacesService(map);
+            
+           
+            
+          
     
             // Check for content
             if (props.content) {
@@ -225,140 +234,13 @@ function initMap(librfeed, vendmfeed, copyfeed, coffeefeed, museumfeed, canteenf
             }
         }
         */
-}
 
-var librMarkers=[];
-var vendmMarkers=[];
-var copyMarkers=[];
-var coffeeMarkers=[];
-var museumMarkers=[];
-var canteenMarkers=[];
-var atmMarkers=[]
-
-var atmTick = document.querySelector('#atm')
-var canteenTick = document.querySelector('#canteen')
-var museumTick = document.querySelector('#museum')
-var coffeeTick = document.querySelector('#coffeeshop')
-var copyTick = document.querySelector('#copyprint')
-var vendmTick = document.querySelector('#vendm')
-var librTick = document.querySelector('#libr')
-
-function funClick(){
-    switch(librTick != null){
-        case librTick.checked:
-            //alert ("The libr check box is checked.");
-            librMarkers=[
-            {
-                coords: {lat: 13.7367, lng: 100.5331},
-                iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-                content: '<h1>Faculty of Engineering</h1>'
-            },
-            {
-                coords: {lat: 13.7386, lng: 100.5352},
-                iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-                content: '<h1>fuck off</h1>'
-            }
-         ];
-         break;
-        case librTick.checked == false:
-            //alert ("The libr check box is not checked.");
-            librMarkers = [];
-    }
-    switch(vendmTick != null){
-        case vendmTick.checked:
-            //alert ("The vendm check box is checked.");
-            vendmMarkers=[
-                {
-                    coords:{lat: 13.7393, lng: 100.5341}
-                },
-                {
-                    coords:{lat: 13.7403, lng: 100.5351}
-                }
-            ];
-            break;
-        case vendmTick.checked == false:
-            //alert ("The vendm check box is not checked.");
-            vendmMarkers = [];
-
-    }
-    switch(copyTick != null){
-        case copyTick.checked:
-            //alert ("The copy check box is checked.");
-            copyMarkers=[
-                {
-                    coords:{lat: 13.7383, lng: 100.5328}
-                }                
-            ];
-            break;
-        case copyTick.checked == false:
-            //alert ("The copy check box is not checked.");
-            copyMarkers = [];
-
-    }
-    switch(coffeeTick != null){
-        case coffeeTick.checked:
-            //alert ("The coffee check box is checked.");
-            coffeeMarkers=[
-                {
-                    coords:{lat: 13.7393, lng: 100.5330}
-                }                
-            ];
-            break;
-        case coffeeTick.checked == false:
-            //alert ("The coffee check box is not checked.");
-            coffeeMarkers = [];
-
-    }
-    switch(museumTick != null){
-        case museumTick.checked:
-            //alert ("The museum check box is checked.");
-            museumMarkers=[
-                {
-                    coords:{lat: 13.7373, lng: 100.5308}
-                }                
-            ];
-            break;
-        case museumTick.checked == false:
-            //alert ("The museum check box is not checked.");
-            museumMarkers = [];
-
-    }
-    switch(canteenTick != null){
-        case canteenTick.checked:
-            //alert ("The canteen check box is checked.");
-            canteenMarkers=[
-                {
-                    coords:{lat: 13.7386, lng: 100.5298}
-                }                
-            ];
-            break;
-        case canteenTick.checked == false:
-            //alert ("The canteen check box is not checked.");
-            canteenMarkers = [];
-
-    }
-    switch(atmTick != null){
-        case atmTick.checked:
-            //alert ("The atm check box is checked.");
-            atmMarkers=[
-                {
-                    coords:{lat: 13.7370, lng: 100.5308},
-                    //iconImage: 'https://i.imgur.com/pIfdoIW.gif'
-                }                
-            ];
-            break;
-        case atmTick.checked == false:
-            //alert ("The copy check box is not checked.");
-            atmMarkers = [];
-
-    }
-
-    initMap(librMarkers, vendmMarkers, copyMarkers, coffeeMarkers, museumMarkers, canteenMarkers, atmMarkers);
 
 }
+
 
 var typeChosen;
-function seachPlace() {
+function searchPlace() {
     if (typeChosen != true) {
         alert("Please select type of search.");
     }
@@ -483,7 +365,7 @@ function selFloor() {
 // Close the dropdown if the user clicks outside of it
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("buildDropdown-content");
+        var dropdowns = document.getElementsByClassName("mapDropdown-content");
         var i;
         for (i = 0; i < dropdowns.length; i++) {
             var openDropdown = dropdowns[i];
@@ -680,3 +562,132 @@ function funcLib(boxx){
 
 
 
+   var librMarkers=[];
+   var vendmMarkers=[];
+   var copyMarkers=[];
+   var coffeeMarkers=[];
+   var museumMarkers=[];
+   var canteenMarkers=[];
+   var atmMarkers=[]
+   
+   var atmTick = document.querySelector('#atm')
+   var canteenTick = document.querySelector('#canteen')
+   var museumTick = document.querySelector('#museum')
+   var coffeeTick = document.querySelector('#coffeeshop')
+   var copyTick = document.querySelector('#copyprint')
+   var vendmTick = document.querySelector('#vendm')
+   var librTick = document.querySelector('#libr')
+   
+   function funClick(){
+       switch(librTick != null){
+           case librTick.checked:
+               //alert ("The libr check box is checked.");
+               librMarkers=[
+               {
+                   coords: {lat: 13.7367, lng: 100.5331},
+                   iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+                   content: '<h1>Faculty of Engineering</h1>'
+               },
+               {
+                   coords: {lat: 13.7386, lng: 100.5352},
+                   iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+                   content: '<h1>fuck off</h1>'
+               }
+            ];
+            break;
+           case librTick.checked == false:
+               //alert ("The libr check box is not checked.");
+               librMarkers = [];
+       }
+       switch(vendmTick != null){
+           case vendmTick.checked:
+               //alert ("The vendm check box is checked.");
+               vendmMarkers=[
+                   {
+                       coords:{lat: 13.7393, lng: 100.5341}
+                   },
+                   {
+                       coords:{lat: 13.7403, lng: 100.5351}
+                   }
+               ];
+               break;
+           case vendmTick.checked == false:
+               //alert ("The vendm check box is not checked.");
+               vendmMarkers = [];
+   
+       }
+       switch(copyTick != null){
+           case copyTick.checked:
+               //alert ("The copy check box is checked.");
+               copyMarkers=[
+                   {
+                       coords:{lat: 13.7383, lng: 100.5328}
+                   }                
+               ];
+               break;
+           case copyTick.checked == false:
+               //alert ("The copy check box is not checked.");
+               copyMarkers = [];
+   
+       }
+       switch(coffeeTick != null){
+           case coffeeTick.checked:
+               //alert ("The coffee check box is checked.");
+               coffeeMarkers=[
+                   {
+                       coords:{lat: 13.7393, lng: 100.5330}
+                   }                
+               ];
+               break;
+           case coffeeTick.checked == false:
+               //alert ("The coffee check box is not checked.");
+               coffeeMarkers = [];
+   
+       }
+       switch(museumTick != null){
+           case museumTick.checked:
+               //alert ("The museum check box is checked.");
+               museumMarkers=[
+                   {
+                       coords:{lat: 13.7373, lng: 100.5308}
+                   }                
+               ];
+               break;
+           case museumTick.checked == false:
+               //alert ("The museum check box is not checked.");
+               museumMarkers = [];
+   
+       }
+       switch(canteenTick != null){
+           case canteenTick.checked:
+               //alert ("The canteen check box is checked.");
+               canteenMarkers=[
+                   {
+                       coords:{lat: 13.7386, lng: 100.5298}
+                   }                
+               ];
+               break;
+           case canteenTick.checked == false:
+               //alert ("The canteen check box is not checked.");
+               canteenMarkers = [];
+   
+       }
+       switch(atmTick != null){
+           case atmTick.checked:
+               //alert ("The atm check box is checked.");
+               atmMarkers=[
+                   {
+                       coords:{lat: 13.7370, lng: 100.5308},
+                       //iconImage: 'https://i.imgur.com/pIfdoIW.gif'
+                   }                
+               ];
+               break;
+           case atmTick.checked == false:
+               //alert ("The copy check box is not checked.");
+               atmMarkers = [];
+   
+       }
+   
+       initMap(librMarkers, vendmMarkers, copyMarkers, coffeeMarkers, museumMarkers, canteenMarkers, atmMarkers);
+   
+   }
