@@ -27,10 +27,6 @@ function initMap() {
         }
     ];*/
 
-    //tick box ja
-
-    //var librTick = document.getElementById("libr")
-
 
     //search box ja
     var searchBox = new google.maps.places.SearchBox(document.getElementById("building-search-box"));
@@ -181,9 +177,30 @@ function searchPlace() {
         alert("<show search result jaa>");
     }
 }
+var listCourse = ["2190101 Computer Programming", "2183101 Engineering Graphics"];
+var theCourse = ""
 function searchCourse() {
-    alert("pressed search course go button");
+    
+    for(i=0;i<listCourse.length;i++){
+        if(document.getElementById("course-search").value==(listCourse[i])){
+            theCourse = listCourse[i];
+            break;
+        }
+    }
+    if(theCourse!=""){
+        showCourse();
+    }else{
+        alert("Course Not Found");
+        document.getElementById("course-info").style.display = "none";
+    }
+}
 
+function showCourse(){
+    var courseDiv = document.getElementById("course-info");
+    courseDiv.style.display = "block";
+    courseDiv.scrollIntoView({ behavior: "smooth" });
+    courseDiv.innerHTML = "<h2>Course Information</h2> <br> <p>Course : "+theCourse+"<p>";
+    theCourse = ""; //prepare to use for next course search
 }
 
 function searchType(type) {
@@ -200,6 +217,8 @@ function searchType(type) {
 
 var currentBuild = 99;
 var currentFac = 99;
+
+
 
 function openFloorPlan() {
     document.getElementById("flPlan").style.display = "block";
