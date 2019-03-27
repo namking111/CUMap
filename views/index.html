@@ -14,13 +14,13 @@
     <link rel="stylesheet" href="/css/styles.css">
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 </head>
 
 <body>
- 
-       
+
+
     <div class="home-header">
         <img src="img/CUMaplogo.png" width="100px" height="100px">
         <center>
@@ -30,11 +30,11 @@
             <input class="search-box" id="course-search" type="text" placeholder=" SEARCH COURSE">
             <script>
                 var listCourse = ["2190101 Computer Programming", "2183101 Engineering Graphics"];
-                $( "#course-search" ).autocomplete({
+                $("#course-search").autocomplete({
                     source: listCourse
-                    });
-                    
-                    </script>
+                });
+
+            </script>
             <button class="btn-go" onclick="searchCourse()" id="gocourse">GO</button>
             <br>
             <button class="btn1" onclick="openFloorPlan()" id="floorPlanbtn">FLOOR PLAN</button>
@@ -93,10 +93,10 @@
             <div class="mapDropdown">
                 <button onclick="selFloor()" class="dropbtn" id="theDrop2">Select Floor&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspv</button>
                 <div id="myDropdown2" class="mapDropdown-content">
-                        <a href="#fM" onclick="mapFunc2(90)" id="fl-90">Floor M</a>
-                        <a href="#fM1" onclick="mapFunc2(91)" id="fl-91">Floor M1</a>
-                        <a href="#fM" onclick="mapFunc2(92)" id="fl-92">Floor M2</a>
-                        <a href="#fM3" onclick="mapFunc2(93)" id="fl-93">Floor M3</a>
+                    <a href="#fM" onclick="mapFunc2(90)" id="fl-90">Floor M</a>
+                    <a href="#fM1" onclick="mapFunc2(91)" id="fl-91">Floor M1</a>
+                    <a href="#fM" onclick="mapFunc2(92)" id="fl-92">Floor M2</a>
+                    <a href="#fM3" onclick="mapFunc2(93)" id="fl-93">Floor M3</a>
                     <a href="#f1" onclick="mapFunc2(1)" id="fl-1">Floor 1</a>
                     <a href="#f2" onclick="mapFunc2(2)" id="fl-2">Floor 2</a>
                     <a href="#f3" onclick="mapFunc2(3)" id="fl-3">Floor 3</a>
@@ -115,7 +115,7 @@
             <br>
             <br>
             <div id="show-map"></div>
-            
+
         </div>
     </div>
     <div id="IoT" style="background-color: rgb(238, 147, 200)">

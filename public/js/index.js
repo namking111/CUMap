@@ -180,26 +180,26 @@ function searchPlace() {
 var listCourse = ["2190101 Computer Programming", "2183101 Engineering Graphics"];
 var theCourse = ""
 function searchCourse() {
-    
-    for(i=0;i<listCourse.length;i++){
-        if(document.getElementById("course-search").value==(listCourse[i])){
+
+    for (i = 0; i < listCourse.length; i++) {
+        if (document.getElementById("course-search").value == (listCourse[i])) {
             theCourse = listCourse[i];
             break;
         }
     }
-    if(theCourse!=""){
+    if (theCourse != "") {
         showCourse();
-    }else{
+    } else {
         alert("Course Not Found");
         document.getElementById("course-info").style.display = "none";
     }
 }
 
-function showCourse(){
+function showCourse() {
     var courseDiv = document.getElementById("course-info");
     courseDiv.style.display = "block";
     courseDiv.scrollIntoView({ behavior: "smooth" });
-    courseDiv.innerHTML = "<h2>Course Information</h2> <br> <p>Course : "+theCourse+"<p>";
+    courseDiv.innerHTML = "<h2>Course Information</h2> <br> <p>Course : " + theCourse + "<p>";
     theCourse = ""; //prepare to use for next course search
 }
 
