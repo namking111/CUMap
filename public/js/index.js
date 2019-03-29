@@ -645,7 +645,7 @@ function funClick() {
         initMap2(librMarkers, vendmMarkers, copyMarkers, coffeeMarkers, museumMarkers, canteenMarkers, atmMarkers);
     }
 }
-
+//draw filter markers
 function initMap2(librfeed, vendmfeed, copyfeed, coffeefeed, museumfeed, canteenfeed, atmfeed) {
     //Map options
     var options = {
@@ -722,5 +722,39 @@ function initMap2(librfeed, vendmfeed, copyfeed, coffeefeed, museumfeed, canteen
                 //draggable:true
             });
         }
+    }
+}
+
+//geolocation
+function gpsHere() {
+
+    function onRecievePosition(currentPosition){
+        console.log(currentPosition);
+        //mark current location
+        var options = {
+            zoom: 17,
+            center: {lat: currentPosition.coords.latitude, lng: currentPosition.coords.longitude}
+        }
+        var map = new google.maps.Map(document.getElementById('map'), options);
+        var marker = new google.maps.Marker({
+            position: {lat: currentPosition.coords.latitude, lng: currentPosition.coords.longitude},
+            map: map,
+            //icon: ,
+            //draggable:trues
+        });
+
+    }
+
+    function positionNotRecieved(positionError){
+        console.log(positionError);
+    }
+
+    if (navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(onRecievePosition, positionNotRecieved);
+        //update current location (not tested yet)
+        var overwatch = navigator.geolocation.watchPosition(onRecievePosition, positionNotRecieved);
+        console.log(overwatch);
+        navigator.geolocation.clearWatch(overwatch);
+
     }
 }
