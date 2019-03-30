@@ -758,3 +758,36 @@ function gpsHere() {
 
     }
 }
+/*
+//routing
+function routeTo(){
+    var directionDisplay = new google.maps.DirectionsRenderer();
+    var directionService = new google.maps.DirectionsService();
+    var map;
+    var sauce = new google.maps.LatLng(13.7403, 100.5309);
+    var desty = new google.maps.LatLng(13.7384,100.5298);
+    var options = {
+        zoom: 17,
+        center: { lat: 13.7384, lng: 100.5321 }
+    }
+    map = new google.maps.Map(document.getElementById('map'), options);
+    directionDisplay.setMap(map);
+
+    function calculateRoute(){
+        var request = {
+            origin: sauce,
+            destination: desty,
+            travelMode: 'DRIVING'
+        };
+
+        directionService.route(request, function(result, status){
+            console.log(result, status);
+
+        });
+
+    }
+
+    document.getElementById('getRoute').onclick=function(){
+        calculateRoute();
+    };
+}*/
