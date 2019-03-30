@@ -25,8 +25,7 @@
         <img src="img/CUMaplogo.png" width="100px" height="100px">
         <center>
             <input class="search-box" id="building-search-box" type="text" placeholder=" SEARCH BUILDING">
-            <button class="btn-go" onclick="searchPlace()" id="gobuilding">GO</button>
-            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <button class="btn-go" onclick="searchPlace()" id="gobuilding">GO</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input class="search-box" id="course-search" type="text" placeholder=" SEARCH COURSE">
             <script>
                 var listCourse = ["2190101 Computer Programming", "2183101 Engineering Graphics"];
@@ -35,7 +34,10 @@
                 });
 
             </script>
-            <button class="btn-go" onclick="searchCourse()" id="gocourse">GO</button>
+            <button class="btn-go" onclick="searchCourse()" id="gocourse">GO</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn-go" id="gps" onclick="gpsHere()">&nbsp;Mark Your Current Location</button>
+            <button class="btn-go" id="cleargps" onclick="initMap()">&nbsp;Clear Current Location</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn-go" id="getRoute" onclick="routeTo()">&nbsp;Get Route</button>
             <br>
             <button class="btn1" onclick="openFloorPlan()" id="floorPlanbtn">FLOOR PLAN</button>
         </center>
@@ -52,13 +54,13 @@
         </div>
         <p>LANDMARK</p>
         <form>
-            <input type="checkbox">&nbsp;ATM</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox">&nbsp;Canteen</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox">&nbsp;Museum</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox">&nbsp;Coffee Shop</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox">&nbsp;Copy&Print</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox">&nbsp;Vending Machine</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" id="libr" onclick="funcLib(this)">&nbsp;Library</input>
+            <input type="checkbox" id="atm" onclick="funClick()">&nbsp;ATM</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="canteen" onclick="funClick()">&nbsp;Canteen</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="museum" onclick="funClick()">&nbsp;Museum</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="coffeeshop" onclick="funClick()">&nbsp;Coffee Shop</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="copyprint" onclick="funClick()">&nbsp;Copy&Print</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="vendm" onclick="funClick()">&nbsp;Vending Machine</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="libr" onclick="funClick()">&nbsp;Library</input>
             <br>
             <br>
         </form>
@@ -79,7 +81,7 @@
         <div id="flMap">
 
             <div class="mapDropdown">
-                <button onclick="selBuild()" class="dropbtn" id="theDrop">Select Building&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspv</button>
+                <button onclick="selBuild()" class="dropbtn" id="theDrop">Select Building</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div id="myDropdown" class="mapDropdown-content">
                     <a onclick="mapFunc(0,1)">Engineering Building 1</a>
                     <a onclick="mapFunc(0,2)">Engineering Building 2</a>
@@ -91,7 +93,7 @@
 
 
             <div class="mapDropdown">
-                <button onclick="selFloor()" class="dropbtn" id="theDrop2">Select Floor&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspv</button>
+                <button onclick="selFloor()" class="dropbtn" id="theDrop2">Select Floor</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div id="myDropdown2" class="mapDropdown-content">
                     <a href="#fM" onclick="mapFunc2(90)" id="fl-90">Floor M</a>
                     <a href="#fM1" onclick="mapFunc2(91)" id="fl-91">Floor M1</a>
