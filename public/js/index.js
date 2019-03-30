@@ -722,8 +722,10 @@ function initMap2(librfeed, vendmfeed, copyfeed, coffeefeed, museumfeed, canteen
                 //draggable:true
             });
         }
-    }
+    }    
 }
+
+
 
 //geolocation
 function gpsHere() {
