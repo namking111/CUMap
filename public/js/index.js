@@ -6,8 +6,14 @@ function initMap() {
     }
     //Create Map
     var map = new google.maps.Map(document.getElementById('map'), options);
+    var directionsService = new google.maps.DirectionsService;
+    var directionsDisplay = new google.maps.DirectionsRenderer;
+    directionsDisplay.setMap(map);
 
-
+    document.getElementById('getRoute').onclick = function () {
+        getCurrentLocation();
+        setTimeout(() => calculateAndDisplayRoute(directionsService, directionsDisplay, searchBox), 1000);
+    };
     // Listen for click on map
     google.maps.event.addListener(map, 'click', function (event) {
     });
@@ -26,7 +32,6 @@ function initMap() {
             content: '<h1>Faculty of Art</h1>'
         }
     ];*/
-
 
     //search box ja
     var searchBox = new google.maps.places.SearchBox(document.getElementById("building-search-box"));
@@ -101,8 +106,6 @@ function initMap() {
                 mapFunc(1, 1)
             }
 
-
-
             if (place.geometry.viewport) {
                 // Only geocodes have viewport.
                 bounds.union(place.geometry.viewport);
@@ -112,12 +115,6 @@ function initMap() {
         });
         map.fitBounds(bounds);
     });
-
-
-
-
-
-
 
     /*
         // Loop through markers
@@ -144,11 +141,7 @@ function initMap() {
             
             var tempPlace
             service = new google.maps.places.PlacesService(map);
-            
-           
-            
-          
-    
+
             // Check for content
             if (props.content) {
                 var infoWindow = new google.maps.InfoWindow({
@@ -163,10 +156,7 @@ function initMap() {
             }
         }
         */
-
-
 }
-
 
 var typeChosen;
 function searchPlace() {
@@ -217,8 +207,6 @@ function searchType(type) {
 
 var currentBuild = 99;
 var currentFac = 99;
-
-
 
 function openFloorPlan() {
     document.getElementById("flPlan").style.display = "block";
@@ -313,7 +301,6 @@ function selFloor() {
     //document.getElementById("fl-4").classList.toggle("hide");
 }
 
-
 // Close the dropdown if the user clicks outside of it
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
@@ -327,7 +314,6 @@ window.onclick = function (event) {
         }
     }
 }
-
 
 function mapFunc(fac, building) {
     currentBuild = building;
@@ -416,12 +402,6 @@ function funcLib(boxx){
         }
         var map = new google.maps.Map(document.getElementById('map'), options);
 
-
-
-
-
-
-
         var request = {
             query: 'Museum of Contemporary Art Australia',
             //keyword: 'Museum',
@@ -431,8 +411,6 @@ function funcLib(boxx){
           var service = new google.maps.places.PlacesService(map);
 */
 
-
-
 //  service.nearbySearch(
 //    {location: pyrmont, radius: 500, type: ['store']},
 //    function(results, status, pagination) {
@@ -440,10 +418,6 @@ function funcLib(boxx){
 
 //     createMarkers(results);
 //    });
-
-
-
-
 
 //func use : 'use'
 /*
@@ -466,28 +440,13 @@ function funcLib(boxx){
       });
       alert("donee")
     }*/
-
-
-
-
-
-
-
-
-
 /*
-        
         //alert ("The check box is checked.");
         var requestlib = {
             location: map.center,
             keyword: 'library'
         };
-       
         service = new google.maps.places.PlacesService(map);
-      
-       
-
-
         alert("done")
           service.nearbySearch(requestlib, function(results, status) {
             
@@ -501,7 +460,6 @@ function funcLib(boxx){
               //map.setCenter(results[0].geometry.location);
             }
           });
-
 */
 
 //func use : 'use'
@@ -722,46 +680,44 @@ function initMap2(librfeed, vendmfeed, copyfeed, coffeefeed, museumfeed, canteen
                 //draggable:true
             });
         }
-    }    
+    }
 }
-
-
 
 //geolocation
 function gpsHere() {
-
-    function onRecievePosition(currentPosition){
-        console.log(currentPosition);
-        //mark current location
-        var options = {
-            zoom: 17,
-            center: {lat: currentPosition.coords.latitude, lng: currentPosition.coords.longitude}
-        }
-        var map = new google.maps.Map(document.getElementById('map'), options);
-        var marker = new google.maps.Marker({
-            position: {lat: currentPosition.coords.latitude, lng: currentPosition.coords.longitude},
-            map: map,
-            //icon: ,
-            //draggable:trues
-        });
-
-    }
-
-    function positionNotRecieved(positionError){
-        console.log(positionError);
-    }
-
-    if (navigator.geolocation){
+    if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(onRecievePosition, positionNotRecieved);
         //update current location (not tested yet)
         var overwatch = navigator.geolocation.watchPosition(onRecievePosition, positionNotRecieved);
         console.log(overwatch);
         navigator.geolocation.clearWatch(overwatch);
+    }
 
+    function onRecievePosition(currentPosition) {
+        console.log(currentPosition);
+        currentLat = currentPosition.coords.latitude;
+        currentLng = currentPosition.coords.longitude;
+        //mark current location
+        var options = {
+            zoom: 17,
+            center: { lat: currentLat, lng: currentLng }
+        }
+        var map = new google.maps.Map(document.getElementById('map'), options);
+        var marker = new google.maps.Marker({
+            position: { lat: currentLat, lng: currentLng },
+            map: map,
+            //icon: ,
+            //draggable:trues
+        });
+    }
+
+    function positionNotRecieved(positionError) {
+        console.log(positionError);
     }
 }
-/*
+
 //routing
+/*
 function routeTo(){
     var directionDisplay = new google.maps.DirectionsRenderer();
     var directionService = new google.maps.DirectionsService();
@@ -793,3 +749,44 @@ function routeTo(){
         calculateRoute();
     };
 }*/
+
+//variable to store current location
+var currentLat;
+var currentLng;
+
+//get the current location and update variable "currentLat" and "currentLng"
+function getCurrentLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            currentLat = position.coords.latitude;
+            currentLng = position.coords.longitude;
+        });
+    }
+}
+
+//Draw route from current location to destination
+function calculateAndDisplayRoute(directionsService, directionsDisplay, searchBox) {
+    var places = searchBox.getPlaces();
+
+    if (!places) {
+        alert("Please input the destination location");
+        return;
+    }
+
+    var destinationLat = places[0].geometry.location.lat();
+    var destinationLng = places[0].geometry.location.lng();
+    var start = new google.maps.LatLng(currentLat, currentLng);
+    var end = new google.maps.LatLng(destinationLat, destinationLng);
+
+    directionsService.route({
+        origin: start,
+        destination: end,
+        travelMode: 'DRIVING'
+    }, function (response, status) {
+        if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    });
+}
