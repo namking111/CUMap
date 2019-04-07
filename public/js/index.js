@@ -77,35 +77,38 @@ function initMap() {
                 position: place.geometry.location,
             }));
 
-            openFloorPlan()
-            closeCourseInfo()
+            
+            closeCourseInfo();
             //engineering building 1
             if (place.geometry.location == "(13.7365812, 100.53260790000002)" || place.geometry.location == "(13.7365812, 100.53257869999993)") {
-                
-                mapFunc(0, 1)
+                openFloorPlan();
+                mapFunc(0, 1);
             }
 
             //engineering building 2
-            if (place.geometry.location == "(13.7364773, 100.53339249999999)") {
-               
-                mapFunc(0, 2)
+            else if (place.geometry.location == "(13.7364773, 100.53339249999999)") {
+                openFloorPlan();
+                mapFunc(0, 2);
             }
             //engineering building 3
-            if (place.geometry.location == "(13.7368903, 100.53315620000001)") {
-               
-                mapFunc(0, 3)
+            else if (place.geometry.location == "(13.7368903, 100.53315620000001)") {
+                openFloorPlan();
+                mapFunc(0, 3);
             }
 
             //engineering building 100
-            if (place.geometry.location == "(13.736365, 100.53394780000008)") {
-                
-                mapFunc(0, 100)
+            else if (place.geometry.location == "(13.736365, 100.53394780000008)") {
+                openFloorPlan();
+                mapFunc(0, 100);
             }
 
             //Maha Chakri Sirindhorn Building
-            if (place.geometry.location == "(13.7392952, 100.5340708)" || place.geometry.location == "(13.7392241, 100.53434160000006)") {
-              
-                mapFunc(1, 1)
+            else if (place.geometry.location == "(13.7392952, 100.5340708)" || place.geometry.location == "(13.7392241, 100.53434160000006)") {
+                openFloorPlan();
+                mapFunc(1, 1);
+            }
+            else{
+                closeFloorPlan();
             }
 
             if (place.geometry.viewport) {
@@ -229,6 +232,10 @@ function openFloorPlan() {
 function closeCourseInfo(){
     document.getElementById("course-info").style.display = "none";
     document.getElementById("course-info-head").style.display = "none";
+}
+
+function closeFloorPlan(){
+    document.getElementById("flPlan").style.display = "none";
 }
 
 function selBuild() {
