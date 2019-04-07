@@ -25,8 +25,8 @@
     <div class="home-header">
         <img src="img/CUMaplogo.png" width="100px" height="100px">
         <center>
-            <input class="search-box" id="building-search-box" type="text" placeholder=" SEARCH BUILDING" onkeydown="placeOnEnter(this)">
-            <button class="btn-go" onclick="searchPlace2()" id="gobuilding">GO</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input class="search-box" id="building-search-box" type="text" placeholder=" SEARCH BUILDING">
+            <button class="btn-go" id="gobuilding">GO</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input class="search-box" id="course-search" type="text" placeholder=" SEARCH COURSE" onkeydown="courseOnEnter(this)">
             <script>
                 var listCourse = ["2190101 Computer Programming", "2183101 Engineering Graphics"];
@@ -51,9 +51,6 @@
 
     <div class="container">
         <div class="tab">
-            <!--<h3>SEARCH BY</h3>
-            <button class="btn btn-danger" onclick="searchType(1)" id="crs">Course ID</button>
-            <button class="btn btn-danger" onclick="searchType(2)" id="dest">Building Name</button>-->
 
         </div>
 
@@ -100,9 +97,12 @@
         <div id="flMap">
 
             <br>
+            <h4 id="building-num">Building</h4>
             <div class="mapDropdown">
+                <!--
                 <button onclick="selBuild()" class="dropbtn" id="theDrop">Select
                     Building</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                -->
                 <div id="myDropdown" class="mapDropdown-content">
                     <a onclick="mapFunc(0,1)">Engineering Building 1</a>
                     <a onclick="mapFunc(0,2)">Engineering Building 2</a>

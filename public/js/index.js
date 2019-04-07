@@ -42,14 +42,12 @@ function initMap() {
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
     searchBox.addListener('places_changed', searchPlace);
-
     function searchPlace () {
         var places = searchBox.getPlaces();
-
         if (places.length == 0) {
             return;
         }
-
+        
         // Clear out the old markers.
         markers.forEach(function (marker) {
             marker.setMap(null);
@@ -105,7 +103,7 @@ function initMap() {
             }
 
             //Maha Chakri Sirindhorn Building
-            if (place.geometry.location == "(13.7392952, 100.5340708)") {
+            if (place.geometry.location == "(13.7392952, 100.5340708)" || place.geometry.location == "(13.7392241, 100.53434160000006)") {
               
                 mapFunc(1, 1)
             }
@@ -119,6 +117,7 @@ function initMap() {
         });
         map.fitBounds(bounds);
     };
+
 
     /*
         // Loop through markers
@@ -160,31 +159,34 @@ function initMap() {
             }
         }
         */
+
+       document.getElementById("gobuilding").addEventListener("click", function(){
+        if(document.getElementById("building-search-box").value.length==0){
+            alert("Please enter destination.");
+        }else{
+            searchPlace();
+        }
+       });
+       document.getElementById("building-search-box").onkeydown = function(){
+            if(event.key === 'Enter') {
+                if(document.getElementById("building-search-box").value.length==0){
+                    alert("Please enter destination.");
+                }else{
+                    searchPlace();
+                }
+            }
+        
+       }
+
 }
 
 
-var typeChosen;/*
-function searchPlace() {
-    
-        alert("<show search result jaa>");
-    
-}*/
 var listCourse = ["2190101 Computer Programming", "2183101 Engineering Graphics"];
 var theCourse = ""
 
-function placeOnEnter(ele) {
-    if(event.key === 'Enter') {
-       searchPlace2()       
-    }
-}
 function courseOnEnter(ele) {
     if(event.key === 'Enter') {
        searchCourse()       
-    }
-}
-function searchPlace2(){
-    if(document.getElementById("building-search-box").value.length==0){
-        alert("Please enter destination.")
     }
 }
 
@@ -215,17 +217,6 @@ function showCourse() {
     theCourse = ""; //prepare to use for next course search
 }
 
-function searchType(type) {
-    if (type == 1) {
-        document.getElementById("crs").style.background = "rgb(212, 161, 212)";
-        document.getElementById("dest").style.background = "";
-    }
-    else if (type == 2) {
-        document.getElementById("dest").style.background = "rgb(212, 161, 212)";
-        document.getElementById("crs").style.background = "";
-    }
-    typeChosen = true;
-}
 
 var currentBuild = 99;
 var currentFac = 99;
@@ -349,7 +340,8 @@ function mapFunc(fac, building) {
     if (fac == 0) { //if it is a building in faculty of engineering
         //if change building, default floor is 1 or M
         document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + building + "-FR1.jpg\"></center>"
-        document.getElementById("theDrop").innerText = "Engineering Building " + building;
+        //document.getElementById("theDrop").innerText = "Engineering Building " + building;
+        document.getElementById("building-num").innerText = "Engineering Building " + building;
         if (building == 100) {
             document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0100-FR90.jpg\"></center>"
             document.getElementById("theDrop2").innerText = "Floor M";
@@ -357,7 +349,8 @@ function mapFunc(fac, building) {
     }
     if (fac == 1) { //if it is a building in faculty of arts
         document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR1.jpg\"></center>"
-        document.getElementById("theDrop").innerText = "Maha Chakri Sirindhorn Building";
+        //document.getElementById("theDrop").innerText = "Maha Chakri Sirindhorn Building";
+        document.getElementById("building-num").innerText = "Maha Chakri Sirindhorn Building";
     }
     //document.getElementById("fl-4").classList.toggle("hide");
 }
