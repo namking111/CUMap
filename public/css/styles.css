@@ -31,9 +31,12 @@
       height: 200px;
       
   }
-  #flPlan{
-      display: none;
-      background-color: rgb(238, 147, 200); 
+  .section-head{
+    display: none;
+    background-color: rgb(238, 147, 200); 
+  }
+  #land-mark{
+    background-color: rgb(238, 147, 200); 
   }
   #flMap{
     background-color: rgb(219, 218, 218);

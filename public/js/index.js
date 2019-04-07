@@ -36,7 +36,9 @@ function initMap() {
 
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
-    searchBox.addListener('places_changed', function () {
+    searchBox.addListener('places_changed', searchPlace);
+
+    function searchPlace () {
         var places = searchBox.getPlaces();
 
         if (places.length == 0) {
@@ -72,32 +74,34 @@ function initMap() {
                 position: place.geometry.location,
             }));
 
+            openFloorPlan()
+            closeCourseInfo()
             //engineering building 1
             if (place.geometry.location == "(13.7365812, 100.53260790000002)" || place.geometry.location == "(13.7365812, 100.53257869999993)") {
-                openFloorPlan()
+                
                 mapFunc(0, 1)
             }
 
             //engineering building 2
             if (place.geometry.location == "(13.7364773, 100.53339249999999)") {
-                openFloorPlan()
+               
                 mapFunc(0, 2)
             }
             //engineering building 3
             if (place.geometry.location == "(13.7368903, 100.53315620000001)") {
-                openFloorPlan()
+               
                 mapFunc(0, 3)
             }
 
             //engineering building 100
             if (place.geometry.location == "(13.736365, 100.53394780000008)") {
-                openFloorPlan()
+                
                 mapFunc(0, 100)
             }
 
             //Maha Chakri Sirindhorn Building
             if (place.geometry.location == "(13.7392952, 100.5340708)") {
-                openFloorPlan()
+              
                 mapFunc(1, 1)
             }
 
@@ -111,7 +115,7 @@ function initMap() {
             }
         });
         map.fitBounds(bounds);
-    });
+    };
 
 
 
@@ -168,17 +172,31 @@ function initMap() {
 }
 
 
-var typeChosen;
+var typeChosen;/*
 function searchPlace() {
-    if (typeChosen != true) {
-        alert("Please select type of search.");
-    }
-    else {
+    
         alert("<show search result jaa>");
-    }
-}
+    
+}*/
 var listCourse = ["2190101 Computer Programming", "2183101 Engineering Graphics"];
 var theCourse = ""
+
+function placeOnEnter(ele) {
+    if(event.key === 'Enter') {
+       searchPlace2()       
+    }
+}
+function courseOnEnter(ele) {
+    if(event.key === 'Enter') {
+       searchCourse()       
+    }
+}
+function searchPlace2(){
+    if(document.getElementById("building-search-box").value.length==0){
+        alert("Please enter destination.")
+    }
+}
+
 function searchCourse() {
 
     for (i = 0; i < listCourse.length; i++) {
@@ -189,7 +207,9 @@ function searchCourse() {
     }
     if (theCourse != "") {
         showCourse();
-    } else {
+    }else if(document.getElementById("course-search").value.length==0){
+        alert("Please enter course.")
+    }else {
         alert("Course Not Found");
         document.getElementById("course-info").style.display = "none";
     }
@@ -198,8 +218,9 @@ function searchCourse() {
 function showCourse() {
     var courseDiv = document.getElementById("course-info");
     courseDiv.style.display = "block";
-    courseDiv.scrollIntoView({ behavior: "smooth" });
-    courseDiv.innerHTML = "<h2>Course Information</h2> <br> <p>Course : " + theCourse + "<p>";
+    document.getElementById("course-info-head").style.display = "block";
+    document.getElementById("course-info-head").scrollIntoView({ behavior: "smooth" });
+    courseDiv.innerHTML = "<p>Course : " + theCourse + "<br> Section :<br> Lecturer :<br> Day : <br> Time : <br> Room number : <br> Building : <br> Floor : <br> Faculty : </p>";
     theCourse = ""; //prepare to use for next course search
 }
 
@@ -222,7 +243,12 @@ var currentFac = 99;
 
 function openFloorPlan() {
     document.getElementById("flPlan").style.display = "block";
-    document.getElementById("flPlan").scrollIntoView({ behavior: "smooth" });
+    document.getElementById("flPlan").scrollIntoView(true,{ behavior: "smooth" });
+}
+
+function closeCourseInfo(){
+    document.getElementById("course-info").style.display = "none";
+    document.getElementById("course-info-head").style.display = "none";
 }
 
 function selBuild() {

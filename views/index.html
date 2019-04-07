@@ -24,9 +24,9 @@
     <div class="home-header">
         <img src="img/CUMaplogo.png" width="100px" height="100px">
         <center>
-            <input class="search-box" id="building-search-box" type="text" placeholder=" SEARCH BUILDING">
-            <button class="btn-go" onclick="searchPlace()" id="gobuilding">GO</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input class="search-box" id="course-search" type="text" placeholder=" SEARCH COURSE">
+            <input class="search-box" id="building-search-box" type="text" placeholder=" SEARCH BUILDING" onkeydown="placeOnEnter(this)">
+            <button class="btn-go" onclick="searchPlace2()" id="gobuilding">GO</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input class="search-box" id="course-search" type="text" placeholder=" SEARCH COURSE" onkeydown="courseOnEnter(this)">
             <script>
                 var listCourse = ["2190101 Computer Programming", "2183101 Engineering Graphics"];
                 $("#course-search").autocomplete({
@@ -34,12 +34,15 @@
                 });
 
             </script>
-            <button class="btn-go" onclick="searchCourse()" id="gocourse">GO</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            
+            <button class="btn-go" onclick="searchCourse()" id="gocourse">GO</button>
+            <br>
+            <br>
             <button class="btn-go" id="gps" onclick="gpsHere()">&nbsp;Mark Your Current Location</button>
-            <button class="btn-go" id="cleargps" onclick="initMap()">&nbsp;Clear Current Location</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn-go" id="cleargps" onclick="initMap()">&nbsp;Clear Current Location</button>
             <button class="btn-go" id="getRoute" onclick="routeTo()">&nbsp;Get Route</button>
             <br>
-            <button class="btn1" onclick="openFloorPlan()" id="floorPlanbtn">FLOOR PLAN</button>
+            <!--<button class="btn1" onclick="openFloorPlan()" id="floorPlanbtn">FLOOR PLAN</button>-->
         </center>
     </div>
 
@@ -52,34 +55,50 @@
             <button class="btn btn-danger" onclick="searchType(2)" id="dest">Building Name</button>-->
 
         </div>
-        <p>LANDMARK</p>
+
+        <br>
+        <div id="land-mark">
+        <br>
+        <h2>&nbsp;Landmark</h2>
+        <br>
+        </div>
+        <br>
+
+        <div class="row">      
         <form>
-            <input type="checkbox" id="atm" onclick="funClick()">&nbsp;ATM</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" id="canteen" onclick="funClick()">&nbsp;Canteen</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" id="museum" onclick="funClick()">&nbsp;Museum</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" id="coffeeshop" onclick="funClick()">&nbsp;Coffee Shop</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" id="copyprint" onclick="funClick()">&nbsp;Copy&Print</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" id="vendm" onclick="funClick()">&nbsp;Vending Machine</input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" id="libr" onclick="funClick()">&nbsp;Library</input>
+            <div class="col-xs-6 col-md-2"> <input type="checkbox" id="atm" onclick="funClick()">&nbsp;ATM</input></div>
+            <div class="col-xs-6 col-md-2"><input type="checkbox" id="canteen" onclick="funClick()">&nbsp;Canteen</input></div>
+            <div class="col-xs-6 col-md-2"> <input type="checkbox" id="museum" onclick="funClick()">&nbsp;Museum</input></div>
+            <div class="col-xs-6 col-md-2"><input type="checkbox" id="coffeeshop" onclick="funClick()">&nbsp;Coffee Shop</input></div>
+            <div class="col-xs-6 col-md-2"> <input type="checkbox" id="copyprint" onclick="funClick()">&nbsp;Copy&Print</input></div>
+            <div class="col-xs-6 col-md-2">  <input type="checkbox" id="vendm" onclick="funClick()">&nbsp;Vending Machine</input></div>
+            <div class="col-xs-6 col-md-2">  <input type="checkbox" id="libr" onclick="funClick()">&nbsp;Library</input>
             <br>
             <br>
         </form>
-
+    </div>
     </div>
 
     <div id="map">
     </div>
+    <br>
 
+    <div id="course-info-head" class="section-head">
+        <br>
+        <h2>&nbsp;Course Information</h2>
+        <br>
+    </div>
     <div id="course-info">
     </div>
 
-    <div id="flPlan">
-        <center>
+    <div id="flPlan" class="section-head">
+       
             <br>
-            <p>FLOOR PLAN</p>
-        </center>
+            <h2>&nbsp;Floor Plan</h2>
+            <br>
         <div id="flMap">
 
+            <br>
             <div class="mapDropdown">
                 <button onclick="selBuild()" class="dropbtn" id="theDrop">Select Building</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div id="myDropdown" class="mapDropdown-content">
@@ -121,6 +140,9 @@
         </div>
     </div>
     <div id="IoT" style="background-color: rgb(238, 147, 200)">
+        <br>
+        <h2>&nbsp;PM 2.5</h2>
+        <br>
         <style type="text/css">
             body {
                 background-color: #ddd;
