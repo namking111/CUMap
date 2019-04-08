@@ -41,9 +41,9 @@ function initMap() {
 
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
-    searchBox.addListener('places_changed', function () {
+    searchBox.addListener('places_changed', searchPlace);
+    function searchPlace() {
         var places = searchBox.getPlaces();
-
         if (places.length == 0) {
             return;
         }
@@ -77,33 +77,38 @@ function initMap() {
                 position: place.geometry.location,
             }));
 
+
+            closeCourseInfo();
             //engineering building 1
             if (place.geometry.location == "(13.7365812, 100.53260790000002)" || place.geometry.location == "(13.7365812, 100.53257869999993)") {
-                openFloorPlan()
-                mapFunc(0, 1)
+                openFloorPlan();
+                mapFunc(0, 1);
             }
 
             //engineering building 2
-            if (place.geometry.location == "(13.7364773, 100.53339249999999)") {
-                openFloorPlan()
-                mapFunc(0, 2)
+            else if (place.geometry.location == "(13.7364773, 100.53339249999999)") {
+                openFloorPlan();
+                mapFunc(0, 2);
             }
             //engineering building 3
-            if (place.geometry.location == "(13.7368903, 100.53315620000001)") {
-                openFloorPlan()
-                mapFunc(0, 3)
+            else if (place.geometry.location == "(13.7368903, 100.53315620000001)") {
+                openFloorPlan();
+                mapFunc(0, 3);
             }
 
             //engineering building 100
-            if (place.geometry.location == "(13.736365, 100.53394780000008)") {
-                openFloorPlan()
-                mapFunc(0, 100)
+            else if (place.geometry.location == "(13.736365, 100.53394780000008)") {
+                openFloorPlan();
+                mapFunc(0, 100);
             }
 
             //Maha Chakri Sirindhorn Building
-            if (place.geometry.location == "(13.7392952, 100.5340708)") {
-                openFloorPlan()
-                mapFunc(1, 1)
+            else if (place.geometry.location == "(13.7392952, 100.5340708)" || place.geometry.location == "(13.7392241, 100.53434160000006)") {
+                openFloorPlan();
+                mapFunc(1, 1);
+            }
+            else {
+                closeFloorPlan();
             }
 
             if (place.geometry.viewport) {
@@ -114,7 +119,8 @@ function initMap() {
             }
         });
         map.fitBounds(bounds);
-    });
+    };
+
 
     /*
         // Loop through markers
@@ -156,19 +162,37 @@ function initMap() {
             }
         }
         */
+
+    document.getElementById("gobuilding").addEventListener("click", function () {
+        if (document.getElementById("building-search-box").value.length == 0) {
+            alert("Please enter destination.");
+        } else {
+            searchPlace();
+        }
+    });
+    document.getElementById("building-search-box").onkeydown = function () {
+        if (event.key === 'Enter') {
+            if (document.getElementById("building-search-box").value.length == 0) {
+                alert("Please enter destination.");
+            } else {
+                searchPlace();
+            }
+        }
+
+    }
+
 }
 
-var typeChosen;
-function searchPlace() {
-    if (typeChosen != true) {
-        alert("Please select type of search.");
-    }
-    else {
-        alert("<show search result jaa>");
-    }
-}
+
 var listCourse = ["2190101 Computer Programming", "2183101 Engineering Graphics"];
 var theCourse = ""
+
+function courseOnEnter(ele) {
+    if (event.key === 'Enter') {
+        searchCourse()
+    }
+}
+
 function searchCourse() {
 
     for (i = 0; i < listCourse.length; i++) {
@@ -179,6 +203,8 @@ function searchCourse() {
     }
     if (theCourse != "") {
         showCourse();
+    } else if (document.getElementById("course-search").value.length == 0) {
+        alert("Please enter course.")
     } else {
         alert("Course Not Found");
         document.getElementById("course-info").style.display = "none";
@@ -188,29 +214,28 @@ function searchCourse() {
 function showCourse() {
     var courseDiv = document.getElementById("course-info");
     courseDiv.style.display = "block";
-    courseDiv.scrollIntoView({ behavior: "smooth" });
-    courseDiv.innerHTML = "<h2>Course Information</h2> <br> <p>Course : " + theCourse + "<p>";
+    document.getElementById("course-info-head").style.display = "block";
+    document.getElementById("course-info-head").scrollIntoView({ behavior: "smooth" });
+    courseDiv.innerHTML = "<p>Course : " + theCourse + "<br> Section :<br> Lecturer :<br> Day : <br> Time : <br> Room number : <br> Building : <br> Floor : <br> Faculty : </p>";
     theCourse = ""; //prepare to use for next course search
 }
 
-function searchType(type) {
-    if (type == 1) {
-        document.getElementById("crs").style.background = "rgb(212, 161, 212)";
-        document.getElementById("dest").style.background = "";
-    }
-    else if (type == 2) {
-        document.getElementById("dest").style.background = "rgb(212, 161, 212)";
-        document.getElementById("crs").style.background = "";
-    }
-    typeChosen = true;
-}
 
 var currentBuild = 99;
 var currentFac = 99;
 
 function openFloorPlan() {
     document.getElementById("flPlan").style.display = "block";
-    document.getElementById("flPlan").scrollIntoView({ behavior: "smooth" });
+    document.getElementById("flPlan").scrollIntoView(true, { behavior: "smooth" });
+}
+
+function closeCourseInfo() {
+    document.getElementById("course-info").style.display = "none";
+    document.getElementById("course-info-head").style.display = "none";
+}
+
+function closeFloorPlan() {
+    document.getElementById("flPlan").style.display = "none";
 }
 
 function selBuild() {
@@ -322,7 +347,8 @@ function mapFunc(fac, building) {
     if (fac == 0) { //if it is a building in faculty of engineering
         //if change building, default floor is 1 or M
         document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + building + "-FR1.jpg\"></center>"
-        document.getElementById("theDrop").innerText = "Engineering Building " + building;
+        //document.getElementById("theDrop").innerText = "Engineering Building " + building;
+        document.getElementById("building-num").innerText = "Engineering Building " + building;
         if (building == 100) {
             document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0100-FR90.jpg\"></center>"
             document.getElementById("theDrop2").innerText = "Floor M";
@@ -330,7 +356,8 @@ function mapFunc(fac, building) {
     }
     if (fac == 1) { //if it is a building in faculty of arts
         document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR1.jpg\"></center>"
-        document.getElementById("theDrop").innerText = "Maha Chakri Sirindhorn Building";
+        //document.getElementById("theDrop").innerText = "Maha Chakri Sirindhorn Building";
+        document.getElementById("building-num").innerText = "Maha Chakri Sirindhorn Building";
     }
     //document.getElementById("fl-4").classList.toggle("hide");
 }
