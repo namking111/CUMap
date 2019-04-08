@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
-<meta name="viewport"
-    content="width=device-width, initial-scale=1.0 width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
 
 <head>
     <title>CU Map</title>
@@ -35,7 +34,7 @@
                 });
 
             </script>
-            
+
             <button class="btn-go" onclick="searchCourse()" id="gocourse">GO</button>
             <br>
             <br>
@@ -56,128 +55,108 @@
 
         <br>
         <div id="land-mark">
-        <br>
-        <h2>&nbsp;Landmark</h2>
-        <br>
+            <br>
+            <h2>&nbsp;Landmark</h2>
+            <br>
         </div>
         <br>
 
-        <div class="row">      
-        <form>
-            <div class="col-xs-6 col-md-2"> <input type="checkbox" id="atm" onclick="funClick()">&nbsp;ATM</input></div>
-            <div class="col-xs-6 col-md-2"><input type="checkbox" id="canteen" onclick="funClick()">&nbsp;Canteen</input></div>
-            <div class="col-xs-6 col-md-2"> <input type="checkbox" id="museum" onclick="funClick()">&nbsp;Museum</input></div>
-            <div class="col-xs-6 col-md-2"><input type="checkbox" id="coffeeshop" onclick="funClick()">&nbsp;Coffee Shop</input></div>
-            <div class="col-xs-6 col-md-2"> <input type="checkbox" id="copyprint" onclick="funClick()">&nbsp;Copy&Print</input></div>
-            <div class="col-xs-6 col-md-2">  <input type="checkbox" id="vendm" onclick="funClick()">&nbsp;Vending Machine</input></div>
-            <div class="col-xs-6 col-md-2">  <input type="checkbox" id="libr" onclick="funClick()">&nbsp;Library</input>
-            <br>
-            <br>
-        </form>
-    </div>
-    </div>
+        <div class="row">
+            <form>
+                <div class="col-xs-6 col-md-2">
+                    <input type="checkbox" id="atm" onclick="funClick()">&nbsp;ATM</input>
+                </div>
+                <div class="col-xs-6 col-md-2">
+                    <input type="checkbox" id="canteen" onclick="funClick()">&nbsp;Canteen</input>
+                </div>
+                <div class="col-xs-6 col-md-2">
+                    <input type="checkbox" id="museum" onclick="funClick()">&nbsp;Museum</input>
+                </div>
+                <div class="col-xs-6 col-md-2">
+                    <input type="checkbox" id="coffeeshop" onclick="funClick()">&nbsp;Coffee Shop</input>
+                </div>
+                <div class="col-xs-6 col-md-2">
+                    <input type="checkbox" id="copyprint" onclick="funClick()">&nbsp;Copy&Print</input>
+                </div>
+                <div class="col-xs-6 col-md-2">
+                    <input type="checkbox" id="vendm" onclick="funClick()">&nbsp;Vending Machine</input>
+                </div>
+                <div class="col-xs-6 col-md-2">
+                    <input type="checkbox" id="libr" onclick="funClick()">&nbsp;Library</input>
+                    <br>
+                    <br>
+            </form>
+            </div>
+        </div>
 
-    <div id="map">
-    </div>
-    <br>
-
-    <div id="course-info-head" class="section-head">
+        <div id="map">
+        </div>
         <br>
-        <h2>&nbsp;Course Information</h2>
-        <br>
-    </div>
-    <div id="course-info">
-    </div>
 
-    <div id="flPlan" class="section-head">
-       
+        <div id="course-info-head" class="section-head">
+            <br>
+            <h2>&nbsp;Course Information</h2>
+            <br>
+        </div>
+        <div id="course-info">
+        </div>
+
+        <div id="flPlan" class="section-head">
+
             <br>
             <h2>&nbsp;Floor Plan</h2>
             <br>
-        <div id="flMap">
+            <div id="flMap">
 
-            <br>
-            <h4 id="building-num">Building</h4>
-            <div class="mapDropdown">
-                <!--
+                <br>
+                <h4 id="building-num">Building</h4>
+                <div class="mapDropdown">
+                    <!--
                 <button onclick="selBuild()" class="dropbtn" id="theDrop">Select
                     Building</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 -->
-                <div id="myDropdown" class="mapDropdown-content">
-                    <a onclick="mapFunc(0,1)">Engineering Building 1</a>
-                    <a onclick="mapFunc(0,2)">Engineering Building 2</a>
-                    <a onclick="mapFunc(0,3)">Engineering Building 3</a>
-                    <a onclick="mapFunc(0,100)">Engineering Building 100</a>
-                    <a onclick="mapFunc(1,1)">Maha Chakri Sirindhorn Building</a>
+                    <div id="myDropdown" class="mapDropdown-content">
+                        <a onclick="mapFunc(0,1)">Engineering Building 1</a>
+                        <a onclick="mapFunc(0,2)">Engineering Building 2</a>
+                        <a onclick="mapFunc(0,3)">Engineering Building 3</a>
+                        <a onclick="mapFunc(0,100)">Engineering Building 100</a>
+                        <a onclick="mapFunc(1,1)">Maha Chakri Sirindhorn Building</a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="mapDropdown">
-                <button onclick="selFloor()" class="dropbtn" id="theDrop2">Select
-                    Floor</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div id="myDropdown2" class="mapDropdown-content">
-                    <a href="#fM" onclick="mapFunc2(90)" id="fl-90">Floor M</a>
-                    <a href="#fM1" onclick="mapFunc2(91)" id="fl-91">Floor M1</a>
-                    <a href="#fM" onclick="mapFunc2(92)" id="fl-92">Floor M2</a>
-                    <a href="#fM3" onclick="mapFunc2(93)" id="fl-93">Floor M3</a>
-                    <a href="#f1" onclick="mapFunc2(1)" id="fl-1">Floor 1</a>
-                    <a href="#f2" onclick="mapFunc2(2)" id="fl-2">Floor 2</a>
-                    <a href="#f3" onclick="mapFunc2(3)" id="fl-3">Floor 3</a>
-                    <a href="#f4" onclick="mapFunc2(4)" id="fl-4">Floor 4</a>
-                    <a href="#f5" onclick="mapFunc2(5)" id="fl-5">Floor 5</a>
-                    <a href="#f6" onclick="mapFunc2(6)" id="fl-6">Floor 6</a>
-                    <a href="#f7" onclick="mapFunc2(7)" id="fl-7">Floor 7</a>
-                    <a href="#f8" onclick="mapFunc2(8)" id="fl-8">Floor 8</a>
-                    <a href="#f9" onclick="mapFunc2(9)" id="fl-9">Floor 9</a>
-                    <a href="#f10" onclick="mapFunc2(10)" id="fl-10">Floor 10</a>
-                    <a href="#f11" onclick="mapFunc2(11)" id="fl-11">Floor 11</a>
-                    <a href="#f12" onclick="mapFunc2(12)" id="fl-12">Floor 12</a>
+                <div class="mapDropdown">
+                    <button onclick="selFloor()" class="dropbtn" id="theDrop2">Select Floor
+                    </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div id="myDropdown2" class="mapDropdown-content">
+                        <a href="#fM" onclick="mapFunc2(90)" id="fl-90">Floor M</a>
+                        <a href="#fM1" onclick="mapFunc2(91)" id="fl-91">Floor M1</a>
+                        <a href="#fM" onclick="mapFunc2(92)" id="fl-92">Floor M2</a>
+                        <a href="#fM3" onclick="mapFunc2(93)" id="fl-93">Floor M3</a>
+                        <a href="#f1" onclick="mapFunc2(1)" id="fl-1">Floor 1</a>
+                        <a href="#f2" onclick="mapFunc2(2)" id="fl-2">Floor 2</a>
+                        <a href="#f3" onclick="mapFunc2(3)" id="fl-3">Floor 3</a>
+                        <a href="#f4" onclick="mapFunc2(4)" id="fl-4">Floor 4</a>
+                        <a href="#f5" onclick="mapFunc2(5)" id="fl-5">Floor 5</a>
+                        <a href="#f6" onclick="mapFunc2(6)" id="fl-6">Floor 6</a>
+                        <a href="#f7" onclick="mapFunc2(7)" id="fl-7">Floor 7</a>
+                        <a href="#f8" onclick="mapFunc2(8)" id="fl-8">Floor 8</a>
+                        <a href="#f9" onclick="mapFunc2(9)" id="fl-9">Floor 9</a>
+                        <a href="#f10" onclick="mapFunc2(10)" id="fl-10">Floor 10</a>
+                        <a href="#f11" onclick="mapFunc2(11)" id="fl-11">Floor 11</a>
+                        <a href="#f12" onclick="mapFunc2(12)" id="fl-12">Floor 12</a>
+                    </div>
                 </div>
+
+                <br>
+                <br>
+                <div id="show-map"></div>
+
             </div>
-
-            <br>
-            <br>
-            <div id="show-map"></div>
-
         </div>
-    </div>
-    <div id="IoT" style="background-color: rgb(238, 147, 200)">
-        <br>
-        <h2>&nbsp;PM 2.5</h2>
-        <br>
-        <style type="text/css">
-            body {
-                background-color: #ddd;
-            }
-
-            #container {
-                height: 100%;
-                width: 100%;
-                display: table;
-            }
-
-            #inner {
-                vertical-align: middle;
-                display: table-cell;
-            }
-        </style>
-
-        <iframe width="450" height="260" style="border: 1px solid #cccccc;"
-            src="https://thingspeak.com/channels/724962/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=pm2.5+%28ug%2Fm3%29&type=line"></iframe>
-
-        <body>
-            <div id="container">
-                <div id="inner">
-                    <div id="gauge_div"></div>
-                </div>
-            </div>
-        </body>
-    </div>
-    <div id="gauge_div">
-
-        <head>
-            <title>Google Gauge - ThingSpeak Example</title>
-
+        <div id="IoT" style="background-color: rgb(238, 147, 200)">
+            <br>
+            <h2>&nbsp;PM 2.5</h2>
+            <br>
             <style type="text/css">
                 body {
                     background-color: #ddd;
@@ -193,86 +172,116 @@
                     vertical-align: middle;
                     display: table-cell;
                 }
-
-                #gauge_div {
-                    width: 120px;
-                    margin: 0 auto;
-                }
             </style>
-            <script type='text/javascript'
-                src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-            <script type='text/javascript' src='https://www.google.com/jsapi'></script>
-            <script type='text/javascript'>
-                // set your channel id here
-                var channel_id = 724962;
-                // set your channel's read api key here if necessary
-                var api_key = 'LJ7HPUWR713W037K';
-                // maximum value for the gauge
-                var max_gauge_value = 70;
-                // name of the gauge
-                var gauge_name = 'PM2.5';
-                // global variables
-                var chart, charts, data;
-                // load the google gauge visualization
-                google.load('visualization', '1', { packages: ['gauge'] });
-                google.setOnLoadCallback(initChart);
-                // display the data
-                function displayData(point) {
-                    data.setValue(0, 0, gauge_name);
-                    data.setValue(0, 1, point);
-                    chart.draw(data, options);
-                }
-                // load the data
-                function loadData() {
-                    // variable for the data point
-                    var p;
-                    // get the data from thingspeak
-                    $.getJSON('https://api.thingspeak.com/channels/' + channel_id + '/feed/last.json?api_key=' + api_key, function (data) {
-                        // get the data point
-                        p = data.field1;
-                        // if there is a data point display it
-                        if (p) {
-                            // p = Math.round((p / max_gauge_value) * 100);
-                            displayData(p);
-                        }
-                    });
-                }
-                // initialize the chart
-                function initChart() {
-                    data = new google.visualization.DataTable();
-                    data.addColumn('string', 'Label');
-                    data.addColumn('number', 'Value');
-                    data.addRows(1);
-                    chart = new google.visualization.Gauge(document.getElementById('gauge_div'));
-                    options = { width: 120, height: 120, greenFrom: 10, greenTo: 29, redFrom: 41, redTo: 70, yellowFrom: 30, yellowTo: 40, minorTicks: 5 };
-                    loadData();
-                    // load new data every 15 seconds
-                    setInterval('loadData()', 1000);
-                }
-            </script>
-        </head>
 
-        <body>
-            <div id="container">
-                <div id="inner">
-                    <div id="gauge_div"></div>
+            <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/724962/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=pm2.5+%28ug%2Fm3%29&type=line"></iframe>
+
+            <body>
+                <div id="container">
+                    <div id="inner">
+                        <div id="gauge_div"></div>
+                    </div>
                 </div>
-            </div>
-        </body>
+            </body>
+        </div>
+        <div id="gauge_div">
 
-    </div>
+            <head>
+                <title>Google Gauge - ThingSpeak Example</title>
 
-    <script>
+                <style type="text/css">
+                    body {
+                        background-color: #ddd;
+                    }
+
+                    #container {
+                        height: 100%;
+                        width: 100%;
+                        display: table;
+                    }
+
+                    #inner {
+                        vertical-align: middle;
+                        display: table-cell;
+                    }
+
+                    #gauge_div {
+                        width: 120px;
+                        margin: 0 auto;
+                    }
+                </style>
+                <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+                <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+                <script type='text/javascript'>
+                    // set your channel id here
+                    var channel_id = 724962;
+                    // set your channel's read api key here if necessary
+                    var api_key = 'LJ7HPUWR713W037K';
+                    // maximum value for the gauge
+                    var max_gauge_value = 70;
+                    // name of the gauge
+                    var gauge_name = 'PM2.5';
+                    // global variables
+                    var chart, charts, data;
+                    // load the google gauge visualization
+                    google.load('visualization', '1', { packages: ['gauge'] });
+                    google.setOnLoadCallback(initChart);
+                    // display the data
+                    function displayData(point) {
+                        data.setValue(0, 0, gauge_name);
+                        data.setValue(0, 1, point);
+                        chart.draw(data, options);
+                    }
+                    // load the data
+                    function loadData() {
+                        // variable for the data point
+                        var p;
+                        // get the data from thingspeak
+                        $.getJSON('https://api.thingspeak.com/channels/' + channel_id + '/feed/last.json?api_key=' + api_key, function (data) {
+                            // get the data point
+                            p = data.field1;
+                            // if there is a data point display it
+                            if (p) {
+                                // p = Math.round((p / max_gauge_value) * 100);
+                                displayData(p);
+                            }
+                        });
+                    }
+                    // initialize the chart
+                    function initChart() {
+                        data = new google.visualization.DataTable();
+                        data.addColumn('string', 'Label');
+                        data.addColumn('number', 'Value');
+                        data.addRows(1);
+                        chart = new google.visualization.Gauge(document.getElementById('gauge_div'));
+                        options = { width: 120, height: 120, greenFrom: 10, greenTo: 29, redFrom: 41, redTo: 70, yellowFrom: 30, yellowTo: 40, minorTicks: 5 };
+                        loadData();
+                        // load new data every 15 seconds
+                        setInterval('loadData()', 1000);
+                    }
+                </script>
+            </head>
+
+            <body>
+                <div id="container">
+                    <div id="inner">
+                        <div id="gauge_div"></div>
+                    </div>
+                </div>
+            </body>
+
+        </div>
+
+        <script>
        // initMap();
         //var input = new google.map.places.SearchBox(document.getElementById("search-box"));
-    </script>
+        </script>
 
-    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
-    <script src="/js/index.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initMap"
-        async defer></script>
+        <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+        <script src="/js/index.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initMap"
+            async defer></script>
 </body>
 
 </html>

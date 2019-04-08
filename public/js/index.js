@@ -42,12 +42,12 @@ function initMap() {
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
     searchBox.addListener('places_changed', searchPlace);
-    function searchPlace () {
+    function searchPlace() {
         var places = searchBox.getPlaces();
         if (places.length == 0) {
             return;
         }
-        
+
         // Clear out the old markers.
         markers.forEach(function (marker) {
             marker.setMap(null);
@@ -77,7 +77,7 @@ function initMap() {
                 position: place.geometry.location,
             }));
 
-            
+
             closeCourseInfo();
             //engineering building 1
             if (place.geometry.location == "(13.7365812, 100.53260790000002)" || place.geometry.location == "(13.7365812, 100.53257869999993)") {
@@ -107,7 +107,7 @@ function initMap() {
                 openFloorPlan();
                 mapFunc(1, 1);
             }
-            else{
+            else {
                 closeFloorPlan();
             }
 
@@ -163,23 +163,23 @@ function initMap() {
         }
         */
 
-       document.getElementById("gobuilding").addEventListener("click", function(){
-        if(document.getElementById("building-search-box").value.length==0){
+    document.getElementById("gobuilding").addEventListener("click", function () {
+        if (document.getElementById("building-search-box").value.length == 0) {
             alert("Please enter destination.");
-        }else{
+        } else {
             searchPlace();
         }
-       });
-       document.getElementById("building-search-box").onkeydown = function(){
-            if(event.key === 'Enter') {
-                if(document.getElementById("building-search-box").value.length==0){
-                    alert("Please enter destination.");
-                }else{
-                    searchPlace();
-                }
+    });
+    document.getElementById("building-search-box").onkeydown = function () {
+        if (event.key === 'Enter') {
+            if (document.getElementById("building-search-box").value.length == 0) {
+                alert("Please enter destination.");
+            } else {
+                searchPlace();
             }
-        
-       }
+        }
+
+    }
 
 }
 
@@ -188,8 +188,8 @@ var listCourse = ["2190101 Computer Programming", "2183101 Engineering Graphics"
 var theCourse = ""
 
 function courseOnEnter(ele) {
-    if(event.key === 'Enter') {
-       searchCourse()       
+    if (event.key === 'Enter') {
+        searchCourse()
     }
 }
 
@@ -203,9 +203,9 @@ function searchCourse() {
     }
     if (theCourse != "") {
         showCourse();
-    }else if(document.getElementById("course-search").value.length==0){
+    } else if (document.getElementById("course-search").value.length == 0) {
         alert("Please enter course.")
-    }else {
+    } else {
         alert("Course Not Found");
         document.getElementById("course-info").style.display = "none";
     }
@@ -226,15 +226,15 @@ var currentFac = 99;
 
 function openFloorPlan() {
     document.getElementById("flPlan").style.display = "block";
-    document.getElementById("flPlan").scrollIntoView(true,{ behavior: "smooth" });
+    document.getElementById("flPlan").scrollIntoView(true, { behavior: "smooth" });
 }
 
-function closeCourseInfo(){
+function closeCourseInfo() {
     document.getElementById("course-info").style.display = "none";
     document.getElementById("course-info-head").style.display = "none";
 }
 
-function closeFloorPlan(){
+function closeFloorPlan() {
     document.getElementById("flPlan").style.display = "none";
 }
 
