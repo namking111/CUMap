@@ -110,11 +110,12 @@
 
                 <br>
                 <h4 id="building-num">Building</h4>
-                <div class="mapDropdown">
-                    <!--
+                <!--<div class="mapDropdown">
+                    *
                 <button onclick="selBuild()" class="dropbtn" id="theDrop">Select
                     Building</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                -->
+                    *
+                
                     <div id="myDropdown" class="mapDropdown-content">
                         <a onclick="mapFunc(0,1)">Engineering Building 1</a>
                         <a onclick="mapFunc(0,2)">Engineering Building 2</a>
@@ -123,8 +124,11 @@
                         <a onclick="mapFunc(1,1)">Maha Chakri Sirindhorn Building</a>
                     </div>
                 </div>
+                -->
 
-                <div class="mapDropdown">
+                <select id="selfloorlist" name="optionDrop" onchange="flFunc()"></select>
+                <!--old ver drop down
+                    <div class="mapDropdown">
                     <button onclick="selFloor()" class="dropbtn" id="theDrop2">Select Floor
                     </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <div id="myDropdown2" class="mapDropdown-content">
@@ -145,7 +149,7 @@
                         <a href="#f11" onclick="mapFunc2(11)" id="fl-11">Floor 11</a>
                         <a href="#f12" onclick="mapFunc2(12)" id="fl-12">Floor 12</a>
                     </div>
-                </div>
+                </div>-->
 
                 <br>
                 <br>
@@ -282,6 +286,57 @@
         <script src="/js/index.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initMap"
             async defer></script>
+
+
+
+
+        <!--works start-->
+        <!--
+                    <input type="text" onkeydown="ee(this)"></input>
+                    
+                    <select id="sellist" name="optionDrop"  onChange="dd(this)">
+                      <option id="yo" value="volvo">Volvo</option>
+                      <option id="yea" value="saab">Saab</option>
+                      <option value="opel" style="display:none">Opel</option>
+                      <option value="audi">Audi</option>
+                    </select>
+                    <script>
+                     var x = document.getElementById("sellist");
+                    function ee(sth){
+                        var option = document.createElement("option");
+                        option.text = "newopt"
+                        option.setAttribute("id","iddd")
+                     if(event.key === 'Enter'){
+                     if(sth.value==1){
+                     x.remove(document.getElementById("sellist").options[3]);
+                     alert("allkay")
+                     }
+                     if(sth.value==2){
+                    x.add(option)
+                    alert("allkaytoo")
+                     }
+                    }
+                     }
+                     
+                    </script>-->
+        <!--works end-->
+
+
+
+
+
+
+        <script>
+                        /*
+                        var flList = document.getElementById("selfloorlist");
+                       var fl5 = document.createElement("option");
+    fl5.text = "Floor 5"
+    flList.add(fl5);*/
+
+
+        </script>
+
+
 </body>
 
 </html>

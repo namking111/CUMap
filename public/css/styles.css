@@ -98,3 +98,8 @@
   }
 
   .hide{display: none; visibility: hidden}
+
+  #selfloorlist{
+      width: 100px;
+      font-size: 20px;
+  }

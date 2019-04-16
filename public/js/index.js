@@ -1,3 +1,6 @@
+var currentBuild = 99;
+var currentFac = 99;
+
 function initMap() {
     //Map options
     var options = {
@@ -76,8 +79,6 @@ function initMap() {
                 title: place.name,
                 position: place.geometry.location,
             }));
-
-
             closeCourseInfo();
             //engineering building 1
             if (place.geometry.location == "(13.7365812, 100.53260790000002)" || place.geometry.location == "(13.7365812, 100.53257869999993)") {
@@ -97,7 +98,7 @@ function initMap() {
             }
 
             //engineering building 100
-            else if (place.geometry.location == "(13.736365, 100.53394780000008)") {
+            else if (place.geometry.location == "(13.736365, 100.53394780000008)" || place.geometry.location == "(13.7364442, 100.53388510000002)") {
                 openFloorPlan();
                 mapFunc(0, 100);
             }
@@ -221,8 +222,7 @@ function showCourse() {
 }
 
 
-var currentBuild = 99;
-var currentFac = 99;
+
 
 function openFloorPlan() {
     document.getElementById("flPlan").style.display = "block";
@@ -243,6 +243,7 @@ function selBuild() {
     document.getElementById("myDropdown").classList.toggle("show");
     //document.getElementById("fl-4").classList.toggle("hide");
 }
+/*old ver floor drop down
 function selFloor() {
     document.getElementById("myDropdown2").classList.toggle("show");
 
@@ -278,54 +279,55 @@ function selFloor() {
         }
         document.getElementById("fl-90").classList.toggle("hide");
         document.getElementById("fl-92").classList.toggle("hide");
-    }
-    /*
-    if(currentBuild==100&&currentFac==0){//engineering building 100
-        for(i=5;i<13;i++){
-            document.getElementById("fl-"+i).classList.toggle("hide");
-        }
-        for(j=90;j<94;j++){
-            document.getElementById("fl-"+j).classList.toggle("hide");
-        }
     }*/
-    /*
-    //use here
-    else if (currentBuild==3&&currentFac==0){//engineering building 3
-        for(i=5;i<13;i++){
-            document.getElementById("fl-"+i).classList.toggle("hide");
-        }
+/*
+if(currentBuild==100&&currentFac==0){//engineering building 100
+    for(i=5;i<13;i++){
+        document.getElementById("fl-"+i).classList.toggle("hide");
     }
-    else if(currentBuild==100&&currentFac==0){//engineering building 100
-
+    for(j=90;j<94;j++){
+        document.getElementById("fl-"+j).classList.toggle("hide");
     }
-    else if(currentBuild==1&&currentFac==1){//arts MCS building
-
+}*/
+/*
+//use here
+else if (currentBuild==3&&currentFac==0){//engineering building 3
+    for(i=5;i<13;i++){
+        document.getElementById("fl-"+i).classList.toggle("hide");
     }
-    */
-
-    /*
-    alert("clicked"+currentBuild)
-    
-    if(currentBuild==1){
-        alert("inloop")
-        alert(document.getElementById("fl-90").classList.style)
-        if(document.getElementById("fl-90").classList.style.display != "none"){
-            alert("inif")
-            document.getElementById("fl-90").classList.style.display = "none"
-            document.getElementById("fl-90").style.display = "none"
-            document.getElementById("fl-90").style.visibility = "hidden"
-            alert("did")
-        }
-    }
-    else if(currentBuild==2){
-        if(document.getElementById("fl-93").classList.style.display != "none"){
-            document.getElementById("fl-93").classList.style.display = "none"
-        }
-    }*/
-    //document.getElementById("myDropdown2").classList.toggle("show");
-    //document.getElementById("fl-4").classList.toggle("hide");
 }
+else if(currentBuild==100&&currentFac==0){//engineering building 100
 
+}
+else if(currentBuild==1&&currentFac==1){//arts MCS building
+
+}
+*/
+
+/*
+alert("clicked"+currentBuild)
+ 
+if(currentBuild==1){
+    alert("inloop")
+    alert(document.getElementById("fl-90").classList.style)
+    if(document.getElementById("fl-90").classList.style.display != "none"){
+        alert("inif")
+        document.getElementById("fl-90").classList.style.display = "none"
+        document.getElementById("fl-90").style.display = "none"
+        document.getElementById("fl-90").style.visibility = "hidden"
+        alert("did")
+    }
+}
+else if(currentBuild==2){
+    if(document.getElementById("fl-93").classList.style.display != "none"){
+        document.getElementById("fl-93").classList.style.display = "none"
+    }
+}*/
+//document.getElementById("myDropdown2").classList.toggle("show");
+//document.getElementById("fl-4").classList.toggle("hide");
+//old ver floor drop down}
+
+/* old ver floor drop down
 // Close the dropdown if the user clicks outside of it
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
@@ -339,32 +341,90 @@ window.onclick = function (event) {
         }
     }
 }
+*/
 
 function mapFunc(fac, building) {
+
+    //*
+    var flList = document.getElementById("selfloorlist");
+
+    //create floor list options
+    var flarr = []
+    //floor 1 to 12
+    for (a = 1; a < 13; a++) {
+        flarr[a] = document.createElement("option");
+        flarr[a].text = "Floor " + a;
+    }
+
+    //floor M, M1, M2, M3
+    for (b = 20; b < 24; b++) {
+        flarr[b] = document.createElement("option");
+        flarr[b].text = "Floor M" + (b - 20);
+        if (b == 20) {
+            flarr[b].text = "Floor M";
+        }
+    }
+
+    //clear floor list value
+    while (flList.options.length > 0) {
+        flList.remove(0);
+    }
+
+    //selected building number and faculty
     currentBuild = building;
     currentFac = fac;
-    document.getElementById("theDrop2").innerText = "Floor 1";
+
+    //old ver floor drop down
+    //document.getElementById("theDrop2").innerText = "Floor 1";
+
     if (fac == 0) { //if it is a building in faculty of engineering
-        //if change building, default floor is 1 or M
-        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + building + "-FR1.jpg\"></center>"
-        //document.getElementById("theDrop").innerText = "Engineering Building " + building;
-        document.getElementById("building-num").innerText = "Engineering Building " + building;
-        if (building == 100) {
+        if (building == 100) {//default floor is M
+            flList.add(flarr[20]);
+            for (x = 3; x < 8; x++) {
+                flList.add(flarr[x]);
+            }
+            flList.add(flarr[9]);
+            flList.add(flarr[10]);
+            flList.add(flarr[12]);
             document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0100-FR90.jpg\"></center>"
             document.getElementById("theDrop2").innerText = "Floor M";
         }
+        else {
+            flList.add(flarr[1]);
+            flList.add(flarr[2]);
+            flList.add(flarr[3]);
+
+            if (building == 3) {
+                flList.add(flarr[4]);
+            }
+
+            //default floor is 1
+            document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + building + "-FR1.jpg\"></center>"
+            //document.getElementById("theDrop").innerText = "Engineering Building " + building;
+            document.getElementById("building-num").innerText = "Engineering Building " + building;
+        }
+
+
     }
-    if (fac == 1) { //if it is a building in faculty of arts
+    else if (fac == 1) { //if it is a building in faculty of arts
+        flList.add(flarr[21]);
+        flList.add(flarr[23]);
+        for (y = 1; y < 10; y++) {
+            flList.add(flarr[y]);
+        }
+        flList.value = "Floor 1";
+
         document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR1.jpg\"></center>"
         //document.getElementById("theDrop").innerText = "Maha Chakri Sirindhorn Building";
         document.getElementById("building-num").innerText = "Maha Chakri Sirindhorn Building";
     }
-    //document.getElementById("fl-4").classList.toggle("hide");
 }
 
+/*old ver floor drop down
 function mapFunc2(floor) {
     if (currentFac == 0) { //if it is a building in faculty of engineering
         document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + currentBuild + "-FR" + floor + ".jpg\"></center>"
+        
     }
     if (currentFac == 1) { //if it is a building in faculty of arts
         document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR" + floor + ".jpg\"></center>"
@@ -384,6 +444,7 @@ function mapFunc2(floor) {
         document.getElementById("theDrop2").innerText = "Floor M3";
     }
 
+    
     if ((currentBuild == 1 && currentFac == 0) || (currentBuild == 2 && currentFac == 0)) {//engineering building 1 and 2
         for (i = 4; i < 13; i++) {
             document.getElementById("fl-" + i).classList.toggle("hide");
@@ -416,7 +477,9 @@ function mapFunc2(floor) {
         document.getElementById("fl-90").classList.toggle("hide");
         document.getElementById("fl-92").classList.toggle("hide");
     }
-}
+}*/
+
+//*
 
 //func use : 'use'
 /*
@@ -816,4 +879,22 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, searchBo
             window.alert('Directions request failed due to ' + status);
         }
     });
+}
+
+function flFunc() {
+    var flList = document.getElementById("selfloorlist");
+    var selectedFloor = flList.value + ""
+    var flstr = selectedFloor.slice(6)
+    if (flstr == "M") {
+        flstr = 90;
+    }
+    else if (flstr[0] == "M") {
+        flstr = parseInt(flstr[1]) + 90;
+    }
+    if (currentFac == 0) { //if it is a building in faculty of engineering
+        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + currentBuild + "-FR" + flstr + ".jpg\"></center>"
+    }
+    else if (currentFac == 1) { //if it is a building in faculty of arts
+        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR" + flstr + ".jpg\"></center>"
+    }
 }
