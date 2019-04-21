@@ -2,12 +2,13 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+var PORT = process.env.PORT || 3000;
 //Init App
 const app = express();
 
 //View Engine
-// app.set('view engine', 'ejs');
-// app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 //Body Parser Middleware
 //parse application/x-www-form-urlencoded
@@ -23,6 +24,6 @@ app.get('/', function (req, res) {
 })
 
 //Start Server
-app.listen(3000, function () {
-    console.log('Server started on port 3000..');
+app.listen(PORT, function () {
+    console.log('Server started on heroku or port 3000..');
 })
