@@ -11,7 +11,6 @@ router.get('/ping', (req, res) => {
     });
 });
 
-
 router.get('/testDatabaseConnection', async (req, res) => {
     try {
         const connection = await getConnection();

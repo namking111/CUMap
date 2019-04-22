@@ -1,8 +1,3 @@
-// MYSQL_DATABASE=db
-// MYSQL_USER=backend
-// MYSQL_PASSWORD=password
-// MYSQL_HOST=localhost
-
 if (!process.env.MYSQL_DATABASE) {
     throw new Error('Environment MYSQL_DATABASE not found');
 }
