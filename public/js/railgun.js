@@ -1,5 +1,6 @@
 var currentBuild = 99;
 var currentFac = 99;
+//while (searchBox.addEventListener(null)) gpsHere();
 
 //Filters
 var librMarkers = [];
@@ -87,6 +88,12 @@ function initMap() {
     var directionsDisplay = new google.maps.DirectionsRenderer;
     directionsDisplay.setMap(map);
 
+   /* document.getElementById("gps").addEventListener("click", function (){
+        //while (true) {
+            gpsHere();
+            delay(20000);
+        //}
+    });*/
     document.getElementById("atm").addEventListener("click", function () {
         atmCounter++;
         //console.log(atmCounter);
@@ -213,6 +220,36 @@ function initMap() {
         }
     });
 
+  /*  if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(onRecievePosition, positionNotRecieved);
+        //update current location (not tested yet)
+        var overwatch = navigator.geolocation.watchPosition(onRecievePosition, positionNotRecieved);
+        console.log(overwatch);
+        navigator.geolocation.clearWatch(overwatch);
+    }
+    while (true){
+        function onRecievePosition(currentPosition) {
+            console.log(currentPosition);
+            currentLat = currentPosition.coords.latitude;
+            currentLng = currentPosition.coords.longitude;
+            //mark current location
+            var options = {
+                zoom: 17,
+                center: { lat: currentLat, lng: currentLng }
+            }
+            var map = new google.maps.Map(document.getElementById('map'), options);
+            var marker = new google.maps.Marker({
+                position: { lat: currentLat, lng: currentLng },
+                map: map,
+                //icon: ,
+                //draggable:trues
+            });
+        }
+    }
+    function positionNotRecieved(positionError) {
+        console.log(positionError);
+    }
+*/
     document.getElementById('getRoute').onclick = function () {
         getCurrentLocation();
         setTimeout(() => calculateAndDisplayRoute(directionsService, directionsDisplay, searchBox), 1000);
@@ -322,6 +359,48 @@ function initMap() {
         map.fitBounds(bounds);
     };
 
+
+    /*
+        // Loop through markers
+        for (var i = 0; i < markers.length; i++) {
+            // Add marker
+            addMarker(markers[i]);
+        }
+    
+        // Add Marker Function
+        function addMarker(props) {
+            var marker = new google.maps.Marker({
+                position: props.coords,
+                map: map,
+                draggable:true
+            });
+    
+            // Check for custom icon
+            if (props.iconImage) {
+                // Set icon image
+                marker.setIcon(props.iconImage);
+            }
+    
+            //query place
+            
+            var tempPlace
+            service = new google.maps.places.PlacesService(map);
+
+            // Check for content
+            if (props.content) {
+                var infoWindow = new google.maps.InfoWindow({
+                    content: props.content
+                });
+    
+                marker.addListener('click', function () {
+                    infoWindow.open(map, marker);
+                    infoWindow.setContent("<h1></h1>")
+                    
+                });
+            }
+        }
+        */
+
     document.getElementById("gobuilding").addEventListener("click", function () {
         if (document.getElementById("building-search-box").value.length == 0) {
             alert("Please enter destination.");
@@ -401,6 +480,105 @@ function selBuild() {
     document.getElementById("myDropdown").classList.toggle("show");
     //document.getElementById("fl-4").classList.toggle("hide");
 }
+/*old ver floor drop down
+function selFloor() {
+    document.getElementById("myDropdown2").classList.toggle("show");
+
+    //show floor list according to each building
+    if ((currentBuild == 1 && currentFac == 0) || (currentBuild == 2 && currentFac == 0)) {//engineering building 1 and 2
+        for (i = 4; i < 13; i++) {
+            document.getElementById("fl-" + i).classList.toggle("hide");
+        }
+        for (j = 90; j < 94; j++) {
+            document.getElementById("fl-" + j).classList.toggle("hide");
+        }
+    }
+    else if (currentBuild == 3 && currentFac == 0) {//engineering building 3
+        for (i = 5; i < 13; i++) {
+            document.getElementById("fl-" + i).classList.toggle("hide");
+        }
+        for (j = 90; j < 94; j++) {
+            document.getElementById("fl-" + j).classList.toggle("hide");
+        }
+    }
+    else if (currentBuild == 100 && currentFac == 0) {//engineering building 100
+        for (j = 91; j < 94; j++) {
+            document.getElementById("fl-" + j).classList.toggle("hide");
+        }
+        document.getElementById("fl-1").classList.toggle("hide");
+        document.getElementById("fl-2").classList.toggle("hide");
+        document.getElementById("fl-8").classList.toggle("hide");
+        document.getElementById("fl-11").classList.toggle("hide");
+    }
+    else if (currentBuild == 1 && currentFac == 1) {//arts MCS
+        for (i = 10; i < 13; i++) {
+            document.getElementById("fl-" + i).classList.toggle("hide");
+        }
+        document.getElementById("fl-90").classList.toggle("hide");
+        document.getElementById("fl-92").classList.toggle("hide");
+    }*/
+/*
+if(currentBuild==100&&currentFac==0){//engineering building 100
+    for(i=5;i<13;i++){
+        document.getElementById("fl-"+i).classList.toggle("hide");
+    }
+    for(j=90;j<94;j++){
+        document.getElementById("fl-"+j).classList.toggle("hide");
+    }
+}*/
+/*
+//use here
+else if (currentBuild==3&&currentFac==0){//engineering building 3
+    for(i=5;i<13;i++){
+        document.getElementById("fl-"+i).classList.toggle("hide");
+    }
+}
+else if(currentBuild==100&&currentFac==0){//engineering building 100
+
+}
+else if(currentBuild==1&&currentFac==1){//arts MCS building
+
+}
+*/
+
+/*
+alert("clicked"+currentBuild)
+ 
+if(currentBuild==1){
+    alert("inloop")
+    alert(document.getElementById("fl-90").classList.style)
+    if(document.getElementById("fl-90").classList.style.display != "none"){
+        alert("inif")
+        document.getElementById("fl-90").classList.style.display = "none"
+        document.getElementById("fl-90").style.display = "none"
+        document.getElementById("fl-90").style.visibility = "hidden"
+        alert("did")
+    }
+}
+else if(currentBuild==2){
+    if(document.getElementById("fl-93").classList.style.display != "none"){
+        document.getElementById("fl-93").classList.style.display = "none"
+    }
+}*/
+//document.getElementById("myDropdown2").classList.toggle("show");
+//document.getElementById("fl-4").classList.toggle("hide");
+//old ver floor drop down}
+
+/* old ver floor drop down
+// Close the dropdown if the user clicks outside of it
+window.onclick = function (event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("mapDropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+*/
 
 function mapFunc(fac, building) {
 
@@ -479,6 +657,351 @@ function mapFunc(fac, building) {
     }
 }
 
+/*old ver floor drop down
+function mapFunc2(floor) {
+    if (currentFac == 0) { //if it is a building in faculty of engineering
+        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + currentBuild + "-FR" + floor + ".jpg\"></center>"
+        
+    }
+    if (currentFac == 1) { //if it is a building in faculty of arts
+        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR" + floor + ".jpg\"></center>"
+    }
+
+    document.getElementById("theDrop2").innerText = "Floor " + floor;
+    if (floor == 90) {
+        document.getElementById("theDrop2").innerText = "Floor M";
+    }
+    else if (floor == 91) {
+        document.getElementById("theDrop2").innerText = "Floor M1";
+    }
+    else if (floor == 92) {
+        document.getElementById("theDrop2").innerText = "Floor M2";
+    }
+    else if (floor == 93) {
+        document.getElementById("theDrop2").innerText = "Floor M3";
+    }
+
+    
+    if ((currentBuild == 1 && currentFac == 0) || (currentBuild == 2 && currentFac == 0)) {//engineering building 1 and 2
+        for (i = 4; i < 13; i++) {
+            document.getElementById("fl-" + i).classList.toggle("hide");
+        }
+        for (j = 90; j < 94; j++) {
+            document.getElementById("fl-" + j).classList.toggle("hide");
+        }
+    }
+    else if (currentBuild == 3 && currentFac == 0) {//engineering building 3
+        for (i = 5; i < 13; i++) {
+            document.getElementById("fl-" + i).classList.toggle("hide");
+        }
+        for (j = 90; j < 94; j++) {
+            document.getElementById("fl-" + j).classList.toggle("hide");
+        }
+    }
+    else if (currentBuild == 100 && currentFac == 0) {//engineering building 100
+        for (j = 91; j < 94; j++) {
+            document.getElementById("fl-" + j).classList.toggle("hide");
+        }
+        document.getElementById("fl-1").classList.toggle("hide");
+        document.getElementById("fl-2").classList.toggle("hide");
+        document.getElementById("fl-8").classList.toggle("hide");
+        document.getElementById("fl-11").classList.toggle("hide");
+    }
+    else if (currentBuild == 1 && currentFac == 1) {//arts MCS
+        for (i = 10; i < 13; i++) {
+            document.getElementById("fl-" + i).classList.toggle("hide");
+        }
+        document.getElementById("fl-90").classList.toggle("hide");
+        document.getElementById("fl-92").classList.toggle("hide");
+    }
+}*/
+
+//*
+
+//func use : 'use'
+/*
+function funcLib(boxx){
+    
+    if (boxx.checked) {
+        var options = {
+            zoom: 17,
+            center: { lat: 13.7384, lng: 100.5321 }
+        }
+        var map = new google.maps.Map(document.getElementById('map'), options);
+
+        var request = {
+            query: 'Museum of Contemporary Art Australia',
+            //keyword: 'Museum',
+            fields: ['name', 'geometry'],
+          };
+        
+          var service = new google.maps.places.PlacesService(map);
+*/
+
+//  service.nearbySearch(
+//    {location: pyrmont, radius: 500, type: ['store']},
+//    function(results, status, pagination) {
+//      if (status !== 'OK') return;
+
+//     createMarkers(results);
+//    });
+
+//func use : 'use'
+/*
+  service.findPlaceFromQuery(request, function(results, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      for (var i = 0; i < results.length; i++) {
+        createMarkers(results[i]);
+        alert("done")
+      }
+      map.setCenter(results[0].geometry.location);
+    }
+  });
+  
+  function createMarkers(places) {
+    alert("dunn")
+      var marker2 = new google.maps.Marker({
+        map: map,
+        iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+        position: places.geometry.location
+      });
+      alert("donee")
+    }*/
+/*
+        //alert ("The check box is checked.");
+        var requestlib = {
+            location: map.center,
+            keyword: 'library'
+        };
+        service = new google.maps.places.PlacesService(map);
+        alert("done")
+          service.nearbySearch(requestlib, function(results, status) {
+            
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+              for (var i = 0; i < results.length; i++) {
+                  
+                var place = results[i];
+                //createMarker(results[i]);
+              }
+  
+              //map.setCenter(results[0].geometry.location);
+            }
+          });
+*/
+
+//func use : 'use'
+/*     
+}
+else {
+   //alert ("The check box is unchecked.");
+}
+}*/
+
+/*
+var atmTick = document.querySelector('#atm')
+var canteenTick = document.querySelector('#canteen')
+var museumTick = document.querySelector('#museum')
+var coffeeTick = document.querySelector('#coffeeshop')
+var copyTick = document.querySelector('#copyprint')
+var vendmTick = document.querySelector('#vendm')
+var librTick = document.querySelector('#libr')
+
+//check which filter is clicked
+function funClick() {
+    switch (librTick != null) {
+        case librTick.checked:
+            //alert ("The libr check box is checked.");
+            librMarkers = [
+                {
+                    coords: { lat: 13.7367, lng: 100.5331 },
+                    iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+                    content: '<h1>Faculty of Engineering</h1>'
+                },
+                {
+                    coords: { lat: 13.7386, lng: 100.5352 },
+                    iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+                    content: '<h1>fuck off</h1>'
+                }
+            ];
+            break;
+        case librTick.checked == false:
+            //alert ("The libr check box is not checked.");
+            librMarkers = [];
+    }
+    switch (vendmTick != null) {
+        case vendmTick.checked:
+            //alert ("The vendm check box is checked.");
+            vendmMarkers = [
+                {
+                    coords: { lat: 13.7393, lng: 100.5341 }
+                },
+                {
+                    coords: { lat: 13.7403, lng: 100.5351 }
+                }
+            ];
+            break;
+        case vendmTick.checked == false:
+            //alert ("The vendm check box is not checked.");
+            vendmMarkers = [];
+
+    }
+    switch (copyTick != null) {
+        case copyTick.checked:
+            //alert ("The copy check box is checked.");
+            copyMarkers = [
+                {
+                    coords: { lat: 13.7383, lng: 100.5328 }
+                }
+            ];
+            break;
+        case copyTick.checked == false:
+            //alert ("The copy check box is not checked.");
+            copyMarkers = [];
+
+    }
+    switch (coffeeTick != null) {
+        case coffeeTick.checked:
+            //alert ("The coffee check box is checked.");
+            coffeeMarkers = [
+                {
+                    coords: { lat: 13.7393, lng: 100.5330 }
+                }
+            ];
+            break;
+        case coffeeTick.checked == false:
+            //alert ("The coffee check box is not checked.");
+            coffeeMarkers = [];
+
+    }
+    switch (museumTick != null) {
+        case museumTick.checked:
+            //alert ("The museum check box is checked.");
+            museumMarkers = [
+                {
+                    coords: { lat: 13.7373, lng: 100.5308 }
+                }
+            ];
+            break;
+        case museumTick.checked == false:
+            //alert ("The museum check box is not checked.");
+            museumMarkers = [];
+
+    }
+    switch (canteenTick != null) {
+        case canteenTick.checked:
+            //alert ("The canteen check box is checked.");
+            canteenMarkers = [
+                {
+                    coords: { lat: 13.7386, lng: 100.5298 }
+                }
+            ];
+            break;
+        case canteenTick.checked == false:
+            //alert ("The canteen check box is not checked.");
+            canteenMarkers = [];
+
+    }
+    switch (atmTick != null) {
+        case atmTick.checked:
+            //alert ("The atm check box is checked.");
+            atmMarkers = [
+                {
+                    coords: { lat: 13.7370, lng: 100.5308 },
+                    //iconImage: 'https://i.imgur.com/pIfdoIW.gif'
+                }
+            ];
+            break;
+        case atmTick.checked == false:
+            //alert ("The copy check box is not checked.");
+            atmMarkers = [];
+
+    }
+    if (librTick.checked == false && vendmTick.checked == false && copyTick.checked == false && coffeeTick.checked == false && museumTick.checked == false && canteenTick.checked == false && atmTick.checked == false) {
+        initMap();
+    } else {
+        initMap2(librMarkers, vendmMarkers, copyMarkers, coffeeMarkers, museumMarkers, canteenMarkers, atmMarkers);
+    }
+}
+//draw filter markers
+function initMap2(librfeed, vendmfeed, copyfeed, coffeefeed, museumfeed, canteenfeed, atmfeed) {
+    //Map options
+    var options = {
+        zoom: 17,
+        center: { lat: 13.7384, lng: 100.5321 }
+    }
+    //Create Map
+    var map = new google.maps.Map(document.getElementById('map'), options);
+
+    if (librfeed != [] || vendmfeed != [] || copyfeed != [] || coffeefeed != [] || museumfeed != [] || canteenfeed != [] || atmfesed != []) {
+        var markerDefault = new google.maps.Marker({
+            position: { lat: 13.7403, lng: 100.5309 },
+            map: map,
+            draggable: true
+        });
+
+        for (var i = 0; i < librfeed.length; i++) {
+            var marker = new google.maps.Marker({
+                position: librfeed[i].coords,
+                map: map,
+                icon: librfeed[i].iconImage,
+                //draggable:true
+            });
+        }
+
+        for (var i = 0; i < vendmfeed.length; i++) {
+            var marker = new google.maps.Marker({
+                position: vendmfeed[i].coords,
+                map: map,
+                icon: vendmfeed[i].iconImage,
+                //draggable:true
+            });
+        }
+
+        for (var i = 0; i < copyfeed.length; i++) {
+            var marker = new google.maps.Marker({
+                position: copyfeed[i].coords,
+                map: map,
+                icon: copyfeed[i].iconImage,
+                //draggable:true
+            });
+        }
+
+        for (var i = 0; i < coffeefeed.length; i++) {
+            var marker = new google.maps.Marker({
+                position: coffeefeed[i].coords,
+                map: map,
+                icon: coffeefeed[i].iconImage,
+                //draggable:true
+            });
+        }
+
+        for (var i = 0; i < museumfeed.length; i++) {
+            var marker = new google.maps.Marker({
+                position: museumfeed[i].coords,
+                map: map,
+                icon: museumfeed[i].iconImage,
+                //draggable:true
+            });
+        }
+        for (var i = 0; i < canteenfeed.length; i++) {
+            var marker = new google.maps.Marker({
+                position: canteenfeed[i].coords,
+                map: map,
+                icon: canteenfeed[i].iconImage,
+                //draggable:true
+            });
+        }
+        for (var i = 0; i < atmfeed.length; i++) {
+            var marker = new google.maps.Marker({
+                position: atmfeed[i].coords,
+                map: map,
+                icon: atmfeed[i].iconImage,
+                //draggable:true
+            });
+        }
+    }
+}
+*/
 //geolocation
 function gpsHere() {
     if (navigator.geolocation) {
@@ -510,6 +1033,40 @@ function gpsHere() {
         console.log(positionError);
     }
 }
+
+//routing
+/*
+function routeTo(){
+    var directionDisplay = new google.maps.DirectionsRenderer();
+    var directionService = new google.maps.DirectionsService();
+    var map;
+    var sauce = new google.maps.LatLng(13.7403, 100.5309);
+    var desty = new google.maps.LatLng(13.7384,100.5298);
+    var options = {
+        zoom: 17,
+        center: { lat: 13.7384, lng: 100.5321 }
+    }
+    map = new google.maps.Map(document.getElementById('map'), options);
+    directionDisplay.setMap(map);
+
+    function calculateRoute(){
+        var request = {
+            origin: sauce,
+            destination: desty,
+            travelMode: 'DRIVING'
+        };
+
+        directionService.route(request, function(result, status){
+            console.log(result, status);
+
+        });
+
+    }
+
+    document.getElementById('getRoute').onclick=function(){
+        calculateRoute();
+    };
+}*/
 
 //variable to store current location
 var currentLat;
