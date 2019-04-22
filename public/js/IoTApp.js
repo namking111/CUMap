@@ -63,7 +63,7 @@ function main() {
     data.addColumn('number', 'Value');
     data.addRows(1);
     chart = new google.visualization.Gauge(document.getElementById('gauge_div'));
-    options = { width: 120, height: 120, greenFrom: 10, greenTo: 29, redFrom: 41, redTo: 70, yellowFrom: 30, yellowTo: 40, minorTicks: 5 };
+    options = { width: 0, height: 0, greenFrom: 10, greenTo: 29, redFrom: 41, redTo: 70, yellowFrom: 30, yellowTo: 40, minorTicks: 5 };
     loadData();
     // load new data every 15 seconds
     setInterval('loadData()', 1000);
