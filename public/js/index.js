@@ -1,6 +1,20 @@
 var currentBuild = 99;
 var currentFac = 99;
-
+var GGM;
+var service;
+var origins = [];
+var pos;
+var numb;
+var arr_Destination = [
+    {title:'Place A',lat:13.736363,lng:100.533980},
+    {title:'Place B',lat:13.736086,lng:100.533973},
+/*  {title:'Place C',lat:ddddd,lng:ddddd},
+    {title:'Place D',lat:ddddd,lng:ddddd},
+    {title:'Place E',lat:ddddd,lng:ddddd},
+    {title:'Place F',lat:ddddd,lng:ddddd},*/
+];
+var destinations = [];
+var posPlace;
 function initMap() {
     //Map options
     var options = {
@@ -11,6 +25,8 @@ function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), options);
     var directionsService = new google.maps.DirectionsService;
     var directionsDisplay = new google.maps.DirectionsRenderer;
+    GGM=new Object(google.maps);
+    service = new GGM.DistanceMatrixService();
     directionsDisplay.setMap(map);
 
     document.getElementById('getRoute').onclick = function () {
@@ -181,6 +197,7 @@ function initMap() {
         }
 
     }
+    calculateDistance();
 
 }
 
@@ -897,4 +914,61 @@ function flFunc() {
     else if (currentFac == 1) { //if it is a building in faculty of arts
         document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR" + flstr + ".jpg\"></center>"
     }
+}
+function calculateDistance(){
+    if(navigator.geolocation){   
+        navigator.geolocation.getCurrentPosition(function(position){    
+        var myPosition_lat=position.coords.latitude; // เก็บค่าตำแหน่ง latitude  ปัจจุบัน  
+        var myPosition_lon=position.coords.longitude;  // เก็บค่าตำแหน่ง  longitude ปัจจุบัน           
+          
+        // สรัาง LatLng ตำแหน่ง สำหรับ google map  
+        pos = new GGM.LatLng(myPosition_lat,myPosition_lon);    
+        origins = [];
+        origins.push(pos);
+        for( i = 0;i<arr_Destination.length;i++){    
+            var htmlTr = '<tr><td>'+arr_Destination[i].title+'</td><td class="place_distance"></td></tr>';
+            $("#placeData").append(htmlTr);
+
+            posPlace = new GGM.LatLng(arr_Destination[i].lat,arr_Destination[i].lng);     
+            destinations.push(posPlace);
+        }
+        service.getDistanceMatrix(
+            {
+              origins: origins,
+              destinations: destinations,
+              travelMode: 'DRIVING',
+              avoidHighways: true,
+              avoidTolls: true,
+            }, callback);  
+            
+            
+
+            
+             function callback(response, status) {
+                if(status=='OK'){       
+                    console.log(response.rows);
+                    $.each(response.rows[0].elements,function(i,elm){
+                        console.log(i);
+                        console.log(elm);
+                        $(".place_distance:eq("+i+")").text(elm.distance.text);
+                        var txt = elm.distance.text;
+                         numb = txt.match(/\d/g);
+                          numb = numb.join("");
+                         console.log (numb);
+                    });
+                }
+            }
+
+
+},function() {    
+    // คำสั่งทำงาน ถ้า ระบบระบุตำแหน่ง geolocation ผิดพลาด หรือไม่ทำงาน    
+});  
+
+
+
+
+
+}else{
+
+}
 }

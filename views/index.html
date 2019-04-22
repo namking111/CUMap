@@ -114,7 +114,7 @@
 
         </div>
         <div class="Status-main" id="colorBG">
-            <div class="badge">Status</div>
+            <div class="badge" id="status-span">Status : 100th Buildiing</div>
             <div class="Status">
                 <span id="valuePM"></span>
                 <span id="unit">μg/m^3 :</span>
@@ -191,8 +191,22 @@
 
             </div>
         </div>
+        <div id= "test2Map">
+            <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/759644/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+        </div>
         
     </div>
+    <table class="table table-condensed" style="width:550px;margin:auto;">
+        <thead>
+            <tr class="active">
+                <th>Place</th>
+                <th>Distance</th>
+            </tr>
+        </thead>
+        <tbody id="placeData">
+     
+        </tbody>
+    </table>
 
         <script>
        // initMap();

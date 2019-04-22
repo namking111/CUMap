@@ -26,9 +26,12 @@ function main() {
     var TextStatus = document.getElementById("TextStatus");
     var p;
     const colorChanged=document.getElementById("colorBG");
+    var locationspan= document.getElementById("status-span");
     // get the data from thingspeak
-    $.getJSON('https://api.thingspeak.com/channels/' + channel_id + '/feed/last.json?api_key=' + api_key, function (data) {
+    //https://thingspeak.com/channels/759644/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15
+    //$.getJSON('https://api.thingspeak.com/channels/' + channel_id + '/feed/last.json?api_key=' + api_key, function (data) {
       // get the data point
+      $.getJSON('https://api.thingspeak.com/channels/' + 759644 + '/feed/last.json?api_key=' + 'UTLABD2M99AIURCF', function (data) {
       p = data.field1;
      
       // if there is a data point display it
