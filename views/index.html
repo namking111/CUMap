@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0 width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0 width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
 
 <head>
     <title>CU Map</title>
@@ -26,7 +27,8 @@
         <center>
             <input class="search-box" id="building-search-box" type="text" placeholder=" SEARCH BUILDING">
             <button class="btn-go" id="gobuilding">GO</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input class="search-box" id="course-search" type="text" placeholder=" SEARCH COURSE" onkeydown="courseOnEnter(this)">
+            <input class="search-box" id="course-search" type="text" placeholder=" SEARCH COURSE"
+                onkeydown="courseOnEnter(this)">
             <script>
                 var listCourse = ["2190101 Computer Programming", "2183101 Engineering Graphics"];
                 $("#course-search").autocomplete({
@@ -86,7 +88,6 @@
                     <br>
                     <br>
             </form>
-            </div>
         </div>
         <div id="gauge_div">
         </div>
@@ -149,7 +150,6 @@
                 <button onclick="selBuild()" class="dropbtn" id="theDrop">Select
                     Building</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     *
-                
                     <div id="myDropdown" class="mapDropdown-content">
                         <a onclick="mapFunc(0,1)">Engineering Building 1</a>
                         <a onclick="mapFunc(0,2)">Engineering Building 2</a>
@@ -191,10 +191,11 @@
 
             </div>
         </div>
-        <div id= "test2Map">
-            <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/759644/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+        <div id="test2Map">
+            <iframe width="450" height="260" style="border: 1px solid #cccccc;"
+                src="https://thingspeak.com/channels/759644/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
         </div>
-        
+
     </div>
     <table class="table table-condensed" style="width:550px;margin:auto;">
         <thead>
@@ -204,30 +205,34 @@
             </tr>
         </thead>
         <tbody id="placeData">
-     
+
         </tbody>
     </table>
 
-        <script>
+    <script>
        // initMap();
         //var input = new google.map.places.SearchBox(document.getElementById("search-box"));
-        </script>
+    </script>
 
-        <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-        <script type='text/javascript' src='https://www.google.com/jsapi'></script>
-        <script src="/js/index.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initMap"
-            async defer></script>
-            <script src="/js/IoTApp.js"></script>
-           <script src="/js/clocklyandDate.js"></script>
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script src="/js/index.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initMap"
+        async defer></script>
+    <script src="/js/IoTApp.js"></script>
+    <script src="/js/clocklyandDate.js"></script>
 
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script src="/js/index.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initMap"
+        async defer></script>
 
-
-
-        <!--works start-->
-        <!--
+    <!--works start-->
+    <!--
                     <input type="text" onkeydown="ee(this)"></input>
-                    
                     <select id="sellist" name="optionDrop"  onChange="dd(this)">
                       <option id="yo" value="volvo">Volvo</option>
                       <option id="yea" value="saab">Saab</option>
@@ -253,24 +258,14 @@
                      }
                      
                     </script>-->
-        <!--works end-->
-
-
-
-
-
-
-        <script>
-                        /*
-                        var flList = document.getElementById("selfloorlist");
-                       var fl5 = document.createElement("option");
-    fl5.text = "Floor 5"
-    flList.add(fl5);*/
-
-
-        </script>
-
-
+    <!--works end-->
+    <script>
+        /*
+        var flList = document.getElementById("selfloorlist");
+       var fl5 = document.createElement("option");
+fl5.text = "Floor 5"
+flList.add(fl5);*/
+    </script>
 </body>
 
 </html>
