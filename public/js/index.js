@@ -1,5 +1,20 @@
 var currentBuild = 99;
 var currentFac = 99;
+var GGM;
+var service;
+var origins = [];
+var pos;
+var numb;
+var arr_Destination = [
+    { title: 'Place A', lat: 13.736363, lng: 100.533980 },
+    { title: 'Place B', lat: 13.736086, lng: 100.533973 },
+    /*  {title:'Place C',lat:ddddd,lng:ddddd},
+        {title:'Place D',lat:ddddd,lng:ddddd},
+        {title:'Place E',lat:ddddd,lng:ddddd},
+        {title:'Place F',lat:ddddd,lng:ddddd},*/
+];
+var destinations = [];
+var posPlace;
 
 //Filters
 var librMarkers = [];
@@ -60,7 +75,7 @@ var canteenLocations = [
 ];
 var canteenCounter = 0;
 
-var atmMarkers=[];
+var atmMarkers = [];
 var atmLocations = [
     {
         coords: { lat: 13.7370, lng: 100.5308 },
@@ -77,6 +92,7 @@ var atmCounter = 0;
 
 function initMap() {
     //Map options
+    console.log("FILE 1 map executed")
     var options = {
         zoom: 17,
         center: { lat: 13.7384, lng: 100.5321 }
@@ -85,20 +101,22 @@ function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), options);
     var directionsService = new google.maps.DirectionsService;
     var directionsDisplay = new google.maps.DirectionsRenderer;
+    GGM = new Object(google.maps);
+    service = new GGM.DistanceMatrixService();
     directionsDisplay.setMap(map);
 
     document.getElementById("atm").addEventListener("click", function () {
         atmCounter++;
         //console.log(atmCounter);
-        if (atmCounter%2 !=0) {
-            for(i=0; i<=atmMarkers.length; i++){
+        if (atmCounter % 2 != 0) {
+            for (i = 0; i <= atmMarkers.length; i++) {
                 atmMarkers[i] = new google.maps.Marker({
-                    position: new google.maps.LatLng(atmLocations[i].coords), 
+                    position: new google.maps.LatLng(atmLocations[i].coords),
                     map: map
-                }); 
+                });
             }
         } else {
-            for(i=0; i<=atmMarkers.length; i++){
+            for (i = 0; i <= atmMarkers.length; i++) {
                 atmMarkers[i].setVisible(false);
                 //console.log(atmCounter*(-1));
             }
@@ -108,15 +126,15 @@ function initMap() {
     document.getElementById("canteen").addEventListener("click", function () {
         canteenCounter++;
         //console.log(atmCounter);
-        if (canteenCounter%2 !=0) {
-            for(i=0; i<=canteenMarkers.length; i++){
+        if (canteenCounter % 2 != 0) {
+            for (i = 0; i <= canteenMarkers.length; i++) {
                 canteenMarkers[i] = new google.maps.Marker({
-                    position: new google.maps.LatLng(canteenLocations[i].coords), 
+                    position: new google.maps.LatLng(canteenLocations[i].coords),
                     map: map
-                }); 
+                });
             }
         } else {
-            for(i=0; i<=canteenMarkers.length; i++){
+            for (i = 0; i <= canteenMarkers.length; i++) {
                 canteenMarkers[i].setVisible(false);
                 //console.log(atmCounter*(-1));
             }
@@ -126,15 +144,15 @@ function initMap() {
     document.getElementById("museum").addEventListener("click", function () {
         museumCounter++;
         //console.log(atmCounter);
-        if (museumCounter%2 !=0) {
-            for(i=0; i<=museumMarkers.length; i++){
+        if (museumCounter % 2 != 0) {
+            for (i = 0; i <= museumMarkers.length; i++) {
                 museumMarkers[i] = new google.maps.Marker({
-                    position: new google.maps.LatLng(museumLocations[i].coords), 
+                    position: new google.maps.LatLng(museumLocations[i].coords),
                     map: map
-                }); 
+                });
             }
         } else {
-            for(i=0; i<=museumMarkers.length; i++){
+            for (i = 0; i <= museumMarkers.length; i++) {
                 museumMarkers[i].setVisible(false);
                 //console.log(atmCounter*(-1));
             }
@@ -144,15 +162,15 @@ function initMap() {
     document.getElementById("coffeeshop").addEventListener("click", function () {
         coffeeshopCounter++;
         //console.log(atmCounter);
-        if (coffeeshopCounter%2 !=0) {
-            for(i=0; i<=coffeeshopMarkers.length; i++){
+        if (coffeeshopCounter % 2 != 0) {
+            for (i = 0; i <= coffeeshopMarkers.length; i++) {
                 coffeeshopMarkers[i] = new google.maps.Marker({
-                    position: new google.maps.LatLng(coffeeshopLocations[i].coords), 
+                    position: new google.maps.LatLng(coffeeshopLocations[i].coords),
                     map: map
-                }); 
+                });
             }
         } else {
-            for(i=0; i<=coffeeshopMarkers.length; i++){
+            for (i = 0; i <= coffeeshopMarkers.length; i++) {
                 coffeeshopMarkers[i].setVisible(false);
                 //console.log(atmCounter*(-1));
             }
@@ -162,15 +180,15 @@ function initMap() {
     document.getElementById("copyprint").addEventListener("click", function () {
         copyCounter++;
         //console.log(atmCounter);
-        if (copyCounter%2 !=0) {
-            for(i=0; i<=copyMarkers.length; i++){
+        if (copyCounter % 2 != 0) {
+            for (i = 0; i <= copyMarkers.length; i++) {
                 copyMarkers[i] = new google.maps.Marker({
-                    position: new google.maps.LatLng(copyLocations[i].coords), 
+                    position: new google.maps.LatLng(copyLocations[i].coords),
                     map: map
-                }); 
+                });
             }
         } else {
-            for(i=0; i<=copyMarkers.length; i++){
+            for (i = 0; i <= copyMarkers.length; i++) {
                 copyMarkers[i].setVisible(false);
                 //console.log(atmCounter*(-1));
             }
@@ -180,15 +198,15 @@ function initMap() {
     document.getElementById("vendm").addEventListener("click", function () {
         vendmCounter++;
         //console.log(atmCounter);
-        if (vendmCounter%2 !=0) {
-            for(i=0; i<=vendmMarkers.length; i++){
+        if (vendmCounter % 2 != 0) {
+            for (i = 0; i <= vendmMarkers.length; i++) {
                 vendmMarkers[i] = new google.maps.Marker({
-                    position: new google.maps.LatLng(vendmLocations[i].coords), 
+                    position: new google.maps.LatLng(vendmLocations[i].coords),
                     map: map
-                }); 
+                });
             }
         } else {
-            for(i=0; i<=vendmMarkers.length; i++){
+            for (i = 0; i <= vendmMarkers.length; i++) {
                 vendmMarkers[i].setVisible(false);
                 //console.log(atmCounter*(-1));
             }
@@ -198,15 +216,15 @@ function initMap() {
     document.getElementById("libr").addEventListener("click", function () {
         librCounter++;
         //console.log(atmCounter);
-        if (librCounter%2 !=0) {
-            for(i=0; i<=librMarkers.length; i++){
+        if (librCounter % 2 != 0) {
+            for (i = 0; i <= librMarkers.length; i++) {
                 librMarkers[i] = new google.maps.Marker({
-                    position: new google.maps.LatLng(librLocations[i].coords), 
+                    position: new google.maps.LatLng(librLocations[i].coords),
                     map: map
-                }); 
+                });
             }
         } else {
-            for(i=0; i<=librMarkers.length; i++){
+            for (i = 0; i <= librMarkers.length; i++) {
                 librMarkers[i].setVisible(false);
                 //console.log(atmCounter*(-1));
             }
@@ -339,6 +357,7 @@ function initMap() {
         }
 
     }
+    calculateDistance();
 
 }
 
@@ -544,7 +563,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, searchBo
     directionsService.route({
         origin: start,
         destination: end,
-        waypoints: [{location: popbus1, stopover: true}, {location: popbus2, stopover: true}],
+        waypoints: [{ location: popbus1, stopover: true }, { location: popbus2, stopover: true }],
         optimizeWaypoints: true,
         travelMode: 'WALKING',
     }, function (response, status) {
@@ -571,5 +590,62 @@ function flFunc() {
     }
     else if (currentFac == 1) { //if it is a building in faculty of arts
         document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR" + flstr + ".jpg\"></center>"
+    }
+}
+function calculateDistance() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var myPosition_lat = position.coords.latitude; // เก็บค่าตำแหน่ง latitude  ปัจจุบัน  
+            var myPosition_lon = position.coords.longitude;  // เก็บค่าตำแหน่ง  longitude ปัจจุบัน           
+
+            // สรัาง LatLng ตำแหน่ง สำหรับ google map  
+            pos = new GGM.LatLng(myPosition_lat, myPosition_lon);
+            origins = [];
+            origins.push(pos);
+            for (i = 0; i < arr_Destination.length; i++) {
+                var htmlTr = '<tr><td>' + arr_Destination[i].title + '</td><td class="place_distance"></td></tr>';
+                $("#placeData").append(htmlTr);
+
+                posPlace = new GGM.LatLng(arr_Destination[i].lat, arr_Destination[i].lng);
+                destinations.push(posPlace);
+            }
+            service.getDistanceMatrix(
+                {
+                    origins: origins,
+                    destinations: destinations,
+                    travelMode: 'DRIVING',
+                    avoidHighways: true,
+                    avoidTolls: true,
+                }, callback);
+
+
+
+
+            function callback(response, status) {
+                if (status == 'OK') {
+                    console.log(response.rows);
+                    $.each(response.rows[0].elements, function (i, elm) {
+                        console.log(i);
+                        console.log(elm);
+                        $(".place_distance:eq(" + i + ")").text(elm.distance.text);
+                        var txt = elm.distance.text;
+                        numb = txt.match(/\d/g);
+                        numb = numb.join("");
+                        console.log(numb);
+                    });
+                }
+            }
+
+
+        }, function () {
+            // คำสั่งทำงาน ถ้า ระบบระบุตำแหน่ง geolocation ผิดพลาด หรือไม่ทำงาน    
+        });
+
+
+
+
+
+    } else {
+
     }
 }
