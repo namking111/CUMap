@@ -62,7 +62,7 @@ var coffeeshopCounter = 0;
 var museumMarkers = [];
 var museumLocations = [
     {
-        coords: { lat: 13.7373, lng: 100.5308 }
+        coords: { lat: 13.7393, lng: 100.5308 }
     }
 ];
 var museumCounter = 0;
@@ -112,7 +112,8 @@ function initMap() {
             for (i = 0; i <= atmMarkers.length; i++) {
                 atmMarkers[i] = new google.maps.Marker({
                     position: new google.maps.LatLng(atmLocations[i].coords),
-                    map: map
+                    map: map,
+                    icon: '/img/atm.png' 
                 });
             }
         } else {
@@ -125,108 +126,102 @@ function initMap() {
 
     document.getElementById("canteen").addEventListener("click", function () {
         canteenCounter++;
-        //console.log(atmCounter);
         if (canteenCounter % 2 != 0) {
             for (i = 0; i <= canteenMarkers.length; i++) {
                 canteenMarkers[i] = new google.maps.Marker({
                     position: new google.maps.LatLng(canteenLocations[i].coords),
-                    map: map
+                    map: map,
+                    icon: '/img/canteen.png' 
                 });
             }
         } else {
             for (i = 0; i <= canteenMarkers.length; i++) {
                 canteenMarkers[i].setVisible(false);
-                //console.log(atmCounter*(-1));
             }
         }
     });
 
     document.getElementById("museum").addEventListener("click", function () {
         museumCounter++;
-        //console.log(atmCounter);
         if (museumCounter % 2 != 0) {
             for (i = 0; i <= museumMarkers.length; i++) {
                 museumMarkers[i] = new google.maps.Marker({
                     position: new google.maps.LatLng(museumLocations[i].coords),
-                    map: map
+                    map: map,
+                    icon: '/img/museum.png' 
                 });
             }
         } else {
             for (i = 0; i <= museumMarkers.length; i++) {
                 museumMarkers[i].setVisible(false);
-                //console.log(atmCounter*(-1));
             }
         }
     });
 
     document.getElementById("coffeeshop").addEventListener("click", function () {
         coffeeshopCounter++;
-        //console.log(atmCounter);
         if (coffeeshopCounter % 2 != 0) {
             for (i = 0; i <= coffeeshopMarkers.length; i++) {
                 coffeeshopMarkers[i] = new google.maps.Marker({
                     position: new google.maps.LatLng(coffeeshopLocations[i].coords),
-                    map: map
+                    map: map,
+                    icon: '/img/coffee.png' 
                 });
             }
         } else {
             for (i = 0; i <= coffeeshopMarkers.length; i++) {
                 coffeeshopMarkers[i].setVisible(false);
-                //console.log(atmCounter*(-1));
             }
         }
     });
 
     document.getElementById("copyprint").addEventListener("click", function () {
         copyCounter++;
-        //console.log(atmCounter);
         if (copyCounter % 2 != 0) {
             for (i = 0; i <= copyMarkers.length; i++) {
                 copyMarkers[i] = new google.maps.Marker({
                     position: new google.maps.LatLng(copyLocations[i].coords),
-                    map: map
+                    map: map,
+                    icon: '/img/copy.png' 
                 });
             }
         } else {
             for (i = 0; i <= copyMarkers.length; i++) {
                 copyMarkers[i].setVisible(false);
-                //console.log(atmCounter*(-1));
             }
         }
     });
 
     document.getElementById("vendm").addEventListener("click", function () {
         vendmCounter++;
-        //console.log(atmCounter);
         if (vendmCounter % 2 != 0) {
             for (i = 0; i <= vendmMarkers.length; i++) {
                 vendmMarkers[i] = new google.maps.Marker({
                     position: new google.maps.LatLng(vendmLocations[i].coords),
-                    map: map
+                    map: map,
+                    icon: '/img/vending.png' 
                 });
             }
         } else {
             for (i = 0; i <= vendmMarkers.length; i++) {
                 vendmMarkers[i].setVisible(false);
-                //console.log(atmCounter*(-1));
             }
         }
     });
 
     document.getElementById("libr").addEventListener("click", function () {
         librCounter++;
-        //console.log(atmCounter);
         if (librCounter % 2 != 0) {
             for (i = 0; i <= librMarkers.length; i++) {
                 librMarkers[i] = new google.maps.Marker({
                     position: new google.maps.LatLng(librLocations[i].coords),
-                    map: map
+                    map: map,
+                    icon: '/img/Libr.png' 
                 });
             }
         } else {
             for (i = 0; i <= librMarkers.length; i++) {
                 librMarkers[i].setVisible(false);
-                //console.log(atmCounter*(-1));
             }
         }
     });
@@ -520,6 +515,7 @@ function gpsHere() {
         var marker = new google.maps.Marker({
             position: { lat: currentLat, lng: currentLng },
             map: map,
+            //icon: '/img/canteen.png' 
             //icon: ,
             //draggable:trues
         });
