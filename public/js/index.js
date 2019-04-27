@@ -373,14 +373,24 @@ function courseOnEnter(ele) {
 
 function searchCourse() {
 
+    /*
     for (i = 0; i < listCourse.length; i++) {
         if (document.getElementById("course-search").value == (listCourse[i])) {
             theCourse = listCourse[i];
             break;
         }
+    }*/
+
+    for (i = 0; i < crscrs.length; i++) {
+        if (document.getElementById("course-search").value == (crscrs[i])) {
+            theCourse = crscrs[i];
+            break;
+        }
     }
+
+
     if (theCourse != "") {
-        showCourse();
+        showCourse(theCourse);
     } else if (document.getElementById("course-search").value.length == 0) {
         alert("Please enter course.")
     } else {
@@ -389,12 +399,12 @@ function searchCourse() {
     }
 }
 
-function showCourse() {
+function showCourse(theCourse) {
     var courseDiv = document.getElementById("course-info");
     courseDiv.style.display = "block";
     document.getElementById("course-info-head").style.display = "block";
     document.getElementById("course-info-head").scrollIntoView({ behavior: "smooth" });
-    courseDiv.innerHTML = "<p>Course : " + theCourse + "<br> Section :<br> Lecturer :<br> Day : <br> Time : <br> Room number : <br> Building : <br> Floor : <br> Faculty : </p>";
+    courseDiv.innerHTML = "<p>Course : " + theCourse + "<br> Lecturer :<br> Section :<br> Day : <br> Time : <br> Faculty : <br> Room : <br> Floor : <br> Building : </p>";
     theCourse = ""; //prepare to use for next course search
 }
 
@@ -649,3 +659,14 @@ function calculateDistance() {
 
     }
 }
+/*
+$.get('/location',(data) => {
+    $('#course-search').autoComplete({
+        source: data
+    })
+   })*/
+   /*
+   $('#course-search').autoComplete({
+    source: listCourse
+})*/
+
