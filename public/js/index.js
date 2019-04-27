@@ -459,7 +459,7 @@ function mapFunc(fac, building) {
             flList.add(flarr[9]);
             flList.add(flarr[10]);
             flList.add(flarr[12]);
-            document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0100-FR90.jpg\"></center>"
+            document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0100-FR90.png\"></center>"
             document.getElementById("theDrop2").innerText = "Floor M";
         }
         else {
@@ -472,7 +472,7 @@ function mapFunc(fac, building) {
             }
 
             //default floor is 1
-            document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + building + "-FR1.jpg\"></center>"
+            document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + building + "-FR1.png\"></center>"
             //document.getElementById("theDrop").innerText = "Engineering Building " + building;
             document.getElementById("building-num").innerText = "Engineering Building " + building;
         }
@@ -487,7 +487,7 @@ function mapFunc(fac, building) {
         }
         flList.value = "Floor 1";
 
-        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR1.jpg\"></center>"
+        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR1.png\"></center>"
         //document.getElementById("theDrop").innerText = "Maha Chakri Sirindhorn Building";
         document.getElementById("building-num").innerText = "Maha Chakri Sirindhorn Building";
     }
@@ -582,10 +582,10 @@ function flFunc() {
         flstr = parseInt(flstr[1]) + 90;
     }
     if (currentFac == 0) { //if it is a building in faculty of engineering
-        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + currentBuild + "-FR" + flstr + ".jpg\"></center>"
+        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + currentBuild + "-FR" + flstr + ".png\"></center>"
     }
     else if (currentFac == 1) { //if it is a building in faculty of arts
-        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR" + flstr + ".jpg\"></center>"
+        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR" + flstr + ".png\"></center>"
     }
 }
 function calculateDistance() {
