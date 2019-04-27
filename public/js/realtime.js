@@ -1,5 +1,6 @@
 var counter=0;
 var updatePosCounter=0;
+
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(updatePosition);
@@ -13,7 +14,7 @@ function updatePosition(position) {
       window.lat = position.coords.latitude;
       window.lng = position.coords.longitude;
     }
-    console.log("From Update position"+updatePosCounter++);
+   
   }
 
   
@@ -24,12 +25,18 @@ function updatePosition(position) {
 
 function realtimeSetup(){
     var redraw = function(payload) {
+      mark.setVisible(true);
         lat = payload.message.lat;
         lng = payload.message.lng;
-        console.log(counter++);
-  
-        map.setCenter({lat:lat, lng:lng, alt:0});
+        
+        if(stopCounter==true){
+          map.setCenter({lat:lat, lng:lng, alt:0});
+          stopCounter=false;
+          console.log("stopCounter"+ stopCounter);
+        }
+
         mark.setPosition({lat:lat, lng:lng, alt:0});
+        
       };
   
       var pnChannel = "map2-channel";

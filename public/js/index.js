@@ -7,8 +7,9 @@ var pos;
 var numb;
 var map;
 var mark;
-    window.lat =13.700363;
-    window.lng = 100.533980;
+var stopCounter=true;
+    window.lat =13.7367;
+    window.lng =100.5331;
 var arr_Destination = [
     { title: 'Place A', lat: 13.736363, lng: 100.533980 },
     { title: 'Place B', lat: 13.736086, lng: 100.533973 },
@@ -93,7 +94,7 @@ var atmLocations = [
 
 var atmCounter = 0;
 
-setInterval(function(){updatePosition(getLocation());}, 10000);
+setInterval(function(){updatePosition(getLocation());}, 300);
 var initMap=function() {
     //Map options
     console.log("FILE 1 map executed")
@@ -104,7 +105,8 @@ var initMap=function() {
     //Create Map
      map = new google.maps.Map(document.getElementById('map'), options);
      mark = new google.maps.Marker({position:{lat:lat, lng:lng}, map:map});
-    setInterval(function(){realtimeSetup();},3000);
+     mark.setVisible(false);
+    setInterval(function(){realtimeSetup();},300);
     var directionsService = new google.maps.DirectionsService;
     var directionsDisplay = new google.maps.DirectionsRenderer;
     GGM = new Object(google.maps);
