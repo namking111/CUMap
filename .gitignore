@@ -6,3 +6,6 @@ node_modules
 
 # Environment variables
 .env
+
+# NPM lock file
+package-lock.json
