@@ -83,5 +83,46 @@ router.get('/library', async (req, res) => {
         res.status(500).send(error);
     }
 });
+router.get('/CU_Pop_Bus', async (req, res) => {
+    try {
+        const connection = await getConnection();
+        const [CU_Pop_Bus] = await connection.query('SELECT CU_Bus_Station, Latitude, Longitude FROM CU_Pop_Bus B JOIN Position P ON B.Station_id = P.Station_id;');
+        res.status(200).send(CU_Pop_Bus);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+router.get('/CU_Bike', async (req, res) => {
+    try {
+        const connection = await getConnection();
+        const [CU_Bike] = await connection.query('SELECT CU_Bike_Station, Latitude, Longitude FROM CU_Bike B JOIN Position P ON B.Station_id = P.Station_id;');
+        res.status(200).send(CU_Bike);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+router.get('/HAMO', async (req, res) => {
+    try {
+        const connection = await getConnection();
+        const [HAMO] = await connection.query('SELECT HAMO_Station, Latitude, Longitude FROM HAMO B JOIN Position P ON B.Station_id = P.Station_id;');
+        res.status(200).send(HAMO);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+router.get('/Muvmi', async (req, res) => {
+    try {
+        const connection = await getConnection();
+        const [Muvmi] = await connection.query('SELECT Muvmi_Station, Latitude, Longitude FROM Muvmi B JOIN Position P ON B.Station_id = P.Station_id;');
+        res.status(200).send(Muvmi);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+
 
 module.exports = router;
