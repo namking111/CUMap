@@ -26,7 +26,6 @@
 
 <body>
 
-
     <div class="home-header">
         <img src="img/CUMaplogo.png" width="100px" height="100px">
         <center>
@@ -35,13 +34,12 @@
             <input class="search-box" id="course-search" type="text" placeholder=" SEARCH COURSE" onkeydown="courseOnEnter(this)">
             <script>
 
-                 
-                 var allcourseinfo
-                 var courseidnamesec = []
-                 var arrayindex = 0
-                 var allcoursecount
-                 var distinctcourse = []
-                 var courseidnamesecdist = []
+                var allcourseinfo
+                var courseidnamesec = []
+                var arrayindex = 0
+                var allcoursecount
+                var distinctcourse = []
+                var courseidnamesecdist = []
 
                 $.get('/course', (data) => {
                     allcourseinfo = data
@@ -50,32 +48,29 @@
                     }
                 })
 
-                $.get('/course/count',(data)=>{
+                $.get('/course/count', (data) => {
                     allcoursecount = data
                 })
 
-                 $.get('/course/courseidnamesecdist', (data) => {
+                $.get('/course/courseidnamesecdist', (data) => {
                     for (x = 0; x < data.length; x++) {
                         courseidnamesecdist[x] = data[x].idnamesecdist
                     }
                 })
 
-              
                 $("#course-search").autocomplete({
                     source: courseidnamesecdist
                 })
-
 
             </script>
 
             <button class="btn-go" onclick="searchCourse()" id="gocourse">GO</button>
             <br>
             <br>
-            <button class="btn-go" id="gps" onclick = "gpsHere()">&nbsp;Mark Your Current Location</button>
+            <button class="btn-go" id="gps" onclick="gpsHere()">&nbsp;Mark Your Current Location</button>
             <button class="btn-go" id="cleargps" onclick="initMap()">&nbsp;Clear Current Location</button>
             <button class="btn-go" id="getRoute" onclick="routeTo()">&nbsp;Get Route</button>
             <br>
-            <!--<button class="btn1" onclick="openFloorPlan()" id="floorPlanbtn">FLOOR PLAN</button>-->
         </center>
     </div>
 
@@ -119,42 +114,7 @@
                     <br>
                     <br>
             </form>
-        </div>
-         <!-- <div id="gauge_div"> --> 
-        <!-- </div>  -->
-        <!-- <div class="main">ss
-            <div class="badge">
-                Clockly
             </div>
-            <div class="clock">
-                <span id="hour">:</span>
-                <span id="minute">:</span>
-                <span id="second"></span>
-            </div>
-
-
-        </div>
-        <div class="Date-main">
-            <div class="TitleOfDate">Date</div>
-            <div class="Date">
-                <span id="Day"> </span>
-                <span id="DateNumber"> </span>
-                <span id="Month"></span>
-                <span id="Year"> </span>
-
-            </div>
-
-        </div> -->
-        <!-- <div class="Status-main" id="colorBG">
-            <div class="badge" id="status-span">Status : 100th Buildiing</div>
-            <div class="Status">
-                <span id="valuePM"></span>
-                <span id="unit">μg/m^3 :</span>
-                <span id="TextStatus"></span>
-            </div>
-        </div> -->
-
-
 
             <div id="map">
             </div>
@@ -177,45 +137,8 @@
 
                     <br>
                     <h4 id="building-num">Building</h4>
-                    <!--<div class="mapDropdown">
-                    *
-                <button onclick="selBuild()" class="dropbtn" id="theDrop">Select
-                    Building</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    *
-                    <div id="myDropdown" class="mapDropdown-content">
-                        <a onclick="mapFunc(0,1)">Engineering Building 1</a>
-                        <a onclick="mapFunc(0,2)">Engineering Building 2</a>
-                        <a onclick="mapFunc(0,3)">Engineering Building 3</a>
-                        <a onclick="mapFunc(0,100)">Engineering Building 100</a>
-                        <a onclick="mapFunc(1,1)">Maha Chakri Sirindhorn Building</a>
-                    </div>
-                </div>
-                -->
 
                     <select id="selfloorlist" name="optionDrop" onchange="getFloorFromDropDown()"></select>
-                    <!--old ver drop down
-                    <div class="mapDropdown">
-                    <button onclick="selFloor()" class="dropbtn" id="theDrop2">Select Floor
-                    </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <div id="myDropdown2" class="mapDropdown-content">
-                        <a href="#fM" onclick="mapFunc2(90)" id="fl-90">Floor M</a>
-                        <a href="#fM1" onclick="mapFunc2(91)" id="fl-91">Floor M1</a>
-                        <a href="#fM" onclick="mapFunc2(92)" id="fl-92">Floor M2</a>
-                        <a href="#fM3" onclick="mapFunc2(93)" id="fl-93">Floor M3</a>
-                        <a href="#f1" onclick="mapFunc2(1)" id="fl-1">Floor 1</a>
-                        <a href="#f2" onclick="mapFunc2(2)" id="fl-2">Floor 2</a>
-                        <a href="#f3" onclick="mapFunc2(3)" id="fl-3">Floor 3</a>
-                        <a href="#f4" onclick="mapFunc2(4)" id="fl-4">Floor 4</a>
-                        <a href="#f5" onclick="mapFunc2(5)" id="fl-5">Floor 5</a>
-                        <a href="#f6" onclick="mapFunc2(6)" id="fl-6">Floor 6</a>
-                        <a href="#f7" onclick="mapFunc2(7)" id="fl-7">Floor 7</a>
-                        <a href="#f8" onclick="mapFunc2(8)" id="fl-8">Floor 8</a>
-                        <a href="#f9" onclick="mapFunc2(9)" id="fl-9">Floor 9</a>
-                        <a href="#f10" onclick="mapFunc2(10)" id="fl-10">Floor 10</a>
-                        <a href="#f11" onclick="mapFunc2(11)" id="fl-11">Floor 11</a>
-                        <a href="#f12" onclick="mapFunc2(12)" id="fl-12">Floor 12</a>
-                    </div>
-                </div>-->
 
                     <br>
                     <br>
@@ -240,60 +163,15 @@
             </tbody>
         </table>
 
-        <script>
-       // initMap();
-        //var input = new google.map.places.SearchBox(document.getElementById("search-box"));
-    </script>
-    
+        <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+        <script src="/js/realtime.js"></script>
+        <script src="/js/index.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initMap"
+            async defer></script>
+        <script src="/js/IoTApp.js"></script>
+        <!-- <script src="/js/clocklyandDate.js"></script>-->
 
-    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
-    <script src="/js/realtime.js"></script>
-    <script src="/js/index.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initMap"
-        async defer></script>
-    <script src="/js/IoTApp.js"></script>
-    <!-- <script src="/js/clocklyandDate.js"></script>-->
-
-
-
-        <!--works start-->
-        <!--
-                    <input type="text" onkeydown="ee(this)"></input>
-                    <select id="sellist" name="optionDrop"  onChange="dd(this)">
-                      <option id="yo" value="volvo">Volvo</option>
-                      <option id="yea" value="saab">Saab</option>
-                      <option value="opel" style="display:none">Opel</option>
-                      <option value="audi">Audi</option>
-                    </select>
-                    <script>
-                     var x = document.getElementById("sellist");
-                    function ee(sth){
-                        var option = document.createElement("option");
-                        option.text = "newopt"
-                        option.setAttribute("id","iddd")
-                     if(event.key === 'Enter'){
-                     if(sth.value==1){
-                     x.remove(document.getElementById("sellist").options[3]);
-                     alert("allkay")
-                     }
-                     if(sth.value==2){
-                    x.add(option)
-                    alert("allkaytoo")
-                     }
-                    }
-                     }
-                     
-                    </script>-->
-        <!--works end-->
-        <script>
-        /*
-        var flList = document.getElementById("selfloorlist");
-       var fl5 = document.createElement("option");
-fl5.text = "Floor 5"
-flList.add(fl5);*/
-        </script>
 </body>
 
 </html>
