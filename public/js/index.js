@@ -5,6 +5,11 @@ var service;
 var origins = [];
 var pos;
 var numb;
+var map;
+var mark;
+var stopCounter=true;
+    window.lat =13.7367;
+    window.lng =100.5331;
 var arr_Destination = [
     { title: 'Place A', lat: 13.736363, lng: 100.533980 },
     { title: 'Place B', lat: 13.736086, lng: 100.533973 },
@@ -28,20 +33,27 @@ var canteenCounter = 0;
 var atmMarkers = [];
 var atmCounter = 0;
 
-function initMap() {
-    //Map options
+
+setInterval(function(){updatePosition(getLocation());}, 1000);
+var initMap=function() {
+        //Map options
     console.log("FILE 1 map executed")
     var options = {
         zoom: 17,
         center: { lat: 13.7384, lng: 100.5321 }
     }
     //Create Map
-    var map = new google.maps.Map(document.getElementById('map'), options);
+     map = new google.maps.Map(document.getElementById('map'), options);
+     mark = new google.maps.Marker({position:{lat:lat, lng:lng}, map:map});
+     mark.setVisible(false);
+    setInterval(function(){realtimeSetup();},1000);
     var directionsService = new google.maps.DirectionsService;
     var directionsDisplay = new google.maps.DirectionsRenderer;
     GGM = new Object(google.maps);
     service = new GGM.DistanceMatrixService();
     directionsDisplay.setMap(map);
+    
+    
 
     document.getElementById("atm").addEventListener("click", function () {
         atmCounter++;
@@ -324,7 +336,8 @@ function initMap() {
     }
     calculateDistance();
 
-}
+};
+window.initMap=initMap;
 
 
 //var listCourse = ["2190101 Computer Programming", "2183101 Engineering Graphics"];
