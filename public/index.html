@@ -32,16 +32,34 @@
             <input class="search-box" id="course-search" type="text" placeholder=" SEARCH COURSE" onkeydown="courseOnEnter(this)">
             <script>
 
+                 
+                 var allcourseinfo
+                 var courseidnamesec = []
+                 var arrayindex = 0
+                 var allcoursecount
+                 var distinctcourse = []
+                 var courseidnamesecdist = []
 
                 $.get('/course', (data) => {
+                    allcourseinfo = data
                     for (x = 0; x < data.length; x++) {
-                        crscrs[x] = data[x].idname
+                        courseidnamesec[x] = data[x].idnamesec
                     }
                 })
 
-                var crscrs = []
+                $.get('/course/count',(data)=>{
+                    allcoursecount = data
+                })
+
+                 $.get('/course/courseidnamesecdist', (data) => {
+                    for (x = 0; x < data.length; x++) {
+                        courseidnamesecdist[x] = data[x].idnamesecdist
+                    }
+                })
+
+              
                 $("#course-search").autocomplete({
-                    source: crscrs
+                    source: courseidnamesecdist
                 })
 
 
@@ -170,7 +188,7 @@
                 </div>
                 -->
 
-                    <select id="selfloorlist" name="optionDrop" onchange="flFunc()"></select>
+                    <select id="selfloorlist" name="optionDrop" onchange="getFloorFromDropDown()"></select>
                     <!--old ver drop down
                     <div class="mapDropdown">
                     <button onclick="selFloor()" class="dropbtn" id="theDrop2">Select Floor

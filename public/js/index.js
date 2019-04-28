@@ -362,8 +362,18 @@ function initMap() {
 }
 
 
-var listCourse = ["2190101 Computer Programming", "2183101 Engineering Graphics"];
-var theCourse = ""
+//var listCourse = ["2190101 Computer Programming", "2183101 Engineering Graphics"];
+//var theCourse = ""
+
+var flList
+var selectedFloor
+var flstr
+
+var coursedays = 0
+var nameid = ""
+var currentcourse = ""
+var currentsec = 0
+var indexcount = 0
 
 function courseOnEnter(ele) {
     if (event.key === 'Enter') {
@@ -373,20 +383,18 @@ function courseOnEnter(ele) {
 
 function searchCourse() {
 
-    /*
-    for (i = 0; i < listCourse.length; i++) {
-        if (document.getElementById("course-search").value == (listCourse[i])) {
-            theCourse = listCourse[i];
-            break;
-        }
-    }*/
-
-    for (i = 0; i < crscrs.length; i++) {
-        if (document.getElementById("course-search").value == (crscrs[i])) {
-            theCourse = crscrs[i];
+    for (i = 0; i < courseidnamesec.length; i++) {
+        if (document.getElementById("course-search").value == (courseidnamesec[i])) {
+            theCourse = courseidnamesec[i];
+            currentcourse = allcourseinfo[i].course_id
+            currentsec = allcourseinfo[i].section
+            arrayindex = i
             break;
         }
     }
+    nameid = allcourseinfo[i].course_id+" "+allcourseinfo[i].course_name
+    indexcount = allcoursecount.findIndex(ii => ii.crsec === currentcourse+" "+currentsec)
+    coursedays = allcoursecount[indexcount].countcrssec
 
 
     if (theCourse != "") {
@@ -401,11 +409,41 @@ function searchCourse() {
 
 function showCourse(theCourse) {
     var courseDiv = document.getElementById("course-info");
+    var htmltext = "";
     courseDiv.style.display = "block";
     document.getElementById("course-info-head").style.display = "block";
     document.getElementById("course-info-head").scrollIntoView({ behavior: "smooth" });
-    courseDiv.innerHTML = "<p>Course : " + theCourse + "<br> Lecturer :<br> Section :<br> Day : <br> Time : <br> Faculty : <br> Room : <br> Floor : <br> Building : </p>";
+    for(var times=0;times<coursedays;times++){
+        htmltext = htmltext+ "<p>Course : " + nameid + "<br> Lecturer : " + allcourseinfo[arrayindex+times].Prof_Name + "<br> Section : " + currentsec + "<br> Day : " + allcourseinfo[arrayindex+times].Day + "<br> Time : " + allcourseinfo[arrayindex+times].ctime + "<br> Faculty : " + allcourseinfo[arrayindex+times].faculty_name + "<br> Room : " + allcourseinfo[arrayindex+times].room_number + "<br> Floor : " + allcourseinfo[arrayindex+times].floor + "<br> Building : " + allcourseinfo[arrayindex+times].bld_name + "</p>"
+    }
+    courseDiv.innerHTML = htmltext
+    //courseDiv.innerHTML = "<p>Course : " + nameid + "<br> Lecturer : " + allcourseinfo[arrayindex].Prof_Name + "<br> Section : " + allcourseinfo[arrayindex].section + "<br> Day : " + allcourseinfo[arrayindex].Day + "<br> Time : " + allcourseinfo[arrayindex].ctime + "<br> Faculty : " + allcourseinfo[arrayindex].faculty_name + "<br> Room : " + allcourseinfo[arrayindex].room_number + "<br> Floor : " + allcourseinfo[arrayindex].floor + "<br> Building : " + allcourseinfo[arrayindex].bld_name + "</p>";
+    //courseDiv.innerHTML = "<p>Course : " + nameid + "<br> Lecturer : " + allcourseinfo[arrayindex].Prof_Name + "<br> Section : " + currentsec + "<br> Day : " + allcourseinfo[arrayindex].Day + "<br> Time : " + allcourseinfo[arrayindex].ctime + "<br> Faculty : " + allcourseinfo[arrayindex].faculty_name + "<br> Room : " + allcourseinfo[arrayindex].room_number + "<br> Floor : " + allcourseinfo[arrayindex].floor + "<br> Building : " + allcourseinfo[arrayindex].bld_name + "</p>";
     theCourse = ""; //prepare to use for next course search
+    openFloorPlan()
+    if (allcourseinfo[arrayindex].faculty_name === "Faculty of Engineering") {
+        if (allcourseinfo[arrayindex].bld_name === "Engineering Building 1") {
+            mapFunc(0, 1);
+        } else if (allcourseinfo[arrayindex].bld_name === "Engineering Building 2") {
+            mapFunc(0, 2);
+        } else if (allcourseinfo[arrayindex].bld_name === "Engineering Building 3") {
+            mapFunc(0, 3);
+        } else if (allcourseinfo[arrayindex].bld_name === "Engineering Building 4") {
+            //******* */
+        } else if (allcourseinfo[arrayindex].bld_name === "Engineering Centennial Memorial Building") {
+            mapFunc(0, 100);
+           
+        }
+    } else if (allcourseinfo[arrayindex].faculty_name === "Faculty of Arts") {
+        if (allcourseinfo[arrayindex].bld_name === "Maha Chakri Sirindhorn Building") {
+            mapFunc(1, 1);
+        }else if (allcourseinfo[arrayindex].bld_name === "Boromrajakumari Building") {
+            //************** */
+        }
+    }
+    flstr = allcourseinfo[arrayindex].floor;
+    document.getElementById("selfloorlist").value = "Floor " + flstr
+    flFunc();
 }
 
 
@@ -443,7 +481,7 @@ function mapFunc(fac, building) {
         flarr[a] = document.createElement("option");
         flarr[a].text = "Floor " + a;
     }
-
+  
     //floor M, M1, M2, M3
     for (b = 20; b < 24; b++) {
         flarr[b] = document.createElement("option");
@@ -461,7 +499,7 @@ function mapFunc(fac, building) {
     //selected building number and faculty
     currentBuild = building;
     currentFac = fac;
-
+    
     //old ver floor drop down
     //document.getElementById("theDrop2").innerText = "Floor 1";
 
@@ -474,8 +512,10 @@ function mapFunc(fac, building) {
             flList.add(flarr[9]);
             flList.add(flarr[10]);
             flList.add(flarr[12]);
+            //default floor is M
             document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0100-FR90.jpg\"></center>"
-            document.getElementById("theDrop2").innerText = "Floor M";
+            flList.value = "Floor M";
+            //document.getElementById("theDrop2").innerText = "Floor M";
         }
         else {
             flList.add(flarr[1]);
@@ -489,9 +529,9 @@ function mapFunc(fac, building) {
             //default floor is 1
             document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + building + "-FR1.jpg\"></center>"
             //document.getElementById("theDrop").innerText = "Engineering Building " + building;
-            document.getElementById("building-num").innerText = "Engineering Building " + building;
         }
 
+        document.getElementById("building-num").innerText = "Engineering Building " + building;
 
     }
     else if (fac == 1) { //if it is a building in faculty of arts
@@ -585,10 +625,16 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, searchBo
     });
 }
 
+
+
+function getFloorFromDropDown() {
+    flList = document.getElementById("selfloorlist");
+    selectedFloor = flList.value + ""
+    flstr = selectedFloor.slice(6)
+    flFunc()
+}
+
 function flFunc() {
-    var flList = document.getElementById("selfloorlist");
-    var selectedFloor = flList.value + ""
-    var flstr = selectedFloor.slice(6)
     if (flstr == "M") {
         flstr = 90;
     }
