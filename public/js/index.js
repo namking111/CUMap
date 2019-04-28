@@ -33,9 +33,10 @@ var canteenCounter = 0;
 var atmMarkers = [];
 var atmCounter = 0;
 
+
 setInterval(function(){updatePosition(getLocation());}, 1000);
 var initMap=function() {
-    //Map options
+        //Map options
     console.log("FILE 1 map executed")
     var options = {
         zoom: 17,
@@ -56,137 +57,169 @@ var initMap=function() {
 
     document.getElementById("atm").addEventListener("click", function () {
         atmCounter++;
-        $.get('/location/atm', (data) => {
-            console.log("ATM ", data[0].Latitude);
-            if (atmCounter % 2 != 0) {
-                for (i = 0; i <= atmMarkers.length; i++) {
-                    atmMarkers[i] = new google.maps.Marker({
-                        position: new google.maps.LatLng(data[i].Latitude, data[i].Longitude),
-                        map: map,
-                        icon: '/img/atm.png'
-                    });
-                }
+        if (atmCounter % 2 != 0) {
+            if (atmCounter == 1) {
+                $.get('/location/atm', (data) => {
+                    for (i = 0; i < data.length; i++) {
+                        atmMarkers[i] = addMarker(data, '/img/atm.png', data[i].Bank_name);
+                    }
+                });
             } else {
-                for (i = 0; i <= atmMarkers.length; i++) {
-                    atmMarkers[i].setVisible(false);
+                for (i = 0; i < atmMarkers.length; i++) {
+                    atmMarkers[i].setVisible(true);
                 }
             }
-        });
+        } else {
+            for (i = 0; i < atmMarkers.length; i++) {
+                atmMarkers[i].setVisible(false);
+            }
+        }
+
     });
 
     document.getElementById("canteen").addEventListener("click", function () {
         canteenCounter++;
-        $.get('/location/canteen', (data) => {
-            if (canteenCounter % 2 != 0) {
-                for (i = 0; i <= canteenMarkers.length; i++) {
-                    canteenMarkers[i] = new google.maps.Marker({
-                        position: new google.maps.LatLng(data[i].Latitude, data[i].Longitude),
-                        map: map,
-                        icon: '/img/canteen.png'
-                    });
-                }
+        if (canteenCounter % 2 != 0) {
+            if (canteenCounter == 1) {
+                $.get('/location/canteen', (data) => {
+                    for (i = 0; i < data.length; i++) {
+                        canteenMarkers[i] = addMarker(data, '/img/canteen.png', data[i].Canteen_name);
+                    }
+                });
             } else {
-                for (i = 0; i <= canteenMarkers.length; i++) {
-                    canteenMarkers[i].setVisible(false);
+                for (i = 0; i < canteenMarkers.length; i++) {
+                    canteenMarkers[i].setVisible(true);
                 }
             }
-        });
+        } else {
+            for (i = 0; i < canteenMarkers.length; i++) {
+                canteenMarkers[i].setVisible(false);
+            }
+        }
     });
 
     document.getElementById("museum").addEventListener("click", function () {
         museumCounter++;
-        $.get('/location/museum', (data) => {
-            if (museumCounter % 2 != 0) {
-                for (i = 0; i <= museumMarkers.length; i++) {
-                    museumMarkers[i] = new google.maps.Marker({
-                        position: new google.maps.LatLng(data[i].Latitude, data[i].Longitude),
-                        map: map,
-                        icon: '/img/museum.png'
-                    });
-                }
+        if (museumCounter % 2 != 0) {
+            if (museumCounter == 1) {
+                $.get('/location/museum', (data) => {
+                    for (i = 0; i < data.length; i++) {
+                        museumMarkers[i] = addMarker(data, '/img/museum.png', data[i].Museum_name);
+                    }
+                });
             } else {
-                for (i = 0; i <= museumMarkers.length; i++) {
-                    museumMarkers[i].setVisible(false);
+                for (i = 0; i < museumMarkers.length; i++) {
+                    museumMarkers[i].setVisible(true);
                 }
             }
-        });
+        } else {
+            for (i = 0; i < museumMarkers.length; i++) {
+                museumMarkers[i].setVisible(false);
+            }
+        }
     });
 
     document.getElementById("coffeeshop").addEventListener("click", function () {
         coffeeshopCounter++;
-        $.get('/location/coffeeshop', (data) => {
-            if (coffeeshopCounter % 2 != 0) {
-                for (i = 0; i <= coffeeshopMarkers.length; i++) {
-                    coffeeshopMarkers[i] = new google.maps.Marker({
-                        position: new google.maps.LatLng(data[i].Latitude, data[i].Longitude),
-                        map: map,
-                        icon: '/img/coffee.png'
-                    });
-                }
+        if (coffeeshopCounter % 2 != 0) {
+            if (coffeeshopCounter == 1) {
+                $.get('/location/coffeeshop', (data) => {
+                    for (i = 0; i < data.length; i++) {
+                        coffeeshopMarkers[i] = addMarker(data, '/img/coffee.png', data[i].Coffee_shop_name);
+                    }
+                });
             } else {
-                for (i = 0; i <= coffeeshopMarkers.length; i++) {
-                    coffeeshopMarkers[i].setVisible(false);
+                for (i = 0; i < coffeeshopMarkers.length; i++) {
+                    coffeeshopMarkers[i].setVisible(true);
                 }
             }
-        });
+        } else {
+            for (i = 0; i < coffeeshopMarkers.length; i++) {
+                coffeeshopMarkers[i].setVisible(false);
+            }
+        }
     });
 
     document.getElementById("copyprint").addEventListener("click", function () {
         copyCounter++;
-        $.get('/location/copyprint', (data) => {
-            if (copyCounter % 2 != 0) {
-                for (i = 0; i <= copyMarkers.length; i++) {
-                    copyMarkers[i] = new google.maps.Marker({
-                        position: new google.maps.LatLng(data[i].Latitude, data[i].Longitude),
-                        map: map,
-                        icon: '/img/copy.png'
-                    });
-                }
+        if (copyCounter % 2 != 0) {
+            if (copyCounter == 1) {
+                $.get('/location/copyprint', (data) => {
+                    for (i = 0; i < data.length; i++) {
+                        copyMarkers[i] = addMarker(data, '/img/copy.png', data[i].Copy_Print_shop_name);
+                    }
+                });
             } else {
-                for (i = 0; i <= copyMarkers.length; i++) {
-                    copyMarkers[i].setVisible(false);
+                for (i = 0; i < copyMarkers.length; i++) {
+                    copyMarkers[i].setVisible(true);
                 }
             }
-        });
+        } else {
+            for (i = 0; i < copyMarkers.length; i++) {
+                copyMarkers[i].setVisible(false);
+            }
+        }
     });
 
     document.getElementById("vendm").addEventListener("click", function () {
         vendmCounter++;
-        $.get('/location/vending_machine', (data) => {
-            if (vendmCounter % 2 != 0) {
-                for (i = 0; i <= vendmMarkers.length; i++) {
-                    vendmMarkers[i] = new google.maps.Marker({
-                        position: new google.maps.LatLng(data[i].Latitude, data[i].Longitude),
-                        map: map,
-                        icon: '/img/vending.png'
-                    });
-                }
+        if (vendmCounter % 2 != 0) {
+            if (vendmCounter == 1) {
+                $.get('/location/vending_machine', (data) => {
+                    for (i = 0; i < data.length; i++) {
+                        vendmMarkers[i] = addMarker(data, '/img/vending.png', data[i].Vending_Machine_type);
+                    }
+                });
             } else {
-                for (i = 0; i <= vendmMarkers.length; i++) {
-                    vendmMarkers[i].setVisible(false);
+                for (i = 0; i < vendmMarkers.length; i++) {
+                    vendmMarkers[i].setVisible(true);
                 }
             }
-        });
+        } else {
+            for (i = 0; i < vendmMarkers.length; i++) {
+                vendmMarkers[i].setVisible(false);
+            }
+        }
     });
 
     document.getElementById("libr").addEventListener("click", function () {
         librCounter++;
-        $.get('/location/library', (data) => {
-            if (librCounter % 2 != 0) {
-                for (i = 0; i <= librMarkers.length; i++) {
-                    librMarkers[i] = new google.maps.Marker({
-                        position: new google.maps.LatLng(data[i].Latitude, data[i].Longitude),
-                        map: map,
-                        icon: '/img/Libr.png'
-                    });
-                }
+        if (librCounter % 2 != 0) {
+            if (librCounter == 1) {
+                $.get('/location/library', (data) => {
+                    for (i = 0; i < data.length; i++) {
+                        librMarkers[i] = addMarker(data, '/img/Libr.png', data[i].Library_name);
+                    }
+                });
             } else {
-                for (i = 0; i <= librMarkers.length; i++) {
-                    librMarkers[i].setVisible(false);
+                for (i = 0; i < librMarkers.length; i++) {
+                    librMarkers[i].setVisible(true);
                 }
             }
-        });
+        } else {
+            for (i = 0; i < librMarkers.length; i++) {
+                librMarkers[i].setVisible(false);
+            }
+        }
     });
+
+    //For adding marker to map
+    function addMarker(data, icon, content) {
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(data[i].Latitude, data[i].Longitude),
+            map: map,
+            icon: icon
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: content
+        });
+
+        marker.addListener('click', function () {
+            infoWindow.open(map, marker);
+        });
+
+        return marker;
+    }
 
     document.getElementById('getRoute').onclick = function () {
         getCurrentLocation();
@@ -197,19 +230,6 @@ var initMap=function() {
     });
 
     var markers = [];
-    /*
-    // Array of markers
-    var markers = [
-        {
-            coords: { lat: 13.7367, lng: 100.5331 },
-            iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-            content: '<h1>Faculty of Engineering</h1>'
-        },
-        {
-            coords: { lat: 13.7393, lng: 100.5341 },
-            content: '<h1>Faculty of Art</h1>'
-        }
-    ];*/
 
     //search box ja
     var searchBox = new google.maps.places.SearchBox(document.getElementById("building-search-box"));
@@ -319,7 +339,6 @@ var initMap=function() {
 };
 window.initMap=initMap;
 
-
 var listCourse = ["2190101 Computer Programming", "2183101 Engineering Graphics"];
 var theCourse = ""
 
@@ -355,9 +374,6 @@ function showCourse() {
     courseDiv.innerHTML = "<p>Course : " + theCourse + "<br> Section :<br> Lecturer :<br> Day : <br> Time : <br> Room number : <br> Building : <br> Floor : <br> Faculty : </p>";
     theCourse = ""; //prepare to use for next course search
 }
-
-
-
 
 function openFloorPlan() {
     document.getElementById("flPlan").style.display = "block";
