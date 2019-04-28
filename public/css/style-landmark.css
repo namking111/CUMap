@@ -1,0 +1,389 @@
+/* ressponsive*/
+@media screen and (max-width: 800px) {
+    div.landmark-dropdown {
+      font-size: 2vw;
+      position:static;
+      display: block;
+      width:100%;
+    }
+  
+    .checkbox{
+      height: 16.5px;
+      width: 16.5px;
+    }
+    .checkbox label {
+      height: 16.5px;
+      width: 16.5px;
+    }
+    .checkbox label:after {
+      height: 13px;
+      width: 7px;
+    }
+  
+    .landmark-check{
+      font-size: 13px;
+    }
+  
+    @-webkit-keyframes check {
+      0% {
+        height: 0;
+        width: 0;
+      }
+      25% {
+        height: 0;
+        width: 7px;
+      }
+      50% {
+        height: 13px;
+        width: 7px;
+      }
+    }
+    @-moz-keyframes check {
+      0% {
+        height: 0;
+        width: 0;
+      }
+      25% {
+        height: 0;
+        width: 7px;
+      }
+      50% {
+        height: 13px;
+        width: 7px;
+      }
+    }
+    @-ms-keyframes check {
+      0% {
+        height: 0;
+        width: 0;
+      }
+      25% {
+        height: 0;
+        width: 7px;
+      }
+      50% {
+        height: 13px;
+        width: 7px;
+      }
+    }
+    @keyframes check {
+      0% {
+        height: 0;
+        width: 0;
+      }
+      25% {
+        height: 0;
+        width: 7px;
+      }
+      50% {
+        height: 13px;
+        width: 7px;
+      }
+    }
+}
+@media screen and (min-width: 801px) {
+    div.landmark-dropdown {
+        font-size: 14px;
+        position:static;
+        display: block;
+        width:100%;
+    }
+
+    .checkbox {
+        height: 18px;
+        width: 18px;
+    }
+    .checkbox label {
+        height: 18px;
+        width: 18px;
+    }
+    .checkbox label:after {
+        height: 14px;
+        width: 9px;
+    }
+
+    .landmark-check{
+        font-size: 15px;
+    }
+
+    @-webkit-keyframes check {
+        0% {
+        height: 0;
+        width: 0;
+        }
+        25% {
+        height: 0;
+        width: 9px;
+        }
+        50% {
+        height: 14px;
+        width: 9px;
+        }
+    }
+    @-moz-keyframes check {
+        0% {
+        height: 0;
+        width: 0;
+        }
+        25% {
+        height: 0;
+        width: 9px;
+        }
+        50% {
+        height: 14px;
+        width: 9px;
+        }
+    }
+    @-ms-keyframes check {
+        0% {
+        height: 0;
+        width: 0;
+        }
+        25% {
+        height: 0;
+        width: 9px;
+        }
+        50% {
+        height: 14px;
+        width: 9px;
+        }
+    }
+    @keyframes check {
+        0% {
+        height: 0;
+        width: 0;
+        }
+        25% {
+        height: 0;
+        width: 9px;
+        }
+        50% {
+        height: 14px;
+        width: 9px;
+        }
+    }
+}
+@media screen and (min-width: 551px) {
+    .col { 
+        display: contents;
+        /* width: 100%; */
+        padding: 2vw;
+    }
+}
+@media only screen and (max-width: 550px) {
+    .col { 
+        display: block;
+        width: 100%;
+        padding: 2vw;
+    }
+}
+
+@media screen and (min-width: 850px) {
+    .landmark-dropdown .dropdown-selector{
+        top: 1%;
+        margin-top: 135px;
+    }
+    .landmark-dropdown .dropdown-caption:before, .landmark-dropdown .dropdown-caption:after {
+        margin-top: 132px;
+    }
+  }
+  @media only screen and (max-width: 850px) and (min-width: 492px){
+    .landmark-dropdown .dropdown-selector{
+        top: 1%;
+        margin-top: 179px;
+    }
+    .landmark-dropdown .dropdown-caption:before, .landmark-dropdown .dropdown-caption:after {
+        margin-top: 176px;
+    }
+  }
+  @media only screen and (max-width: 492px){
+    .landmark-dropdown .dropdown-selector{
+        top: 1%;
+        margin-top: 217px;
+    }
+    .landmark-dropdown .dropdown-caption:before, .landmark-dropdown .dropdown-caption:after {
+        margin-top: 214px;
+    }
+  }
+/* end responsive */
+
+/* new checkbox */
+.landmark-wrapper {
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    /* make it stay center */
+    transform: translate(-0%, -0%);
+    color: #fff;
+    /* position: static; */
+    position:static;
+    display: block;
+
+    text-align: left;
+    margin-left: 35px;
+    margin-right: 25px;
+}
+.checkbox{
+    background-color: #fff;
+    display: inline-block;
+    margin: 0 0.55em;
+    border-radius: 0.25em;
+}
+.checkbox label{
+    display: block;
+    position: relative;
+}
+.checkbox label:after{
+    /*
+    This element has a border on the right, and top. By rotating it looks like a check symbol, but the wrong way. That's why I'm flipping it with scaleX(-1)
+    */
+    -moz-transform: scaleX(-1) rotate(135deg);
+    -ms-transform: scaleX(-1) rotate(135deg);
+    -webkit-transform: scaleX(-1) rotate(135deg);
+    transform: scaleX(-1) rotate(135deg);
+    /*
+    I want to position the symbol using the left top, because when increasing the width and height of an object, it expands from the top left corner as well. That is what makes it looks like it's being drawn.
+    */
+    -moz-transform-origin: left top;
+    -ms-transform-origin: left top;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    border-right: 2.5px solid transparent;
+    border-top: 2.5px solid transparent;
+    content: '';
+    display: block;
+    left: 1px;
+    position: absolute;
+    top: 50%;
+}
+.checkbox label:hover:after{
+    border-color: rgb(236, 157, 236);
+}
+.checkbox input, .checkbox-alt input {
+    display: none;
+}
+.checkbox input:checked + label:after{
+    -webkit-animation: check 0.8s;
+    -moz-animation: check 0.8s;
+    -o-animation: check 0.8s;
+    animation: check 0.8s;
+    border-color: #F044AB;
+}
+.checkbox.checkbox-alt label:hover:after{
+    -webkit-animation: check 0.8s ease infinite;
+    -moz-animation: check 0.8s ease infinite;
+    -o-animation: check 0.8s ease infinite;
+    animation: check 0.8s ease infinite;
+}
+.checkbox.checkbox-alt input:checked + label:after{
+    -webkit-animation: none;
+    -moz-animation: none;
+    -o-animation: none;
+    animation: none;
+}
+.landmark-check{
+    margin-left: 1px;
+    margin-right: 45px;
+}
+/* end new checkbox */
+    
+/* dropdown */
+.landmark-dropdown {
+    position:static;
+    display: block;
+    
+    box-sizing: border-box;
+    position: static;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #DEA7CB;
+
+    font-family: 'Lato', sans-serif;
+    font-weight: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    height: 35px;
+}
+.landmark-dropdown .dropdown-caption {
+    display: static;
+    /* position:static;
+    display: block; */
+
+    box-sizing: border-box;
+    padding: 15px;
+    transition: all .25 ease;
+
+    font-size: 16px;
+    line-height: 20px;
+    text-align: left;
+    padding: 7px 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.landmark-dropdown .dropdown-selector{
+    position: absolute;
+
+    top: 1%;
+    left: 0;
+    width: 100%;
+    /* margin-top: 100px; */
+    
+    height: 33px;
+    z-index: 1;
+    opacity: 0;
+}
+
+.landmark-dropdown .dropdown-content {
+    position: absolute;
+    /* position:static;
+    display: block; */
+
+    z-index: 2;
+    box-sizing: border-box;
+    max-height: 0;
+    opacity: .5;
+    transition: all .25s ease;
+    overflow: hidden;
+    background-color: #E9C8DD;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.157);
+}
+.landmark-dropdown .dropdown-content li {
+    list-style: none;
+    display: static;
+    padding: 15px;
+}
+.landmark-dropdown .dropdown-selector:checked ~ .dropdown-content {
+    max-height: 500px;
+    opacity: 1;
+}
+.landmark-dropdown .dropdown-caption:before, .landmark-dropdown .dropdown-caption:after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    /* margin-top: 100px; */
+    background-color: #000;
+    right: 26px;
+    top: 23px;
+    -webkit-transform: rotateZ(45deg);
+            transform: rotateZ(45deg);
+    transition: all .25s;
+}
+.landmark-dropdown .dropdown-caption:after {
+    -webkit-transform: rotateZ(-45deg);
+            transform: rotateZ(-45deg);
+    right: 32px;
+}
+.landmark-dropdown-selector:checked ~ .dropdown-caption:before {
+    -webkit-transform: rotateZ(135deg);
+            transform: rotateZ(135deg);
+}
+.landmark-dropdown-selector:checked ~ .dropdown-caption:after {
+    -webkit-transform: rotateZ(-135deg);
+            transform: rotateZ(-135deg);
+}
+/* end dropdown */
+  

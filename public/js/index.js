@@ -53,7 +53,14 @@ var initMap = function () {
     service = new GGM.DistanceMatrixService();
     directionsDisplay.setMap(map);
 
-
+    // New added unchecked all landmarks
+    document.getElementById("atm").checked = false;
+    document.getElementById("canteen").checked = false;
+    document.getElementById("libr").checked = false;
+    document.getElementById("coffeeshop").checked = false;
+    document.getElementById("museum").checked = false;
+    document.getElementById("copyprint").checked = false;
+    document.getElementById("vendm").checked = false;
 
     document.getElementById("atm").addEventListener("click", function () {
         atmCounter++;
@@ -220,11 +227,11 @@ var initMap = function () {
 
         return marker;
     }
-
-    document.getElementById('getRoute').onclick = function () {
-        getCurrentLocation();
-        setTimeout(() => calculateAndDisplayRoute(directionsService, directionsDisplay, searchBox), 1000);
-    };
+    //to be deleted
+        document.getElementById('getRoute').onclick = function () {
+            getCurrentLocation();
+            setTimeout(() => calculateAndDisplayRoute(directionsService, directionsDisplay, searchBox), 1000);
+        };
     // Listen for click on map
     google.maps.event.addListener(map, 'click', function (event) {
     });
@@ -322,6 +329,10 @@ var initMap = function () {
             alert("Please enter destination.");
         } else {
             searchPlace();
+
+            // hide landmark
+            var ld = document.getElementById("landmark-dropdown");
+            ld.style.display = "none";
         }
     });
     document.getElementById("building-search-box").onkeydown = function () {
@@ -330,6 +341,10 @@ var initMap = function () {
                 alert("Please enter destination.");
             } else {
                 searchPlace();
+
+                // hide landmark
+                var ld = document.getElementById("landmark-dropdown");
+                ld.style.display = "none";
             }
         }
 
@@ -374,6 +389,11 @@ function searchCourse() {
 
     if (theCourse != "") {
         showCourse(theCourse);
+
+        // hide landmark
+        var ld = document.getElementById("landmark-dropdown");
+        ld.style.display = "none";
+
     } else if (document.getElementById("course-search").value.length == 0) {
         alert("Please enter course.")
     } else {
@@ -671,10 +691,6 @@ function calculateDistance() {
         }, function () {
             // คำสั่งทำงาน ถ้า ระบบระบุตำแหน่ง geolocation ผิดพลาด หรือไม่ทำงาน    
         });
-
-
-
-
 
     } else {
 

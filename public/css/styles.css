@@ -1,15 +1,104 @@
 @import url('https://fonts.googleapis.com/css?family=Orbitron');
-#map {
+/* #map {
   height: 500px;
   width: 100%;
+} */
+body{
+  background-color: #EFEAEF;
 }
+
 .search-box{
-    height: 30px;
-    width: 400px;
-    border-radius: 40px;
-    border: none;
-    margin-left: 10px;
+  border-radius: 40px;
+  border: none;
+  margin-left: 10px;
+  position: static;
 } 
+
+
+@media screen and (min-width: 851px) {
+  .col-1 { 
+      display: contents;
+      padding: 2vw;
+  }
+}
+@media screen and (max-width: 850px) and (min-width: 550px) {
+  .col-1 { 
+    display: inline;
+    padding: 2vw;
+  }
+}
+
+@media screen and (min-width: 851px) {
+  .search-box{
+    height: 30px;
+    width: 30vw;
+  } 
+
+  #map {
+    height: 500px;
+    position: static;
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 850px) and (min-width: 750px){
+  .search-box{
+    height: 27px;
+    width: 45vw;
+    font-size: 14px;
+  } 
+  #map {
+    height: 500px;
+    position: static;
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 750px) and (min-width: 650px){
+  .search-box{
+    height: 27px;
+    width: 50vw;
+    font-size: 14px;
+  } 
+  #map {
+    height: 500px;
+    position: static;
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 650px) and (min-width: 550px){
+  .search-box{
+    height: 26px;
+    width: 50vw;
+    font-size: 14px;
+  } 
+  #map {
+    height: 500px;
+    position: static;
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 550px) {
+  /* .col-1 { 
+      display: block;
+      width: 100%;
+      padding: 1vw;
+  } */
+  .col-1 { 
+    display: inline;
+    padding: 2vw;
+  }
+  .search-box{
+    height: 2em;
+    width: 60vw;
+    /* min-width: 40px; */
+    font-size: 12px;
+  } 
+  #map {
+    height: 500px;
+    position: static;
+    width: 90%;
+  }
+}
+
 .tab{
     overflow: hidden;
 }
@@ -27,19 +116,21 @@
       background-color: rgb(253, 214, 107);
       border-radius: 40px;
       border: none;
+      position: static;
+      margin-bottom: 20px;
   }
   .home-header{
-      background-color:  rgb(238, 147, 200);
-      height: 200px;
+    background-color:  #da81b7;
+    height: 100;
       
   }
   .section-head{
     display: none;
     background-color: rgb(238, 147, 200); 
   }
-  #land-mark{
+  /*#land-mark{
     background-color: rgb(238, 147, 200); 
-  }
+  }*/
   #flMap{
     background-color: rgb(219, 218, 218);
     height: 1000px;
