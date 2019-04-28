@@ -20,6 +20,14 @@ var posPlace;
 var bname = ""
 
 //Filters
+var muvmiMarkers = [];
+var muvmiCounter = 0;
+var hamoMarkers = [];
+var hamoCounter = 0;
+var cubikeMarkers = [];
+var cubikeCounter = 0;
+var popbusMarkers = [];
+var popbusCounter = 0;
 var librMarkers = [];
 var librCounter = 0;
 var vendmMarkers = [];
@@ -63,6 +71,10 @@ var initMap = function () {
     document.getElementById("museum").checked = false;
     document.getElementById("copyprint").checked = false;
     document.getElementById("vendm").checked = false;
+    document.getElementById("popbus").checked = false;
+    document.getElementById("cubike").checked = false;
+    document.getElementById("hamo").checked = false;
+    document.getElementById("muvmi").checked = false;
 
     document.getElementById("atm").addEventListener("click", function () {
         atmCounter++;
@@ -211,6 +223,91 @@ var initMap = function () {
             }
         }
     });
+
+    document.getElementById("popbus").addEventListener("click", function () {
+        popbusCounter++;
+        if (popbusCounter % 2 != 0) {
+            if (popbusCounter == 1) {
+                $.get('/location/CU_Pop_Bus', (data) => {
+                    for (i = 0; i < data.length; i++) {
+                        popbusMarkers[i] = addMarker(data, '/img/popbus.png', data[i].CU_Bus_station);
+                    }
+                });
+            } else {
+                for (i = 0; i < popbusMarkers.length; i++) {
+                    popbusMarkers[i].setVisible(true);
+                }
+            }
+        } else {
+            for (i = 0; i < popbusMarkers.length; i++) {
+                popbusMarkers[i].setVisible(false);
+            }
+        }
+    });
+
+    document.getElementById("cubike").addEventListener("click", function () {
+        cubikeCounter++;
+        if (cubikeCounter % 2 != 0) {
+            if (cubikeCounter == 1) {
+                $.get('/location/CU_Bike', (data) => {
+                    for (i = 0; i < data.length; i++) {
+                        cubikeMarkers[i] = addMarker(data, '/img/cubike.png', data[i].CU_Bike_Station);
+                    }
+                });
+            } else {
+                for (i = 0; i < cubikeMarkers.length; i++) {
+                    cubikeMarkers[i].setVisible(true);
+                }
+            }
+        } else {
+            for (i = 0; i < cubikeMarkers.length; i++) {
+                cubikeMarkers[i].setVisible(false);
+            }
+        }
+    });
+
+    document.getElementById("hamo").addEventListener("click", function () {
+        hamoCounter++;
+        if (hamoCounter % 2 != 0) {
+            if (hamoCounter == 1) {
+                $.get('/location/HAMO', (data) => {
+                    for (i = 0; i < data.length; i++) {
+                        hamoMarkers[i] = addMarker(data, '/img/hamo.png', data[i].HAMO);
+                    }
+                });
+            } else {
+                for (i = 0; i < hamoMarkers.length; i++) {
+                    hamoMarkers[i].setVisible(true);
+                }
+            }
+        } else {
+            for (i = 0; i < hamoMarkers.length; i++) {
+                hamoMarkers[i].setVisible(false);
+            }
+        }
+    });
+
+    document.getElementById("muvmi").addEventListener("click", function () {
+        muvmiCounter++;
+        if (muvmiCounter % 2 != 0) {
+            if (muvmiCounter == 1) {
+                $.get('/location/Muvmi', (data) => {
+                    for (i = 0; i < data.length; i++) {
+                        muvmiMarkers[i] = addMarker(data, '/img/muvmi.png', data[i].Muvmi);
+                    }
+                });
+            } else {
+                for (i = 0; i < muvmiMarkers.length; i++) {
+                    muvmiMarkers[i].setVisible(true);
+                }
+            }
+        } else {
+            for (i = 0; i < muvmiMarkers.length; i++) {
+                muvmiMarkers[i].setVisible(false);
+            }
+        }
+    });
+
 
     //For adding marker to map
     function addMarker(data, icon, content) {
