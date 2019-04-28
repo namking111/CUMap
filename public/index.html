@@ -27,6 +27,10 @@
     <link rel="stylesheet" href="/css/style-landmark.css">
     <!-- Theme -->
     <link rel="stylesheet" href="/css/style-theme.css">
+    <!-- select method -->
+    <link rel="stylesheet" href="css/style-method.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -198,21 +202,167 @@
                 </div>
 
                 <div class="container">
-                   
 
+                    
+
+                    <!-- start selecting method -->
+                    <div class="method-select" id="method-select">
+
+                        <!-- start location -->
+                        <div class="s-location">
+                            <div class="s-lo-des"></div>
+                            <p class="s-desc" id="telldest">Destination :</p>
+                            <div>
+                                <!-- <center>
+                                        <img class="posi" src="img/walk.png" align="middle">
+                                    </center> -->
+                                <center>
+                                    <div>
+                                        <svg width="23" height="23" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle opacity="0.5" cx="13" cy="13" r="13" fill="black" />
+                                            <circle cx="13.0001" cy="13" r="8.18519" fill="#F2F2F2" />
+                                            <circle cx="12.9998" cy="13" r="4.33333" fill="black" />
+                                        </svg>
+                                        <span class="s-desc1">current location</span>
+                                    </div>
+                                    <!-- <br> -->
+                                    <div>
+                                        <i class="fa fa-ellipsis-v s-desc2" style="font-size:20px"></i>
+                                        <!-- <span class="s-desc2"> nnn</span> -->
+                                    </div>
+
+                                    <div>
+                                        <i class="fa fa-map-marker" aria-hidden="true" style="font-size:26px"></i>
+                                        <span class="s-desc1">destined location</span>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- end location -->
+                        <!-- <br> -->
+                        <!-- start transport -->
+                        <div class="s-transport">
+                            <span>Select Method</span>
+                        </div>
+                        <br>
+
+                        <div>
+                            <center>
+                                <!-- <div id="walk"> -->
+                                <!-- <input id="walk-s" class="transport-selector" type="checkbox" unchecked/> -->
+                                <span class="w-pic">
+                                    <img class="t-pic-w" id="walk1" onclick="changeWalk()" src="img-transport/walk.png" align="middle">
+                                    <label>Walk</label>
+                                </span>
+                                <!-- <img id="walk2" onclick="document.getElementById('walk2').src='img/walk-2.png'" src="img/walk.png" width="50" height="50"> -->
+                                <!-- <img src="img/walk.png" alt="walk2" width="50" height="50" onclick="selectMethodPic()"> -->
+                                <span class="b-pic">
+                                    <img class="t-pic-b" id="bike1" onclick="changeBike()" src="img-transport/bike.png" align="middle">
+                                    <label>CU Bike</label>
+                                </span>
+                                <span class="bp-pic">
+                                    <img class="t-pic-bp" id="bus1" onclick="changeBus()" src="img-transport/bus.png" align="middle">
+                                    <label>CU Pop Bus</label>
+                                </span>
+                                <span class="h-pic">
+                                    <img class="t-pic-h" id="hamo1" onclick="changeHamo()" src="img-transport/hamo.png" align="middle">
+                                    <label>Hamo</label>
+                                </span>
+                                <span class="m-pic">
+                                    <img class="t-pic-m" id="muvmi1" onclick="changeMuvmi()" src="img-transport/muvmi.png" align="middle">
+                                    <label>Muvmi</label>
+                                </span>
+                            </center>
+                            <script>
+                                function changeWalk() {
+                                    document.getElementById('walk1').src = 'img-transport/walk-2.png'
+                                    document.getElementById('bike1').src = 'img-transport/bike.png'
+                                    document.getElementById('bus1').src = 'img-transport/bus.png'
+                                    document.getElementById('hamo1').src = 'img-transport/hamo.png'
+                                    document.getElementById('muvmi1').src = 'img-transport/muvmi.png'
+                                }
+                                function changeBike() {
+                                    document.getElementById('walk1').src = 'img-transport/walk.png'
+                                    document.getElementById('bike1').src = 'img-transport/bike-2.png'
+                                    document.getElementById('bus1').src = 'img-transport/bus.png'
+                                    document.getElementById('hamo1').src = 'img-transport/hamo.png'
+                                    document.getElementById('muvmi1').src = 'img-transport/muvmi.png'
+                                }
+                                function changeBus() {
+                                    document.getElementById('walk1').src = 'img-transport/walk.png'
+                                    document.getElementById('bike1').src = 'img-transport/bike.png'
+                                    document.getElementById('bus1').src = 'img-transport/bus-2.png'
+                                    document.getElementById('hamo1').src = 'img-transport/hamo.png'
+                                    document.getElementById('muvmi1').src = 'img-transport/muvmi.png'
+                                }
+                                function changeHamo() {
+                                    document.getElementById('walk1').src = 'img-transport/walk.png'
+                                    document.getElementById('bike1').src = 'img-transport/bike.png'
+                                    document.getElementById('bus1').src = 'img-transport/bus.png'
+                                    document.getElementById('hamo1').src = 'img-transport/hamo-2.png'
+                                    document.getElementById('muvmi1').src = 'img-transport/muvmi.png'
+                                }
+                                function changeMuvmi() {
+                                    document.getElementById('walk1').src = 'img-transport/walk.png'
+                                    document.getElementById('bike1').src = 'img-transport/bike.png'
+                                    document.getElementById('bus1').src = 'img-transport/bus.png'
+                                    document.getElementById('hamo1').src = 'img-transport/hamo.png'
+                                    document.getElementById('muvmi1').src = 'img-transport/muvmi-2.png'
+                                }
+                            </script>
+                        </div>
+                        <!-- end transport -->
+
+                        <!-- start shortest route button -->
+                        <div>
+                            <center>
+                                <button class="s-button spin" id="spin" onclick="selectMethod()">
+                                    <span>Get Shortest Route</span>
+                                    <span>
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
+                                        </svg>
+                                    </span>
+                                </button>
+
+                                <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+                                <script>
+                                    $("button").click(function () {
+                                        var target = $(this);
+                                        if (target.hasClass("done")) {
+                                            // Do nothing
+                                        } else {
+                                            target.addClass("processing");
+                                            setTimeout(function () {
+                                                target.removeClass("processing");
+                                                target.addClass("done");
+                                            }, 2200);
+                                        }
+                                    });
+                                </script>
+                            </center>
+                        </div>
+                        <!-- end shortest route button -->
+                        <br>
+
+                    </div>
+                    <!-- end selecting method -->
+                    <!-- start course info -->
                     <div id="course-info-head" class="section-head">
-                        <br>
-                        <h2>&nbsp;Course Information</h2>
-                        <br>
-                    </div>
-                    <div id="course-info">
-                    </div>
+                            <br>
+                            <h2>&nbsp;Course Information</h2>
+                            <br>
+                        </div>
+                        <div id="course-info"></div>
+                        <!-- end course info -->
 
-                    <div id="map">
-                    </div>
+                    <!-- start map -->
+                    <div id="map"></div>
+                    <!-- end map -->
                     <br>
 
-
+                    <!-- start floorplan -->
                     <div id="flPlan" class="section-head">
 
                         <br>
@@ -231,6 +381,9 @@
 
                         </div>
                     </div>
+                      <!-- end floorplan -->
+
+
                     <div id="test2Map">
                         <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/759644/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
                     </div>

@@ -17,6 +17,8 @@ var arr_Destination = [
 var destinations = [];
 var posPlace;
 
+var bname = ""
+
 //Filters
 var librMarkers = [];
 var librCounter = 0;
@@ -248,6 +250,9 @@ var initMap = function () {
     // more details for that place.
     searchBox.addListener('places_changed', searchPlace);
     function searchPlace() {
+        var ms = document.getElementById("method-select");
+        ms.style.display = "block";
+        
         var places = searchBox.getPlaces();
         if (places.length == 0) {
             return;
@@ -286,33 +291,40 @@ var initMap = function () {
             if (place.geometry.location == "(13.7365812, 100.53260790000002)" || place.geometry.location == "(13.7365812, 100.53257869999993)") {
                 openFloorPlan();
                 mapFunc(0, 1);
+                bname = "Engineering Building 1"
             }
 
             //engineering building 2
             else if (place.geometry.location == "(13.7364773, 100.53339249999999)") {
                 openFloorPlan();
                 mapFunc(0, 2);
+                bname = "Engineering Building 2"
             }
             //engineering building 3
             else if (place.geometry.location == "(13.7368903, 100.53315620000001)") {
                 openFloorPlan();
                 mapFunc(0, 3);
+                bname = "Engineering Building 3"
             }
 
             //engineering building 100
             else if (place.geometry.location == "(13.736365, 100.53394780000008)" || place.geometry.location == "(13.7364442, 100.53388510000002)") {
                 openFloorPlan();
                 mapFunc(0, 100);
+                bname = "Engineering Building 100"
             }
 
             //Maha Chakri Sirindhorn Building
             else if (place.geometry.location == "(13.7392952, 100.5340708)" || place.geometry.location == "(13.7392241, 100.53434160000006)") {
                 openFloorPlan();
                 mapFunc(1, 1);
+                bname = "Maha Chakri Sirindhorn Building"
             }
             else {
                 closeFloorPlan();
+                bname = place.geometry.location;
             }
+            document.getElementById("telldest").innerHTML = "Destination : "+bname;
 
             if (place.geometry.viewport) {
                 // Only geocodes have viewport.
@@ -443,6 +455,8 @@ function showCourse(theCourse) {
 
     for (var times = 0; times < coursedays; times++) {
         htmltext = htmltext + "<p>Course : " + nameid + "<br> Lecturer : " + allcourseinfo[arrayindex + times].Prof_Name + "<br> Section : " + currentsec + "<br> Day : " + allcourseinfo[arrayindex + times].Day + "<br> Time : " + allcourseinfo[arrayindex + times].ctime + "<br> Faculty : " + allcourseinfo[arrayindex + times].faculty_name + "<br> Room : " + allcourseinfo[arrayindex + times].room_number + "<br> Floor : " + allcourseinfo[arrayindex + times].floor + "<br> Building : " + allcourseinfo[arrayindex + times].bld_name + "</p>" + "<button class=\"btn-go\" id=\"courseroute" + times + "\" onclick=\"goToClass()\">Get Route</button><br><br>"
+        bname =  allcourseinfo[arrayindex + times].bld_name;
+        document.getElementById("telldest").innerHTML = "Destination : "+bname;
     }
     courseDiv.innerHTML = htmltext
 }
@@ -451,6 +465,9 @@ function goToClass() {
     if (havemap === 1) {
         openFloorPlan()
     }
+    var ms = document.getElementById("method-select");
+    ms.style.display = "block";
+    
 }
 
 function openFloorPlan() {
