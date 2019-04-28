@@ -3,16 +3,15 @@
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
-<meta name="viewport"
-    content="width=device-width, initial-scale=1.0 width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
 
 <head>
     <title>CU Map</title>
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
     <script type='text/javascript' src='https://www.google.com/jsapi'></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+        crossorigin="anonymous">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/css/styles.css">
@@ -27,30 +26,51 @@
 
 <body>
 
-
     <div class="home-header">
         <img src="img/CUMaplogo.png" width="100px" height="100px">
         <center>
             <input class="search-box" id="building-search-box" type="text" placeholder=" SEARCH BUILDING">
             <button class="btn-go" id="gobuilding">GO</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input class="search-box" id="course-search" type="text" placeholder=" SEARCH COURSE"
-                onkeydown="courseOnEnter(this)">
+            <input class="search-box" id="course-search" type="text" placeholder=" SEARCH COURSE" onkeydown="courseOnEnter(this)">
             <script>
-                var listCourse = ["2190101 Computer Programming", "2183101 Engineering Graphics"];
+
+                var allcourseinfo
+                var courseidnamesec = []
+                var arrayindex = 0
+                var allcoursecount
+                var distinctcourse = []
+                var courseidnamesecdist = []
+
+                $.get('/course', (data) => {
+                    allcourseinfo = data
+                    for (x = 0; x < data.length; x++) {
+                        courseidnamesec[x] = data[x].idnamesec
+                    }
+                })
+
+                $.get('/course/count', (data) => {
+                    allcoursecount = data
+                })
+
+                $.get('/course/courseidnamesecdist', (data) => {
+                    for (x = 0; x < data.length; x++) {
+                        courseidnamesecdist[x] = data[x].idnamesecdist
+                    }
+                })
+
                 $("#course-search").autocomplete({
-                    source: listCourse
-                });
+                    source: courseidnamesecdist
+                })
 
             </script>
 
             <button class="btn-go" onclick="searchCourse()" id="gocourse">GO</button>
             <br>
             <br>
-            <button class="btn-go" id="gps" onclick = "gpsHere()">&nbsp;Mark Your Current Location</button>
+            <button class="btn-go" id="gps" onclick="gpsHere()">&nbsp;Mark Your Current Location</button>
             <button class="btn-go" id="cleargps" onclick="initMap()">&nbsp;Clear Current Location</button>
             <button class="btn-go" id="getRoute" onclick="routeTo()">&nbsp;Get Route</button>
             <br>
-            <!--<button class="btn1" onclick="openFloorPlan()" id="floorPlanbtn">FLOOR PLAN</button>-->
         </center>
     </div>
 
@@ -94,181 +114,64 @@
                     <br>
                     <br>
             </form>
-        </div>
-         <!-- <div id="gauge_div"> --> 
-        <!-- </div>  -->
-        <!-- <div class="main">ss
-            <div class="badge">
-                Clockly
-            </div>
-            <div class="clock">
-                <span id="hour">:</span>
-                <span id="minute">:</span>
-                <span id="second"></span>
             </div>
 
+            <div id="map">
+            </div>
+            <br>
 
-        </div>
-        <div class="Date-main">
-            <div class="TitleOfDate">Date</div>
-            <div class="Date">
-                <span id="Day"> </span>
-                <span id="DateNumber"> </span>
-                <span id="Month"></span>
-                <span id="Year"> </span>
-
+            <div id="course-info-head" class="section-head">
+                <br>
+                <h2>&nbsp;Course Information</h2>
+                <br>
+            </div>
+            <div id="course-info">
             </div>
 
-        </div> -->
-        <!-- <div class="Status-main" id="colorBG">
-            <div class="badge" id="status-span">Status : 100th Buildiing</div>
-            <div class="Status">
-                <span id="valuePM"></span>
-                <span id="unit">μg/m^3 :</span>
-                <span id="TextStatus"></span>
-            </div>
-        </div> -->
-
-
-        <div id="map">
-        </div>
-        <br>
-
-        <div id="course-info-head" class="section-head">
-            <br>
-            <h2>&nbsp;Course Information</h2>
-            <br>
-        </div>
-        <div id="course-info">
-        </div>
-
-        <div id="flPlan" class="section-head">
-
-            <br>
-            <h2>&nbsp;Floor Plan</h2>
-            <br>
-            <div id="flMap">
+            <div id="flPlan" class="section-head">
 
                 <br>
-                <h4 id="building-num">Building</h4>
-                <!--<div class="mapDropdown">
-                    *
-                <button onclick="selBuild()" class="dropbtn" id="theDrop">Select
-                    Building</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    *
-                    <div id="myDropdown" class="mapDropdown-content">
-                        <a onclick="mapFunc(0,1)">Engineering Building 1</a>
-                        <a onclick="mapFunc(0,2)">Engineering Building 2</a>
-                        <a onclick="mapFunc(0,3)">Engineering Building 3</a>
-                        <a onclick="mapFunc(0,100)">Engineering Building 100</a>
-                        <a onclick="mapFunc(1,1)">Maha Chakri Sirindhorn Building</a>
-                    </div>
+                <h2>&nbsp;Floor Plan</h2>
+                <br>
+                <div id="flMap">
+
+                    <br>
+                    <h4 id="building-num">Building</h4>
+
+                    <select id="selfloorlist" name="optionDrop" onchange="getFloorFromDropDown()"></select>
+
+                    <br>
+                    <br>
+                    <div id="show-map"></div>
+
                 </div>
-                -->
-
-                <select id="selfloorlist" name="optionDrop" onchange="flFunc()"></select>
-                <!--old ver drop down
-                    <div class="mapDropdown">
-                    <button onclick="selFloor()" class="dropbtn" id="theDrop2">Select Floor
-                    </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <div id="myDropdown2" class="mapDropdown-content">
-                        <a href="#fM" onclick="mapFunc2(90)" id="fl-90">Floor M</a>
-                        <a href="#fM1" onclick="mapFunc2(91)" id="fl-91">Floor M1</a>
-                        <a href="#fM" onclick="mapFunc2(92)" id="fl-92">Floor M2</a>
-                        <a href="#fM3" onclick="mapFunc2(93)" id="fl-93">Floor M3</a>
-                        <a href="#f1" onclick="mapFunc2(1)" id="fl-1">Floor 1</a>
-                        <a href="#f2" onclick="mapFunc2(2)" id="fl-2">Floor 2</a>
-                        <a href="#f3" onclick="mapFunc2(3)" id="fl-3">Floor 3</a>
-                        <a href="#f4" onclick="mapFunc2(4)" id="fl-4">Floor 4</a>
-                        <a href="#f5" onclick="mapFunc2(5)" id="fl-5">Floor 5</a>
-                        <a href="#f6" onclick="mapFunc2(6)" id="fl-6">Floor 6</a>
-                        <a href="#f7" onclick="mapFunc2(7)" id="fl-7">Floor 7</a>
-                        <a href="#f8" onclick="mapFunc2(8)" id="fl-8">Floor 8</a>
-                        <a href="#f9" onclick="mapFunc2(9)" id="fl-9">Floor 9</a>
-                        <a href="#f10" onclick="mapFunc2(10)" id="fl-10">Floor 10</a>
-                        <a href="#f11" onclick="mapFunc2(11)" id="fl-11">Floor 11</a>
-                        <a href="#f12" onclick="mapFunc2(12)" id="fl-12">Floor 12</a>
-                    </div>
-                </div>-->
-
-                <br>
-                <br>
-                <div id="show-map"></div>
-
             </div>
+            <div id="test2Map">
+                <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/759644/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+            </div>
+
         </div>
-        <div id="test2Map">
-            <iframe width="450" height="260" style="border: 1px solid #cccccc;"
-                src="https://thingspeak.com/channels/759644/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
-        </div>
+        <table class="table table-condensed" style="width:550px;margin:auto;">
+            <thead>
+                <tr class="active">
+                    <th>Place</th>
+                    <th>Distance</th>
+                </tr>
+            </thead>
+            <tbody id="placeData">
 
-    </div>
-    <table class="table table-condensed" style="width:550px;margin:auto;">
-        <thead>
-            <tr class="active">
-                <th>Place</th>
-                <th>Distance</th>
-            </tr>
-        </thead>
-        <tbody id="placeData">
+            </tbody>
+        </table>
 
-        </tbody>
-    </table>
+        <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+        <script src="/js/realtime.js"></script>
+        <script src="/js/index.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initMap"
+            async defer></script>
+        <script src="/js/IoTApp.js"></script>
+        <!-- <script src="/js/clocklyandDate.js"></script>-->
 
-    <script>
-       // initMap();
-        //var input = new google.map.places.SearchBox(document.getElementById("search-box"));
-    </script>
-    
-
-    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
-    <script src="/js/realtime.js"></script>
-    <script src="/js/index.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initMap"
-        async defer></script>
-    <script src="/js/IoTApp.js"></script>
-    <!-- <script src="/js/clocklyandDate.js"></script>-->
-
-
-
-    <!--works start-->
-    <!--
-                    <input type="text" onkeydown="ee(this)"></input>
-                    <select id="sellist" name="optionDrop"  onChange="dd(this)">
-                      <option id="yo" value="volvo">Volvo</option>
-                      <option id="yea" value="saab">Saab</option>
-                      <option value="opel" style="display:none">Opel</option>
-                      <option value="audi">Audi</option>
-                    </select>
-                    <script>
-                     var x = document.getElementById("sellist");
-                    function ee(sth){
-                        var option = document.createElement("option");
-                        option.text = "newopt"
-                        option.setAttribute("id","iddd")
-                     if(event.key === 'Enter'){
-                     if(sth.value==1){
-                     x.remove(document.getElementById("sellist").options[3]);
-                     alert("allkay")
-                     }
-                     if(sth.value==2){
-                    x.add(option)
-                    alert("allkaytoo")
-                     }
-                    }
-                     }
-                     
-                    </script>-->
-    <!--works end-->
-    <script>
-        /*
-        var flList = document.getElementById("selfloorlist");
-       var fl5 = document.createElement("option");
-fl5.text = "Floor 5"
-flList.add(fl5);*/
-    </script>
 </body>
 
 </html>
