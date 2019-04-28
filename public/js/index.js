@@ -8,87 +8,25 @@ var numb;
 var arr_Destination = [
     { title: 'Place A', lat: 13.736363, lng: 100.533980 },
     { title: 'Place B', lat: 13.736086, lng: 100.533973 },
-    /*  {title:'Place C',lat:ddddd,lng:ddddd},
-        {title:'Place D',lat:ddddd,lng:ddddd},
-        {title:'Place E',lat:ddddd,lng:ddddd},
-        {title:'Place F',lat:ddddd,lng:ddddd},*/
 ];
 var destinations = [];
 var posPlace;
 
 //Filters
 var librMarkers = [];
-var librLocations = [
-    {
-        coords: { lat: 13.7367, lng: 100.5331 },
-        iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-        content: '<h1>Faculty of Engineering</h1>'
-    },
-    {
-        coords: { lat: 13.7386, lng: 100.5352 },
-        iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-        content: '<h1>fuck off</h1>'
-    }
-];
 var librCounter = 0;
-
 var vendmMarkers = [];
-var vendmLocations = [
-    {
-        coords: { lat: 13.7393, lng: 100.5341 }
-    },
-    {
-        coords: { lat: 13.7403, lng: 100.5351 }
-    }
-];
 var vendmCounter = 0;
-
 var copyMarkers = [];
-var copyLocations = [
-    {
-        coords: { lat: 13.7383, lng: 100.5328 }
-    }
-];
 var copyCounter = 0;
-
 var coffeeshopMarkers = [];
-var coffeeshopLocations = [
-    {
-        coords: { lat: 13.7393, lng: 100.5330 }
-    }
-];
 var coffeeshopCounter = 0;
-
 var museumMarkers = [];
-var museumLocations = [
-    {
-        coords: { lat: 13.7373, lng: 100.5308 }
-    }
-];
 var museumCounter = 0;
-
 var canteenMarkers = [];
-var canteenLocations = [
-    {
-        coords: { lat: 13.7386, lng: 100.5298 }
-    }
-];
 var canteenCounter = 0;
-
 var atmMarkers = [];
-var atmLocations = [
-    {
-        coords: { lat: 13.7370, lng: 100.5308 },
-        //iconImage: 'https://i.imgur.com/pIfdoIW.gif'
-    },
-    {
-        coords: { lat: 13.7378, lng: 100.5300 },
-        //iconImage: 'https://i.imgur.com/pIfdoIW.gif'
-    }
-];
-
 var atmCounter = 0;
-
 
 function initMap() {
     //Map options
@@ -107,129 +45,169 @@ function initMap() {
 
     document.getElementById("atm").addEventListener("click", function () {
         atmCounter++;
-        //console.log(atmCounter);
         if (atmCounter % 2 != 0) {
-            for (i = 0; i <= atmMarkers.length; i++) {
-                atmMarkers[i] = new google.maps.Marker({
-                    position: new google.maps.LatLng(atmLocations[i].coords),
-                    map: map
+            if (atmCounter == 1) {
+                $.get('/location/atm', (data) => {
+                    for (i = 0; i < data.length; i++) {
+                        atmMarkers[i] = addMarker(data, '/img/atm.png', data[i].Bank_name);
+                    }
                 });
+            } else {
+                for (i = 0; i < atmMarkers.length; i++) {
+                    atmMarkers[i].setVisible(true);
+                }
             }
         } else {
-            for (i = 0; i <= atmMarkers.length; i++) {
+            for (i = 0; i < atmMarkers.length; i++) {
                 atmMarkers[i].setVisible(false);
-                //console.log(atmCounter*(-1));
             }
         }
+
     });
 
     document.getElementById("canteen").addEventListener("click", function () {
         canteenCounter++;
-        //console.log(atmCounter);
         if (canteenCounter % 2 != 0) {
-            for (i = 0; i <= canteenMarkers.length; i++) {
-                canteenMarkers[i] = new google.maps.Marker({
-                    position: new google.maps.LatLng(canteenLocations[i].coords),
-                    map: map
+            if (canteenCounter == 1) {
+                $.get('/location/canteen', (data) => {
+                    for (i = 0; i < data.length; i++) {
+                        canteenMarkers[i] = addMarker(data, '/img/canteen.png', data[i].Canteen_name);
+                    }
                 });
+            } else {
+                for (i = 0; i < canteenMarkers.length; i++) {
+                    canteenMarkers[i].setVisible(true);
+                }
             }
         } else {
-            for (i = 0; i <= canteenMarkers.length; i++) {
+            for (i = 0; i < canteenMarkers.length; i++) {
                 canteenMarkers[i].setVisible(false);
-                //console.log(atmCounter*(-1));
             }
         }
     });
 
     document.getElementById("museum").addEventListener("click", function () {
         museumCounter++;
-        //console.log(atmCounter);
         if (museumCounter % 2 != 0) {
-            for (i = 0; i <= museumMarkers.length; i++) {
-                museumMarkers[i] = new google.maps.Marker({
-                    position: new google.maps.LatLng(museumLocations[i].coords),
-                    map: map
+            if (museumCounter == 1) {
+                $.get('/location/museum', (data) => {
+                    for (i = 0; i < data.length; i++) {
+                        museumMarkers[i] = addMarker(data, '/img/museum.png', data[i].Museum_name);
+                    }
                 });
+            } else {
+                for (i = 0; i < museumMarkers.length; i++) {
+                    museumMarkers[i].setVisible(true);
+                }
             }
         } else {
-            for (i = 0; i <= museumMarkers.length; i++) {
+            for (i = 0; i < museumMarkers.length; i++) {
                 museumMarkers[i].setVisible(false);
-                //console.log(atmCounter*(-1));
             }
         }
     });
 
     document.getElementById("coffeeshop").addEventListener("click", function () {
         coffeeshopCounter++;
-        //console.log(atmCounter);
         if (coffeeshopCounter % 2 != 0) {
-            for (i = 0; i <= coffeeshopMarkers.length; i++) {
-                coffeeshopMarkers[i] = new google.maps.Marker({
-                    position: new google.maps.LatLng(coffeeshopLocations[i].coords),
-                    map: map
+            if (coffeeshopCounter == 1) {
+                $.get('/location/coffeeshop', (data) => {
+                    for (i = 0; i < data.length; i++) {
+                        coffeeshopMarkers[i] = addMarker(data, '/img/coffee.png', data[i].Coffee_shop_name);
+                    }
                 });
+            } else {
+                for (i = 0; i < coffeeshopMarkers.length; i++) {
+                    coffeeshopMarkers[i].setVisible(true);
+                }
             }
         } else {
-            for (i = 0; i <= coffeeshopMarkers.length; i++) {
+            for (i = 0; i < coffeeshopMarkers.length; i++) {
                 coffeeshopMarkers[i].setVisible(false);
-                //console.log(atmCounter*(-1));
             }
         }
     });
 
     document.getElementById("copyprint").addEventListener("click", function () {
         copyCounter++;
-        //console.log(atmCounter);
         if (copyCounter % 2 != 0) {
-            for (i = 0; i <= copyMarkers.length; i++) {
-                copyMarkers[i] = new google.maps.Marker({
-                    position: new google.maps.LatLng(copyLocations[i].coords),
-                    map: map
+            if (copyCounter == 1) {
+                $.get('/location/copyprint', (data) => {
+                    for (i = 0; i < data.length; i++) {
+                        copyMarkers[i] = addMarker(data, '/img/copy.png', data[i].Copy_Print_shop_name);
+                    }
                 });
+            } else {
+                for (i = 0; i < copyMarkers.length; i++) {
+                    copyMarkers[i].setVisible(true);
+                }
             }
         } else {
-            for (i = 0; i <= copyMarkers.length; i++) {
+            for (i = 0; i < copyMarkers.length; i++) {
                 copyMarkers[i].setVisible(false);
-                //console.log(atmCounter*(-1));
             }
         }
     });
 
     document.getElementById("vendm").addEventListener("click", function () {
         vendmCounter++;
-        //console.log(atmCounter);
         if (vendmCounter % 2 != 0) {
-            for (i = 0; i <= vendmMarkers.length; i++) {
-                vendmMarkers[i] = new google.maps.Marker({
-                    position: new google.maps.LatLng(vendmLocations[i].coords),
-                    map: map
+            if (vendmCounter == 1) {
+                $.get('/location/vending_machine', (data) => {
+                    for (i = 0; i < data.length; i++) {
+                        vendmMarkers[i] = addMarker(data, '/img/vending.png', data[i].Vending_Machine_type);
+                    }
                 });
+            } else {
+                for (i = 0; i < vendmMarkers.length; i++) {
+                    vendmMarkers[i].setVisible(true);
+                }
             }
         } else {
-            for (i = 0; i <= vendmMarkers.length; i++) {
+            for (i = 0; i < vendmMarkers.length; i++) {
                 vendmMarkers[i].setVisible(false);
-                //console.log(atmCounter*(-1));
             }
         }
     });
 
     document.getElementById("libr").addEventListener("click", function () {
         librCounter++;
-        //console.log(atmCounter);
         if (librCounter % 2 != 0) {
-            for (i = 0; i <= librMarkers.length; i++) {
-                librMarkers[i] = new google.maps.Marker({
-                    position: new google.maps.LatLng(librLocations[i].coords),
-                    map: map
+            if (librCounter == 1) {
+                $.get('/location/library', (data) => {
+                    for (i = 0; i < data.length; i++) {
+                        librMarkers[i] = addMarker(data, '/img/Libr.png', data[i].Library_name);
+                    }
                 });
+            } else {
+                for (i = 0; i < librMarkers.length; i++) {
+                    librMarkers[i].setVisible(true);
+                }
             }
         } else {
-            for (i = 0; i <= librMarkers.length; i++) {
+            for (i = 0; i < librMarkers.length; i++) {
                 librMarkers[i].setVisible(false);
-                //console.log(atmCounter*(-1));
             }
         }
     });
+
+    //For adding marker to map
+    function addMarker(data, icon, content) {
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(data[i].Latitude, data[i].Longitude),
+            map: map,
+            icon: icon
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: content
+        });
+
+        marker.addListener('click', function () {
+            infoWindow.open(map, marker);
+        });
+
+        return marker;
+    }
 
     document.getElementById('getRoute').onclick = function () {
         getCurrentLocation();
@@ -240,19 +218,6 @@ function initMap() {
     });
 
     var markers = [];
-    /*
-    // Array of markers
-    var markers = [
-        {
-            coords: { lat: 13.7367, lng: 100.5331 },
-            iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-            content: '<h1>Faculty of Engineering</h1>'
-        },
-        {
-            coords: { lat: 13.7393, lng: 100.5341 },
-            content: '<h1>Faculty of Art</h1>'
-        }
-    ];*/
 
     //search box ja
     var searchBox = new google.maps.places.SearchBox(document.getElementById("building-search-box"));
@@ -446,9 +411,6 @@ function showCourse(theCourse) {
     flFunc();
 }
 
-
-
-
 function openFloorPlan() {
     document.getElementById("flPlan").style.display = "block";
     document.getElementById("flPlan").scrollIntoView(true, { behavior: "smooth" });
@@ -527,7 +489,7 @@ function mapFunc(fac, building) {
             }
 
             //default floor is 1
-            document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + building + "-FR1.jpg\"></center>"
+            document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + building + "-FR1.png\"></center>"
             //document.getElementById("theDrop").innerText = "Engineering Building " + building;
         }
 
@@ -542,7 +504,7 @@ function mapFunc(fac, building) {
         }
         flList.value = "Floor 1";
 
-        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR1.jpg\"></center>"
+        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR1.png\"></center>"
         //document.getElementById("theDrop").innerText = "Maha Chakri Sirindhorn Building";
         document.getElementById("building-num").innerText = "Maha Chakri Sirindhorn Building";
     }
@@ -570,6 +532,7 @@ function gpsHere() {
         var marker = new google.maps.Marker({
             position: { lat: currentLat, lng: currentLng },
             map: map,
+            //icon: '/img/canteen.png' 
             //icon: ,
             //draggable:trues
         });
@@ -642,10 +605,10 @@ function flFunc() {
         flstr = parseInt(flstr[1]) + 90;
     }
     if (currentFac == 0) { //if it is a building in faculty of engineering
-        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + currentBuild + "-FR" + flstr + ".jpg\"></center>"
+        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + currentBuild + "-FR" + flstr + ".png\"></center>"
     }
     else if (currentFac == 1) { //if it is a building in faculty of arts
-        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR" + flstr + ".jpg\"></center>"
+        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR" + flstr + ".png\"></center>"
     }
 }
 function calculateDistance() {
