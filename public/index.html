@@ -98,7 +98,8 @@
                                 $.get('/course', (data) => {
                                     allcourseinfo = data
                                     for (x = 0; x < data.length; x++) {
-                                        courseidnamesec[x] = data[x].idnamesec
+                                        //courseidnamesec[x] = data[x].idnamesec
+                                        courseidnamesec[x] = data[x].course_id+" "+data[x].course_name+" "+"section "+data[x].section;
                                     }
                                 })
 

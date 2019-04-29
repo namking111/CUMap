@@ -385,7 +385,6 @@ function courseOnEnter(ele) {
 }
 
 function searchCourse() {
-
     for (i = 0; i < courseidnamesec.length; i++) {
         if (document.getElementById("course-search").value == (courseidnamesec[i])) {
             theCourse = courseidnamesec[i];
@@ -398,7 +397,6 @@ function searchCourse() {
     nameid = allcourseinfo[i].course_id + " " + allcourseinfo[i].course_name
     indexcount = allcoursecount.findIndex(ii => ii.crsec === currentcourse + " " + currentsec)
     coursedays = allcoursecount[indexcount].countcrssec
-
     if (theCourse != "") {
         showCourse(theCourse);
 
