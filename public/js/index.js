@@ -44,13 +44,27 @@ var atmMarkers = [];
 var atmCounter = 0;
 
 
-setInterval(function () { updatePosition(getLocation()); }, 1000);
+setInterval(function () { updatePosition(getLocation()); }, 10000);
 var initMap = function () {
     //Map options
     console.log("FILE 1 map executed")
     var options = {
         zoom: 17,
-        center: { lat: 13.7384, lng: 100.5321 }
+        center: { lat: 13.7384, lng: 100.5321 },
+        styles: [
+            {
+                featureType: "poi",
+                elementType: "labels",
+                stylers: [
+                      { visibility: "off" }
+                ]
+            },
+            {
+              featureType: 'poi',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#93817c'}, { visibility: "on" }]
+            },
+          ]
     }
     //Create Map
     map = new google.maps.Map(document.getElementById('map'), options);
@@ -329,7 +343,7 @@ var initMap = function () {
     //to be deleted
         document.getElementById('getRoute').onclick = function () {
             getCurrentLocation();
-            setTimeout(() => calculateAndDisplayRoute(directionsService, directionsDisplay, searchBox), 1000);
+            setTimeout(() => calculateAndDisplayRoute(directionsService, directionsDisplay, searchBox), 0);
         };
     // Listen for click on map
     google.maps.event.addListener(map, 'click', function (event) {
