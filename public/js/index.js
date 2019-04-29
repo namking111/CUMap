@@ -343,7 +343,7 @@ var initMap = function () {
     //to be deleted
         document.getElementById('getRoute').onclick = function () {
             getCurrentLocation();
-            setTimeout(() => calculateAndDisplayRoute(directionsService, directionsDisplay, searchBox), 0);
+            setTimeout(() => calculateAndDisplayRoute(directionsService, directionsDisplay, searchBox), 1000);
         };
     // Listen for click on map
     google.maps.event.addListener(map, 'click', function (event) {
