@@ -82,7 +82,7 @@ var initMap = function () {
             if (atmCounter == 1) {
                 $.get('/location/atm', (data) => {
                     for (i = 0; i < data.length; i++) {
-                        atmMarkers[i] = addMarker(data, '/img/atm.png', data[i].Bank_name);
+                        atmMarkers[i] = addMarker(data[i], '/img/atm.png', data[i].Bank_name);
                     }
                 });
             } else {
@@ -104,7 +104,7 @@ var initMap = function () {
             if (canteenCounter == 1) {
                 $.get('/location/canteen', (data) => {
                     for (i = 0; i < data.length; i++) {
-                        canteenMarkers[i] = addMarker(data, '/img/canteen.png', data[i].Canteen_name);
+                        canteenMarkers[i] = addMarker(data[i], '/img/canteen.png', data[i].Canteen_name);
                     }
                 });
             } else {
@@ -125,7 +125,7 @@ var initMap = function () {
             if (museumCounter == 1) {
                 $.get('/location/museum', (data) => {
                     for (i = 0; i < data.length; i++) {
-                        museumMarkers[i] = addMarker(data, '/img/museum.png', data[i].Museum_name);
+                        museumMarkers[i] = addMarker(data[i], '/img/museum.png', data[i].Museum_name);
                     }
                 });
             } else {
@@ -146,7 +146,7 @@ var initMap = function () {
             if (coffeeshopCounter == 1) {
                 $.get('/location/coffeeshop', (data) => {
                     for (i = 0; i < data.length; i++) {
-                        coffeeshopMarkers[i] = addMarker(data, '/img/coffee.png', data[i].Coffee_shop_name);
+                        coffeeshopMarkers[i] = addMarker(data[i], '/img/coffee.png', data[i].Coffee_shop_name);
                     }
                 });
             } else {
@@ -167,7 +167,7 @@ var initMap = function () {
             if (copyCounter == 1) {
                 $.get('/location/copyprint', (data) => {
                     for (i = 0; i < data.length; i++) {
-                        copyMarkers[i] = addMarker(data, '/img/copy.png', data[i].Copy_Print_shop_name);
+                        copyMarkers[i] = addMarker(data[i], '/img/copy.png', data[i].Copy_Print_shop_name);
                     }
                 });
             } else {
@@ -188,7 +188,7 @@ var initMap = function () {
             if (vendmCounter == 1) {
                 $.get('/location/vending_machine', (data) => {
                     for (i = 0; i < data.length; i++) {
-                        vendmMarkers[i] = addMarker(data, '/img/vending.png', data[i].Vending_Machine_type);
+                        vendmMarkers[i] = addMarker(data[i], '/img/vending.png', data[i].Vending_Machine_type);
                     }
                 });
             } else {
@@ -209,7 +209,7 @@ var initMap = function () {
             if (librCounter == 1) {
                 $.get('/location/library', (data) => {
                     for (i = 0; i < data.length; i++) {
-                        librMarkers[i] = addMarker(data, '/img/Libr.png', data[i].Library_name);
+                        librMarkers[i] = addMarker(data[i], '/img/Libr.png', data[i].Library_name);
                     }
                 });
             } else {
@@ -230,7 +230,7 @@ var initMap = function () {
             if (popbusCounter == 1) {
                 $.get('/location/CU_Pop_Bus', (data) => {
                     for (i = 0; i < data.length; i++) {
-                        popbusMarkers[i] = addMarker(data, '/img/popbus.png', data[i].CU_Bus_station);
+                        popbusMarkers[i] = addMarker(data[i], '/img/popbus.png', data[i].CU_Bus_station);
                     }
                 });
             } else {
@@ -251,7 +251,7 @@ var initMap = function () {
             if (cubikeCounter == 1) {
                 $.get('/location/CU_Bike', (data) => {
                     for (i = 0; i < data.length; i++) {
-                        cubikeMarkers[i] = addMarker(data, '/img/cubike.png', data[i].CU_Bike_Station);
+                        cubikeMarkers[i] = addMarker(data[i], '/img/cubike.png', data[i].CU_Bike_Station);
                     }
                 });
             } else {
@@ -272,7 +272,7 @@ var initMap = function () {
             if (hamoCounter == 1) {
                 $.get('/location/HAMO', (data) => {
                     for (i = 0; i < data.length; i++) {
-                        hamoMarkers[i] = addMarker(data, '/img/hamo.png', data[i].HAMO);
+                        hamoMarkers[i] = addMarker(data[i], '/img/hamo.png', data[i].HAMO);
                     }
                 });
             } else {
@@ -293,7 +293,7 @@ var initMap = function () {
             if (muvmiCounter == 1) {
                 $.get('/location/Muvmi', (data) => {
                     for (i = 0; i < data.length; i++) {
-                        muvmiMarkers[i] = addMarker(data, '/img/muvmi.png', data[i].Muvmi);
+                        muvmiMarkers[i] = addMarker(data[i], '/img/muvmi.png', data[i].Muvmi);
                     }
                 });
             } else {
@@ -312,7 +312,7 @@ var initMap = function () {
     //For adding marker to map
     function addMarker(data, icon, content) {
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(data[i].Latitude, data[i].Longitude),
+            position: new google.maps.LatLng(data.Latitude, data.Longitude),
             map: map,
             icon: icon
         });
@@ -327,10 +327,10 @@ var initMap = function () {
         return marker;
     }
     //to be deleted
-        document.getElementById('getRoute').onclick = function () {
-            getCurrentLocation();
-            setTimeout(() => calculateAndDisplayRoute(directionsService, directionsDisplay, searchBox), 1000);
-        };
+    document.getElementById('getRoute').onclick = function () {
+        getCurrentLocation();
+        setTimeout(() => calculateAndDisplayRoute(directionsService, directionsDisplay, searchBox), 1000);
+    };
     // Listen for click on map
     google.maps.event.addListener(map, 'click', function (event) {
     });
@@ -338,18 +338,81 @@ var initMap = function () {
     var markers = [];
 
     //search box
+    /*
     var searchBox = new google.maps.places.SearchBox(document.getElementById("building-search-box"));
     map.addListener('bounds_changed', function () {
         searchBox.setBounds(map.getBounds());
-    });
+    });*/
 
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
-    searchBox.addListener('places_changed', searchPlace);
+
+    //searchBox.addListener('places_changed', searchPlace);
+
+
+    var buildsearchbox = document.getElementById("building-search-box");
+    buildsearchbox.addListener('sel_bld', searchbuildfrombox());
+
+    function searchbuildfrombox() {
+        buildsearchbox.onkeydown = function () {
+            if (event.key === 'Enter') {
+                if (buildsearchbox.value.length == 0) {
+                    alert("Please input the destination location.");
+                } else {
+                    markerAndPlanFromBld()
+                }
+            }
+
+        }
+        document.getElementById("gobuilding").addEventListener("click", function () {
+            if (document.getElementById("building-search-box").value.length == 0) {
+                alert("Please input the destination location.");
+            } else {
+                markerAndPlanFromBld()
+            }
+        });
+    }
+
+    function markerAndPlanFromBld() {
+        // hide landmark
+        var ld = document.getElementById("landmark-dropdown");
+        ld.style.display = "none";
+        var indexBld = buildingdataname.indexOf(buildsearchbox.value);
+
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
+        markers.push(addMarker(buildingdata[indexBld], '', buildingdata.Bld_name))
+
+        bname = buildingdataname[indexBld];
+        var ms = document.getElementById("method-select");
+        ms.style.display = "block";
+        document.getElementById("telldest").innerHTML = "Destination : " + bname;
+
+        closeCourseInfo();
+        openFloorPlan()
+        if (buildingdata[indexBld].Bld_name == "Maha Chakri Sirindhorn Building") {
+            mapFunc(1, 1)
+        } else if (buildingdata[indexBld].Bld_name == "Engineering Building 1") {
+            mapFunc(0, 1)
+        } else if (buildingdata[indexBld].Bld_name == "Engineering Building 2") {
+            mapFunc(0, 2)
+        } else if (buildingdata[indexBld].Bld_name == "Engineering Building 3") {
+            mapFunc(0, 3)
+        } else if (buildingdata[indexBld].Bld_name == "Engineering Centennial Memorial Building") {
+            mapFunc(0, 100)
+            bname = "Engineering Building 100"
+        } else {
+            closeFloorPlan()
+        }
+
+    }
+
+
     function searchPlace() {
         var ms = document.getElementById("method-select");
         ms.style.display = "block";
-        
+
         var places = searchBox.getPlaces();
         if (places.length == 0) {
             return;
@@ -421,7 +484,7 @@ var initMap = function () {
                 closeFloorPlan();
                 bname = place.geometry.location;
             }
-            document.getElementById("telldest").innerHTML = "Destination : "+bname;
+            document.getElementById("telldest").innerHTML = "Destination : " + bname;
 
             if (place.geometry.viewport) {
                 // Only geocodes have viewport.
@@ -482,31 +545,43 @@ function courseOnEnter(ele) {
 }
 
 function searchCourse() {
-    for (i = 0; i < courseidnamesec.length; i++) {
-        if (document.getElementById("course-search").value == (courseidnamesec[i])) {
-            theCourse = courseidnamesec[i];
-            currentcourse = allcourseinfo[i].course_id
-            currentsec = allcourseinfo[i].section
-            arrayindex = i
-            break;
+
+    if (document.getElementById("course-search").value.length != 0) {
+        for (i = 0; i < courseidnamesec.length; i++) {
+            if (document.getElementById("course-search").value == (courseidnamesec[i])) {
+                theCourse = courseidnamesec[i];
+                currentcourse = allcourseinfo[i].course_id
+                currentsec = allcourseinfo[i].section
+                arrayindex = i
+                break;
+            }
         }
-    }
-    nameid = allcourseinfo[i].course_id + " " + allcourseinfo[i].course_name
-    indexcount = allcoursecount.findIndex(ii => ii.crsec === currentcourse + " " + currentsec)
-    coursedays = allcoursecount[indexcount].countcrssec
-    if (theCourse != "") {
+        nameid = allcourseinfo[arrayindex].course_id + " " + allcourseinfo[arrayindex].course_name
+        indexcount = allcoursecount.findIndex(ii => ii.crsec === currentcourse + " " + currentsec)
+        coursedays = allcoursecount[indexcount].countcrssec
         showCourse(theCourse);
 
         // hide landmark
         var ld = document.getElementById("landmark-dropdown");
         ld.style.display = "none";
+    } else {
+        alert("Please enter course.")
+    }
+    /*
+    //if (theCourse != "") {
+        if (document.getElementById("").value.length!=0) {
+        showCourse(theCourse);
 
+        // hide landmark
+        var ld = document.getElementById("landmark-dropdown");
+        ld.style.display = "none";
+        
     } else if (document.getElementById("course-search").value.length == 0) {
         alert("Please enter course.")
     } else {
         alert("Course Not Found");
         document.getElementById("course-info").style.display = "none";
-    }
+    }*/
 }
 
 function showCourse(theCourse) {
@@ -547,11 +622,12 @@ function showCourse(theCourse) {
     flstr = allcourseinfo[arrayindex].floor;
     document.getElementById("selfloorlist").value = "Floor " + flstr
     flFunc();
-
+    /********* */
     for (var times = 0; times < coursedays; times++) {
-        htmltext = htmltext + "<p>Course : " + nameid + "<br> Lecturer : " + allcourseinfo[arrayindex + times].Prof_Name + "<br> Section : " + currentsec + "<br> Day : " + allcourseinfo[arrayindex + times].Day + "<br> Time : " + allcourseinfo[arrayindex + times].ctime + "<br> Faculty : " + allcourseinfo[arrayindex + times].faculty_name + "<br> Room : " + allcourseinfo[arrayindex + times].room_number + "<br> Floor : " + allcourseinfo[arrayindex + times].floor + "<br> Building : " + allcourseinfo[arrayindex + times].bld_name + "</p>" + "<button class=\"btn-go\" id=\"courseroute" + times + "\" onclick=\"goToClass()\">Get Route</button><br><br>"
-        bname =  allcourseinfo[arrayindex + times].bld_name;
-        document.getElementById("telldest").innerHTML = "Destination : "+bname;
+        htmltext = htmltext + "<div id=\"crsdiv\"" + times + "><p>Course : " + nameid + "<br> Lecturer : " + allcourseinfo[arrayindex + times].Prof_Name + "<br> Section : " + currentsec + "<br> Day : " + allcourseinfo[arrayindex + times].Day + "<br> Time : " + allcourseinfo[arrayindex + times].ctime + "<br> Faculty : " + allcourseinfo[arrayindex + times].faculty_name + "<br> Room : " + allcourseinfo[arrayindex + times].room_number + "<br> Floor : " + allcourseinfo[arrayindex + times].floor + "<br> Building : " + allcourseinfo[arrayindex + times].bld_name + "</p>" + "<button class=\"btn-go\" id=\"courseroute" + times + "\" onclick=\"goToClass()\">Get Route</button><br><br><div>"
+        bname = allcourseinfo[arrayindex + times].bld_name;
+        document.getElementById("telldest").innerHTML = "Destination : " + bname;
+        //alert(document.getElementById("courseroute1").value)
     }
     courseDiv.innerHTML = htmltext
 }
@@ -562,7 +638,7 @@ function goToClass() {
     }
     var ms = document.getElementById("method-select");
     ms.style.display = "block";
-    
+
 }
 
 function openFloorPlan() {
@@ -622,7 +698,7 @@ function mapFunc(fac, building) {
             flList.add(flarr[10]);
             flList.add(flarr[12]);
             //default floor is M
-            document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0100-FR90.jpg\"></center>"
+            document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0100-FR90.png\"></center>"
             flList.value = "Floor M";
         }
         else {

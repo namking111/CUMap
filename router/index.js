@@ -2,10 +2,12 @@ const getConnection = require('../db');
 const router = require('express').Router();
 
 const location = require('./location');
-const course = require('./course')
+const course = require('./course');
+const building = require('./building');
 
 router.use('/location', location);
 router.use('/course', course);
+router.use('/building', building);
 
 router.get('/ping', (req, res) => {
     res.status(200).json({

@@ -94,12 +94,15 @@
                                 var allcoursecount
                                 var distinctcourse = []
                                 var courseidnamesecdist = []
+                                var buildingdata
+                                var buildingdataname = []
 
+                                //course search
                                 $.get('/course', (data) => {
                                     allcourseinfo = data
                                     for (x = 0; x < data.length; x++) {
                                         //courseidnamesec[x] = data[x].idnamesec
-                                        courseidnamesec[x] = data[x].course_id+" "+data[x].course_name+" "+"section "+data[x].section;
+                                        courseidnamesec[x] = data[x].course_id + " " + data[x].course_name + " " + "section " + data[x].section;
                                     }
                                 })
 
@@ -116,6 +119,18 @@
                                 $("#course-search").autocomplete({
                                     source: courseidnamesecdist
                                 })
+
+                                //location search
+                                $.get('/building', (data) => {
+                                    buildingdata = data;
+                                    for (y = 0; y < data.length; y++) {
+                                        buildingdataname[y] = data[y].Bld_name;
+                                    }
+                                })
+                                $("#building-search-box").autocomplete({
+                                    source: buildingdataname
+                                })
+
 
                             </script>
 
@@ -236,7 +251,7 @@
 
                 <div class="container">
 
-                    
+
 
                     <!-- start selecting method -->
                     <div class="method-select" id="method-select">
@@ -308,12 +323,14 @@
                                 </span>
                             </center>
                             <script>
+                                var selectedtransport = 0;
                                 function changeWalk() {
                                     document.getElementById('walk1').src = 'img-transport/walk-2.png'
                                     document.getElementById('bike1').src = 'img-transport/bike.png'
                                     document.getElementById('bus1').src = 'img-transport/bus.png'
                                     document.getElementById('hamo1').src = 'img-transport/hamo.png'
                                     document.getElementById('muvmi1').src = 'img-transport/muvmi.png'
+                                    selectedtransport = 1;
                                 }
                                 function changeBike() {
                                     document.getElementById('walk1').src = 'img-transport/walk.png'
@@ -321,6 +338,7 @@
                                     document.getElementById('bus1').src = 'img-transport/bus.png'
                                     document.getElementById('hamo1').src = 'img-transport/hamo.png'
                                     document.getElementById('muvmi1').src = 'img-transport/muvmi.png'
+                                    selectedtransport = 2;
                                 }
                                 function changeBus() {
                                     document.getElementById('walk1').src = 'img-transport/walk.png'
@@ -328,6 +346,7 @@
                                     document.getElementById('bus1').src = 'img-transport/bus-2.png'
                                     document.getElementById('hamo1').src = 'img-transport/hamo.png'
                                     document.getElementById('muvmi1').src = 'img-transport/muvmi.png'
+                                    selectedtransport = 3;
                                 }
                                 function changeHamo() {
                                     document.getElementById('walk1').src = 'img-transport/walk.png'
@@ -335,6 +354,7 @@
                                     document.getElementById('bus1').src = 'img-transport/bus.png'
                                     document.getElementById('hamo1').src = 'img-transport/hamo-2.png'
                                     document.getElementById('muvmi1').src = 'img-transport/muvmi.png'
+                                    selectedtransport = 4;
                                 }
                                 function changeMuvmi() {
                                     document.getElementById('walk1').src = 'img-transport/walk.png'
@@ -342,6 +362,7 @@
                                     document.getElementById('bus1').src = 'img-transport/bus.png'
                                     document.getElementById('hamo1').src = 'img-transport/hamo.png'
                                     document.getElementById('muvmi1').src = 'img-transport/muvmi-2.png'
+                                    selectedtransport = 5;
                                 }
                             </script>
                         </div>
@@ -383,12 +404,12 @@
                     <!-- end selecting method -->
                     <!-- start course info -->
                     <div id="course-info-head" class="section-head">
-                            <br>
-                            <h2>&nbsp;Course Information</h2>
-                            <br>
-                        </div>
-                        <div id="course-info"></div>
-                        <!-- end course info -->
+                        <br>
+                        <h2>&nbsp;Course Information</h2>
+                        <br>
+                    </div>
+                    <div id="course-info"></div>
+                    <!-- end course info -->
 
                     <!-- start map -->
                     <div id="map"></div>
@@ -414,7 +435,7 @@
 
                         </div>
                     </div>
-                      <!-- end floorplan -->
+                    <!-- end floorplan -->
 
 
                     <div id="test2Map">
