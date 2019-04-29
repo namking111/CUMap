@@ -1,16 +1,18 @@
 const getConnection = require('../db');
 const router = require('express').Router();
 
+//all course information
 router.get('/', async (req, res) => {
     try {
         const connection = await getConnection();
-        const [courseinfo] = await connection.query('SELECT Subject.course_id,Subject.course_name,CONCAT(Subject.course_id, " ", Subject.course_name, " section ",Subject.section) AS idnamesec, Subject.section, Professor.Prof_Name, Schedule.Day, CONCAT(Schedule.Start,"-",Schedule.End) AS ctime, Located_In.floor, Located_In.room_number, Building.bld_name, Faculty.faculty_name FROM Subject, Teach, Schedule, Located_In, Professor, Building, Faculty WHERE Subject.course_id=Teach.course_id AND Subject.section=Teach.section AND Subject.course_id = Schedule.course_id AND Subject.section = Schedule.section AND Subject.course_id=Located_In.course_id AND Subject.section = Located_In.section AND Professor.Prof_abbrv = Teach.Prof_abbrv AND Building.Landmark_id=Located_In.Landmark_id AND Building.faculty_id=Faculty.faculty_id order by Subject.course_id asc, Subject.section asc')
+        const [courseinfo] = await connection.query('SELECT Subject.course_id,Subject.course_name, Subject.section, Professor.Prof_Name, Schedule.Day, CONCAT(Schedule.Start,"-",Schedule.End) AS ctime, Located_In.floor, Located_In.room_number, Building.bld_name, Faculty.faculty_name FROM Subject, Teach, Schedule, Located_In, Professor, Building, Faculty WHERE Subject.course_id=Teach.course_id AND Subject.section=Teach.section AND Subject.course_id = Schedule.course_id AND Subject.section = Schedule.section AND Subject.course_id=Located_In.course_id AND Subject.section = Located_In.section AND Professor.Prof_abbrv = Teach.Prof_abbrv AND Building.Landmark_id=Located_In.Landmark_id AND Building.faculty_id=Faculty.faculty_id order by Subject.course_id asc, Subject.section asc')
         res.status(200).send(courseinfo);
     } catch (error) {
         res.status(500).send(error);
     }
 });
 
+//count number class per one course-section
 router.get('/count', async (req, res) => {
     try {
         const connection = await getConnection();
@@ -21,6 +23,7 @@ router.get('/count', async (req, res) => {
     }
 })
 
+//get distinct course-section for autocomplete suggestion
 router.get('/courseidnamesecdist', async (req, res) => {
     try {
         const connection = await getConnection();
