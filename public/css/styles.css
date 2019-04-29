@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 @import url('https://fonts.googleapis.com/css?family=Orbitron');
 /* #map {
   height: 500px;
@@ -149,157 +150,199 @@ body{
     color: black;
     padding: 16px;
     font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .dropbtn:hover, .dropbtn:focus {
-    background-color: rgb(182, 182, 182);
-  }
-  
-  .mapDropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .mapDropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .mapDropdown-content a {
-    color: black;
-    padding: 12px 16px;
+=======
+body{
+  font-family: "Lato", 'Helvetica Neue', Arial, Helvetica, sans-serif !important;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  font-weight: 400;
+}
+a {
+    color: #337ab7;
     text-decoration: none;
+}
+.wrapper {
+  min-height: 100%;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: block;
+}
+.main-header {
+  position: relative;
+  max-height: 100px;
+  z-index: 1030;
+  display: block;
+  box-sizing:border-box;
+}
+.main-header a{
+  text-decoration: none;
+}
+.skin-pink .main-header .logo {
+    background-color: #b73384;
+    color: #ffffff;
+    border-bottom: 0 solid transparent;
+}
+.main-header .logo {
+    transition: width .3s ease-in-out;
     display: block;
-  }
-  
-  .mapDropdown a:hover {background-color: #ddd;}
-  
-  .show {display: block;}
-  #floorPlanbtn:hover {
-    background-color: white;
-  }
-
-  #gauge_div {
-    width: 120px; margin: 0 auto;
-  }
-
-  .hide{display: none; visibility: hidden}
-
-  #selfloorlist{
-      width: 100px;
-      font-size: 20px;
-  }
-  .main {
-    background: #ccc;
-    width: 200px;
-    height: 100px;
-    margin: 0px auto;
-    position: relative;
-    padding: 18px;
-  }
-  
-  .badge {
-    width: 96 px;
-    background: #e66357;
-    color: white;
-    padding: 5px 10px;
-    font-family: sans-serif;
-    font-weight: bold;
-    position: absolute;
-    top: -15px;
-    left: 35%;
-  }
-  
-  #gauge_div {
-    width: 0;
-    margin: 0 auto;
-  }
-  
-  #gauge_div {
+    float: left;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
     text-align: center;
+    width: 230px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding: 0 15px;
+    font-weight: 300;
+    overflow: hidden;
+}
+.skin-pink .main-header .navbar {
+    background-color: #da81b7;
+}
+.main-header>.navbar {
+    transition: margin-left .3s ease-in-out;
+    margin-bottom: 0;
+    margin-left: 230px;
+>>>>>>> Stashed changes
+    border: none;
+    min-height: 50px;
+    border-radius: 0;
+}
+.skin-pink .wrapper, .skin-pink .main-sidebar, .skin-pink .left-side {
+    background-color: #222d32;
+}
+.main-sidebar, .left-side {
     position: absolute;
     top: 0;
-    right: 0px;
-  }
-  
-  .clock {
-    background: #EBEBEB;
-    text-align: center;
-    font-size: 23px;
-    height: 100%;
-    padding-top: 16px;
-    font-family: Orbitron;
-    border-radius: 4px;
-  }
-  
-  .Date-main {
-    background: #ccc;
-    width: 350px;
-    height: 105px;
-    position: absolute;
-    top: 410px;
+    left: 0;
+    padding-top: 50px;
+    min-height: 100%;
+    width: 230px;
+    z-index: 810;
+}
+.sidebar {
+    padding-bottom: 10px;
+}
+.sidebar-menu, .main-sidebar .user-panel, .sidebar-menu>li.header {
+    white-space: nowrap;
+    overflow: hidden;
+}
+.sidebar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.skin-pink .sidebar-menu > li.header {
+    color: #4b646f;
+    background: #1a2226;
+}
+.sidebar-form, .sidebar-menu>li.header {
+    overflow: hidden;
+    text-overflow: clip;
+}
+.sidebar-menu, .main-sidebar .user-panel, .sidebar-menu>li.header {
+    white-space: nowrap;
+}
+.sidebar-menu>li {
+    position: relative;
+    margin: 0;
+    padding:0;
+}
+.sidebar-menu li.header {
+    padding: 10px 25px 10px 15px;
+    font-size: 12px;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+  box-sizing: border-box;
+}
+.content-wrapper, .right-side {
+    min-height: 100%;
+    background-color: #ecf0f5;
+    z-index: 800;
+    transition: transform .3s ease-in-out,margin .3s ease-in-out;
+    margin-left: 230px;
+}
+.skin-pink .sidebar-menu > li:hover > a, .skin-blue .sidebar-menu > li.active > a {
+    color: #ffffff;
+    background: #1e282c;
+    border-left-color: #da81b7;
+    text-decoration: none;
+}
+.skin-pink .sidebar-menu > li > a {
+    border-left: 3px solid transparent;
+}
+.sidebar-menu li>a {
+    position: relative;
+}
+.sidebar-menu>li>a {
+    padding: 12px 5px 12px 15px;
+    display: block;
+}
+.skin-pink .sidebar a {
+    color: #b8c7ce;
+}
+.sidebar-menu>li>a>.fa, .sidebar-menu>li>a>.glyphicon, .sidebar-menu>li>a>.ion {
+    width: 20px;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+}
+.server-tag{
+  margin-left:22px;
+  font-size:13px;
+  font-weight:200;
+  opacity:.55;
+}
+.skin-pink .content-header {
+    background: transparent;
+}
+.content-header {
+    position: relative;
+    padding: 15px 15px 0 15px;
+}
+.content {
+    min-height: 250px;
+    padding: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.box.box-primary {
+    border-top-color: #da81b7;
+    padding-top: 15px;
+}
+.box {
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+.box-body {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
     padding: 10px;
-  }
+}
+.lib-name{
+  width:20%;
+}
+.lib-tag{
   
-  .TitleOfDate {
-    width: 96 px;
-    background: #e66357;
-    color: white;
-    padding: 5px 10px;
-    font-family: sans-serif;
-    font-weight: bold;
-    position: absolute;
-    top: -15px;
-    left: 42%;
-    border-radius: 4px;
-  }
-  
-  .Date {
-    text-align: center;
-    background: #EBEBEB;
-    font-size:23px;
-    height: 100%;
-    font-family: Orbitron;
-    border-radius: 4px;
-    padding-top: 23px
-  }
-
-  .Status-main {
-    /*background:#ccc;*/
-    width: 350px;
-    height: 105px;
-    position: absolute;
-    top:300px;
-    padding: 10px;
-  right: 400px;;
-  }
-
-  .StatusDate {
-    width: 96 px;
-    background: #e66357;
-    color: white;
-    padding: 5px 10px;
-    font-family: sans-serif;
-    font-weight: bold;
-    position: absolute;
-    top: -15px;
-    left: 42%;
-    border-radius: 4px;
-  }
-  
-  .Status {
-    text-align: center;
-    background: #EBEBEB;
-    font-size:23px;
-    height: 100%;
-    font-family: Orbitron;
-    border-radius: 4px;
-    padding-top: 23px
-  }
+}
+.lib-add{
+  width:15%;
+}
