@@ -17,7 +17,8 @@ router.get('/atm', async (req, res) => {
     try {
         const connection = await getConnection();
         const [atms] = await connection.query('SELECT Bank_name, Latitude, Longitude FROM ATM A JOIN Position P ON A.Landmark_id = P.Landmark_id');
-        res.send(atms);
+        // console.log(locations[0].Landmark_id);
+        res.status(200).send(atms);
     } catch (error) {
         res.status(500).send(error);
     }

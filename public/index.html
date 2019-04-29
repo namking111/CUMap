@@ -1,18 +1,15 @@
-<!--added from original-->
-
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
-<meta name="viewport"
-    content="width=device-width, initial-scale=1.0 width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
 
 <head>
     <title>CU Map</title>
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
     <script type='text/javascript' src='https://www.google.com/jsapi'></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+        crossorigin="anonymous">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/css/styles.css">
@@ -78,33 +75,15 @@
                 <div class="home-header">
                     <center>
                         <div class="col-1">
-                            <input class="search-box" id="building-search-box" type="text"
-                                placeholder=" SEARCH BUILDING" onclick="buildingSearch()">
+                            <input class="search-box" id="building-search-box" type="text" placeholder=" SEARCH BUILDING">
                         </div>
-                        <script>
-                            var buildings = [];
-                            //search box by get data from DB
-
-                            $.get('/building', (data) => {
-                                console.log("data ", data);
-                                for (i = 0; i < data.length; i++) {
-                                    buildings[i] = data[i].Bld_name;
-                                }
-                            });
-                            console.log("buildings ", buildings)
-                            $("#building-search-box").autocomplete({
-                                source: buildings
-                            });
-
-                        </script>
 
                         <div class="col-1">
                             <button class="btn-go" id="gobuilding">GO</button>
                         </div>
 
                         <div class="col-1">
-                            <input class="search-box" id="course-search" type="text" placeholder=" SEARCH COURSE"
-                                onkeydown="courseOnEnter(this)">
+                            <input class="search-box" id="course-search" type="text" placeholder=" SEARCH COURSE" onkeydown="courseOnEnter(this)">
                             <script>
 
                                 var allcourseinfo
@@ -143,10 +122,8 @@
                             <button class="btn-go" onclick="searchCourse()" id="gocourse">GO</button>
                         </div>
                         <div style: "margin-top:1vw; margin-bottum:1vw;">
-                            <button class="btn-go" id="gps" onclick="gpsHere()">&nbsp;Mark Your Current
-                                Location</button>
-                            <button class="btn-go" id="cleargps" onclick="initMap()">&nbsp;Clear Current
-                                Location</button>
+                            <button class="btn-go" id="gps" onclick="gpsHere()">&nbsp;Mark Your Current Location</button>
+                            <button class="btn-go" id="cleargps" onclick="initMap()">&nbsp;Clear Current Location</button>
                             <!--to be deleted-->
                             <button class="btn-go" id="getRoute" onclick="routeTo()">&nbsp;Get Route</button>
                         </div>
@@ -163,7 +140,7 @@
                         <div class="landmark-wrapper">
                             <div class="col" style="background:transparent">
                                 <div class="checkbox">
-                                    <input type="checkbox" id="atm" name="atm" unchecked />
+                                    <input type="checkbox" id="atm" name="atm" unchecked/>
                                     <label for="atm"></label>
                                 </div>
                                 <span class="landmark-check">ATM</span>
@@ -171,14 +148,14 @@
 
                             <div class="col" style="background:transparent">
                                 <div class="checkbox">
-                                    <input type="checkbox" id="canteen" name="canteen" unchecked />
+                                    <input type="checkbox" id="canteen" name="canteen" unchecked/>
                                     <label for="canteen"></label>
                                 </div>
                                 <span class="landmark-check">CANTEEN</span>
                             </div>
                             <div class="col" style="background:transparent">
                                 <div class="checkbox">
-                                    <input type="checkbox" id="libr" name="libr" unchecked />
+                                    <input type="checkbox" id="libr" name="libr" unchecked/>
                                     <label for="libr"></label>
                                 </div>
                                 <span class="landmark-check">LIBRARY</span>
@@ -186,7 +163,7 @@
 
                             <div class="col" style="background:transparent">
                                 <div class="checkbox">
-                                    <input type="checkbox" id="coffeeshop" name="coffeeshop" unchecked />
+                                    <input type="checkbox" id="coffeeshop" name="coffeeshop" unchecked/>
                                     <label for="coffeeshop"></label>
                                 </div>
                                 <span class="landmark-check">COFFEE SHOP</span>
@@ -194,7 +171,7 @@
 
                             <div class="col" style="background:transparent">
                                 <div class="checkbox">
-                                    <input type="checkbox" id="museum" name="museum" unchecked />
+                                    <input type="checkbox" id="museum" name="museum" unchecked/>
                                     <label for="museum"></label>
                                 </div>
                                 <span class="landmark-check">MUSEUM</span>
@@ -202,7 +179,7 @@
 
                             <div class="col" style="background: transparent">
                                 <div class="checkbox">
-                                    <input type="checkbox" id="copyprint" name="copyprint" unchecked />
+                                    <input type="checkbox" id="copyprint" name="copyprint" unchecked/>
                                     <label for="copyprint"></label>
                                 </div>
                                 <span class="landmark-check">COPY &amp; PRINT SHOP</span>
@@ -210,7 +187,7 @@
 
                             <div class="col" style="background:transparent">
                                 <div class="checkbox">
-                                    <input type="checkbox" id="vendm" name="vendm" unchecked />
+                                    <input type="checkbox" id="vendm" name="vendm" unchecked/>
                                     <label for="vendm"></label>
                                 </div>
                                 <span class="landmark-check">VENDING MACHINE</span>
@@ -218,7 +195,7 @@
 
                             <div class="col" style="background:transparent">
                                 <div class="checkbox">
-                                    <input type="checkbox" id="popbus" name="popbus" unchecked />
+                                    <input type="checkbox" id="popbus" name="popbus" unchecked/>
                                     <label for="popbus"></label>
                                 </div>
                                 <span class="landmark-check">CU POPBUS</span>
@@ -226,7 +203,7 @@
 
                             <div class="col" style="background:transparent">
                                 <div class="checkbox">
-                                    <input type="checkbox" id="cubike" name="cubike" unchecked />
+                                    <input type="checkbox" id="cubike" name="cubike" unchecked/>
                                     <label for="cubike"></label>
                                 </div>
                                 <span class="landmark-check">CU BIKE</span>
@@ -234,7 +211,7 @@
 
                             <div class="col" style="background:transparent">
                                 <div class="checkbox">
-                                    <input type="checkbox" id="hamo" name="hamo" unchecked />
+                                    <input type="checkbox" id="hamo" name="hamo" unchecked/>
                                     <label for="hamo"></label>
                                 </div>
                                 <span class="landmark-check">CU TOYOTA HA:MO</span>
@@ -242,7 +219,7 @@
 
                             <div class="col" style="background:transparent">
                                 <div class="checkbox">
-                                    <input type="checkbox" id="muvmi" name="muvmi" unchecked />
+                                    <input type="checkbox" id="muvmi" name="muvmi" unchecked/>
                                     <label for="muvmi"></label>
                                 </div>
                                 <span class="landmark-check">Muvmi</span>
@@ -254,9 +231,8 @@
                     <!-- End Landmark dropdown -->
                 </div>
 
-                <div class="container">
 
-
+                    
 
                     <!-- start selecting method -->
                     <div class="method-select" id="method-select">
@@ -271,8 +247,7 @@
                                     </center> -->
                                 <center>
                                     <div>
-                                        <svg width="23" height="23" viewBox="0 0 26 26" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="23" height="23" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <circle opacity="0.5" cx="13" cy="13" r="13" fill="black" />
                                             <circle cx="13.0001" cy="13" r="8.18519" fill="#F2F2F2" />
                                             <circle cx="12.9998" cy="13" r="4.33333" fill="black" />
@@ -306,30 +281,25 @@
                                 <!-- <div id="walk"> -->
                                 <!-- <input id="walk-s" class="transport-selector" type="checkbox" unchecked/> -->
                                 <span class="w-pic">
-                                    <img class="t-pic-w" id="walk1" onclick="changeWalk()" src="img-transport/walk.png"
-                                        align="middle">
+                                    <img class="t-pic-w" id="walk1" onclick="changeWalk()" src="img-transport/walk.png" align="middle">
                                     <label>Walk</label>
                                 </span>
                                 <!-- <img id="walk2" onclick="document.getElementById('walk2').src='img/walk-2.png'" src="img/walk.png" width="50" height="50"> -->
                                 <!-- <img src="img/walk.png" alt="walk2" width="50" height="50" onclick="selectMethodPic()"> -->
                                 <span class="b-pic">
-                                    <img class="t-pic-b" id="bike1" onclick="changeBike()" src="img-transport/bike.png"
-                                        align="middle">
+                                    <img class="t-pic-b" id="bike1" onclick="changeBike()" src="img-transport/bike.png" align="middle">
                                     <label>CU Bike</label>
                                 </span>
                                 <span class="bp-pic">
-                                    <img class="t-pic-bp" id="bus1" onclick="changeBus()" src="img-transport/bus.png"
-                                        align="middle">
+                                    <img class="t-pic-bp" id="bus1" onclick="changeBus()" src="img-transport/bus.png" align="middle">
                                     <label>CU Pop Bus</label>
                                 </span>
                                 <span class="h-pic">
-                                    <img class="t-pic-h" id="hamo1" onclick="changeHamo()" src="img-transport/hamo.png"
-                                        align="middle">
+                                    <img class="t-pic-h" id="hamo1" onclick="changeHamo()" src="img-transport/hamo.png" align="middle">
                                     <label>Hamo</label>
                                 </span>
                                 <span class="m-pic">
-                                    <img class="t-pic-m" id="muvmi1" onclick="changeMuvmi()"
-                                        src="img-transport/muvmi.png" align="middle">
+                                    <img class="t-pic-m" id="muvmi1" onclick="changeMuvmi()" src="img-transport/muvmi.png" align="middle">
                                     <label>Muvmi</label>
                                 </span>
                             </center>
@@ -385,8 +355,7 @@
                                     </span>
                                 </button>
 
-                                <script
-                                    src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+                                <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
                                 <script>
                                     $("button").click(function () {
                                         var target = $(this);
@@ -410,12 +379,12 @@
                     <!-- end selecting method -->
                     <!-- start course info -->
                     <div id="course-info-head" class="section-head">
-                        <br>
-                        <h2>&nbsp;Course Information</h2>
-                        <br>
-                    </div>
-                    <div id="course-info"></div>
-                    <!-- end course info -->
+                            <br>
+                            <h2>&nbsp;Course Information</h2>
+                            <br>
+                        </div>
+                        <div id="course-info"></div>
+                        <!-- end course info -->
 
                     <!-- start map -->
                     <div id="map"></div>
@@ -441,15 +410,13 @@
 
                         </div>
                     </div>
-                    <!-- end floorplan -->
+                      <!-- end floorplan -->
 
 
                     <div id="test2Map">
-                        <iframe width="450" height="260" style="border: 1px solid #cccccc;"
-                            src="https://thingspeak.com/channels/759644/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                        <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/759644/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
                     </div>
 
-                </div>
                 <table class="table table-condensed" style="width:550px;margin:auto;">
                     <thead>
                         <tr class="active">
@@ -462,13 +429,11 @@
                     </tbody>
                 </table>
 
-                <script type='text/javascript'
-                    src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+                <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
                 <script type='text/javascript' src='https://www.google.com/jsapi'></script>
                 <script src="/js/realtime.js"></script>
                 <script src="/js/index.js"></script>
-                <script
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initMap"
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initMap"
                     async defer></script>
                 <script src="/js/IoTApp.js"></script>
                 <!-- <script src="/js/clocklyandDate.js"></script>-->
