@@ -18,8 +18,8 @@ function clock() {
     }
 
     hours_Span.innerHTML = hours;
-    minute_Span.innerHTML = ":" + mins;
-    second_Span.innerHTML = ":" + secs;
+    minute_Span.innerHTML = ": " + mins;
+    second_Span.innerHTML = ": " + secs;
 }
 
 function Dated() {

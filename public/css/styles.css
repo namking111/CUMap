@@ -118,6 +118,10 @@ body{
       border: none;
       position: static;
       margin-bottom: 20px;
+      padding: 4px 0.7em 4px 0.7em;
+      font-weight:600;
+      border: 2px solid rgb(248, 162, 49);
+      color: rgb(85, 57, 21);
   }
   .home-header{
     background-color:  #da81b7;

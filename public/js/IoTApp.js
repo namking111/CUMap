@@ -25,36 +25,52 @@ function main() {
     var value_Span = document.getElementById("valuePM");
     var TextStatus = document.getElementById("TextStatus");
     var p;
-    const colorChanged=document.getElementById("colorBG");
-    var locationspan= document.getElementById("status-span");
+    const colorChanged = document.getElementById("colorBG");
+    var locationspan = document.getElementById("status-span");
     // get the data from thingspeak
     //https://thingspeak.com/channels/759644/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15
     //$.getJSON('https://api.thingspeak.com/channels/' + channel_id + '/feed/last.json?api_key=' + api_key, function (data) {
-      // get the data point
-      $.getJSON('https://api.thingspeak.com/channels/' + 759644 + '/feed/last.json?api_key=' + 'UTLABD2M99AIURCF', function (data) {
+    // get the data point
+    $.getJSON('https://api.thingspeak.com/channels/' + 759644 + '/feed/last.json?api_key=' + 'UTLABD2M99AIURCF', function (data) {
       p = data.field1;
-     
+
       // if there is a data point display it
       if (p) {
         // p = Math.round((p / max_gauge_value) * 100);
         displayData(p);
 
         value_Span.innerHTML = p;
-        if (p <= 50 && p >= 0) {
-          TextStatus.innerHTML = "GOOD";
-          colorChanged.style.background = "green";
+        if (p <= 9 && p >= 0) {
+          TextStatus.innerHTML = "LOW";
+          colorChanged.style.background = "#00A85A";
         }
-        if (p > 50 && p <= 100) 
-        {TextStatus.innerHTML = "MODERATE";
-        colorChanged.style.background = "yellow";
-            
+        if (p > 9 && p <= 26) {
+          TextStatus.innerHTML = "MODERATE";
+          colorChanged.style.background = "#0775C1";
+
         }
-        if (p > 100 && p <= 150) TextStatus.innerHTML = "UNHEATHY for sensitive groups";
-        if (p > 150 && p <= 200) TextStatus.innerHTML = "Unhealthy";
-        if (p > 200 && p <= 300) TextStatus.innerHTML = "VERY UNHEALTHY";
-        if (p > 300 && p < 500) TextStatus.innerHTML = "Hazardous";
+        if (p > 26 && p <= 40) {
+          TextStatus.innerHTML = "UNHEALTHY<br><small>for sensitive groups</small>";
+          colorChanged.style.background = "#FBB410";
         }
-       });
+        if (p > 40 && p <= 107) {
+          TextStatus.innerHTML = "UNHEALTHY";
+          colorChanged.style.background = "#F16720";
+        }
+        if (p > 107 && p <= 178) {
+          TextStatus.innerHTML = "VERY UNHEALTHY";
+          colorChanged.style.background = "#EC3427";
+        }
+        if (p > 178 && p <= 250) {
+          TextStatus.innerHTML = "HAZARDOUS<br><small>(High)</small>";
+          colorChanged.style.background = "#A22617";
+        }
+        if (p > 250) {
+          TextStatus.innerHTML = "HAZARDOUS<br><small>(Extreme)</small>";
+          colorChanged.style.background = "#571B0B";
+        }
+      }
+    });
   }
   // initialize the chart
   function initChart() {
@@ -68,9 +84,6 @@ function main() {
     // load new data every 15 seconds
     setInterval('loadData()', 1000);
   }
-
-
-
 }
 
 

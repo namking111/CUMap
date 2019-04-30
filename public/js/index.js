@@ -114,14 +114,14 @@ var initMap = function () {
     directionsDisplay1.setOptions({
         polylineOptions: new google.maps.Polyline({
             // Blue
-            strokeColor: '#0000FF',
+            strokeColor: '#35B5F5',
             strokeOpacity: 1.0,
             strokeWeight: 5
         })
     }); directionsDisplay3.setOptions({
         polylineOptions: new google.maps.Polyline({
             // Blue
-            strokeColor: '#0000FF',
+            strokeColor: '#35B5F5',
             strokeOpacity: 1.0,
             strokeWeight: 5
         })
@@ -402,6 +402,7 @@ var initMap = function () {
     buildsearchbox.addListener('sel_bld', searchbuildfrombox());
 
     function searchbuildfrombox() {
+        closeCourseInfo();
         buildsearchbox.onkeydown = function () {
             if (event.key === 'Enter') {
                 if (buildsearchbox.value.length == 0) {
@@ -449,6 +450,10 @@ function courseOnEnter(ele) {
 }
 
 function searchCourse() {
+    document.getElementById("building-search-box").value = "";
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+    }
 
     var ms = document.getElementById("method-select");
     ms.style.display = "none";
@@ -468,9 +473,9 @@ function searchCourse() {
         coursedays = allcoursecount[indexcount].countcrssec
         showCourse(theCourse);
 
-        // hide landmark
-        var ld = document.getElementById("landmark-dropdown");
-        ld.style.display = "none";
+        // // hide landmark
+        // var ld = document.getElementById("landmark-dropdown");
+        // ld.style.display = "none";
     } else {
         alert("Please enter course.")
     }
@@ -532,8 +537,9 @@ function showCourse(theCourse) {
     var currentcoursebld = []
     /********* */
     for (var times = 0; times < coursedays; times++) {
-        htmltext = htmltext + "<div id=\"crsdiv" + times + "\"><p>Course : " + nameid + "<br> Lecturer : " + allcourseinfo[arrayindex + times].Prof_Name + "<br> Section : " + currentsec + "<br> Day : " + allcourseinfo[arrayindex + times].Day + "<br> Time : " + allcourseinfo[arrayindex + times].ctime + "<br> Faculty : " + allcourseinfo[arrayindex + times].faculty_name + "<br> Room : " + allcourseinfo[arrayindex + times].room_number + "<br> Floor : " + allcourseinfo[arrayindex + times].floor + "<br> Building : " + allcourseinfo[arrayindex + times].bld_name + "</p>" + "<button class=\"btn-go\" id=\"courseroute" + times + "\" onclick=\"goToClass()\">Find</button><br><br><div>"
+        // htmltext = htmltext + "<div id=\"crsdiv" + times + "\"><p>Course : " + nameid + "<br> Lecturer : " + allcourseinfo[arrayindex + times].Prof_Name + "<br> Section : " + currentsec + "<br> Day : " + allcourseinfo[arrayindex + times].Day + "<br> Time : " + allcourseinfo[arrayindex + times].ctime + "<br> Faculty : " + allcourseinfo[arrayindex + times].faculty_name + "<br> Room : " + allcourseinfo[arrayindex + times].room_number + "<br> Floor : " + allcourseinfo[arrayindex + times].floor + "<br> Building : " + allcourseinfo[arrayindex + times].bld_name + "</p>" + "<button class=\"btn-go\" id=\"courseroute" + times + "\" onclick=\"goToClass()\">Find</button><br><br><div>"
         // htmltext = htmltext + "<div id=\"crsdiv\"" + times + "><p>Course : " + nameid + "<br> Lecturer : " + allcourseinfo[arrayindex + times].Prof_Name + "<br> Section : " + currentsec + "<br> Day : " + allcourseinfo[arrayindex + times].Day + "<br> Time : " + allcourseinfo[arrayindex + times].ctime + "<br> Faculty : " + allcourseinfo[arrayindex + times].faculty_name + "<br> Room : " + allcourseinfo[arrayindex + times].room_number + "<br> Floor : " + allcourseinfo[arrayindex + times].floor + "<br> Building : " + allcourseinfo[arrayindex + times].bld_name + "</p>" + "<input type=\"checkbox\"><br><br><br><div>"
+        htmltext = htmltext + " <div id=\"crsdiv" + times + "\"><br><p><b>Course</b> : " + nameid + "<br> <b>Lecturer</b> : " + allcourseinfo[arrayindex + times].Prof_Name + "<br> <b>Section</b> : " + currentsec + "<br> <b>Day</b> : " + allcourseinfo[arrayindex + times].Day + "<br> <b>Time</b> : " + allcourseinfo[arrayindex + times].ctime + "<br> <b>Faculty</b> : " + allcourseinfo[arrayindex + times].faculty_name + "<br> <b>Room</b> : " + allcourseinfo[arrayindex + times].room_number + "<br> <b>Floor</b> : " + allcourseinfo[arrayindex + times].floor + "<br> <b>Building</b> : " + allcourseinfo[arrayindex + times].bld_name + "</p>" + "<button class=\"btn-go\" id=\"courseroute" + times + "\" onclick=\"goToClass()\">Find</button><br><div>"
         bname = allcourseinfo[arrayindex + times].bld_name;
         bb = buildingdata.findIndex(iii => iii.Bld_name === bname)
         var crsbld = buildingdata[bb].Bld_name;
@@ -611,7 +617,7 @@ function mapFunc(fac, building) {
             flList.add(flarr[10]);
             flList.add(flarr[12]);
             //default floor is M
-            document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0100-FR90.png\"></center>"
+            document.getElementById("show-map").innerHTML = "<center><img width=\"50%\" src=\"img/ENG0100-FR90.png\"></center>"
             flList.value = "Floor M";
         }
         else {
@@ -624,7 +630,7 @@ function mapFunc(fac, building) {
             }
 
             //default floor is 1
-            document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + building + "-FR1.png\"></center>"
+            document.getElementById("show-map").innerHTML = "<center><img width=\"90%\" src=\"img/ENG0" + building + "-FR1.png\"></center>"
         }
 
         document.getElementById("building-num").innerText = "Engineering Building " + building;
@@ -638,7 +644,7 @@ function mapFunc(fac, building) {
         }
         flList.value = "Floor 1";
 
-        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR1.png\"></center>"
+        document.getElementById("show-map").innerHTML = "<center><img width=\"50%\" src=\"img/ARTS01-FR1.png\"></center>"
         document.getElementById("building-num").innerText = "Maha Chakri Sirindhorn Building";
     }
 }
@@ -706,10 +712,10 @@ function flFunc() {
         flstr = parseInt(flstr[1]) + 90;
     }
     if (currentFac == 0) { //if it is a building in faculty of engineering
-        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ENG0" + currentBuild + "-FR" + flstr + ".png\"></center>"
+        document.getElementById("show-map").innerHTML = "<center><img width=\"90%\" src=\"img/ENG0" + currentBuild + "-FR" + flstr + ".png\"></center>"
     }
     else if (currentFac == 1) { //if it is a building in faculty of arts
-        document.getElementById("show-map").innerHTML = "<center><img src=\"img/ARTS01-FR" + flstr + ".png\"></center>"
+        document.getElementById("show-map").innerHTML = "<center><img width=\"90%\" src=\"img/ARTS01-FR" + flstr + ".png\"></center>"
     }
 }
 // Determine best travel/transport mode
@@ -1099,7 +1105,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay1, directi
                             directionsDisplay2.setOptions({
                                 polylineOptions: new google.maps.Polyline({
                                     // Red
-                                    strokeColor: '#FF0000',
+                                    strokeColor: '#CC4545',
                                     strokeOpacity: 1.0,
                                     strokeWeight: 5
                                 })
@@ -1111,7 +1117,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay1, directi
                             directionsDisplay2.setOptions({
                                 polylineOptions: new google.maps.Polyline({
                                     // Purple
-                                    strokeColor: '#800080',
+                                    strokeColor: '#C056E5',
                                     strokeOpacity: 1.0,
                                     strokeWeight: 5
                                 })
@@ -1128,7 +1134,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay1, directi
                             directionsDisplay2.setOptions({
                                 polylineOptions: new google.maps.Polyline({
                                     // Green
-                                    strokeColor: '#008000',
+                                    strokeColor: '#BBDF36',
                                     strokeOpacity: 1.0,
                                     strokeWeight: 5
                                 })
@@ -1140,7 +1146,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay1, directi
                             directionsDisplay2.setOptions({
                                 polylineOptions: new google.maps.Polyline({
                                     // Orange
-                                    strokeColor: '#FFA500',
+                                    strokeColor: '#F28A22',
                                     strokeOpacity: 1.0,
                                     strokeWeight: 5
                                 })
@@ -1289,7 +1295,7 @@ $("#spin").click(function () {
         }, 1000);
         if (isBike) {
             bicycleAllowed = true;
-            if (!isHamo && !isPopbus && !isMuvmi) {
+            if (!isWalk && !isHamo && !isPopbus && !isMuvmi) {
                 forceBicycle = true;
             }
         } else {
@@ -1298,7 +1304,7 @@ $("#spin").click(function () {
         }
         if (isHamo) {
             hamoAllowed = true;
-            if (!isBike && !isPopbus && !isMuvmi) {
+            if (!isWalk && !isBike && !isPopbus && !isMuvmi) {
                 forceHamo = true;
             }
         } else {
@@ -1307,7 +1313,7 @@ $("#spin").click(function () {
         }
         if (isPopbus) {
             popBusAllowed = true;
-            if (!isBike && !isHamo && !isMuvmi) {
+            if (!isWalk && !isBike && !isHamo && !isMuvmi) {
                 forcePopBus = true;
             }
         } else {
@@ -1316,7 +1322,7 @@ $("#spin").click(function () {
         }
         if (isMuvmi) {
             muvmiAllowed = true;
-            if (!isBike && !isHamo && !isPopbus) {
+            if (!isWalk && !isBike && !isHamo && !isPopbus) {
                 forceMuvmi = true;
             }
         } else {
@@ -1329,6 +1335,7 @@ $("#spin").click(function () {
 });
 
 function markerAndPlanFromBld() {
+    document.getElementById("course-search").value = "";
     for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
     }
@@ -1337,6 +1344,7 @@ function markerAndPlanFromBld() {
     var ms = document.getElementById("method-select");
     ms.style.display = "block";
     document.getElementById("telldest").innerHTML = "Destination : " + bname;
+    document.getElementById("dest-lo").innerHTML = bname;
 
     openFloorPlan()
     if (buildingdata[indexBld].Bld_name == "Maha Chakri Sirindhorn Building") {

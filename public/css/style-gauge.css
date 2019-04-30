@@ -1,0 +1,31 @@
+#gauge_div {
+    /* width: 120px; */
+    margin: 0 auto;
+}
+
+/* .h-100vh {
+    height: 100vh;
+} */
+
+.overflow-hidden {
+    overflow: hidden;
+}
+.overflow-auto {
+    overflow: auto;
+}
+
+.opacity-30 {
+    opacity: 0.30;
+}
+.opacity-40 {
+    opacity: 0.4;
+}
+.delay-2 {
+    animation-delay: 0.5s;
+}
+.z-index-1 {
+    z-index: 1;
+}
+.z-index-2 {
+    z-index: 2;
+}   

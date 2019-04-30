@@ -171,6 +171,10 @@
     }
 }
 @media only screen and (max-width: 550px) {
+/* .landmark-dropdown{
+  margin-bottom:50vw;
+} */
+
     .col { 
         display: block;
         width: 100%;
@@ -179,6 +183,9 @@
 }
 
 @media screen and (min-width: 850px) {
+  .landmark-dropdown{
+    margin-bottom:85px;
+  }
     .landmark-dropdown .dropdown-selector{
         top: 1%;
         margin-top: 135px;
@@ -188,6 +195,9 @@
     }
   }
   @media only screen and (max-width: 850px) and (min-width: 492px){
+    .landmark-dropdown{
+      margin-bottom:40vw;
+    }
     .landmark-dropdown .dropdown-selector{
         top: 1%;
         margin-top: 179px;
@@ -197,6 +207,9 @@
     }
   }
   @media only screen and (max-width: 492px){
+    .landmark-dropdown{
+      margin-bottom:30vw;
+    }
     .landmark-dropdown .dropdown-selector{
         top: 1%;
         margin-top: 217px;
@@ -335,7 +348,7 @@
 }
 
 .landmark-dropdown .dropdown-content {
-    position: absolute;
+    position: relative;
     /* position:static;
     display: block; */
 

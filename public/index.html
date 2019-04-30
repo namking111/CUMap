@@ -28,10 +28,17 @@
     <link rel="stylesheet" href="/css/style-landmark.css">
     <!-- Theme -->
     <link rel="stylesheet" href="/css/style-theme.css">
+    <!-- Course info -->
+    <link rel="stylesheet" href="/css/style-course-info.css">
     <!-- select method -->
     <link rel="stylesheet" href="css/style-method.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- pm2.5 -->
+    <link rel="stylesheet" href="/css/style-gauge.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css'>
 </head>
 
 <body>
@@ -153,7 +160,7 @@
 
                 <!-- Landmark dropdown -->
                 <div class="landmark-dropdown" id="landmark-dropdown">
-                    <input class="dropdown-selector" type="checkbox" />
+                    <input class="dropdown-selector" type="checkbox" checked />
                     <div class="dropdown-caption">Landmark</div>
                     <div class="dropdown-content">
                         <!-- checkbox -->
@@ -404,12 +411,54 @@
                 </div>
                 <!-- end floorplan -->
 
+                <div id="gauge_div" style="display:none;"></div>
+                <!-- PM2.5 Square -->
+                <div class="bg-light h-100vh position-relative overflow-hidden">
+                    <div id="test2Map" style="display: inline-block; padding:20px;">
+                        <iframe width="450" height="260" style="border: 1px solid #cccccc;" align="bottom"
+                            src="https://thingspeak.com/channels/759644/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                    </div>
+                    <div class="p-5 h-100 position-relative z-index-2 overflow-auto py-3 animated bounceInUp"
+                        style="width:22em; height:20em; display: inline-block;">
+                        <div class="p-2 text-white rounded m-3 p-3 shadow-lg text-center animated flipInX delay-2"
+                            id="colorBG" style="display: inline-block;">
+                            <div class="text-uppercase text-tracked opacity-30 mb-2" style="color:rgb(51, 51, 51);">
+                                Right now</div>
+                            <div class="Status-main" id="colorBG">
+                                <div class="badge" id="status-span">100th Buildiing</div>
+                                <div class="Status">
+                                    <div id="valuePM" class="display-4 text-monospace"></div>
+                                    <small id="unit">μg/m^3</small><br>
+                                    <div id="TextStatus" class="badge"
+                                        style="margin-top:5px; margin-bottom:3px; font-size:13px; background-color:rgba(142, 170, 192, 0.582); width:8.5em;">
+                                        <b></b></div><br>
+                                </div>
+                            </div>
+                            <div class="main">
+                                <!-- <div class="badge">
+                                    Clockly
+                                </div> -->
+                                <small class="clock opacity-40" style="color:rgb(51, 51, 51);">
+                                    <span id="hour">:</span>
+                                    <span id="minute">:</span>
+                                    <span id="second"></span>
+                                </small>
+                            </div>
+                            <small class="Date-main">
+                                <!-- <div class="TitleOfDate">Date</div> -->
+                                <div class="Date opacity-40" style="color:rgb(51, 51, 51);">
+                                    <span id="Day"> </span>
+                                    <span id="DateNumber"> </span>
+                                    <span id="Month"></span>
+                                    <span id="Year"> </span>
+                                </div>
+                            </small>
+                        </div>
+                    </div>
 
-                <div id="test2Map">
-                    <iframe width="450" height="260" style="border: 1px solid #cccccc;"
-                        src="https://thingspeak.com/channels/759644/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
                 </div>
-
+                <!-- end PM3.5 -->
+                <!--
                 <table class="table table-condensed" style="width:550px;margin:auto;">
                     <thead>
                         <tr class="active">
@@ -421,6 +470,7 @@
 
                     </tbody>
                 </table>
+            -->
 
                 <script type='text/javascript'
                     src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
@@ -431,7 +481,7 @@
                     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmlLnG94325_e04Kt4pGJXtNg03sM9Ijc&libraries=places&callback=initMap"
                     async defer></script>
                 <script src="/js/IoTApp.js"></script>
-                <!-- <script src="/js/clocklyandDate.js"></script>-->
+                <script src="/js/clocklyandDate.js"></script>
             </div>
         </div>
     </body>
