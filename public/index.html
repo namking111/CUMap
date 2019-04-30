@@ -101,7 +101,6 @@
                                 $.get('/course', (data) => {
                                     allcourseinfo = data
                                     for (x = 0; x < data.length; x++) {
-                                        //courseidnamesec[x] = data[x].idnamesec
                                         courseidnamesec[x] = data[x].course_id + " " + data[x].course_name + " " + "section " + data[x].section;
                                     }
                                 })
@@ -270,7 +269,7 @@
                                         <circle cx="13.0001" cy="13" r="8.18519" fill="#F2F2F2" />
                                         <circle cx="12.9998" cy="13" r="4.33333" fill="black" />
                                     </svg>
-                                    <span class="s-desc1">current location</span>
+                                    <span class="s-desc1">Current Location</span>
                                 </div>
                                 <!-- <br> -->
                                 <div>
@@ -280,7 +279,7 @@
 
                                 <div>
                                     <i class="fa fa-map-marker" aria-hidden="true" style="font-size:26px"></i>
-                                    <span class="s-desc1">destined location</span>
+                                    <span class="s-desc1" id="dest-lo">Destined Location</span>
                                 </div>
                             </center>
                         </div>
