@@ -77,27 +77,21 @@ body{
   /* pic */
   .t-pic-w, .t-pic-bp{
     width: 35px;
-    height: 35px;
+    /* height: 35px; */
+    height: 43px;
     padding-top: 10px
   }
   .t-pic-b, .t-pic-h{
     width: 38px;
-    height: 38px;
+    /* height: 38px; */
+    height: 46px;
     padding-top: 10px
   }
   .t-pic-m{
     width: 47px;
-    height: 47px;
+    /* height: 47px; */
+    height: 55px;
     padding-top: 10px
-  }
-  .w-pic{
-    margin-right: 0.5vw;
-  }
-  .b-pic{
-    margin-right: 0.8vw;
-  }
-  .bp-pic, .h-pic{
-    margin-right: 1.4vw;
   }
 
   /* button */
@@ -143,11 +137,6 @@ body{
   .t-pic-m{
     width: 55px;
     height: 55px;
-  }
-  .w-pic, .b-pic, .bp-pic, .h-pic, .m-pic{
-    margin-right: 5vw;
-    display: table-cell;
-    padding: 15px;
   }
 
   /* button */ 
@@ -218,7 +207,6 @@ label{
 }
 .s-button {
   position: relative;
-  appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
   margin: 10px 0 0;
@@ -288,4 +276,91 @@ label{
 }
 .spin.done span:last-child {
   opacity: 1;
+}
+
+
+/* transport icon */
+
+ul {
+  list-style-type: none;
+}
+
+.tp li {
+  display: inline-block;
+}
+
+input[type="checkbox"][id="walk1"] {
+  display: none;
+}
+input[type="checkbox"][id="bike1"] {
+  display: none;
+}
+input[type="checkbox"][id="bus1"] {
+  display: none;
+}
+input[type="checkbox"][id="hamo1"] {
+  display: none;
+}
+input[type="checkbox"][id="muvmi1"] {
+  display: none;
+}
+
+
+.tp label {
+  padding: 10px;
+  display: block;
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.tp label:before {
+  background-color: white;
+  color: white;
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  border: 1px solid grey;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 28px;
+  transition-duration: 0.4s;
+  transform: scale(0);
+}
+
+.tp label img {
+  /* height: 30px;
+  width: 30px; */
+  transition-duration: 0.2s;
+  transform-origin: 50% 50%;
+}
+
+input#walk1:checked + label img {
+  content:url('../img-transport/walk-2.png');
+  transform: scale(0.9);
+  z-index: -1;
+}
+input#bike1:checked + label img {
+  content:url('../img-transport/bike-2.png');
+  transform: scale(0.9);
+  z-index: -1;
+}
+input#bus1:checked + label img {
+  content:url('../img-transport/bus-2.png');
+  transform: scale(0.9);
+  z-index: -1;
+}
+input#hamo1:checked + label img {
+  content:url('../img-transport/hamo-2.png');
+  transform: scale(0.9);
+  z-index: -1;
+}
+input#muvmi1:checked + label img {
+  content:url('../img-transport/muvmi-2.png');
+  transform: scale(0.9);
+  z-index: -1;
 }
