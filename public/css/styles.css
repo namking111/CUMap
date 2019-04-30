@@ -114,7 +114,7 @@ body{
   }
   .btn-go{
       background-color: rgb(253, 214, 107);
-      border-radius: 40px;
+      border-radius: 20px;
       border: none;
       position: static;
       margin-bottom: 20px;

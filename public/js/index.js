@@ -53,7 +53,7 @@ var currentLng = null;
 //var walkingAllowed = true; // Unnecessary
 var bicycleAllowed = false;
 var hamoAllowed = false;
-var popBusAllowed = true;
+var popBusAllowed = false;
 var muvmiAllowed = false;
 
 // Forcible Modes of Transport Booleans
@@ -62,13 +62,16 @@ var muvmiAllowed = false;
 // Above Modes of Transport Boolean must be set to true too
 var forceBicycle = false;
 var forceHamo = false;
-var forcePopBus = true;
+var forcePopBus = false;
 var forceMuvmi = false;
 
 // Create Directions Renderers (only 3 are are needed at most as of now)
 var directionsDisplay1;
 var directionsDisplay2;
 var directionsDisplay3;
+
+// Variables used in Init map
+var directionsService;
 
 var markers = [];
 
@@ -99,7 +102,7 @@ var initMap = function () {
     mark = new google.maps.Marker({ position: { lat: lat, lng: lng }, map: map });
     mark.setVisible(false);
     setInterval(function () { realtimeSetup(); }, 1000);
-    var directionsService = new google.maps.DirectionsService;
+    directionsService = new google.maps.DirectionsService;
 
     // Instantiate Directions Renderers
     directionsDisplay1 = new google.maps.DirectionsRenderer;
@@ -376,17 +379,6 @@ var initMap = function () {
         }
     });
 
-
-    document.getElementById('getRoute').onclick = function () {
-        getCurrentLocation();
-        setTimeout(() => calculateAndDisplayRoute(directionsService, directionsDisplay1, directionsDisplay2, directionsDisplay3, searchBox), 2000);
-    };
-
-    //to be deleted
-    document.getElementById('getRoute').onclick = function () {
-        getCurrentLocation();
-        setTimeout(() => calculateAndDisplayRoute(directionsService, directionsDisplay1, directionsDisplay2, directionsDisplay3), 2000);
-    };
     // Listen for click on map
     google.maps.event.addListener(map, 'click', function (event) {
     });
@@ -431,10 +423,6 @@ var initMap = function () {
             }
         });
     }
-
-
-
-
     calculateDistance();
 
 };
@@ -564,7 +552,6 @@ function goToClass() {
     ms.style.display = "block";
     indexBld = bb;
     markerAndPlanFromBld();
-
 }
 
 function openFloorPlan() {
@@ -835,7 +822,7 @@ function calculateBicycleDistance(allowed, start, end, bicycleNode, leastDistanc
                                 function (tempDistance4) {
                                     distance += tempDistance4;
 
-                                    if (distance < leastDistance) {
+                                    if (distance < leastDistance || forceBicycle) {
                                         callback(true, distance, startIndex, endIndex);
                                     } else {
                                         callback(false);
@@ -889,7 +876,7 @@ function calculateHamoDistance(allowed, start, end, hamoNode, leastDistance, cal
                                 function (tempDistance4) {
                                     distance += tempDistance4;
 
-                                    if (distance < leastDistance) {
+                                    if (distance < leastDistance || forceHamo) {
                                         callback(true, distance, startIndex, endIndex);
                                     } else {
                                         callback(false);
@@ -1000,7 +987,7 @@ function calculateMuvmiDistance(allowed, start, end, muvmiNode, leastDistance, c
                                 function (tempDistance4) {
                                     distance += tempDistance4;
 
-                                    if (distance < leastDistance) {
+                                    if (distance < leastDistance || forceMuvmi) {
                                         callback(true, distance, startIndex, endIndex);
                                     } else {
                                         callback(false);
@@ -1014,9 +1001,8 @@ function calculateMuvmiDistance(allowed, start, end, muvmiNode, leastDistance, c
         }
     );
 }
-
 // Draw route from current location to destination
-function calculateAndDisplayRoute(directionsService, directionsDisplay1, directionsDisplay2, directionsDisplay3, searchBox) {
+function calculateAndDisplayRoute(directionsService, directionsDisplay1, directionsDisplay2, directionsDisplay3) {
     // Pre-Setup
     //var places = searchBox.getPlaces();
     //console.log( buildingdata[indexBld].Latitude )
@@ -1041,8 +1027,8 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay1, directi
 
     // Initialize regardless of allowed modes of transport
     var popBusNode = [
-        new google.maps.LatLng(13.7400, 100.5315),
-        new google.maps.LatLng(13.7374, 100.5311),
+        new google.maps.LatLng(13.737544, 100.532884),
+        new google.maps.LatLng(13.739155, 100.533132),
     ];
     // TODO - follow the format above
     // Must complete before method is used
@@ -1287,28 +1273,46 @@ function calculateDistance(mode = 1, transportMode = 'DRIVING', fromLat = 0, fro
 
 $("#spin").click(function () {
     var target = $(this);
-    var v1 = document.getElementById("walk1").checked;
-    var v2 = document.getElementById("bike1").checked;
-    var v3 = document.getElementById("bus1").checked;
-    var v4 = document.getElementById("hamo1").checked;
-    var v5 = document.getElementById("muvmi1").checked;
-    if (v1 == false && v2 == false && v3 == false && v4 == false && v5 == false) {
+    var isWalk = document.getElementById("walk1").checked;
+    var isBike = document.getElementById("bike1").checked;
+    var isPopbus = document.getElementById("bus1").checked;
+    var isHamo = document.getElementById("hamo1").checked;
+    var isMuvmi = document.getElementById("muvmi1").checked;
+    if (isWalk == false && isBike == false && isPopbus == false && isHamo == false && isMuvmi == false) {
         alert("Please select method")
     } else {
         target.addClass("processing");
         setTimeout(function () {
             target.removeClass("processing");
             target.addClass("done");
-            alert("hellooooo");
-            // location.replace("https://www.w3schools.com")
             target.removeClass("done");
         }, 1000);
+        if (isBike) {
+            bicycleAllowed = true;
+        } else {
+            bicycleAllowed = false;
+        }
+        if (isHamo) {
+            hamoAllowed = true;
+        } else {
+            hamoAllowed = false;
+        }
+        if (isPopbus) {
+            popBusAllowed = true;
+        } else {
+            popBusAllowed = false;
+        }
+        if (isMuvmi) {
+            muvmiAllowed = true;
+        } else {
+            muvmiAllowed = false;
+        }
+        getCurrentLocation();
+        setTimeout(() => calculateAndDisplayRoute(directionsService, directionsDisplay1, directionsDisplay2, directionsDisplay3), 2000);
     }
 });
 
 function markerAndPlanFromBld() {
-
-
     for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
     }
