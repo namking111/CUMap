@@ -70,6 +70,8 @@ var directionsDisplay1;
 var directionsDisplay2;
 var directionsDisplay3;
 
+var markers = [];
+
 setInterval(function () { updatePosition(getLocation()); }, 10000);
 var initMap = function () {
     //Map options
@@ -379,23 +381,7 @@ var initMap = function () {
         getCurrentLocation();
         setTimeout(() => calculateAndDisplayRoute(directionsService, directionsDisplay1, directionsDisplay2, directionsDisplay3, searchBox), 2000);
     };
-    //For adding marker to map
-    function addMarker(data, icon, content) {
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(data.Latitude, data.Longitude),
-            map: map,
-            icon: icon
-        });
-        var infoWindow = new google.maps.InfoWindow({
-            content: content
-        });
 
-        marker.addListener('click', function () {
-            infoWindow.open(map, marker);
-        });
-
-        return marker;
-    }
     //to be deleted
     document.getElementById('getRoute').onclick = function () {
         getCurrentLocation();
@@ -405,7 +391,7 @@ var initMap = function () {
     google.maps.event.addListener(map, 'click', function (event) {
     });
 
-    var markers = [];
+    markers = [];
 
     //search box
     /*
@@ -429,6 +415,7 @@ var initMap = function () {
                 if (buildsearchbox.value.length == 0) {
                     alert("Please input the destination location.");
                 } else {
+                    indexBld = buildingdataname.indexOf(buildsearchbox.value);
                     markerAndPlanFromBld()
                 }
             }
@@ -438,160 +425,16 @@ var initMap = function () {
             if (document.getElementById("building-search-box").value.length == 0) {
                 alert("Please input the destination location.");
             } else {
+                indexBld = buildingdataname.indexOf(buildsearchbox.value);
                 markerAndPlanFromBld()
+
             }
         });
     }
 
 
-    function markerAndPlanFromBld() {
-        // hide landmark
-        var ld = document.getElementById("landmark-dropdown");
-        ld.style.display = "none";
-        indexBld = buildingdataname.indexOf(buildsearchbox.value);
-
-        for (var i = 0; i < markers.length; i++) {
-            markers[i].setMap(null);
-        }
-        markers.push(addMarker(buildingdata[indexBld], '', buildingdata[indexBld].Bld_name))
-
-        bname = buildingdataname[indexBld];
-        var ms = document.getElementById("method-select");
-        ms.style.display = "block";
-        document.getElementById("telldest").innerHTML = "Destination : " + bname;
-
-        closeCourseInfo();
-        openFloorPlan()
-        if (buildingdata[indexBld].Bld_name == "Maha Chakri Sirindhorn Building") {
-            mapFunc(1, 1)
-        } else if (buildingdata[indexBld].Bld_name == "Engineering Building 1") {
-            mapFunc(0, 1)
-        } else if (buildingdata[indexBld].Bld_name == "Engineering Building 2") {
-            mapFunc(0, 2)
-        } else if (buildingdata[indexBld].Bld_name == "Engineering Building 3") {
-            mapFunc(0, 3)
-        } else if (buildingdata[indexBld].Bld_name == "Engineering Centennial Memorial Building") {
-            mapFunc(0, 100)
-            bname = "Engineering Building 100"
-        } else {
-            closeFloorPlan()
-        }
-
-    }
 
 
-    function searchPlace() {
-        var ms = document.getElementById("method-select");
-        ms.style.display = "block";
-
-        var places = searchBox.getPlaces();
-        if (places.length == 0) {
-            return;
-        }
-
-        // Clear out the old markers.
-        markers.forEach(function (marker) {
-            marker.setMap(null);
-        });
-        markers = [];
-
-        // For each place, get the icon, name and location.
-        var bounds = new google.maps.LatLngBounds();
-        places.forEach(function (place) {
-            if (!place.geometry) {
-                console.log("Returned place contains no geometry");
-                return;
-            }
-            var icon = {
-                url: place.icon,
-                size: new google.maps.Size(71, 71),
-                origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(17, 34),
-                scaledSize: new google.maps.Size(25, 25)
-            };
-
-            // Create a marker for each place.
-            markers.push(new google.maps.Marker({
-                map: map,
-                iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-                title: place.name,
-                position: place.geometry.location,
-            }));
-            closeCourseInfo();
-            //engineering building 1
-            if (place.geometry.location == "(13.7365812, 100.53260790000002)" || place.geometry.location == "(13.7365812, 100.53257869999993)") {
-                openFloorPlan();
-                mapFunc(0, 1);
-                bname = "Engineering Building 1"
-            }
-
-            //engineering building 2
-            else if (place.geometry.location == "(13.7364773, 100.53339249999999)") {
-                openFloorPlan();
-                mapFunc(0, 2);
-                bname = "Engineering Building 2"
-            }
-            //engineering building 3
-            else if (place.geometry.location == "(13.7368903, 100.53315620000001)") {
-                openFloorPlan();
-                mapFunc(0, 3);
-                bname = "Engineering Building 3"
-            }
-
-            //engineering building 100
-            else if (place.geometry.location == "(13.736365, 100.53394780000008)" || place.geometry.location == "(13.7364442, 100.53388510000002)") {
-                openFloorPlan();
-                mapFunc(0, 100);
-                bname = "Engineering Building 100"
-            }
-
-            //Maha Chakri Sirindhorn Building
-            else if (place.geometry.location == "(13.7392952, 100.5340708)" || place.geometry.location == "(13.7392241, 100.53434160000006)") {
-                openFloorPlan();
-                mapFunc(1, 1);
-                bname = "Maha Chakri Sirindhorn Building"
-            }
-            else {
-                closeFloorPlan();
-                bname = place.geometry.location;
-            }
-            document.getElementById("telldest").innerHTML = "Destination : " + bname;
-
-            if (place.geometry.viewport) {
-                // Only geocodes have viewport.
-                bounds.union(place.geometry.viewport);
-            } else {
-                bounds.extend(place.geometry.location);
-            }
-        });
-        map.fitBounds(bounds);
-    };
-
-    document.getElementById("gobuilding").addEventListener("click", function () {
-        if (document.getElementById("building-search-box").value.length == 0) {
-            alert("Please enter destination.");
-        } else {
-            searchPlace();
-
-            // hide landmark
-            var ld = document.getElementById("landmark-dropdown");
-            ld.style.display = "none";
-        }
-    });
-    document.getElementById("building-search-box").onkeydown = function () {
-        if (event.key === 'Enter') {
-            if (document.getElementById("building-search-box").value.length == 0) {
-                alert("Please enter destination.");
-            } else {
-                searchPlace();
-
-                // hide landmark
-                var ld = document.getElementById("landmark-dropdown");
-                ld.style.display = "none";
-            }
-        }
-
-    }
     calculateDistance();
 
 };
@@ -608,14 +451,19 @@ var currentsec = 0
 var indexcount = 0
 
 var havemap = 0
+var bb = 0;
 
 function courseOnEnter(ele) {
     if (event.key === 'Enter') {
         searchCourse()
+
     }
 }
 
 function searchCourse() {
+
+    var ms = document.getElementById("method-select");
+    ms.style.display = "none";
 
     if (document.getElementById("course-search").value.length != 0) {
         for (i = 0; i < courseidnamesec.length; i++) {
@@ -693,13 +541,17 @@ function showCourse(theCourse) {
     flstr = allcourseinfo[arrayindex].floor;
     document.getElementById("selfloorlist").value = "Floor " + flstr
     flFunc();
+    var currentcoursebld = []
     /********* */
     for (var times = 0; times < coursedays; times++) {
-        htmltext = htmltext + "<div id=\"crsdiv\"" + times + "><p>Course : " + nameid + "<br> Lecturer : " + allcourseinfo[arrayindex + times].Prof_Name + "<br> Section : " + currentsec + "<br> Day : " + allcourseinfo[arrayindex + times].Day + "<br> Time : " + allcourseinfo[arrayindex + times].ctime + "<br> Faculty : " + allcourseinfo[arrayindex + times].faculty_name + "<br> Room : " + allcourseinfo[arrayindex + times].room_number + "<br> Floor : " + allcourseinfo[arrayindex + times].floor + "<br> Building : " + allcourseinfo[arrayindex + times].bld_name + "</p>" + "<button class=\"btn-go\" id=\"courseroute" + times + "\" onclick=\"goToClass()\">Find</button><br><br><div>"
+        htmltext = htmltext + "<div id=\"crsdiv" + times + "\"><p>Course : " + nameid + "<br> Lecturer : " + allcourseinfo[arrayindex + times].Prof_Name + "<br> Section : " + currentsec + "<br> Day : " + allcourseinfo[arrayindex + times].Day + "<br> Time : " + allcourseinfo[arrayindex + times].ctime + "<br> Faculty : " + allcourseinfo[arrayindex + times].faculty_name + "<br> Room : " + allcourseinfo[arrayindex + times].room_number + "<br> Floor : " + allcourseinfo[arrayindex + times].floor + "<br> Building : " + allcourseinfo[arrayindex + times].bld_name + "</p>" + "<button class=\"btn-go\" id=\"courseroute" + times + "\" onclick=\"goToClass()\">Find</button><br><br><div>"
         // htmltext = htmltext + "<div id=\"crsdiv\"" + times + "><p>Course : " + nameid + "<br> Lecturer : " + allcourseinfo[arrayindex + times].Prof_Name + "<br> Section : " + currentsec + "<br> Day : " + allcourseinfo[arrayindex + times].Day + "<br> Time : " + allcourseinfo[arrayindex + times].ctime + "<br> Faculty : " + allcourseinfo[arrayindex + times].faculty_name + "<br> Room : " + allcourseinfo[arrayindex + times].room_number + "<br> Floor : " + allcourseinfo[arrayindex + times].floor + "<br> Building : " + allcourseinfo[arrayindex + times].bld_name + "</p>" + "<input type=\"checkbox\"><br><br><br><div>"
         bname = allcourseinfo[arrayindex + times].bld_name;
+        bb = buildingdata.findIndex(iii => iii.Bld_name === bname)
+        var crsbld = buildingdata[bb].Bld_name;
+        currentcoursebld.push(crsbld);
         document.getElementById("telldest").innerHTML = "Destination : " + bname;
-        //alert(document.getElementById("courseroute1").value)
+        document.getElementById("dest-lo").innerHTML = bname;
     }
     courseDiv.innerHTML = htmltext
 }
@@ -710,6 +562,8 @@ function goToClass() {
     }
     var ms = document.getElementById("method-select");
     ms.style.display = "block";
+    indexBld = bb;
+    markerAndPlanFromBld();
 
 }
 
@@ -1451,3 +1305,50 @@ $("#spin").click(function () {
         }, 1000);
     }
 });
+
+function markerAndPlanFromBld() {
+
+
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+    }
+    markers.push(addMarker(buildingdata[indexBld], '', buildingdata[indexBld].Bld_name))
+    bname = buildingdataname[indexBld];
+    var ms = document.getElementById("method-select");
+    ms.style.display = "block";
+    document.getElementById("telldest").innerHTML = "Destination : " + bname;
+
+    openFloorPlan()
+    if (buildingdata[indexBld].Bld_name == "Maha Chakri Sirindhorn Building") {
+        mapFunc(1, 1)
+    } else if (buildingdata[indexBld].Bld_name == "Engineering Building 1") {
+        mapFunc(0, 1)
+    } else if (buildingdata[indexBld].Bld_name == "Engineering Building 2") {
+        mapFunc(0, 2)
+    } else if (buildingdata[indexBld].Bld_name == "Engineering Building 3") {
+        mapFunc(0, 3)
+    } else if (buildingdata[indexBld].Bld_name == "Engineering Centennial Memorial Building") {
+        mapFunc(0, 100)
+        bname = "Engineering Building 100"
+    } else {
+        closeFloorPlan()
+    }
+}
+
+//For adding marker to map
+function addMarker(data, icon, content) {
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(data.Latitude, data.Longitude),
+        map: map,
+        icon: icon
+    });
+    var infoWindow = new google.maps.InfoWindow({
+        content: content
+    });
+
+    marker.addListener('click', function () {
+        infoWindow.open(map, marker);
+    });
+
+    return marker;
+}
