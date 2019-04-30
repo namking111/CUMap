@@ -42,8 +42,8 @@ function realtimeSetup(){
       var pnChannel = "map2-channel";
   
       var pubnub = new PubNub({
-        publishKey:   'pub-c-19f1bc50-34bb-4a5d-ad29-604de4f163ad',
-        subscribeKey: 'sub-c-1cf19444-6983-11e9-a1d6-2a8c316da507'
+        publishKey:   'pub-c-fe6d4631-e538-4ada-bba5-cdb7a0f2b4e4',
+        subscribeKey: 'sub-c-69e40716-6b4d-11e9-912a-e2e853b4b660'
       });
   
       pubnub.subscribe({channels: [pnChannel]});

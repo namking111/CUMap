@@ -51,7 +51,7 @@ var currentLng = null;
 // Modes of Transport Booleans
 // Until an interface for them is implemented, edit these boolean parameters below to define allowed modes of transport
 //var walkingAllowed = true; // Unnecessary
-var bicycleAllowed = false;
+var bicycleAllowed = true;
 var hamoAllowed = false;
 var popBusAllowed = false;
 var muvmiAllowed = false;
@@ -60,7 +60,7 @@ var muvmiAllowed = false;
 // Please only use for debugging
 // Only 1 can be true at a time
 // Above Modes of Transport Boolean must be set to true too
-var forceBicycle = false;
+var forceBicycle = true;
 var forceHamo = false;
 var forcePopBus = false;
 var forceMuvmi = false;
@@ -1289,23 +1289,39 @@ $("#spin").click(function () {
         }, 1000);
         if (isBike) {
             bicycleAllowed = true;
+            if (!isHamo && !isPopbus && !isMuvmi) {
+                forceBicycle = true;
+            }
         } else {
             bicycleAllowed = false;
+            forceBicycle = false;
         }
         if (isHamo) {
             hamoAllowed = true;
+            if (!isBike && !isPopbus && !isMuvmi) {
+                forceHamo = true;
+            }
         } else {
             hamoAllowed = false;
+            forceHamo = false;
         }
         if (isPopbus) {
             popBusAllowed = true;
+            if (!isBike && !isHamo && !isMuvmi) {
+                forcePopBus = true;
+            }
         } else {
             popBusAllowed = false;
+            forcePopBus = false;
         }
         if (isMuvmi) {
             muvmiAllowed = true;
+            if (!isBike && !isHamo && !isPopbus) {
+                forceMuvmi = true;
+            }
         } else {
             muvmiAllowed = false;
+            forceMuvmi = false;
         }
         getCurrentLocation();
         setTimeout(() => calculateAndDisplayRoute(directionsService, directionsDisplay1, directionsDisplay2, directionsDisplay3), 2000);
