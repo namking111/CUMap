@@ -252,139 +252,154 @@
 
 
 
-                    <!-- start selecting method -->
-                    <div class="method-select" id="method-select">
+                <!-- start selecting method -->
+                <div class="method-select" id="method-select">
 
-                        <!-- start location -->
-                        <div class="s-location">
-                            <div class="s-lo-des"></div>
-                            <p class="s-desc" id="telldest">Destination :</p>
-                            <div>
-                                <!-- <center>
+                    <!-- start location -->
+                    <div class="s-location">
+                        <div class="s-lo-des"></div>
+                        <p class="s-desc" id="telldest">Destination :</p>
+                        <div>
+                            <!-- <center>
                                         <img class="posi" src="img/walk.png" align="middle">
                                     </center> -->
-                                <center>
-                                    <div>
-                                        <svg width="23" height="23" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle opacity="0.5" cx="13" cy="13" r="13" fill="black" />
-                                            <circle cx="13.0001" cy="13" r="8.18519" fill="#F2F2F2" />
-                                            <circle cx="12.9998" cy="13" r="4.33333" fill="black" />
-                                        </svg>
-                                        <span class="s-desc1">current location</span>
-                                    </div>
-                                    <!-- <br> -->
-                                    <div>
-                                        <i class="fa fa-ellipsis-v s-desc2" style="font-size:20px"></i>
-                                        <!-- <span class="s-desc2"> nnn</span> -->
-                                    </div>
-
-                                    <div>
-                                        <i class="fa fa-map-marker" aria-hidden="true" style="font-size:26px"></i>
-                                        <span class="s-desc1">destined location</span>
-                                    </div>
-                                </center>
-                            </div>
-                        </div>
-                        <br>
-                        <!-- end location -->
-                        <!-- <br> -->
-                        <!-- start transport -->
-                        <div class="s-transport">
-                            <span>Select Method</span>
-                        </div>
-                        <br>
-
-                        <div>
                             <center>
+                                <div>
+                                    <svg width="23" height="23" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle opacity="0.5" cx="13" cy="13" r="13" fill="black" />
+                                        <circle cx="13.0001" cy="13" r="8.18519" fill="#F2F2F2" />
+                                        <circle cx="12.9998" cy="13" r="4.33333" fill="black" />
+                                    </svg>
+                                    <span class="s-desc1">current location</span>
+                                </div>
+                                <!-- <br> -->
+                                <div>
+                                    <i class="fa fa-ellipsis-v s-desc2" style="font-size:20px"></i>
+                                    <!-- <span class="s-desc2"> nnn</span> -->
+                                </div>
 
-                                <!-- new select transport -->
-                                <ul class="tp">
-                                        <li><input type="checkbox" id="walk1" />
-                                            <label for="walk1"><img class="t-pic-w" src="img-transport/walk.png" align="middle"/></label>
-                                            <label>Walk</label>
-                                        </li>
-                                        <li><input type="checkbox" id="bike1" />
-                                            <label for="bike1"><img class="t-pic-b" src="img-transport/bike.png" align="middle"/></label>
-                                            <label>CU Bike</label>
-                                        </li>
-                                        <li><input type="checkbox" id="bus1" />
-                                            <label for="bus1"><img class="t-pic-bp" src="img-transport/bus.png" align="middle"/></label>
-                                            <label>CU Pop Bus</label>
-                                        </li>
-                                        <li><input type="checkbox" id="hamo1" />
-                                            <label for="hamo1"><img class="t-pic-h" src="img-transport/hamo.png" align="middle"/></label>
-                                            <label>Hamo</label>
-                                        </li>
-                                        <li><input type="checkbox" id="muvmi1" />
-                                            <label for="muvmi1"><img class="t-pic-m" src="img-transport/muvmi.png" align="middle"/></label>
-                                            <label>Muvmi</label>
-                                        </li>
-                                    </ul>
-                                    <!-- end select transport -->
-                                    
-                                </center>
-                            </div>
-                        <!-- end transport -->
-
-                        <!-- start shortest route button -->
-                        <div>
-                                <center>
-                                    <button class="s-button spin" id="spin" onclick="selectMethod()">
-                                        <span>Get Shortest Route</span>
-                                        <span>
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
-                                            </svg>
-                                        </span>
-                                    </button>
-    
-                                    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-                                </center>
-                            </div>
-                        <!-- end shortest route button -->
-                        <br>
-
+                                <div>
+                                    <i class="fa fa-map-marker" aria-hidden="true" style="font-size:26px"></i>
+                                    <span class="s-desc1">destined location</span>
+                                </div>
+                            </center>
+                        </div>
                     </div>
-                    <!-- end selecting method -->
-                    <!-- start course info -->
-                    <div id="course-info-head" class="section-head">
-                        <br>
-                        <h2>&nbsp;Course Information</h2>
-                        <br>
+                    <br>
+                    <!-- end location -->
+                    <!-- <br> -->
+                    <!-- start transport -->
+                    <div class="s-transport">
+                        <span>Select Method</span>
                     </div>
-                    <div id="course-info"></div>
-                    <!-- end course info -->
-
-                    <!-- start map -->
-                    <div id="map"></div>
-                    <!-- end map -->
                     <br>
 
-                    <!-- start floorplan -->
-                    <div id="flPlan" class="section-head">
+                    <div>
+                        <center>
+
+                            <!-- new select transport -->
+                            <ul class="tp">
+                                <li>
+                                    <input type="checkbox" id="walk1" />
+                                    <label for="walk1">
+                                        <img class="t-pic-w" src="img-transport/walk.png" align="middle" />
+                                    </label>
+                                    <label>Walk</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="bike1" />
+                                    <label for="bike1">
+                                        <img class="t-pic-b" src="img-transport/bike.png" align="middle" />
+                                    </label>
+                                    <label>CU Bike</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="bus1" />
+                                    <label for="bus1">
+                                        <img class="t-pic-bp" src="img-transport/bus.png" align="middle" />
+                                    </label>
+                                    <label>CU Pop Bus</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="hamo1" />
+                                    <label for="hamo1">
+                                        <img class="t-pic-h" src="img-transport/hamo.png" align="middle" />
+                                    </label>
+                                    <label>Hamo</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="muvmi1" />
+                                    <label for="muvmi1">
+                                        <img class="t-pic-m" src="img-transport/muvmi.png" align="middle" />
+                                    </label>
+                                    <label>Muvmi</label>
+                                </li>
+                            </ul>
+                            <!-- end select transport -->
+
+                        </center>
+                    </div>
+                    <!-- end transport -->
+
+                    <!-- start shortest route button -->
+                    <div>
+                        <center>
+                            <button class="s-button spin" id="spin" onclick="selectMethod()">
+                                <span>Get Shortest Route</span>
+                                <span>
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
+                                    </svg>
+                                </span>
+                            </button>
+
+                            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+                        </center>
+                    </div>
+                    <!-- end shortest route button -->
+                    <br>
+
+                </div>
+                <!-- end selecting method -->
+                <!-- start course info -->
+                <div id="course-info-head" class="section-head">
+                    <br>
+                    <h2>&nbsp;Course Information</h2>
+                    <br>
+                </div>
+                <div id="course-info"></div>
+                <!-- end course info -->
+
+                <!-- start map -->
+                <div id="map"></div>
+                <!-- end map -->
+                <br>
+
+                <!-- start floorplan -->
+                <div id="flPlan" class="section-head">
+
+                    <br>
+                    <h2>&nbsp;Floor Plan</h2>
+                    <br>
+                    <div id="flMap">
 
                         <br>
-                        <h2>&nbsp;Floor Plan</h2>
+                        <h4 id="building-num">Building</h4>
+
+                        <select id="selfloorlist" name="optionDrop" onchange="getFloorFromDropDown()"></select>
+
                         <br>
-                        <div id="flMap">
+                        <br>
+                        <div id="show-map"></div>
 
-                            <br>
-                            <h4 id="building-num">Building</h4>
-
-                            <select id="selfloorlist" name="optionDrop" onchange="getFloorFromDropDown()"></select>
-
-                            <br>
-                            <br>
-                            <div id="show-map"></div>
-
-                        </div>
                     </div>
-                    <!-- end floorplan -->
+                </div>
+                <!-- end floorplan -->
 
 
-                    <div id="test2Map">
-                        <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/759644/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
-                    </div>
+                <div id="test2Map">
+                    <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/759644/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                </div>
 
                 <table class="table table-condensed" style="width:550px;margin:auto;">
                     <thead>
