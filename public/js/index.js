@@ -18,7 +18,7 @@ var destinations = [];
 var posPlace;
 
 var bname = ""
-var indexBld ;
+var indexBld;
 
 //Filters
 var librMarkers = [];
@@ -82,15 +82,15 @@ var initMap = function () {
                 featureType: "poi",
                 elementType: "labels",
                 stylers: [
-                      { visibility: "off" }
+                    { visibility: "off" }
                 ]
             },
             {
-              featureType: 'poi',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#93817c'}, { visibility: "on" }]
+                featureType: 'poi',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#93817c' }, { visibility: "on" }]
             },
-          ]
+        ]
     }
     //Create Map
     map = new google.maps.Map(document.getElementById('map'), options);
@@ -106,22 +106,26 @@ var initMap = function () {
     directionsDisplay1.setMap(map);
     directionsDisplay2.setMap(map);
     directionsDisplay3.setMap(map);
-    directionsDisplay1.setOptions({polylineOptions: new google.maps.Polyline({
-        // Blue
-        strokeColor: '#0000FF',
-        strokeOpacity: 1.0,
-        strokeWeight: 5
-    })}); directionsDisplay3.setOptions({polylineOptions: new google.maps.Polyline({
-        // Blue
-        strokeColor: '#0000FF',
-        strokeOpacity: 1.0,
-        strokeWeight: 5
-    })});
+    directionsDisplay1.setOptions({
+        polylineOptions: new google.maps.Polyline({
+            // Blue
+            strokeColor: '#0000FF',
+            strokeOpacity: 1.0,
+            strokeWeight: 5
+        })
+    }); directionsDisplay3.setOptions({
+        polylineOptions: new google.maps.Polyline({
+            // Blue
+            strokeColor: '#0000FF',
+            strokeOpacity: 1.0,
+            strokeWeight: 5
+        })
+    });
 
     GGM = new Object(google.maps);
     service = new GGM.DistanceMatrixService();
 
-    
+
     //var directionsDisplay = new google.maps.DirectionsRenderer;
     //directionsDisplay.setMap(map);
 
@@ -292,7 +296,7 @@ var initMap = function () {
             if (popbusCounter == 1) {
                 $.get('/location/CU_Pop_Bus', (data) => {
                     for (i = 0; i < data.length; i++) {
-                        popbusMarkers[i] = addMarker(data[i], '/img/popbus.png', data[i].CU_Bus_station);
+                        popbusMarkers[i] = addMarker(data[i], '/img/popbus.png', data[i].CU_Bus_Station);
                     }
                 });
             } else {
@@ -334,7 +338,7 @@ var initMap = function () {
             if (hamoCounter == 1) {
                 $.get('/location/HAMO', (data) => {
                     for (i = 0; i < data.length; i++) {
-                        hamoMarkers[i] = addMarker(data[i], '/img/hamo.png', data[i].HAMO);
+                        hamoMarkers[i] = addMarker(data[i], '/img/hamo.png', data[i].HAMO_Station);
                     }
                 });
             } else {
@@ -355,7 +359,7 @@ var initMap = function () {
             if (muvmiCounter == 1) {
                 $.get('/location/Muvmi', (data) => {
                     for (i = 0; i < data.length; i++) {
-                        muvmiMarkers[i] = addMarker(data[i], '/img/muvmi.png', data[i].Muvmi);
+                        muvmiMarkers[i] = addMarker(data[i], '/img/muvmi.png', data[i].Muvmi_Station);
                     }
                 });
             } else {
@@ -393,10 +397,10 @@ var initMap = function () {
         return marker;
     }
     //to be deleted
-        document.getElementById('getRoute').onclick = function () {
-            getCurrentLocation();
-            setTimeout(() => calculateAndDisplayRoute(directionsService, directionsDisplay1, directionsDisplay2, directionsDisplay3), 2000);
-        };
+    document.getElementById('getRoute').onclick = function () {
+        getCurrentLocation();
+        setTimeout(() => calculateAndDisplayRoute(directionsService, directionsDisplay1, directionsDisplay2, directionsDisplay3), 2000);
+    };
     // Listen for click on map
     google.maps.event.addListener(map, 'click', function (event) {
     });
@@ -438,13 +442,13 @@ var initMap = function () {
             }
         });
     }
-   
+
 
     function markerAndPlanFromBld() {
         // hide landmark
         var ld = document.getElementById("landmark-dropdown");
         ld.style.display = "none";
-         indexBld = buildingdataname.indexOf(buildsearchbox.value);
+        indexBld = buildingdataname.indexOf(buildsearchbox.value);
 
         for (var i = 0; i < markers.length; i++) {
             markers[i].setMap(null);
@@ -692,7 +696,7 @@ function showCourse(theCourse) {
     /********* */
     for (var times = 0; times < coursedays; times++) {
         htmltext = htmltext + "<div id=\"crsdiv\"" + times + "><p>Course : " + nameid + "<br> Lecturer : " + allcourseinfo[arrayindex + times].Prof_Name + "<br> Section : " + currentsec + "<br> Day : " + allcourseinfo[arrayindex + times].Day + "<br> Time : " + allcourseinfo[arrayindex + times].ctime + "<br> Faculty : " + allcourseinfo[arrayindex + times].faculty_name + "<br> Room : " + allcourseinfo[arrayindex + times].room_number + "<br> Floor : " + allcourseinfo[arrayindex + times].floor + "<br> Building : " + allcourseinfo[arrayindex + times].bld_name + "</p>" + "<button class=\"btn-go\" id=\"courseroute" + times + "\" onclick=\"goToClass()\">Find</button><br><br><div>"
-       // htmltext = htmltext + "<div id=\"crsdiv\"" + times + "><p>Course : " + nameid + "<br> Lecturer : " + allcourseinfo[arrayindex + times].Prof_Name + "<br> Section : " + currentsec + "<br> Day : " + allcourseinfo[arrayindex + times].Day + "<br> Time : " + allcourseinfo[arrayindex + times].ctime + "<br> Faculty : " + allcourseinfo[arrayindex + times].faculty_name + "<br> Room : " + allcourseinfo[arrayindex + times].room_number + "<br> Floor : " + allcourseinfo[arrayindex + times].floor + "<br> Building : " + allcourseinfo[arrayindex + times].bld_name + "</p>" + "<input type=\"checkbox\"><br><br><br><div>"
+        // htmltext = htmltext + "<div id=\"crsdiv\"" + times + "><p>Course : " + nameid + "<br> Lecturer : " + allcourseinfo[arrayindex + times].Prof_Name + "<br> Section : " + currentsec + "<br> Day : " + allcourseinfo[arrayindex + times].Day + "<br> Time : " + allcourseinfo[arrayindex + times].ctime + "<br> Faculty : " + allcourseinfo[arrayindex + times].faculty_name + "<br> Room : " + allcourseinfo[arrayindex + times].room_number + "<br> Floor : " + allcourseinfo[arrayindex + times].floor + "<br> Building : " + allcourseinfo[arrayindex + times].bld_name + "</p>" + "<input type=\"checkbox\"><br><br><br><div>"
         bname = allcourseinfo[arrayindex + times].bld_name;
         document.getElementById("telldest").innerHTML = "Destination : " + bname;
         //alert(document.getElementById("courseroute1").value)
@@ -885,13 +889,13 @@ function calculateBestTravelMode(start, end, popBusNode, bicycleNode, hamoNode, 
     calculateDistance(0, 'WALKING',
         start[0].lat(), start[0].lng(),
         end[0].lat(), end[0].lng(),
-        function(leastDistance) {
+        function (leastDistance) {
             // Debugging
             console.log('leastDistance = ' + leastDistance);
 
             calculateBicycleDistance(bicycleAllowed, start, end, bicycleNode, leastDistance,
-                function(bicycleStatus, bicycleDistance = 0, bicycleStartIndex = 0, bicycleEndIndex = 0) {
-                    if(bicycleStatus) {
+                function (bicycleStatus, bicycleDistance = 0, bicycleStartIndex = 0, bicycleEndIndex = 0) {
+                    if (bicycleStatus) {
                         leastDistance = bicycleDistance;
                         bestMode = 'bicycle';
                         startIndex = bicycleStartIndex;
@@ -899,8 +903,8 @@ function calculateBestTravelMode(start, end, popBusNode, bicycleNode, hamoNode, 
                     }
 
                     calculateHamoDistance(hamoAllowed, start, end, hamoNode, leastDistance,
-                        function(hamoStatus, hamoDistance = 0, hamoStartIndex = 0, hamoEndIndex = 0) {
-                            if(hamoStatus) {
+                        function (hamoStatus, hamoDistance = 0, hamoStartIndex = 0, hamoEndIndex = 0) {
+                            if (hamoStatus) {
                                 leastDistance = hamoDistance;
                                 bestMode = 'hamo';
                                 startIndex = hamoStartIndex;
@@ -908,12 +912,12 @@ function calculateBestTravelMode(start, end, popBusNode, bicycleNode, hamoNode, 
                             }
 
                             calculatePopBusDistance(popBusAllowed, start, end, popBusNode, leastDistance,
-                                function(popBusStatus, popBusDistance = 0, popBusStartIndex = 0, popBusEndIndex = 0) {
-                                    if(popBusStatus) {
+                                function (popBusStatus, popBusDistance = 0, popBusStartIndex = 0, popBusEndIndex = 0) {
+                                    if (popBusStatus) {
                                         // Debug
                                         console.log('popBusStartIndex = ' + popBusStartIndex);
                                         console.log('popBusEndIndex = ' + popBusEndIndex);
-                                        
+
                                         leastDistance = popBusDistance;
                                         bestMode = 'popBus';
                                         startIndex = popBusStartIndex;
@@ -921,14 +925,14 @@ function calculateBestTravelMode(start, end, popBusNode, bicycleNode, hamoNode, 
                                     }
 
                                     calculateMuvmiDistance(muvmiAllowed, start, end, muvmiNode, leastDistance,
-                                        function(muvmiStatus, muvmiDistance = 0, muvmiStartIndex = 0, muvmiEndIndex = 0) {
-                                            if(muvmiStatus) {
+                                        function (muvmiStatus, muvmiDistance = 0, muvmiStartIndex = 0, muvmiEndIndex = 0) {
+                                            if (muvmiStatus) {
                                                 leastDistance = muvmiDistance;
                                                 bestMode = 'muvmi';
                                                 startIndex = muvmiStartIndex;
                                                 endIndex = muvmiEndIndex;
                                             }
-                                            
+
                                             callback(bestMode, startIndex, endIndex);
                                         }
                                     );
@@ -944,11 +948,11 @@ function calculateBestTravelMode(start, end, popBusNode, bicycleNode, hamoNode, 
 
 // Calculate Bicycle Distance
 function calculateBicycleDistance(allowed, start, end, bicycleNode, leastDistance, callback) {
-    if(!allowed) {
+    if (!allowed) {
         callback(false);
         return;
     }
-    
+
     var distance = 0;
     var startIndex = 0;
     var endIndex = 1;
@@ -956,12 +960,12 @@ function calculateBicycleDistance(allowed, start, end, bicycleNode, leastDistanc
     calculateDistance(0, 'WALKING',
         start[0].lat(), start[0].lng(),
         bicycleNode[0].lat(), bicycleNode[0].lng(),
-        function(tempDistance1) {
+        function (tempDistance1) {
             calculateDistance(0, 'WALKING',
                 start[0].lat(), start[0].lng(),
                 bicycleNode[1].lat(), bicycleNode[1].lng(),
-                function(tempDistance2) {
-                    if(tempDistance1 <= tempDistance2) {
+                function (tempDistance2) {
+                    if (tempDistance1 <= tempDistance2) {
                         distance = tempDistance1;
                     } else {
                         distance = tempDistance2;
@@ -972,16 +976,16 @@ function calculateBicycleDistance(allowed, start, end, bicycleNode, leastDistanc
                     calculateDistance(0, 'DRIVING',
                         bicycleNode[startIndex].lat(), bicycleNode[startIndex].lng(),
                         bicycleNode[endIndex].lat(), bicycleNode[endIndex].lng(),
-                        function(tempDistance3) {
+                        function (tempDistance3) {
                             distance += tempDistance3;
-                            
+
                             calculateDistance(0, 'WALKING',
                                 bicycleNode[endIndex].lat(), bicycleNode[endIndex].lng(),
                                 end[0].lat(), end[0].lng(),
-                                function(tempDistance4) {
+                                function (tempDistance4) {
                                     distance += tempDistance4;
 
-                                    if(distance < leastDistance) {
+                                    if (distance < leastDistance) {
                                         callback(true, distance, startIndex, endIndex);
                                     } else {
                                         callback(false);
@@ -998,11 +1002,11 @@ function calculateBicycleDistance(allowed, start, end, bicycleNode, leastDistanc
 
 // Calculate Hamo Distance
 function calculateHamoDistance(allowed, start, end, hamoNode, leastDistance, callback) {
-    if(!allowed) {
+    if (!allowed) {
         callback(false);
         return;
     }
-    
+
     var distance = 0;
     var startIndex = 0;
     var endIndex = 1;
@@ -1010,12 +1014,12 @@ function calculateHamoDistance(allowed, start, end, hamoNode, leastDistance, cal
     calculateDistance(0, 'WALKING',
         start[0].lat(), start[0].lng(),
         hamoNode[0].lat(), hamoNode[0].lng(),
-        function(tempDistance1) {
+        function (tempDistance1) {
             calculateDistance(0, 'WALKING',
                 start[0].lat(), start[0].lng(),
                 hamoNode[1].lat(), hamoNode[1].lng(),
-                function(tempDistance2) {
-                    if(tempDistance1 <= tempDistance2) {
+                function (tempDistance2) {
+                    if (tempDistance1 <= tempDistance2) {
                         distance = tempDistance1;
                     } else {
                         distance = tempDistance2;
@@ -1026,16 +1030,16 @@ function calculateHamoDistance(allowed, start, end, hamoNode, leastDistance, cal
                     calculateDistance(0, 'DRIVING',
                         hamoNode[startIndex].lat(), hamoNode[startIndex].lng(),
                         hamoNode[endIndex].lat(), hamoNode[endIndex].lng(),
-                        function(tempDistance3) {
+                        function (tempDistance3) {
                             distance += tempDistance3;
-                            
+
                             calculateDistance(0, 'WALKING',
                                 hamoNode[endIndex].lat(), hamoNode[endIndex].lng(),
                                 end[0].lat(), end[0].lng(),
-                                function(tempDistance4) {
+                                function (tempDistance4) {
                                     distance += tempDistance4;
 
-                                    if(distance < leastDistance) {
+                                    if (distance < leastDistance) {
                                         callback(true, distance, startIndex, endIndex);
                                     } else {
                                         callback(false);
@@ -1052,14 +1056,14 @@ function calculateHamoDistance(allowed, start, end, hamoNode, leastDistance, cal
 
 // Calculate Pop Bus Distance
 function calculatePopBusDistance(allowed, start, end, popBusNode, leastDistance, callback) {
-    if(!allowed) {
+    if (!allowed) {
         // Debug
         console.log('popBus not allowed!');
 
         callback(false);
         return;
     }
-    
+
     var distance = 0;
     var startIndex = 0;
     var endIndex = 1;
@@ -1067,12 +1071,12 @@ function calculatePopBusDistance(allowed, start, end, popBusNode, leastDistance,
     calculateDistance(0, 'WALKING',
         start[0].lat(), start[0].lng(),
         popBusNode[0].lat(), popBusNode[0].lng(),
-        function(tempDistance1) {
+        function (tempDistance1) {
             calculateDistance(0, 'WALKING',
                 start[0].lat(), start[0].lng(),
                 popBusNode[1].lat(), popBusNode[1].lng(),
-                function(tempDistance2) {
-                    if(tempDistance1 <= tempDistance2) {
+                function (tempDistance2) {
+                    if (tempDistance1 <= tempDistance2) {
                         distance = tempDistance1;
                     } else {
                         distance = tempDistance2;
@@ -1083,16 +1087,16 @@ function calculatePopBusDistance(allowed, start, end, popBusNode, leastDistance,
                     calculateDistance(0, 'DRIVING',
                         popBusNode[startIndex].lat(), popBusNode[startIndex].lng(),
                         popBusNode[endIndex].lat(), popBusNode[endIndex].lng(),
-                        function(tempDistance3) {
+                        function (tempDistance3) {
                             distance += tempDistance3;
-                            
+
                             calculateDistance(0, 'WALKING',
                                 popBusNode[endIndex].lat(), popBusNode[endIndex].lng(),
                                 end[0].lat(), end[0].lng(),
-                                function(tempDistance4) {
+                                function (tempDistance4) {
                                     distance += tempDistance4;
 
-                                    if(distance < leastDistance || forcePopBus) {
+                                    if (distance < leastDistance || forcePopBus) {
                                         callback(true, distance, startIndex, endIndex);
                                     } else {
                                         callback(false);
@@ -1109,11 +1113,11 @@ function calculatePopBusDistance(allowed, start, end, popBusNode, leastDistance,
 
 // Calculate Muvmi Distance
 function calculateMuvmiDistance(allowed, start, end, muvmiNode, leastDistance, callback) {
-    if(!allowed) {
+    if (!allowed) {
         callback(false);
         return;
     }
-    
+
     var distance = 0;
     var startIndex = 0;
     var endIndex = 1;
@@ -1121,12 +1125,12 @@ function calculateMuvmiDistance(allowed, start, end, muvmiNode, leastDistance, c
     calculateDistance(0, 'WALKING',
         start[0].lat(), start[0].lng(),
         muvmiNode[0].lat(), muvmiNode[0].lng(),
-        function(tempDistance1) {
+        function (tempDistance1) {
             calculateDistance(0, 'WALKING',
                 start[0].lat(), start[0].lng(),
                 muvmiNode[1].lat(), muvmiNode[1].lng(),
-                function(tempDistance2) {
-                    if(tempDistance1 <= tempDistance2) {
+                function (tempDistance2) {
+                    if (tempDistance1 <= tempDistance2) {
                         distance = tempDistance1;
                     } else {
                         distance = tempDistance2;
@@ -1137,16 +1141,16 @@ function calculateMuvmiDistance(allowed, start, end, muvmiNode, leastDistance, c
                     calculateDistance(0, 'DRIVING',
                         muvmiNode[startIndex].lat(), muvmiNode[startIndex].lng(),
                         muvmiNode[endIndex].lat(), muvmiNode[endIndex].lng(),
-                        function(tempDistance3) {
+                        function (tempDistance3) {
                             distance += tempDistance3;
-                            
+
                             calculateDistance(0, 'WALKING',
                                 muvmiNode[endIndex].lat(), muvmiNode[endIndex].lng(),
                                 end[0].lat(), end[0].lng(),
-                                function(tempDistance4) {
+                                function (tempDistance4) {
                                     distance += tempDistance4;
 
-                                    if(distance < leastDistance) {
+                                    if (distance < leastDistance) {
                                         callback(true, distance, startIndex, endIndex);
                                     } else {
                                         callback(false);
@@ -1171,7 +1175,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay1, directi
     //var destination = places[0];
     var destinationLat = buildingdata[indexBld].Latitude;
     var destinationLng = buildingdata[indexBld].Longitude;
-    
+
     var start = [];
     var end = [];
 
@@ -1184,7 +1188,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay1, directi
 
     start.push(new GGM.LatLng(currentLat, currentLng));
     end.push(new GGM.LatLng(destinationLat, destinationLng));
-    
+
     // Initialize regardless of allowed modes of transport
     var popBusNode = [
         new google.maps.LatLng(13.7400, 100.5315),
@@ -1208,23 +1212,23 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay1, directi
     //}
 
     calculateBestTravelMode(start, end, popBusNode, bicycleNode, hamoNode, muvmiNode,
-        function(bestMode, startIndex, endIndex) {
+        function (bestMode, startIndex, endIndex) {
             // Suppress/Clear Directions
             directionsDisplay1.set('directions', null);
             directionsDisplay2.set('directions', null);
             directionsDisplay3.set('directions', null);
 
-            if(forceBicycle) {
+            if (forceBicycle) {
                 bestMode = 'bicycle';
-            } else if(forceHamo) {
+            } else if (forceHamo) {
                 bestMode = 'hamo';
-            } else if(forcePopBus) {
+            } else if (forcePopBus) {
                 bestMode = 'popBus';
-            } else if(forceMuvmi) {
+            } else if (forceMuvmi) {
                 bestMode = 'muvmi';
             }
 
-            switch(bestMode) {
+            switch (bestMode) {
                 case 'walking':
                     directionsService.route({
                         origin: start[0],
@@ -1238,30 +1242,34 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay1, directi
                         }
                     });
                     break;
-                
+
                 default:
                     var startStationNode;
                     var endStationNode;
-                    switch(bestMode) {
+                    switch (bestMode) {
                         case 'bicycle':
                             startStationNode = bicycleNode[startIndex];
                             endStationNode = bicycleNode[endIndex];
-                            directionsDisplay2.setOptions({polylineOptions: new google.maps.Polyline({
-                                // Red
-                                strokeColor: '#FF0000',
-                                strokeOpacity: 1.0,
-                                strokeWeight: 5
-                            })});
+                            directionsDisplay2.setOptions({
+                                polylineOptions: new google.maps.Polyline({
+                                    // Red
+                                    strokeColor: '#FF0000',
+                                    strokeOpacity: 1.0,
+                                    strokeWeight: 5
+                                })
+                            });
                             break;
                         case 'hamo':
                             startStationNode = hamoNode[startIndex];
                             endStationNode = hamoNode[endIndex];
-                            directionsDisplay2.setOptions({polylineOptions: new google.maps.Polyline({
-                                // Purple
-                                strokeColor: '#800080',
-                                strokeOpacity: 1.0,
-                                strokeWeight: 5
-                            })});
+                            directionsDisplay2.setOptions({
+                                polylineOptions: new google.maps.Polyline({
+                                    // Purple
+                                    strokeColor: '#800080',
+                                    strokeOpacity: 1.0,
+                                    strokeWeight: 5
+                                })
+                            });
                             break;
                         case 'popBus':
                             // Debug
@@ -1271,22 +1279,26 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay1, directi
 
                             startStationNode = popBusNode[startIndex];
                             endStationNode = popBusNode[endIndex];
-                            directionsDisplay2.setOptions({polylineOptions: new google.maps.Polyline({
-                                // Green
-                                strokeColor: '#008000',
-                                strokeOpacity: 1.0,
-                                strokeWeight: 5
-                            })});
+                            directionsDisplay2.setOptions({
+                                polylineOptions: new google.maps.Polyline({
+                                    // Green
+                                    strokeColor: '#008000',
+                                    strokeOpacity: 1.0,
+                                    strokeWeight: 5
+                                })
+                            });
                             break;
                         case 'muvmi':
                             startStationNode = muvmiNode[startIndex];
                             endStationNode = muvmiNode[endIndex];
-                            directionsDisplay2.setOptions({polylineOptions: new google.maps.Polyline({
-                                // Orange
-                                strokeColor: '#FFA500',
-                                strokeOpacity: 1.0,
-                                strokeWeight: 5
-                            })});
+                            directionsDisplay2.setOptions({
+                                polylineOptions: new google.maps.Polyline({
+                                    // Orange
+                                    strokeColor: '#FFA500',
+                                    strokeOpacity: 1.0,
+                                    strokeWeight: 5
+                                })
+                            });
                             break;
                         default:
                             window.alert("Error on inner switch(bestMode)");
@@ -1308,11 +1320,11 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay1, directi
                     }, function (response, status) {
                         if (status === 'OK') {
                             directionsDisplay2.setDirections(response);
-                            
+
                             // Debug
                             console.log('Directions drawned...');
-                            console.log ('startStationNode = ' + startStationNode.lat() + ', ' + startStationNode.lng());
-                            console.log ('endStationNode = ' + endStationNode.lat() + ', ' + endStationNode.lng());
+                            console.log('startStationNode = ' + startStationNode.lat() + ', ' + startStationNode.lng());
+                            console.log('endStationNode = ' + endStationNode.lat() + ', ' + endStationNode.lng());
                         } else {
                             window.alert('Directions request failed due to ' + status);
                         }
@@ -1343,11 +1355,11 @@ function calculateDistance(mode = 1, transportMode = 'DRIVING', fromLat = 0, fro
 
             var origins = [];
             var destinations = [];
-            switch(mode) {
+            switch (mode) {
                 case 0:
                     // Debug
                     console.log('Processing calculateDistance mode 0 (non-default)...');
-                    console.log('transportMode = ' + transportMode); 
+                    console.log('transportMode = ' + transportMode);
                     console.log('fromLat = ' + fromLat);
                     console.log('fromLng = ' + fromLng);
                     console.log('toLat = ' + toLat);
@@ -1356,13 +1368,13 @@ function calculateDistance(mode = 1, transportMode = 'DRIVING', fromLat = 0, fro
                     origins.push(new GGM.LatLng(fromLat, fromLng));
                     destinations.push(new GGM.LatLng(toLat, toLng));
                     break;
-                
+
                 case 1:
                     origins.push(new GGM.LatLng(position.coords.latitude, position.coords.longitude));
 
                     for (i = 0; i < arr_Destination.length; i++) {
                         var htmlTr = '<tr><td>' + arr_Destination[i].title + '</td><td class="place_distance"></td></tr>';
-                        $("#placeData").append(htmlTr);  
+                        $("#placeData").append(htmlTr);
                         posPlace = new GGM.LatLng(arr_Destination[i].lat, arr_Destination[i].lng);
                         destinations.push(posPlace);
                     } break;
@@ -1372,7 +1384,7 @@ function calculateDistance(mode = 1, transportMode = 'DRIVING', fromLat = 0, fro
                     return;
                     break;
             }
-           
+
             service.getDistanceMatrix({
                 origins: origins,
                 destinations: destinations,
@@ -1387,15 +1399,15 @@ function calculateDistance(mode = 1, transportMode = 'DRIVING', fromLat = 0, fro
                     $.each(response.rows[0].elements, function (i, elm) {
                         console.log(i);
                         console.log(elm);
-                        if(mode == 1) {
+                        if (mode == 1) {
                             $(".place_distance:eq(" + i + ")").text(elm.distance.text);
                             var txt = elm.distance.text;
                             numb = txt.match(/\d/g);
                             numb = numb.join("");
                             console.log(numb);
-                        } else if(mode == 0) {
+                        } else if (mode == 0) {
                             returnVar = elm.distance.value;
-                            
+
                             // Debug
                             console.log('returnVar = ' + returnVar);
                             console.log('returnVar returned');
@@ -1420,9 +1432,9 @@ $("#spin").click(function () {
     var v3 = document.getElementById("bus1").checked;
     var v4 = document.getElementById("hamo1").checked;
     var v5 = document.getElementById("muvmi1").checked;
-    if(v1==false && v2==false && v3==false && v4==false && v5==false){
+    if (v1 == false && v2 == false && v3 == false && v4 == false && v5 == false) {
         alert("Please select method")
-    }else{
+    } else {
         target.addClass("processing");
         setTimeout(function () {
             target.removeClass("processing");
