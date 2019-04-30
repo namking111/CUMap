@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="/css/style-landmark.css">
     <!-- Theme -->
     <link rel="stylesheet" href="/css/style-theme.css">
+    <!-- soon icon -->
+    <link rel="stylesheet" href="css/style-coming-soon.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>    
 
 </head>
 
@@ -67,6 +70,35 @@
             </aside>
 
             <div class="content-wrapper" style="min-height: 279px;">
+
+                <!-- start coming soon -->
+                <center>
+                    <div style="margin-top:-5vw;" id="animationWindow"></div>
+                    <p style="font-size:4vw; margin-top:-1.2em;">Coming Soon...</p>
+                    <script src='https://cdnjs.cloudflare.com/ajax/libs/bodymovin/4.8.0/bodymovin.min.js'></script>
+                    <script>
+                    	var animData = {
+                            wrapper: document.querySelector('#animationWindow'),
+                            animType: 'svg',
+                            loop: true,
+                            prerender: true,
+                            autoplay: true,
+                            path: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/35984/LEGO_builder_nudge.json'
+                        };
+                        var anim = bodymovin.loadAnimation(animData);
+                        anim.setSpeed(1.52);
+                    </script>
+                    <br>
+                    <br>
+                    <button class="mui-button">
+                        <div class="ripple"></div>
+                        <p style="margin-top:10px;">Surprise !!</p>
+                    </button>
+                    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+                    <script  src="js/comingSoon.js"></script>
+                </center>
+                <!-- end coming soon -->
+
 
             </div>
         </div>

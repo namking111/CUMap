@@ -196,9 +196,7 @@ body{
   .lib-name{
     width:20%;
   }
-  .lib-tag{
-    
-  }
+ 
   .lib-add{
     width:15%;
   }
@@ -225,6 +223,11 @@ body{
         font-size: 17px;
         margin-left: 0px;
     }
-
+    .wrapper-1{
+        height: 150vw
+    }
+    .main-header{
+        background-color: #da81b7;
+    }
     
  }
