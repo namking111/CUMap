@@ -691,7 +691,8 @@ function showCourse(theCourse) {
     flFunc();
     /********* */
     for (var times = 0; times < coursedays; times++) {
-        htmltext = htmltext + "<div id=\"crsdiv\"" + times + "><p>Course : " + nameid + "<br> Lecturer : " + allcourseinfo[arrayindex + times].Prof_Name + "<br> Section : " + currentsec + "<br> Day : " + allcourseinfo[arrayindex + times].Day + "<br> Time : " + allcourseinfo[arrayindex + times].ctime + "<br> Faculty : " + allcourseinfo[arrayindex + times].faculty_name + "<br> Room : " + allcourseinfo[arrayindex + times].room_number + "<br> Floor : " + allcourseinfo[arrayindex + times].floor + "<br> Building : " + allcourseinfo[arrayindex + times].bld_name + "</p>" + "<button class=\"btn-go\" id=\"courseroute" + times + "\" onclick=\"goToClass()\">Get Route</button><br><br><div>"
+        htmltext = htmltext + "<div id=\"crsdiv\"" + times + "><p>Course : " + nameid + "<br> Lecturer : " + allcourseinfo[arrayindex + times].Prof_Name + "<br> Section : " + currentsec + "<br> Day : " + allcourseinfo[arrayindex + times].Day + "<br> Time : " + allcourseinfo[arrayindex + times].ctime + "<br> Faculty : " + allcourseinfo[arrayindex + times].faculty_name + "<br> Room : " + allcourseinfo[arrayindex + times].room_number + "<br> Floor : " + allcourseinfo[arrayindex + times].floor + "<br> Building : " + allcourseinfo[arrayindex + times].bld_name + "</p>" + "<button class=\"btn-go\" id=\"courseroute" + times + "\" onclick=\"goToClass()\">Find</button><br><br><div>"
+       // htmltext = htmltext + "<div id=\"crsdiv\"" + times + "><p>Course : " + nameid + "<br> Lecturer : " + allcourseinfo[arrayindex + times].Prof_Name + "<br> Section : " + currentsec + "<br> Day : " + allcourseinfo[arrayindex + times].Day + "<br> Time : " + allcourseinfo[arrayindex + times].ctime + "<br> Faculty : " + allcourseinfo[arrayindex + times].faculty_name + "<br> Room : " + allcourseinfo[arrayindex + times].room_number + "<br> Floor : " + allcourseinfo[arrayindex + times].floor + "<br> Building : " + allcourseinfo[arrayindex + times].bld_name + "</p>" + "<input type=\"checkbox\"><br><br><br><div>"
         bname = allcourseinfo[arrayindex + times].bld_name;
         document.getElementById("telldest").innerHTML = "Destination : " + bname;
         //alert(document.getElementById("courseroute1").value)
@@ -1411,3 +1412,24 @@ function calculateDistance(mode = 1, transportMode = 'DRIVING', fromLat = 0, fro
 
     }
 }
+
+$("#spin").click(function () {
+    var target = $(this);
+    var v1 = document.getElementById("walk1").checked;
+    var v2 = document.getElementById("bike1").checked;
+    var v3 = document.getElementById("bus1").checked;
+    var v4 = document.getElementById("hamo1").checked;
+    var v5 = document.getElementById("muvmi1").checked;
+    if(v1==false && v2==false && v3==false && v4==false && v5==false){
+        alert("Please select method")
+    }else{
+        target.addClass("processing");
+        setTimeout(function () {
+            target.removeClass("processing");
+            target.addClass("done");
+            alert("hellooooo");
+            // location.replace("https://www.w3schools.com")
+            target.removeClass("done");
+        }, 1000);
+    }
+});

@@ -1,3 +1,5 @@
+<!--added from original-->
+
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
@@ -294,106 +296,51 @@
 
                         <div>
                             <center>
-                                <!-- <div id="walk"> -->
-                                <!-- <input id="walk-s" class="transport-selector" type="checkbox" unchecked/> -->
-                                <span class="w-pic">
-                                    <img class="t-pic-w" id="walk1" onclick="changeWalk()" src="img-transport/walk.png" align="middle">
-                                    <label>Walk</label>
-                                </span>
-                                <!-- <img id="walk2" onclick="document.getElementById('walk2').src='img/walk-2.png'" src="img/walk.png" width="50" height="50"> -->
-                                <!-- <img src="img/walk.png" alt="walk2" width="50" height="50" onclick="selectMethodPic()"> -->
-                                <span class="b-pic">
-                                    <img class="t-pic-b" id="bike1" onclick="changeBike()" src="img-transport/bike.png" align="middle">
-                                    <label>CU Bike</label>
-                                </span>
-                                <span class="bp-pic">
-                                    <img class="t-pic-bp" id="bus1" onclick="changeBus()" src="img-transport/bus.png" align="middle">
-                                    <label>CU Pop Bus</label>
-                                </span>
-                                <span class="h-pic">
-                                    <img class="t-pic-h" id="hamo1" onclick="changeHamo()" src="img-transport/hamo.png" align="middle">
-                                    <label>Hamo</label>
-                                </span>
-                                <span class="m-pic">
-                                    <img class="t-pic-m" id="muvmi1" onclick="changeMuvmi()" src="img-transport/muvmi.png" align="middle">
-                                    <label>Muvmi</label>
-                                </span>
-                            </center>
-                            <script>
-                                var selectedtransport = 0;
-                                function changeWalk() {
-                                    document.getElementById('walk1').src = 'img-transport/walk-2.png'
-                                    document.getElementById('bike1').src = 'img-transport/bike.png'
-                                    document.getElementById('bus1').src = 'img-transport/bus.png'
-                                    document.getElementById('hamo1').src = 'img-transport/hamo.png'
-                                    document.getElementById('muvmi1').src = 'img-transport/muvmi.png'
-                                    selectedtransport = 1;
-                                }
-                                function changeBike() {
-                                    document.getElementById('walk1').src = 'img-transport/walk.png'
-                                    document.getElementById('bike1').src = 'img-transport/bike-2.png'
-                                    document.getElementById('bus1').src = 'img-transport/bus.png'
-                                    document.getElementById('hamo1').src = 'img-transport/hamo.png'
-                                    document.getElementById('muvmi1').src = 'img-transport/muvmi.png'
-                                    selectedtransport = 2;
-                                }
-                                function changeBus() {
-                                    document.getElementById('walk1').src = 'img-transport/walk.png'
-                                    document.getElementById('bike1').src = 'img-transport/bike.png'
-                                    document.getElementById('bus1').src = 'img-transport/bus-2.png'
-                                    document.getElementById('hamo1').src = 'img-transport/hamo.png'
-                                    document.getElementById('muvmi1').src = 'img-transport/muvmi.png'
-                                    selectedtransport = 3;
-                                }
-                                function changeHamo() {
-                                    document.getElementById('walk1').src = 'img-transport/walk.png'
-                                    document.getElementById('bike1').src = 'img-transport/bike.png'
-                                    document.getElementById('bus1').src = 'img-transport/bus.png'
-                                    document.getElementById('hamo1').src = 'img-transport/hamo-2.png'
-                                    document.getElementById('muvmi1').src = 'img-transport/muvmi.png'
-                                    selectedtransport = 4;
-                                }
-                                function changeMuvmi() {
-                                    document.getElementById('walk1').src = 'img-transport/walk.png'
-                                    document.getElementById('bike1').src = 'img-transport/bike.png'
-                                    document.getElementById('bus1').src = 'img-transport/bus.png'
-                                    document.getElementById('hamo1').src = 'img-transport/hamo.png'
-                                    document.getElementById('muvmi1').src = 'img-transport/muvmi-2.png'
-                                    selectedtransport = 5;
-                                }
-                            </script>
-                        </div>
+
+                                <!-- new select transport -->
+                                <ul class="tp">
+                                        <li><input type="checkbox" id="walk1" />
+                                            <label for="walk1"><img class="t-pic-w" src="img-transport/walk.png" align="middle"/></label>
+                                            <label>Walk</label>
+                                        </li>
+                                        <li><input type="checkbox" id="bike1" />
+                                            <label for="bike1"><img class="t-pic-b" src="img-transport/bike.png" align="middle"/></label>
+                                            <label>CU Bike</label>
+                                        </li>
+                                        <li><input type="checkbox" id="bus1" />
+                                            <label for="bus1"><img class="t-pic-bp" src="img-transport/bus.png" align="middle"/></label>
+                                            <label>CU Pop Bus</label>
+                                        </li>
+                                        <li><input type="checkbox" id="hamo1" />
+                                            <label for="hamo1"><img class="t-pic-h" src="img-transport/hamo.png" align="middle"/></label>
+                                            <label>Hamo</label>
+                                        </li>
+                                        <li><input type="checkbox" id="muvmi1" />
+                                            <label for="muvmi1"><img class="t-pic-m" src="img-transport/muvmi.png" align="middle"/></label>
+                                            <label>Muvmi</label>
+                                        </li>
+                                    </ul>
+                                    <!-- end select transport -->
+                                    
+                                </center>
+                            </div>
                         <!-- end transport -->
 
                         <!-- start shortest route button -->
                         <div>
-                            <center>
-                                <button class="s-button spin" id="spin" onclick="selectMethod()">
-                                    <span>Get Shortest Route</span>
-                                    <span>
-                                        <svg viewBox="0 0 24 24">
-                                            <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
-                                        </svg>
-                                    </span>
-                                </button>
-
-                                <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-                                <script>
-                                    $("button").click(function () {
-                                        var target = $(this);
-                                        if (target.hasClass("done")) {
-                                            // Do nothing
-                                        } else {
-                                            target.addClass("processing");
-                                            setTimeout(function () {
-                                                target.removeClass("processing");
-                                                target.addClass("done");
-                                            }, 2200);
-                                        }
-                                    });
-                                </script>
-                            </center>
-                        </div>
+                                <center>
+                                    <button class="s-button spin" id="spin" onclick="selectMethod()">
+                                        <span>Get Shortest Route</span>
+                                        <span>
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
+                                            </svg>
+                                        </span>
+                                    </button>
+    
+                                    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+                                </center>
+                            </div>
                         <!-- end shortest route button -->
                         <br>
 
