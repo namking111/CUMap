@@ -124,15 +124,45 @@ body{
     height: 100;
       
   }
-  .section-head{
+  #course-info-head{
     display: none;
-    background-color: rgb(238, 147, 200); 
+    font-family: 'Lato', sans-serif;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    box-sizing: border-box;
+    padding: 15px;
+    transition: all .25 ease;
+
+    font-size: 15px;
+    line-height: 20px;
+    text-align: left;
+    padding: 7px 10px;
+    font-weight: 600;
+    text-transform: uppercase;
   }
-  /*#land-mark{
-    background-color: rgb(238, 147, 200); 
-  }*/
+  #flPlan .dropdown-caption{
+    font-family: 'Lato', sans-serif;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    height: 35px;
+
+    box-sizing: border-box;
+    padding: 15px;
+    transition: all .25 ease;
+
+    font-size: 15px;
+    line-height: 20px;
+    text-align: left;
+    padding: 7px 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .section-head{
+    background-color: #DEA7CB;
+    display: none;
+  }
+
   #flMap{
-    background-color: rgb(219, 218, 218);
+    background-color: #EFEAEF;
     height: 1000px;
   }
   .btn1{
@@ -338,9 +368,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .lib-name{
   width:20%;
 }
-.lib-tag{
-  
-}
+
 .lib-add{
   width:15%;
 }

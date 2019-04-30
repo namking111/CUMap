@@ -298,7 +298,7 @@ var initMap = function () {
             if (popbusCounter == 1) {
                 $.get('/location/CU_Pop_Bus', (data) => {
                     for (i = 0; i < data.length; i++) {
-                        popbusMarkers[i] = addMarker(data[i], '/img/popbus.png', data[i].CU_Bus_station);
+                        popbusMarkers[i] = addMarker(data[i], '/img/popbus.png', data[i].CU_Bus_Station);
                     }
                 });
             } else {
@@ -340,7 +340,7 @@ var initMap = function () {
             if (hamoCounter == 1) {
                 $.get('/location/HAMO', (data) => {
                     for (i = 0; i < data.length; i++) {
-                        hamoMarkers[i] = addMarker(data[i], '/img/hamo.png', data[i].HAMO);
+                        hamoMarkers[i] = addMarker(data[i], '/img/hamo.png', data[i].HAMO_Station);
                     }
                 });
             } else {
@@ -361,7 +361,7 @@ var initMap = function () {
             if (muvmiCounter == 1) {
                 $.get('/location/Muvmi', (data) => {
                     for (i = 0; i < data.length; i++) {
-                        muvmiMarkers[i] = addMarker(data[i], '/img/muvmi.png', data[i].Muvmi);
+                        muvmiMarkers[i] = addMarker(data[i], '/img/muvmi.png', data[i].Muvmi_Station);
                     }
                 });
             } else {
@@ -704,10 +704,6 @@ function getCurrentLocation() {
 }
 
 //Draw route from current location to destination
-
-
-
-
 function getFloorFromDropDown() {
     flList = document.getElementById("selfloorlist");
     selectedFloor = flList.value + ""
@@ -1050,9 +1046,19 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay1, directi
     ];
     // TODO - follow the format above
     // Must complete before method is used
-    var bicycleNode = null;
-    var hamoNode = null;
-    var muvmiNode = null;
+    var bicycleNode = [
+        new google.maps.LatLng(13.739186, 100.533291),
+        new google.maps.LatLng(13.73639, 100.531882)
+    ];
+    var hamoNode = [
+        new google.maps.LatLng(13.737258, 100.533336),
+        new google.maps.LatLng(13.73858, 100.534569)
+    ];
+
+    var muvmiNode = [
+        new google.maps.LatLng(13.738968, 100.533442),
+        new google.maps.LatLng(13.737271, 100.53326)
+    ];
 
     // Debug (for Walking)
     //var startEntries = Object.entries(start[0]);
@@ -1301,9 +1307,6 @@ $("#spin").click(function () {
 });
 
 function markerAndPlanFromBld() {
-    // hide landmark
-    var ld = document.getElementById("landmark-dropdown");
-    ld.style.display = "none";
 
 
     for (var i = 0; i < markers.length; i++) {

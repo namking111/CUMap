@@ -309,8 +309,6 @@
 }
 .landmark-dropdown .dropdown-caption {
     display: static;
-    /* position:static;
-    display: block; */
 
     box-sizing: border-box;
     padding: 15px;
