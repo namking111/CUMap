@@ -24,6 +24,7 @@ body{
   border-radius: 5px;
   padding: 7px 15px 7px 15px;
   text-align: left;
+  position: static;
 }
 .s-desc2{
   background-color: transparent;
@@ -78,19 +79,19 @@ body{
   .t-pic-w, .t-pic-bp{
     width: 35px;
     /* height: 35px; */
-    height: 43px;
+    height: 46px;
     padding-top: 10px
   }
   .t-pic-b, .t-pic-h{
     width: 38px;
     /* height: 38px; */
-    height: 46px;
+    height: 49px;
     padding-top: 10px
   }
   .t-pic-m{
     width: 47px;
     /* height: 47px; */
-    height: 55px;
+    height: 58px;
     padding-top: 10px
   }
 

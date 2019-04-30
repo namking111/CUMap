@@ -850,10 +850,6 @@ function getCurrentLocation() {
 }
 
 //Draw route from current location to destination
-
-
-
-
 function getFloorFromDropDown() {
     flList = document.getElementById("selfloorlist");
     selectedFloor = flList.value + ""
@@ -1196,9 +1192,19 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay1, directi
     ];
     // TODO - follow the format above
     // Must complete before method is used
-    var bicycleNode = null;
-    var hamoNode = null;
-    var muvmiNode = null;
+    var bicycleNode = [
+        new google.maps.LatLng(13.739186, 100.533291),
+        new google.maps.LatLng(13.73639, 100.531882)
+    ];
+    var hamoNode = [
+        new google.maps.LatLng(13.737258, 100.533336),
+        new google.maps.LatLng(13.73858, 100.534569)
+    ];
+
+    var muvmiNode = [
+        new google.maps.LatLng(13.738968, 100.533442),
+        new google.maps.LatLng(13.737271, 100.53326)
+    ];
 
     // Debug (for Walking)
     //var startEntries = Object.entries(start[0]);

@@ -348,9 +348,7 @@
                     <!-- end selecting method -->
                     <!-- start course info -->
                     <div id="course-info-head" class="section-head">
-                        <br>
-                        <h2>&nbsp;Course Information</h2>
-                        <br>
+                        <div>Course Information</div>
                     </div>
                     <div id="course-info"></div>
                     <!-- end course info -->
@@ -362,18 +360,16 @@
 
                     <!-- start floorplan -->
                     <div id="flPlan" class="section-head">
+                        <div class="dropdown-caption">Floor Plan</div>
 
-                        <br>
-                        <h2>&nbsp;Floor Plan</h2>
-                        <br>
-                        <div id="flMap">
+                        <div id="flMap" style="background-color: rgb(250, 234, 245);">
 
                             <br>
-                            <h4 id="building-num">Building</h4>
-
-                            <select id="selfloorlist" name="optionDrop" onchange="getFloorFromDropDown()"></select>
-
-                            <br>
+                            <center>
+                                <div class="s-desc1" id="building-num">Building</div>
+                                <br>
+                                <select id="selfloorlist" name="optionDrop" onchange="getFloorFromDropDown()"></select>
+                            </center>
                             <br>
                             <div id="show-map"></div>
 
