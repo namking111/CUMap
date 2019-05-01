@@ -103,7 +103,7 @@
     }
 
     .landmark-check{
-        font-size: 15px;
+        font-size: 14px;
     }
 
     @-webkit-keyframes check {
@@ -167,25 +167,18 @@
     .col { 
         display: contents;
         /* width: 100%; */
-        padding: 2vw;
+        padding: 2.2vw;
     }
 }
 @media only screen and (max-width: 550px) {
-/* .landmark-dropdown{
-  margin-bottom:50vw;
-} */
-
     .col { 
         display: block;
         width: 100%;
-        padding: 2vw;
+        padding: 2.2vw;
     }
 }
 
 @media screen and (min-width: 850px) {
-  .landmark-dropdown{
-    margin-bottom:85px;
-  }
     .landmark-dropdown .dropdown-selector{
         top: 1%;
         margin-top: 135px;
@@ -195,9 +188,6 @@
     }
   }
   @media only screen and (max-width: 850px) and (min-width: 492px){
-    .landmark-dropdown{
-      margin-bottom:40vw;
-    }
     .landmark-dropdown .dropdown-selector{
         top: 1%;
         margin-top: 179px;
@@ -207,9 +197,6 @@
     }
   }
   @media only screen and (max-width: 492px){
-    .landmark-dropdown{
-      margin-bottom:30vw;
-    }
     .landmark-dropdown .dropdown-selector{
         top: 1%;
         margin-top: 217px;
@@ -348,7 +335,7 @@
 }
 
 .landmark-dropdown .dropdown-content {
-    position: relative;
+    position: absolute;
     /* position:static;
     display: block; */
 
@@ -398,3 +385,63 @@
 }
 /* end dropdown */
   
+
+/* start new dropdown */
+/* @charset "UTF-8"; */
+/* * {
+  box-sizing: border-box;
+} */
+
+.dropdown {
+  position: relative;
+  margin-bottom: 10px;
+}
+.dropdown .dropdown-list {
+  position: static;
+  top: 50px;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  background-color: #E9C8DD;
+  display: none;
+  z-index: 10;
+}
+
+.dropdown .dropdown-label {
+  display: block;
+  line-height: 35px;
+
+  padding: 0 40px 0 20px;
+  cursor: pointer;
+  position: relative;
+
+  background-color: #DEA7CB;
+  color:white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  height: 35px;
+
+  font-size: 16px;
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.dropdown .dropdown-label:before {
+  content: '▼';
+  position: absolute;
+  color:white;
+  right: 20px;
+  top: 55%;
+  transform: translateY(-50%);
+  transition: transform .25s;
+  transform-origin: center center;
+}
+.dropdown.open .dropdown-list {
+  display: block;
+
+  background-color: #E9C8DD;
+}
+
+.dropdown.open .dropdown-label:before {
+  transform: translateY(-50%) rotate(-180deg);
+}
+/* end new dropdown */

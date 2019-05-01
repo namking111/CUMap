@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- pm2.5 -->
     <link rel="stylesheet" href="/css/style-gauge.css">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css'>
+    <!-- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css'> -->
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css'>
 </head>
@@ -158,107 +158,182 @@
                     </center>
                 </div>
 
-                <!-- Landmark dropdown -->
-                <div class="landmark-dropdown" id="landmark-dropdown">
-                    <input class="dropdown-selector" type="checkbox" checked />
-                    <div class="dropdown-caption">Landmark</div>
-                    <div class="dropdown-content">
-                        <!-- checkbox -->
-                        <br>
-                        <div class="landmark-wrapper">
-                            <div class="col" style="background:transparent">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="atm" name="atm" unchecked />
-                                    <label for="atm"></label>
-                                </div>
-                                <span class="landmark-check">ATM</span>
-                            </div>
+                <!-- start new landmark -->
+                <div class="new-l-dropdown">
+                    <div class="dropdown">
+                            <label class="dropdown-label">Landmark</label>
+                            
+                            <div class="dropdown-list">
+                              <!-- checkbox -->
+                                <br>
+                                <div class="landmark-wrapper">
+                                    <div class="col" style="background:transparent">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="atm" name="atm" unchecked />
+                                            <label for="atm"></label>
+                                        </div>
+                                        <span class="landmark-check">ATM</span>
+                                    </div>
 
-                            <div class="col" style="background:transparent">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="canteen" name="canteen" unchecked />
-                                    <label for="canteen"></label>
-                                </div>
-                                <span class="landmark-check">CANTEEN</span>
-                            </div>
-                            <div class="col" style="background:transparent">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="libr" name="libr" unchecked />
-                                    <label for="libr"></label>
-                                </div>
-                                <span class="landmark-check">LIBRARY</span>
-                            </div>
+                                    <div class="col" style="background:transparent">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="canteen" name="canteen" unchecked />
+                                            <label for="canteen"></label>
+                                        </div>
+                                        <span class="landmark-check">CANTEEN</span>
+                                    </div>
+                                    <div class="col" style="background:transparent">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="libr" name="libr" unchecked />
+                                            <label for="libr"></label>
+                                        </div>
+                                        <span class="landmark-check">LIBRARY</span>
+                                    </div>
 
-                            <div class="col" style="background:transparent">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="coffeeshop" name="coffeeshop" unchecked />
-                                    <label for="coffeeshop"></label>
-                                </div>
-                                <span class="landmark-check">COFFEE SHOP</span>
-                            </div>
+                                    <div class="col" style="background:transparent">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="coffeeshop" name="coffeeshop" unchecked />
+                                            <label for="coffeeshop"></label>
+                                        </div>
+                                        <span class="landmark-check">COFFEE SHOP</span>
+                                    </div>
 
-                            <div class="col" style="background:transparent">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="museum" name="museum" unchecked />
-                                    <label for="museum"></label>
-                                </div>
-                                <span class="landmark-check">MUSEUM</span>
-                            </div>
+                                    <div class="col" style="background:transparent">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="museum" name="museum" unchecked />
+                                            <label for="museum"></label>
+                                        </div>
+                                        <span class="landmark-check">MUSEUM</span>
+                                    </div>
+                                    <br>
+                                    <div class="col" style="background: transparent">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="copyprint" name="copyprint" unchecked />
+                                            <label for="copyprint"></label>
+                                        </div>
+                                        <span class="landmark-check">COPY &amp; PRINT SHOP</span>
+                                    </div>
 
-                            <div class="col" style="background: transparent">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="copyprint" name="copyprint" unchecked />
-                                    <label for="copyprint"></label>
-                                </div>
-                                <span class="landmark-check">COPY &amp; PRINT SHOP</span>
-                            </div>
+                                    <div class="col" style="background:transparent">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="vendm" name="vendm" unchecked />
+                                            <label for="vendm"></label>
+                                        </div>
+                                        <span class="landmark-check">VENDING MACHINE</span>
+                                    </div>
+                                    <br>
+                                    <div class="col" style="background:transparent">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="popbus" name="popbus" unchecked />
+                                            <label for="popbus"></label>
+                                        </div>
+                                        <span class="landmark-check">CU POPBUS</span>
+                                    </div>
 
-                            <div class="col" style="background:transparent">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="vendm" name="vendm" unchecked />
-                                    <label for="vendm"></label>
-                                </div>
-                                <span class="landmark-check">VENDING MACHINE</span>
-                            </div>
+                                    <div class="col" style="background:transparent">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="cubike" name="cubike" unchecked />
+                                            <label for="cubike"></label>
+                                        </div>
+                                        <span class="landmark-check">CU BIKE</span>
+                                    </div>
 
-                            <div class="col" style="background:transparent">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="popbus" name="popbus" unchecked />
-                                    <label for="popbus"></label>
-                                </div>
-                                <span class="landmark-check">CU POPBUS</span>
-                            </div>
+                                    <div class="col" style="background:transparent">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="hamo" name="hamo" unchecked />
+                                            <label for="hamo"></label>
+                                        </div>
+                                        <span class="landmark-check">CU TOYOTA HA:MO</span>
+                                    </div>
 
-                            <div class="col" style="background:transparent">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="cubike" name="cubike" unchecked />
-                                    <label for="cubike"></label>
+                                    <div class="col" style="background:transparent">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="muvmi" name="muvmi" unchecked />
+                                            <label for="muvmi"></label>
+                                        </div>
+                                        <span class="landmark-check">Muvmi</span>
+                                    </div>
                                 </div>
-                                <span class="landmark-check">CU BIKE</span>
+                                <br>
+                                <!-- End checkbox -->
                             </div>
+                            <script>
+                            function checkboxDropdown(el) {
+                                var $el = $(el)
 
-                            <div class="col" style="background:transparent">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="hamo" name="hamo" unchecked />
-                                    <label for="hamo"></label>
-                                </div>
-                                <span class="landmark-check">CU TOYOTA HA:MO</span>
-                            </div>
+                                function updateStatus(label, result) {
+                                    if(!result.length) {
+                                    }
+                                };
+                                
+                                $el.each(function(i, element) {
+                                    var $list = $(this).find('.dropdown-list'),
+                                    $label = $(this).find('.dropdown-label'),
+                                    $checkAll = $(this).find('.check-all'),
+                                    $inputs = $(this).find('.check'),
+                                    defaultChecked = $(this).find('input[type=checkbox]:checked'),
+                                    result = [];
+                                    
+                                    updateStatus($label, result);
+                                    if(defaultChecked.length) {
+                                    defaultChecked.each(function () {
+                                        result.push($(this).next().text());
+                                        $label.html(result.join(", "));
+                                    });
+                                    }
+                                    
+                                    $label.on('click', ()=> {
+                                    $(this).toggleClass('open');
+                                    });
 
-                            <div class="col" style="background:transparent">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="muvmi" name="muvmi" unchecked />
-                                    <label for="muvmi"></label>
-                                </div>
-                                <span class="landmark-check">Muvmi</span>
-                            </div>
-                        </div>
-                        <br>
-                        <!-- End checkbox -->
-                    </div>
-                    <!-- End Landmark dropdown -->
-                </div>
+                                    $checkAll.on('change', function() {
+                                    var checked = $(this).is(':checked');
+                                    var checkedText = $(this).next().text();
+                                    result = [];
+                                    if(checked) {
+                                        result.push(checkedText);
+                                        $label.html(result);
+                                        $inputs.prop('checked', false);
+                                    }else{
+                                        $label.html(result);
+                                    }
+                                        updateStatus($label, result);
+                                    });
 
+                                    $inputs.on('change', function() {
+                                    var checked = $(this).is(':checked');
+                                    var checkedText = $(this).next().text();
+                                    if($checkAll.is(':checked')) {
+                                        result = [];
+                                    }
+                                    if(checked) {
+                                        result.push(checkedText);
+                                        $label.html(result.join(", "));
+                                        $checkAll.prop('checked', false);
+                                    }else{
+                                        let index = result.indexOf(checkedText);
+                                        if (index >= 0) {
+                                        result.splice(index, 1);
+                                        }
+                                        $label.html(result.join(", "));
+                                    }
+                                    updateStatus($label, result);
+                                    });
+
+                                    $(document).on('click touchstart', e => {
+                                    if(!$(e.target).closest($(this)).length) {
+                                        $(this).removeClass('open');
+                                    }
+                                    });
+                                });
+                                };
+
+                                checkboxDropdown('.dropdown');
+                            </script>
+                          </div>
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+            
+            <!-- end new landmark -->
 
 
 
@@ -290,7 +365,12 @@
                                 </div>
 
                                 <div>
-                                    <i class="fa fa-map-marker" aria-hidden="true" style="font-size:26px"></i>
+                                        <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M15.5007 0C9.21016 0 4.10352 5.10722 4.10352 11.3937C4.10352 14.0203 5.05894 16.3692 6.46448 18.3421C15.5007 31 15.5007 31 15.5007 31C15.5007 31 15.5007 31 24.5378 18.3405C25.9424 16.3683 26.8966 14.0136 26.8966 11.3937C26.8969 5.10722 21.7973 0 15.5007 0Z" fill="black"/>
+                                            <path d="M22.6146 11.3937C22.6146 15.3304 19.4328 18.5079 15.5004 18.5079C11.5736 18.5079 8.38525 15.3305 8.38525 11.3937C8.38525 7.46724 11.5736 4.28076 15.5004 4.28076C19.4331 4.28076 22.6146 7.46724 22.6146 11.3937Z" fill="white"/>
+                                        </svg>
+                                            
+                                    <!-- <i class="fa fa-map-marker" aria-hidden="true" style="font-size:26px"></i> -->
                                     <span class="s-desc1" id="dest-lo">Destined Location</span>
                                 </div>
                             </center>
@@ -377,13 +457,14 @@
                 </div>
                 <!-- end selecting method -->
                 <!-- start course info -->
-                <div id="course-info-head" class="section-head">
-                    <br>
-                    <h2>&nbsp;Course Information</h2>
-                    <br>
-                </div>
-                <div id="course-info"></div>
-                <!-- end course info -->
+                    <div id="course-info-head" class="section-head">
+                        <div>Course Information</div>
+                    </div>
+                    <div id="course-info">
+                        <div id="blank">-----------</div>
+                    </div>
+                    
+                    <!-- end course info -->
 
                 <!-- start map -->
                 <div id="map"></div>
@@ -392,20 +473,20 @@
 
                 <!-- start floorplan -->
                 <div id="flPlan" class="section-head">
+                            
+                    <div class="dropdown-caption">Floor Plan</div>
 
-                    <br>
-                    <h2>&nbsp;Floor Plan</h2>
-                    <br>
-                    <div id="flMap">
-
-                        <br>
-                        <h4 id="building-num">Building</h4>
-
-                        <select id="selfloorlist" name="optionDrop" onchange="getFloorFromDropDown()"></select>
+                    <div id="flMap" style="background-color: rgb(250, 234, 245);">
 
                         <br>
+                        <center>
+                            <div class="s-desc1" id="building-num">Building</div>
+                            <br>
+                            <!-- <br> -->
+                            <select id="selfloorlist" name="optionDrop" onchange="getFloorFromDropDown()"></select>
+                        </center>
                         <br>
-                        <div id="show-map"></div>
+                        <span id="show-map" width="10px"></span>
 
                     </div>
                 </div>
@@ -414,20 +495,19 @@
                 <div id="gauge_div" style="display:none;"></div>
                 <!-- PM2.5 Square -->
                 <div class="bg-light h-100vh position-relative overflow-hidden">
-                    <div id="test2Map" style="display: inline-block; padding:20px;">
-                        <iframe width="450" height="260" style="border: 1px solid #cccccc;" align="bottom"
+                    <div id="test2Map" style="display: inline-block; padding:10px;">
+                        <iframe width="450" height="260" style="border: 1px solid #cccccc; margin-bottom:10px;"
                             src="https://thingspeak.com/channels/759644/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
                     </div>
-                    <div class="p-5 h-100 position-relative z-index-2 overflow-auto py-3 animated bounceInUp"
-                        style="width:22em; height:20em; display: inline-block;">
-                        <div class="p-2 text-white rounded m-3 p-3 shadow-lg text-center animated flipInX delay-2"
-                            id="colorBG" style="display: inline-block;">
+                    <div style="display: inline-block;" >
+                        <div class="text-center animated flipInX delay-2" 
+                        id="colorBG" style="width:10em; padding:3px; border-radius:10px; margin-left:20px;">
                             <div class="text-uppercase text-tracked opacity-30 mb-2" style="color:rgb(51, 51, 51);">
                                 Right now</div>
                             <div class="Status-main" id="colorBG">
                                 <div class="badge" id="status-span">100th Buildiing</div>
                                 <div class="Status">
-                                    <div id="valuePM" class="display-4 text-monospace"></div>
+                                    <div id="valuePM" class="display-4 text-monospace" style="font-size:40px;"></div>
                                     <small id="unit">μg/m^3</small><br>
                                     <div id="TextStatus" class="badge"
                                         style="margin-top:5px; margin-bottom:3px; font-size:13px; background-color:rgba(142, 170, 192, 0.582); width:8.5em;">
@@ -457,6 +537,7 @@
                     </div>
 
                 </div>
+                <!-- end PM3.5 -->
                 <!-- end PM3.5 -->
                 <!--
                 <table class="table table-condensed" style="width:550px;margin:auto;">
