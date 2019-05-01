@@ -259,7 +259,7 @@ var initMap = function () {
             if (vendmCounter == 1) {
                 $.get('/location/vending_machine', (data) => {
                     for (i = 0; i < data.length; i++) {
-                        vendmMarkers[i] = addMarker(data[i], '/img/vending.png', data[i].Vending_Machine_type);
+                        vendmMarkers[i] = addMarker(data[i], '/img/Vending.png', data[i].Vending_Machine_type);
                     }
                 });
             } else {
