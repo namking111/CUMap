@@ -44,16 +44,16 @@ function main() {
           TextStatus.innerHTML = "LOW";
           colorChanged.style.background = "#00A85A";
         }
-        if (p > 9 && p <= 26) {
+        if (p > 9 && p <= 50) {
           TextStatus.innerHTML = "MODERATE";
           colorChanged.style.background = "#0775C1";
 
         }
-        if (p > 26 && p <= 40) {
+        if (p > 50 && p <= 51) {
           TextStatus.innerHTML = "UNHEALTHY<br><small>for sensitive groups</small>";
           colorChanged.style.background = "#FBB410";
         }
-        if (p > 40 && p <= 107) {
+        if (p > 51 && p <= 107) {
           TextStatus.innerHTML = "UNHEALTHY";
           colorChanged.style.background = "#F16720";
         }
